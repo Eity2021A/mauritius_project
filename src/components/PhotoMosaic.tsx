@@ -35,7 +35,7 @@ const desktopTileClasses = [
   "lg:col-span-3 lg:row-span-2",
   "lg:col-span-2 lg:row-span-2",
   "lg:col-span-4 lg:row-span-2",
-  "lg:col-span-2 lg:row-span-2",
+  "lg:col-span-3 lg:row-span-2",
   "lg:col-span-2 lg:row-span-2",
   "lg:col-span-2 lg:row-span-2",
   "lg:col-span-3 lg:row-span-2",
@@ -102,7 +102,7 @@ export default function PhotoMosaic() {
       </div>
 
       <div className="hidden lg:block">
-        <div className="container mx-auto w-full px-4 pt-4 pb-4">
+        <div className="container w-full mx-auto px-4 pt-4 pb-4">
           <div className="grid grid-cols-12 auto-rows-[7.5rem] gap-2 xl:auto-rows-[8.5rem] 2xl:auto-rows-[9.5rem]">
             {MOSAIC_ITEMS.map((item, index) => (
               <DesktopMosaicCard key={`desktop-${item.src}-${index}`} item={item} index={index} />

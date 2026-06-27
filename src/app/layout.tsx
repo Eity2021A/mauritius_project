@@ -122,8 +122,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="preconnect" href="https://wpktirmzveoovxjqbqpq.supabase.co" />
-        <link rel="dns-prefetch" href="https://wpktirmzveoovxjqbqpq.supabase.co" />
+        <link rel="preconnect" href="https://htyodxbntlnwefjkcudc.supabase.co" />
+        <link rel="dns-prefetch" href="https://htyodxbntlnwefjkcudc.supabase.co" />
         <link
           rel="preload"
           as="image"

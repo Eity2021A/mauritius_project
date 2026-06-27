@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 
 /** Same asset as Spring Festival (Chinese New Year) on this page — hosted on Supabase for consistent social previews. */
 const FESTIVALS_OG_IMAGE_URL =
-  "https://wpktirmzveoovxjqbqpq.supabase.co/storage/v1/object/public/festivals/chinese-new-year-in-mauritius.webp";
+  "https://htyodxbntlnwefjkcudc.supabase.co/storage/v1/object/public/festivals/chinese-new-year-in-mauritius.webp";
 
 export const metadata: Metadata = {
   title: "Festivals in Mauritius | Cultural Celebrations & Events",

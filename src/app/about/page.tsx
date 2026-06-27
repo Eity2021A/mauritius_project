@@ -146,7 +146,7 @@ export default function AboutPage() {
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Strategic Partnership</h2>
               </div>
               <p className="text-gray-700 text-lg leading-relaxed">
-                Recently, we forged a strategic partnership with a leading e-market B2B provider based in DMCC Dubai. This collaboration enables us to expand our offerings, allowing us to deliver exceptional and cost-effective activities to our travelers. Through this partnership, we are dedicated to ensuring that our customers enjoy unparalleled experiences while optimizing value.
+                Recently, we forged a strategic partnership <span className="font-semibold text-orange-500">with a leading e-market B2B provider based in DMCC Dubai</span>. This collaboration enables us to expand our offerings, allowing us to deliver exceptional and cost-effective activities to our travelers. Through this partnership, we are dedicated to ensuring that our customers enjoy unparalleled experiences while optimizing value.
               </p>
             </div>
           </div>

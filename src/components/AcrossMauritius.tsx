@@ -11,7 +11,7 @@ import {
   type AcrossItem,
   type AcrossSectionConfig,
 } from "@/data/across";
-import { getExploreSectionsEnriched } from "@/lib/content";
+import { getAcrossSectionsEnriched } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Explore Mauritius — Beaches, Places & Activities",
@@ -154,8 +154,8 @@ function MarqueeCard({
 
 export default async function AcrossMauritius() {
   const { topActivities, topBeaches, topPlaces, hiddenGems } =
-    await getExploreSectionsEnriched();
-  const exploreSectionsWithEnrichedImages: AcrossSectionConfig[] = [
+    await getAcrossSectionsEnriched();
+  const acrossSectionsWithEnrichedImages: AcrossSectionConfig[] = [
     { ...acrossSections[0], items: topActivities },
     { ...acrossSections[1], items: topBeaches },
     { ...acrossSections[2], items: topPlaces },
@@ -181,7 +181,7 @@ export default async function AcrossMauritius() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {exploreSectionsWithEnrichedImages.map((section) => (
+              {acrossSectionsWithEnrichedImages.map((section) => (
                 <AcrossSection key={section.title} config={section} />
               ))}
             </div>

@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 
 const HERO_IMAGE_PATH = "/images/banners/le-morne-aerial-view-mauritius.webp";
 const OG_IMAGE_URL =
-  "https://wpktirmzveoovxjqbqpq.supabase.co/storage/v1/object/public/banners/le-morne-aerial-view-mauritius.webp";
+  "https://htyodxbntlnwefjkcudc.supabase.co/storage/v1/object/public/banners/le-morne-aerial-view-mauritius.webp";
 
 interface ItineraryGuide {
   days: number;

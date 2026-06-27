@@ -162,11 +162,16 @@ function hydrateBlogHtmlImageOrientations(html: string, media: BlogMediaPayload[
   let imageIndex = 0
   return html.replace(/<img\b[^>]*>/g, (tag) => {
     const src = getHtmlAttr(tag, "src")
+    const extractedFilenameFromSrc = src
+      ? (
+          src.split("/storage/v1/object/public/mauritius_explored/").pop() ??
+          src.split("/storage/v1/object/public/images/").pop() ??
+          null
+        )
+      : null
     const filename =
       getHtmlAttr(tag, "data-filename") ??
-      (src?.includes("/storage/v1/object/public/images/")
-        ? src.split("/storage/v1/object/public/images/").pop()
-        : null)
+      extractedFilenameFromSrc
     const image =
       (filename ? media.find((item) => item.image_path === filename) : null) ??
       media[imageIndex]

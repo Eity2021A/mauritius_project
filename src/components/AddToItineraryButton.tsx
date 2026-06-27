@@ -14,6 +14,7 @@ interface AddToItineraryButtonProps {
   lng: number;
   image: string;
   bookingUrl?: string;
+  whatsappUrl?: string;
 }
 
 export default function AddToItineraryButton({
@@ -24,6 +25,7 @@ export default function AddToItineraryButton({
   lng,
   image,
   bookingUrl,
+  whatsappUrl,
 }: AddToItineraryButtonProps) {
   const { addStop, removeStop, hasStop, stopCount } = useItineraryDraft();
   const added = hasStop(slug, type);
@@ -112,7 +114,8 @@ export default function AddToItineraryButton({
               paddingBottom: "env(safe-area-inset-bottom, 0px)",
             }}
           >
-            <div className="flex items-center gap-3 px-4 pt-3 pb-3">
+            <div className="px-4 pt-3 pb-3 space-y-3">
+              <div className="flex items-center gap-3">
               {bookingUrl && (
                 <Link
                   href={bookingUrl}
@@ -157,6 +160,26 @@ export default function AddToItineraryButton({
                   {stopCount}
                 </Link>
               )}
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                {whatsappUrl && (
+                  <Link
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center px-4 py-3 rounded-lg border border-green-200 bg-green-50 text-sm font-semibold text-green-700 touch-manipulation"
+                  >
+                    WhatsApp
+                  </Link>
+                )}
+                <Link
+                  href="/transfer"
+                  className="flex items-center justify-center px-4 py-3 rounded-lg border border-blue-200 bg-blue-50 text-sm font-semibold text-blue-700 touch-manipulation"
+                >
+                  Transfer
+                </Link>
+              </div>
             </div>
           </div>,
           document.body

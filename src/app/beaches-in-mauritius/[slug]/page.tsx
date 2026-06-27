@@ -24,7 +24,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const beach = await getBeachDetailsBySlug(slug);
-
+console.log("beach", beach);
   if (!beach) {
     return { title: "Beach Not Found" };
   }

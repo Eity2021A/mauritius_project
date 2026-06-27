@@ -199,6 +199,14 @@ function AdmissionIcon() {
     </svg>
   );
 }
+function PriceIcon() {
+  return (
+    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v12" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 9.5c0-1.381-1.343-2.5-3-2.5s-3 1.119-3 2.5 1.343 2.5 3 2.5 3 1.119 3 2.5-1.343 2.5-3 2.5-3-1.119-3-2.5" />
+    </svg>
+  );
+}
 function CheckIcon() {
   return (
     <svg className="w-4 h-4 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -207,7 +215,13 @@ function CheckIcon() {
   );
 }
 
-function BookingCta({ bookingUrl }: { bookingUrl?: string }) {
+function BookingCta({
+  bookingUrl,
+  whatsappUrl,
+}: {
+  bookingUrl?: string;
+  whatsappUrl: string;
+}) {
   return (
     <div className="space-y-2">
       {bookingUrl ? (
@@ -227,6 +241,20 @@ function BookingCta({ bookingUrl }: { bookingUrl?: string }) {
           </span>
         </span>
       )}
+      <Link
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center justify-center min-h-[48px] w-full rounded-lg border border-green-200 bg-green-50 text-green-700 text-center py-3 font-semibold hover:bg-green-100 transition-colors"
+      >
+        WhatsApp
+      </Link>
+      <Link
+        href="/transfer"
+        className="inline-flex items-center justify-center min-h-[48px] w-full rounded-lg border border-blue-200 bg-blue-50 text-blue-700 text-center py-3 font-semibold hover:bg-blue-100 transition-colors"
+      >
+        Transfer
+      </Link>
       <p className="text-center text-xs text-gray-500">
         Reservations are completed on partner sites.
       </p>
@@ -265,13 +293,17 @@ export default async function DetailPage({ params }: { params: Promise<{ slug: s
     );
   }
   const activity = await getActivityDetailsBySlugFromDb(slug);
-
+console.log("activity", activity);
   if (activity) {
     const activityCoordinates = activity.coordinates;
     const relatedActivities = await getRelatedActivities(slug);
     const mainPrice = activity.pricing?.[0]?.price;
     const hasBooking = Boolean(activity.bookingUrl);
     const activityHeroImage = activity.heroImage ?? activity.images[0] ?? "";
+    const whatsappMessage = encodeURIComponent(
+      `Hi, I want to know more about ${activity.name} on Mauritius Explored: ${SITE_URL}${DETAIL_BASE}/${activity.slug}`
+    );
+    const whatsappUrl = `https://wa.me/23057364118?text=${whatsappMessage}`;
     
     // Build categories array: [region, ...categories] (filter out "all")
     const activityCategories = [activity.region, ...activity.categories.filter(c => c !== "all")];
@@ -412,7 +444,7 @@ export default async function DetailPage({ params }: { params: Promise<{ slug: s
                 <div className="lg:sticky lg:top-24 space-y-6">
                   {hasBooking && (
                     <div className="hidden lg:block">
-                      <BookingCta bookingUrl={activity.bookingUrl} />
+                      <BookingCta bookingUrl={activity.bookingUrl} whatsappUrl={whatsappUrl} />
                     </div>
                   )}
 
@@ -429,11 +461,39 @@ export default async function DetailPage({ params }: { params: Promise<{ slug: s
                     lng={activity.coordinates[1]}
                     image={activity.images[0] ?? ""}
                     bookingUrl={activity.bookingUrl}
+                    whatsappUrl={whatsappUrl}
                   />
 
                   <div className="bg-white rounded-lg shadow-lg border border-gray-100 p-6">
                     <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-4">Information</h3>
                     <div className="space-y-1">
+                      {activity.pricing && activity.pricing.length > 0 && (
+                        <div className="py-4 border-b border-gray-100">
+                          <div className="flex items-start gap-3">
+                            <div className="text-gray-400 mt-0.5">
+                              <PriceIcon />
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <div className="text-xs font-medium uppercase tracking-wide text-gray-500 mb-2">
+                                Pricing
+                              </div>
+                              <div className="space-y-2">
+                                {activity.pricing.map((option, index) => (
+                                  <div key={`${option.name}-${index}`} className="text-sm text-gray-700">
+                                    <div className="flex items-baseline justify-between gap-3">
+                                      <span className="font-medium text-gray-900">{option.name}</span>
+                                      <span className="font-semibold text-orange-600">EUR {option.price}</span>
+                                    </div>
+                                    {option.description && (
+                                      <p className="mt-1 text-xs leading-5 text-gray-500">{option.description}</p>
+                                    )}
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
                       {activity.location && <InfoItem icon={<LocationIcon />} label="Location" value={activity.location} bordered />}
                       {activity.duration && <InfoItem icon={<DurationIcon />} label="Duration" value={activity.duration} bordered />}
                       {activity.bestTime && <InfoItem icon={<CalendarIcon />} label="Best Time" value={activity.bestTime} bordered />}
