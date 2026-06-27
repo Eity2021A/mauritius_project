@@ -1,0 +1,428 @@
+{
+  "locale": "fr",
+  "localeName": "French",
+  "implementationStatus": "translation-only",
+  "notes": [
+    "Do not edit app code from this catalog directly without adding an i18n layer.",
+    "Preserve slugs, URL paths, query params, image paths, and machine IDs.",
+    "Legal and giveaway translations require human/legal review before publication."
+  ],
+  "ui": {
+    "shell": {
+      "nav.home": { "en": "Home", "fr": "Accueil" },
+      "nav.aboutMauritius": { "en": "About Mauritius", "fr": "À propos de Maurice" },
+      "nav.welcomeMauritius": { "en": "Welcome to Mauritius Island", "fr": "Bienvenue à l'île Maurice" },
+      "nav.top15": { "en": "Top 15 Things To Do", "fr": "Top 15 des activités à faire" },
+      "nav.bestTime": { "en": "Best Time to Visit", "fr": "Meilleure période pour visiter" },
+      "nav.visa": { "en": "Visa Requirements", "fr": "Conditions de visa" },
+      "nav.festivals": { "en": "Festivals in Mauritius", "fr": "Festivals à Maurice" },
+      "nav.events": { "en": "Events in Mauritius", "fr": "Événements à Maurice" },
+      "nav.giveaway": { "en": "Giveaway", "fr": "Jeu-concours" },
+      "nav.itinerary": { "en": "Itinerary", "fr": "Itinéraire" },
+      "nav.allItineraries": { "en": "All itineraries", "fr": "Tous les itinéraires" },
+      "nav.mauritiusItineraries": { "en": "Mauritius Itineraries", "fr": "Itinéraires à Maurice" },
+      "nav.recommendedItineraries": { "en": "Recommended itineraries", "fr": "Itinéraires recommandés" },
+      "nav.communityItineraries": { "en": "Community itineraries", "fr": "Itinéraires de la communauté" },
+      "nav.aiItinerary": { "en": "AI Itinerary", "fr": "Itinéraire IA" },
+      "nav.createItinerary": { "en": "Create your itinerary", "fr": "Créer votre itinéraire" },
+      "nav.explore": { "en": "Explore", "fr": "Explorer" },
+      "nav.beaches": { "en": "Beaches in Mauritius", "fr": "Plages de Maurice" },
+      "nav.bestPlaces": { "en": "Best Places to Visit", "fr": "Meilleurs lieux à visiter" },
+      "nav.activities": { "en": "Activities", "fr": "Activités" },
+      "nav.blog": { "en": "Blog", "fr": "Blog" },
+      "nav.aboutUs": { "en": "About Us", "fr": "À propos" },
+      "nav.menu": { "en": "Menu", "fr": "Menu" },
+      "nav.openMenu": { "en": "Open menu", "fr": "Ouvrir le menu" },
+      "nav.closeMenu": { "en": "Close menu", "fr": "Fermer le menu" },
+      "badge.beta": { "en": "Beta", "fr": "Bêta" },
+      "badge.new": { "en": "New", "fr": "Nouveau" }
+    },
+    "languageSwitcher": {
+      "language.en": { "en": "English", "fr": "Anglais" },
+      "language.fr": { "en": "French", "fr": "Français" },
+      "language.de": { "en": "German", "fr": "Allemand" },
+      "language.zh": { "en": "Chinese", "fr": "Chinois" },
+      "language.hi": { "en": "Hindi", "fr": "Hindi" },
+      "selectLanguage": { "en": "Select Language", "fr": "Choisir la langue" },
+      "comingSoon": { "en": "Coming soon", "fr": "Bientôt disponible" },
+      "ariaChoose": {
+        "en": "Language: {language}. Choose language",
+        "fr": "Langue : {language}. Choisir une langue",
+        "placeholders": ["language"]
+      }
+    },
+    "footer": {
+      "description": {
+        "en": "Your guide to discovering the beauty of Mauritius. From pristine beaches to lush mountains, explore everything this island paradise has to offer.",
+        "fr": "Votre guide pour découvrir la beauté de Maurice. Des plages immaculées aux montagnes luxuriantes, explorez tout ce que cette île paradisiaque a à offrir."
+      },
+      "exploreHeading": { "en": "Explore", "fr": "Explorer" },
+      "aboutHeading": { "en": "About", "fr": "À propos" },
+      "connectHeading": { "en": "Connect", "fr": "Contact" },
+      "republic": { "en": "Republic of Mauritius", "fr": "République de Maurice" },
+      "contactUs": { "en": "Contact Us", "fr": "Nous contacter" },
+      "copyright": {
+        "en": "Copyright © {year} All rights reserved | Mauritius Explored",
+        "fr": "Copyright © {year} Tous droits réservés | Mauritius Explored",
+        "placeholders": ["year"]
+      }
+    },
+    "shared": {
+      "loading": { "en": "Loading...", "fr": "Chargement..." },
+      "saving": { "en": "Saving...", "fr": "Enregistrement..." },
+      "submitting": { "en": "Submitting...", "fr": "Envoi en cours..." },
+      "generating": { "en": "Generating...", "fr": "Génération en cours..." },
+      "cancel": { "en": "Cancel", "fr": "Annuler" },
+      "confirm": { "en": "Confirm", "fr": "Confirmer" },
+      "search": { "en": "Search", "fr": "Rechercher" },
+      "clearFilters": { "en": "Clear filters", "fr": "Effacer les filtres" },
+      "noResults": { "en": "No results found", "fr": "Aucun résultat trouvé" },
+      "noImage": { "en": "No image", "fr": "Aucune image" },
+      "readMore": { "en": "Read more", "fr": "Lire la suite" },
+      "viewDetails": { "en": "View details", "fr": "Voir les détails" },
+      "from": { "en": "From", "fr": "À partir de" },
+      "perPerson": { "en": "per person", "fr": "par personne" }
+    }
+  },
+  "seo": {
+    "root.titleDefault": {
+      "en": "Mauritius Explored - Discover Paradise Island | Travel Guide 2026",
+      "fr": "Mauritius Explored - Découvrez l'île paradisiaque | Guide de voyage 2026"
+    },
+    "root.titleTemplate": {
+      "en": "%s | Mauritius Explored",
+      "fr": "%s | Mauritius Explored",
+      "placeholders": ["%s"]
+    },
+    "root.description": {
+      "en": "Your ultimate guide to Mauritius. Discover stunning beaches, waterfalls, hiking trails, and hidden gems. Plan your perfect tropical holiday with local tips and insider knowledge.",
+      "fr": "Votre guide ultime de Maurice. Découvrez des plages magnifiques, des cascades, des sentiers de randonnée et des pépites cachées. Préparez vos vacances tropicales idéales grâce à des conseils locaux et des bons plans d'initiés."
+    },
+    "root.openGraphTitle": {
+      "en": "Mauritius Island | Things to do & Visitor's Guide | 2026",
+      "fr": "Île Maurice | Activités et guide visiteur | 2026"
+    },
+    "root.openGraphDescription": {
+      "en": "Your ultimate guide to Mauritius. Discover stunning beaches, waterfalls, and hidden gems. Plan your perfect tropical holiday.",
+      "fr": "Votre guide ultime de Maurice. Découvrez des plages magnifiques, des cascades et des pépites cachées. Préparez vos vacances tropicales idéales."
+    },
+    "about.title": { "en": "About Us", "fr": "À propos" },
+    "about.description": {
+      "en": "Learn about Planet Explored Ltd and our mission to provide eco-friendly travel experiences in Mauritius.",
+      "fr": "Découvrez Planet Explored Ltd et notre mission : proposer des expériences de voyage responsables à Maurice."
+    },
+    "contact.title": { "en": "Contact Us", "fr": "Nous contacter" },
+    "contact.description": {
+      "en": "Get in touch with Mauritius Explored. Contact us via email or WhatsApp for travel inquiries.",
+      "fr": "Contactez Mauritius Explored par e-mail ou WhatsApp pour toute demande liée à votre voyage."
+    },
+    "privacy.title": { "en": "Privacy Policy", "fr": "Politique de confidentialité" },
+    "privacy.description": {
+      "en": "Privacy Policy for Mauritius Explored - Learn how we collect, use, and protect your personal information.",
+      "fr": "Politique de confidentialité de Mauritius Explored - Découvrez comment nous collectons, utilisons et protégeons vos informations personnelles."
+    }
+  },
+  "pages": {
+    "home": {
+      "hero.travelAdventure.title": { "en": "Travel & Adventure", "fr": "Voyage et aventure" },
+      "hero.travelAdventure.subtitle": {
+        "en": "All you need to plan your holidays in Mauritius Island",
+        "fr": "Tout ce qu'il vous faut pour préparer vos vacances à l'île Maurice"
+      },
+      "hero.discovery.title": { "en": "Beauty of Discovery", "fr": "La beauté de la découverte" },
+      "hero.discovery.subtitle": {
+        "en": "Mauritius will amaze you with its rich culture and heritage",
+        "fr": "Maurice vous émerveillera par la richesse de sa culture et de son patrimoine"
+      },
+      "hero.paradise.title": { "en": "Paradise Awaits", "fr": "Le paradis vous attend" },
+      "hero.paradise.subtitle": {
+        "en": "Pristine beaches, lush mountains, and unforgettable experiences",
+        "fr": "Plages immaculées, montagnes luxuriantes et expériences inoubliables"
+      },
+      "itineraries.eyebrow": { "en": "Explore Itineraries", "fr": "Explorer les itinéraires" },
+      "itineraries.title": { "en": "Itineraries & Road Trips", "fr": "Itinéraires et road trips" },
+      "itineraries.description": {
+        "en": "A guide to explore Mauritius | What are the best places to visit | Be inspired to explore",
+        "fr": "Un guide pour explorer Maurice | Quels sont les meilleurs lieux à visiter | Inspirez-vous pour partir à la découverte"
+      },
+      "itineraries.swipe": { "en": "Swipe to explore →", "fr": "Faites défiler pour explorer →" },
+      "itineraries.view": { "en": "View itinerary", "fr": "Voir l'itinéraire" },
+      "services.eyebrow": { "en": "Experience Mauritius", "fr": "Vivre Maurice" },
+      "services.title": { "en": "What You Can Do", "fr": "Ce que vous pouvez faire" },
+      "cta.title": { "en": "Your Mauritius Adventure Awaits", "fr": "Votre aventure mauricienne vous attend" },
+      "cta.description": {
+        "en": "From pristine beaches to lush mountains, discover everything this island paradise has to offer. Let us help you plan the perfect getaway.",
+        "fr": "Des plages immaculées aux montagnes luxuriantes, découvrez tout ce que cette île paradisiaque a à offrir. Laissez-nous vous aider à organiser l'escapade parfaite."
+      },
+      "cta.button": { "en": "Plan Your Trip", "fr": "Planifier votre voyage" }
+    },
+    "explore": {
+      "eyebrow": { "en": "Discover", "fr": "Découvrir" },
+      "title": { "en": "Explore Mauritius", "fr": "Explorer Maurice" },
+      "activitiesCta": { "en": "Explore All Activities", "fr": "Explorer toutes les activités" },
+      "beachesCta": { "en": "Explore All Beaches", "fr": "Explorer toutes les plages" },
+      "placesCta": { "en": "Explore All Places", "fr": "Explorer tous les lieux" },
+      "hiddenBeach": { "en": "Hidden Beach", "fr": "Plage cachée" }
+    },
+    "detailChrome": {
+      "highlights": { "en": "Highlights", "fr": "Points forts" },
+      "gallery": { "en": "Photo Gallery", "fr": "Galerie photo" },
+      "included": { "en": "What's Included", "fr": "Ce qui est inclus" },
+      "bring": { "en": "What to Bring", "fr": "Ce qu'il faut apporter" },
+      "information": { "en": "Information", "fr": "Informations" },
+      "hotelsNearby": { "en": "Hotels Nearby", "fr": "Hôtels à proximité" },
+      "tips": { "en": "Tips from Mauritius Explored", "fr": "Conseils de Mauritius Explored" },
+      "moreActivities": { "en": "More Activities Like This", "fr": "Plus d'activités similaires" },
+      "continueActivities": {
+        "en": "Continue exploring activities in Mauritius",
+        "fr": "Continuez à explorer les activités à Maurice"
+      },
+      "continuePlaces": {
+        "en": "Continue exploring the best of Mauritius",
+        "fr": "Continuez à découvrir le meilleur de Maurice"
+      }
+    },
+    "bestTime": {
+      "title": { "en": "Best Time to Visit Mauritius", "fr": "Meilleure période pour visiter Maurice" },
+      "commonQuestion": {
+        "en": "This is the most common question we received all year round.",
+        "fr": "C'est la question que nous recevons le plus souvent tout au long de l'année."
+      },
+      "answer": {
+        "en": "Between November & May - April and May",
+        "fr": "Entre novembre et mai - avril et mai"
+      },
+      "rainySeasonMyth": {
+        "en": "The myth: When is the rainy season in Mauritius?",
+        "fr": "Le mythe : quand a lieu la saison des pluies à Maurice ?"
+      },
+      "noRainySeason": { "en": "No rainy season in Mauritius", "fr": "Pas de saison des pluies à Maurice" }
+    },
+    "visa": {
+      "noVisa": { "en": "No Visa", "fr": "Pas de visa" },
+      "visaRequired": { "en": "Visa required", "fr": "Visa requis" },
+      "types": { "en": "Types of Visas", "fr": "Types de visas" },
+      "tourist": { "en": "Tourist Visa", "fr": "Visa touristique" },
+      "business": { "en": "Business Visa", "fr": "Visa d'affaires" },
+      "medical": { "en": "Medical Visa", "fr": "Visa médical" },
+      "premium": { "en": "Premium Visa", "fr": "Visa premium" },
+      "byCountry": { "en": "Visa Requirements by Country", "fr": "Conditions de visa par pays" },
+      "important": { "en": "Important Information", "fr": "Informations importantes" }
+    },
+    "itinerary": {
+      "loadingItinerary": { "en": "Loading your itinerary...", "fr": "Chargement de votre itinéraire..." },
+      "noStops": { "en": "No stops yet", "fr": "Aucun arrêt pour le moment" },
+      "totalDriving": { "en": "Total driving", "fr": "Temps de conduite total" },
+      "justMoment": { "en": "Just a moment", "fr": "Un instant" },
+      "yourRoute": { "en": "Your route", "fr": "Votre itinéraire" },
+      "add": { "en": "Add to itinerary", "fr": "Ajouter à l'itinéraire" },
+      "remove": { "en": "Remove from itinerary", "fr": "Retirer de l'itinéraire" },
+      "save": { "en": "Save itinerary", "fr": "Enregistrer l'itinéraire" },
+      "share": { "en": "Share itinerary", "fr": "Partager l'itinéraire" }
+    },
+    "about": {
+      "title": { "en": "About Us", "fr": "À propos" },
+      "subtitle": {
+        "en": "Your trusted guide to eco-friendly travel in Mauritius since 2011",
+        "fr": "Votre guide de confiance pour voyager de manière responsable à Maurice depuis 2011"
+      },
+      "missionHeading": { "en": "Our Mission", "fr": "Notre mission" },
+      "missionBody": {
+        "en": "Our mission is to provide eco-friendly travel ideas and itineraries, guiding our customers with the latest and most relevant information on places to visit, types of activities, and customizable trips tailored to their preferences.",
+        "fr": "Notre mission est de proposer des idées de voyage et des itinéraires respectueux de l'environnement, en guidant nos clients grâce aux informations les plus récentes et les plus pertinentes sur les lieux à visiter, les types d'activités et les voyages personnalisables selon leurs préférences."
+      },
+      "storyHeading": { "en": "Our Story", "fr": "Notre histoire" },
+      "partnershipHeading": { "en": "Strategic Partnership", "fr": "Partenariat stratégique" },
+      "sustainabilityHeading": {
+        "en": "Sustainability & Ocean Protection",
+        "fr": "Durabilité et protection des océans"
+      },
+      "initiativesHeading": { "en": "Our Initiatives", "fr": "Nos initiatives" },
+      "missionCta": { "en": "Join Us in Our Mission", "fr": "Rejoignez notre mission" },
+      "startExploring": { "en": "Start Exploring", "fr": "Commencer à explorer" }
+    },
+    "contact": {
+      "title": { "en": "Get In Touch", "fr": "Contactez-nous" },
+      "emailUs": { "en": "Email Us:", "fr": "Envoyez-nous un e-mail :" },
+      "whatsapp": { "en": "WhatsApp:", "fr": "WhatsApp :" },
+      "body": {
+        "en": "Whether you have questions about planning your trip, need recommendations, or want to learn more about our services, we're here to help. Reach out to us anytime!",
+        "fr": "Que vous ayez des questions sur la préparation de votre voyage, besoin de recommandations ou envie d'en savoir plus sur nos services, nous sommes là pour vous aider. Contactez-nous à tout moment !"
+      }
+    },
+    "giveaway": {
+      "title": { "en": "Giveaway", "fr": "Jeu-concours" },
+      "enter": { "en": "Enter the giveaway", "fr": "Participer au jeu-concours" },
+      "share": { "en": "Share this giveaway", "fr": "Partager ce jeu-concours" },
+      "termsTitle": { "en": "Giveaway Terms & Conditions", "fr": "Conditions générales du jeu-concours" }
+    },
+    "blog": {
+      "title": { "en": "Blog", "fr": "Blog" },
+      "share": { "en": "Share:", "fr": "Partager :" },
+      "readArticle": { "en": "Read article", "fr": "Lire l'article" },
+      "relatedPosts": { "en": "Related posts", "fr": "Articles associés" },
+      "views": { "en": "views", "fr": "vues" }
+    }
+  },
+  "data": {
+    "enums": {
+      "regions.North": { "en": "North", "fr": "Nord" },
+      "regions.South": { "en": "South", "fr": "Sud" },
+      "regions.East": { "en": "East", "fr": "Est" },
+      "regions.West": { "en": "West", "fr": "Ouest" },
+      "regions.North East": { "en": "North East", "fr": "Nord-Est" },
+      "regions.North West": { "en": "North West", "fr": "Nord-Ouest" },
+      "regions.South East": { "en": "South East", "fr": "Sud-Est" },
+      "regions.South West": { "en": "South West", "fr": "Sud-Ouest" },
+      "regions.Central": { "en": "Central", "fr": "Centre" },
+      "regions.Various": { "en": "Various", "fr": "Plusieurs régions" },
+      "activityCategories.all": { "en": "All", "fr": "Tous", "preserveId": "all" },
+      "activityCategories.best-seller": { "en": "Best Seller", "fr": "Meilleures ventes", "preserveId": "best-seller" },
+      "activityCategories.adventure": { "en": "Adventure", "fr": "Aventure", "preserveId": "adventure" },
+      "activityCategories.air": { "en": "Air", "fr": "Air", "preserveId": "air" },
+      "activityCategories.land": { "en": "Land", "fr": "Terre", "preserveId": "land" },
+      "activityCategories.sea": { "en": "Sea", "fr": "Mer", "preserveId": "sea" },
+      "activityCategories.hiking": { "en": "Hiking", "fr": "Randonnée", "preserveId": "hiking" },
+      "activityCategories.unique": { "en": "Unique in Mauritius", "fr": "Unique à Maurice", "preserveId": "unique" },
+      "seasons.Summer": { "en": "Summer", "fr": "Été" },
+      "seasons.Autumn": { "en": "Autumn", "fr": "Automne" },
+      "seasons.Winter": { "en": "Winter", "fr": "Hiver" },
+      "seasons.Spring": { "en": "Spring", "fr": "Printemps" },
+      "cyclone.None": { "en": "None", "fr": "Aucun" },
+      "cyclone.Very Low": { "en": "Very Low", "fr": "Très faible" },
+      "cyclone.Low": { "en": "Low", "fr": "Faible" },
+      "cyclone.Moderate": { "en": "Moderate", "fr": "Modéré" }
+    },
+    "months": {
+      "January": { "en": "January", "fr": "Janvier" },
+      "February": { "en": "February", "fr": "Février" },
+      "March": { "en": "March", "fr": "Mars" },
+      "April": { "en": "April", "fr": "Avril" },
+      "May": { "en": "May", "fr": "Mai" },
+      "June": { "en": "June", "fr": "Juin" },
+      "July": { "en": "July", "fr": "Juillet" },
+      "August": { "en": "August", "fr": "Août" },
+      "September": { "en": "September", "fr": "Septembre" },
+      "October": { "en": "October", "fr": "Octobre" },
+      "November": { "en": "November", "fr": "Novembre" },
+      "December": { "en": "December", "fr": "Décembre" }
+    }
+  },
+  "entities": {
+    "activities": {
+      "swim-with-dolphins.name": { "en": "Swim with Dolphins", "fr": "Nager avec les dauphins", "preserveSlug": "swim-with-dolphins" },
+      "swim-with-dolphins.description": {
+        "en": "Experience the magic of swimming alongside wild dolphins in their natural habitat on the west coast of Mauritius.",
+        "fr": "Vivez la magie de nager aux côtés de dauphins sauvages dans leur habitat naturel, sur la côte ouest de Maurice.",
+        "preserveSlug": "swim-with-dolphins"
+      },
+      "catamaran-cruises.name": { "en": "Catamaran Cruises", "fr": "Croisières en catamaran", "preserveSlug": "catamaran-cruises" },
+      "catamaran-cruises.description": {
+        "en": "Sail the turquoise waters of Mauritius on a luxurious catamaran with snorkeling, BBQ lunch, and unlimited drinks.",
+        "fr": "Naviguez sur les eaux turquoise de Maurice à bord d'un catamaran de luxe avec snorkeling, déjeuner barbecue et boissons à volonté.",
+        "preserveSlug": "catamaran-cruises"
+      },
+      "helicopter-tour.name": { "en": "Helicopter Tour", "fr": "Tour en hélicoptère", "preserveSlug": "helicopter-tour" },
+      "helicopter-tour.description": {
+        "en": "See the breathtaking beauty of Mauritius from above with a scenic helicopter tour over mountains, beaches, and the underwater waterfall.",
+        "fr": "Admirez la beauté spectaculaire de Maurice vue du ciel lors d'un vol panoramique au-dessus des montagnes, des plages et de la cascade sous-marine.",
+        "preserveSlug": "helicopter-tour"
+      },
+      "hiking-le-morne.name": { "en": "Hiking Le Morne Brabant", "fr": "Randonnée au Morne Brabant", "preserveSlug": "hiking-le-morne" },
+      "hiking-le-morne.description": {
+        "en": "Climb the iconic UNESCO World Heritage Le Morne Brabant mountain for spectacular panoramic views of the island.",
+        "fr": "Gravissez l'emblématique montagne du Morne Brabant, classée au patrimoine mondial de l'UNESCO, pour profiter de vues panoramiques spectaculaires sur l'île.",
+        "preserveSlug": "hiking-le-morne"
+      },
+      "quad-biking.name": { "en": "Quad Biking at Heritage Nature Reserve", "fr": "Quad à Heritage Nature Reserve", "preserveSlug": "quad-biking" },
+      "whale-watching.name": { "en": "Whale Watching", "fr": "Observation des baleines", "preserveSlug": "whale-watching" },
+      "underwater-scooter.name": { "en": "Underwater Scooter", "fr": "Scooter sous-marin", "preserveSlug": "underwater-scooter" },
+      "undersea-walk.name": { "en": "Undersea Walk", "fr": "Marche sous-marine", "preserveSlug": "undersea-walk" },
+      "scuba-diving.name": { "en": "Scuba Diving", "fr": "Plongée sous-marine", "preserveSlug": "scuba-diving" },
+      "parasailing.name": { "en": "Parasailing", "fr": "Parachute ascensionnel", "preserveSlug": "parasailing" }
+    },
+    "beaches": {
+      "flic-en-flac.name": { "en": "Flic-en-Flac", "fr": "Flic-en-Flac", "preserveSlug": "flic-en-flac" },
+      "flic-en-flac.description": {
+        "en": "Known for its long stretches of white sandy beaches and clear blue waters, this is a popular spot for swimming and sunbathing.",
+        "fr": "Réputée pour ses longues étendues de sable blanc et ses eaux bleu clair, c'est un lieu prisé pour la baignade et le farniente.",
+        "preserveSlug": "flic-en-flac"
+      },
+      "grand-baie.name": { "en": "Grand Baie", "fr": "Grand Baie", "preserveSlug": "grand-baie" },
+      "grand-baie.description": {
+        "en": "Known for its lively atmosphere with excellent restaurants, bars, and shopping. The heart of Mauritius' nightlife.",
+        "fr": "Connue pour son ambiance animée, ses excellents restaurants, ses bars et ses boutiques. Le coeur de la vie nocturne mauricienne.",
+        "preserveSlug": "grand-baie"
+      },
+      "belle-mare.name": { "en": "Belle Mare", "fr": "Belle Mare", "preserveSlug": "belle-mare" },
+      "belle-mare.description": {
+        "en": "This beach is located on the eastern coast and is known for its crystal-clear waters and excellent snorkeling and diving opportunities.",
+        "fr": "Située sur la côte est, cette plage est réputée pour ses eaux cristallines et ses excellentes possibilités de snorkeling et de plongée.",
+        "preserveSlug": "belle-mare"
+      },
+      "le-morne.name": { "en": "Le Morne", "fr": "Le Morne", "preserveSlug": "le-morne" },
+      "le-morne.description": {
+        "en": "This beach is located on the southern coast and is known for its dramatic scenery and excellent windsurfing and kitesurfing conditions.",
+        "fr": "Située sur la côte sud, cette plage est connue pour ses paysages spectaculaires et ses excellentes conditions pour la planche à voile et le kitesurf.",
+        "preserveSlug": "le-morne"
+      },
+      "ile-aux-cerfs.name": { "en": "Ile aux Cerfs", "fr": "Ile aux Cerfs", "preserveSlug": "ile-aux-cerfs" },
+      "trou-aux-biches.name": { "en": "Trou aux Biches", "fr": "Trou aux Biches", "preserveSlug": "trou-aux-biches" },
+      "trou-aux-biches.description": {
+        "en": "Paradise with white sand, crystal clear azure water and coconut trees. Perfect for swimming, scuba diving and windsurfing.",
+        "fr": "Un paradis de sable blanc, d'eau azur cristalline et de cocotiers. Parfait pour la baignade, la plongée sous-marine et la planche à voile.",
+        "preserveSlug": "trou-aux-biches"
+      }
+    }
+  },
+  "legal": {
+    "privacy.effectiveDate": { "en": "Effective Date: 25 August 2020", "fr": "Date d'entrée en vigueur : 25 août 2020" },
+    "privacy.commitmentHeading": { "en": "Our Commitment to Privacy", "fr": "Notre engagement en matière de confidentialité" },
+    "privacy.websiteVisitors": { "en": "Website Visitors", "fr": "Visiteurs du site web" },
+    "privacy.personalInfo": { "en": "Gathering of Personal Information", "fr": "Collecte d'informations personnelles" },
+    "privacy.protection": { "en": "Protection of Personal Information", "fr": "Protection des informations personnelles" },
+    "privacy.cookies": { "en": "Cookies", "fr": "Cookies" },
+    "privacy.thirdPartyCookies": { "en": "Third-Party Cookies", "fr": "Cookies tiers" },
+    "privacy.advertisements": { "en": "Advertisements", "fr": "Publicités" },
+    "privacy.businessTransfers": { "en": "Business Transfers", "fr": "Transferts d'entreprise" },
+    "privacy.policyChanges": { "en": "Privacy Policy Changes", "fr": "Modifications de la politique de confidentialité" },
+    "terms.title": { "en": "Terms of Service", "fr": "Conditions d'utilisation" },
+    "terms.account": { "en": "Your Account", "fr": "Votre compte" },
+    "terms.payment": { "en": "Payment & Renewal", "fr": "Paiement et renouvellement" },
+    "terms.ip": { "en": "Intellectual Property", "fr": "Propriété intellectuelle" },
+    "terms.termination": { "en": "Termination", "fr": "Résiliation" },
+    "terms.warranties": { "en": "Disclaimer of Warranties", "fr": "Exclusion de garanties" },
+    "terms.law": { "en": "Governing Law", "fr": "Droit applicable" },
+    "giveaway.termsTitle": { "en": "Giveaway Terms & Conditions", "fr": "Conditions générales du jeu-concours" },
+    "giveaway.entering": { "en": "By entering this Giveaway, participants:", "fr": "En participant à ce jeu-concours, les participants :" },
+    "giveaway.travelPrizes": { "en": "Travel & experience prizes (if applicable)", "fr": "Lots de voyage et d'expérience (le cas échéant)" }
+  },
+  "catalogCoverage": {
+    "translatedInCatalog": [
+      "Global chrome",
+      "Language switcher",
+      "Footer",
+      "Root SEO",
+      "Homepage",
+      "Explore hub",
+      "Detail page chrome",
+      "Best time common UI",
+      "Visa UI",
+      "Itinerary UI",
+      "About page core copy",
+      "Contact page",
+      "Giveaway UI",
+      "Blog UI",
+      "Primary enum labels",
+      "Representative activity and beach entity records"
+    ],
+    "useCopyDeckForLongForm": [
+      "Legal paragraphs",
+      "Long blog posts",
+      "Full activity detail paragraphs",
+      "Full beach/place detail paragraphs",
+      "Festival/event body copy",
+      "Month-by-month weather paragraphs"
+    ]
+  }
+}
