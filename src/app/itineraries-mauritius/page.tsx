@@ -4,10 +4,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PREDESIGNED_ITINERARIES } from "@/data/predesigned-itineraries";
 import { getImageUrl } from "@/lib/image-url";
-import { ITINERARY_DETAIL_BASE } from "@/data/predesigned-itineraries";
 import { getPublicItineraries, getFeaturedUpvotes } from "@/lib/itinerary-actions";
 import UpvoteButton from "@/components/UpvoteButton";
 import ScrollToCommunitySection from "./ScrollToCommunitySection";
+import ItinerariesListClient from "./ItinerariesListClient";
 import type { Metadata } from "next";
 import { DEFAULT_OG_IMAGE } from "@/lib/constants";
 
@@ -60,60 +60,10 @@ export default async function ItinerariesMauritiusPage() {
         <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
 
           {/* Recommended itineraries — 2-col listing view */}
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Recommended itineraries</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
-            {PREDESIGNED_ITINERARIES.map((it) => {
-              const totals = it.routeTotals;
-              return (
-              <div key={it.id} className="relative">
-                <Link
-                  href={`${ITINERARY_DETAIL_BASE}/${it.slug}`}
-                  className="group flex gap-4 p-4 pr-20 rounded-xl border border-gray-200 bg-white shadow-sm hover:border-orange-400 hover:shadow-md transition-all"
-                >
-                  <span className="relative flex-shrink-0 w-28 h-28 sm:w-32 sm:h-32 rounded-lg overflow-hidden bg-gray-100">
-                    <img
-                      src={getImageUrl(it.listingImage || it.image || "", { width: 300, quality: 75 })}
-                      alt={it.title}
-                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      loading="lazy"
-                    />
-                  </span>
-                  <span className="flex flex-col flex-1 min-w-0 justify-between">
-                    <span>
-                      <span className="font-bold text-gray-900 text-base leading-snug group-hover:text-orange-600 transition-colors block">
-                        {it.title}
-                      </span>
-                      {it.subtitle && (
-                        <span className="text-sm text-gray-500 mt-1 line-clamp-2 block leading-relaxed">
-                          {it.subtitle}
-                        </span>
-                      )}
-                    </span>
-                    <span className="flex items-center gap-1.5 mt-3 flex-nowrap overflow-x-auto min-w-0">
-                      <span className="inline-flex flex-shrink-0 items-center gap-1 px-2.5 py-1 rounded-full bg-gray-50 border border-gray-200 text-xs font-semibold text-orange-600">
-                        {it.stops.length} stop{it.stops.length !== 1 ? "s" : ""}
-                      </span>
-                      {totals && (
-                        <span className="inline-flex flex-shrink-0 items-center gap-1 px-2.5 py-1 rounded-full bg-gray-50 border border-gray-200 text-xs font-semibold text-orange-600">
-                          {totals.totalDistanceKm} km
-                        </span>
-                      )}
-                    </span>
-                  </span>
-                </Link>
-                <div className="absolute top-3 right-3 z-10">
-                  <UpvoteButton
-                    itineraryId={featuredUpvotes[it.slug]?.id ?? null}
-                    slug={it.slug}
-                    title={it.title}
-                    initialCount={featuredUpvotes[it.slug]?.count ?? 0}
-                    compact
-                  />
-                </div>
-              </div>
-              );
-            })}
-          </div>
+          <ItinerariesListClient
+            itineraries={PREDESIGNED_ITINERARIES}
+            featuredUpvotes={featuredUpvotes}
+          />
 
           {/* Divider */}
           <div className="border-t border-gray-200 mb-8" />
@@ -124,7 +74,7 @@ export default async function ItinerariesMauritiusPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
 
             {/* AI itinerary */}
-            <Link
+            {/* <Link
               href="/itineraries-mauritius/ai-generate"
               className="group flex gap-4 p-4 rounded-xl border border-gray-200 bg-white shadow-sm hover:border-orange-400 hover:shadow-md transition-all"
             >
@@ -151,7 +101,7 @@ export default async function ItinerariesMauritiusPage() {
                   </svg>
                 </span>
               </span>
-            </Link>
+            </Link> */}
 
             {/* Manual itinerary */}
             <Link

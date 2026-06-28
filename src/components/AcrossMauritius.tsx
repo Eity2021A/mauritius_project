@@ -164,7 +164,7 @@ export default async function AcrossMauritius() {
   return (
     <main id="main-content">
       {/* Three-column grid */}
-      <section className="py-10 bg-white">
+      <section className="py-2 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-8">

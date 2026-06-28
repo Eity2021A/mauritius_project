@@ -199,7 +199,7 @@ export default function PlacesListClient({ allPlaces }: PlacesListClientProps) {
           </div>
 
           <div className="flex flex-col lg:flex-row gap-4">
-            {/* Left Sidebar - Sticky, scrollable when content overflows; Category + Region in 2 cols on lg */}
+            {/* Left Sidebar - Filters */}
             <aside className="hidden lg:block lg:w-64 flex-shrink-0">
               <div
                 className="lg:sticky lg:top-24 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:pr-1 space-y-4"
@@ -218,20 +218,18 @@ export default function PlacesListClient({ allPlaces }: PlacesListClientProps) {
                   />
                 </div>
 
-                {/* Category + Region side by side on lg to reduce height */}
-                <div className="lg:grid lg:grid-cols-2 lg:gap-3 lg:items-start">
-                  {/* Category Filter */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                      Category
-                    </label>
-                    <div className="space-y-1">
-                      {CATEGORIES.map((category) => {
-                        const isAll = category.id === "all";
-                        const active = isAll
-                          ? selectedCategories.length === 0
-                          : selectedCategories.includes(category.id as PlaceCategory);
-                        return (
+                {/* Category Filter */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    Category
+                  </label>
+                  <div className="space-y-1">
+                    {CATEGORIES.map((category) => {
+                      const isAll = category.id === "all";
+                      const active = isAll
+                        ? selectedCategories.length === 0
+                        : selectedCategories.includes(category.id as PlaceCategory);
+                      return (
                         <button
                           key={category.id}
                           onClick={() => toggleSelectedCategory(category.id)}
@@ -244,22 +242,22 @@ export default function PlacesListClient({ allPlaces }: PlacesListClientProps) {
                           <span className="truncate">{category.label}</span>
                         </button>
                       );
-                      })}
-                    </div>
+                    })}
                   </div>
+                </div>
 
-                  {/* Region Filter */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                      Region
-                    </label>
-                    <div className="space-y-1">
-                      {REGIONS.map((region) => {
-                        const active =
-                          region === "All Regions"
-                            ? selectedRegions.length === 0
-                            : selectedRegions.includes(region);
-                        return (
+                {/* Region Filter */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    Region
+                  </label>
+                  <div className="space-y-1">
+                    {REGIONS.map((region) => {
+                      const active =
+                        region === "All Regions"
+                          ? selectedRegions.length === 0
+                          : selectedRegions.includes(region);
+                      return (
                         <button
                           key={region}
                           onClick={() => toggleSelectedRegion(region)}
@@ -272,8 +270,7 @@ export default function PlacesListClient({ allPlaces }: PlacesListClientProps) {
                           {region}
                         </button>
                       );
-                      })}
-                    </div>
+                    })}
                   </div>
                 </div>
 

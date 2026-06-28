@@ -187,6 +187,16 @@ export default function ItinerarySaveRate({ itinerary, routeInfo }: Props) {
                   <span className="sm:hidden">Edit</span>
                   <span className="hidden sm:inline">Edit this itinerary</span>
                 </button>
+                <Link
+                  href="/rental"
+                  className="flex flex-1 sm:flex-initial items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors bg-emerald-500 text-white border border-emerald-500 hover:bg-emerald-600 hover:border-emerald-600"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 14.25h16.5M6.75 18.75a1.5 1.5 0 113 0m7.5 0a1.5 1.5 0 113 0m-15-4.5V9.75A2.25 2.25 0 018.25 7.5h6.69a2.25 2.25 0 011.59.66l2.81 2.81a2.25 2.25 0 01.66 1.59v1.69M3 14.25h1.5m15.75 0H21" />
+                  </svg>
+                  <span className="sm:hidden">Rental</span>
+                  <span className="hidden sm:inline">Add car rental</span>
+                </Link>
               </div>
             </div>
 

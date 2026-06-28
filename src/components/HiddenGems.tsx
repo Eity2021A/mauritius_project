@@ -2,217 +2,191 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
-import PlanTripButton from "@/components/PlanTripButton";
-import { getImageUrl } from "@/lib/image-url";
-import { Marquee } from "@/components/ui/marquee";
+import { getImageSrcSet, getImageUrl } from "@/lib/image-url";
 import type { Metadata } from "next";
-import {
-  acrossSections,
-  type AcrossItem,
-  type AcrossSectionConfig,
-} from "@/data/across";
-import { getExploreSectionsEnriched } from "@/lib/content";
+import type { BlogPost } from "@/data/blog";
+import { getAllBlogPosts, getBlogCategories } from "@/lib/content";
+import { getBlogViewCount } from "@/lib/blog-view-counts";
+import { formatDate } from "@/data/blog";
+import { formatBlogViewCount } from "@/lib/blog-view-format";
 
 export const metadata: Metadata = {
-  title: "Explore Mauritius — Beaches, Places & Activities",
+  title: "Explore Mauritius - Beaches, Places & Activities",
   description:
     "Discover the best beaches, must-visit places and unforgettable activities in Mauritius.",
   alternates: { canonical: "/explore" },
 };
 
-function SmallCard({
-  name,
-  region,
+function isBlogPost(post: BlogPost | undefined): post is BlogPost {
+  return Boolean(post);
+}
+
+function HiddenGemCard({
+  title,
+  categories,
   image,
-  href,
+  slug,
+  publishedAt,
+  readTime,
+  viewCount,
 }: {
-  name: string;
-  region: string;
+  title: string;
+  categories: string[];
   image: string;
-  href: string;
+  slug: string;
+  publishedAt: string;
+  readTime: number;
+  viewCount: number;
 }) {
   return (
-    <Link
-      href={href}
-      className="group flex items-center gap-3 p-2 bg-gray-100 rounded-lg border border-gray-200 hover:bg-orange-500 hover:border-orange-500 transition-colors shadow-sm"
-    >
-      <div className="relative w-12 h-12 flex-shrink-0 rounded-lg overflow-hidden">
-        <Image
-          src={getImageUrl(image, { width: 400, quality: 75 })}
-          alt={name}
-          fill
-          className="object-cover"
-          sizes="48px"
-        />
-      </div>
-      <div className="flex-1 min-w-0">
-        <h4 className="font-medium text-gray-900 group-hover:text-white transition-colors text-sm">
-          {name}
-        </h4>
-        <span className="inline-block text-xs bg-gray-200 text-gray-600 px-2 py-0.5 rounded-full group-hover:bg-white/20 group-hover:text-white transition-colors">
-          {region}
-        </span>
-      </div>
-      <svg
-        className="w-4 h-4 flex-shrink-0 text-gray-300 group-hover:text-white transition-colors"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M9 5l7 7-7 7"
-        />
-      </svg>
-    </Link>
-  );
-}
-
-function ArrowIcon() {
-  return (
-    <svg
-      className="w-4 h-4"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M17 8l4 4m0 0l-4 4m4-4H3"
-      />
-    </svg>
-  );
-}
-
-function AcrossSection({ config }: { config: AcrossSectionConfig }) {
-  return (
-    <div>
-      <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-        <span className={`w-2 h-2 ${config.dotColor} rounded-full`} />
-        {config.title}
-      </h3>
-      <div className="space-y-1.5">
-        {config.items.map((item) => (
-          <SmallCard
-            key={item.slug}
-            {...item}
-            href={`${config.hrefPrefix}/${item.slug}`}
+    <article className="group h-full">
+      <Link href={`/blog/${slug}`} className="block h-full">
+        <div className="relative w-full aspect-[4/4.6] overflow-hidden rounded-lg img-shimmer">
+          <img
+            src={getImageUrl(image, { width: 800, quality: 75 })}
+            srcSet={getImageSrcSet(image, { widths: [400, 800, 1200], quality: 66 })}
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
+            alt={title}
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
+            decoding="async"
           />
-        ))}
-      </div>
-      <div className="mt-4">
-        <PlanTripButton
-          href={config.ctaHref}
-          className="inline-flex items-center gap-2 bg-orange-500 text-white px-6 py-2.5 rounded-full font-medium hover:bg-orange-600 transition-colors text-sm disabled:opacity-90 disabled:cursor-wait"
-        >
-          {config.ctaText}
-          <ArrowIcon />
-        </PlanTripButton>
-      </div>
-    </div>
-  );
-}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/40" />
 
-function MarqueeCard({
-  item,
-  label,
-  href,
-}: {
-  item: AcrossItem;
-  label: string;
-  href: string;
-}) {
-  return (
-    <Link href={href}>
-      <div className="relative flex h-44 w-28 sm:h-52 sm:w-36 md:h-64 md:w-44 lg:h-72 lg:w-52 flex-col items-start justify-start overflow-hidden rounded-lg bg-gray-200 shrink-0 cursor-pointer hover:scale-105 transition-transform duration-200">
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-1/2 bg-gradient-to-b from-black/70 via-black/40 to-transparent" />
-        <div className="relative z-40 p-3 sm:p-4">
-          <p className="text-left font-sans text-xs font-medium text-white">
-            {label}
-          </p>
-          <p className="mt-1 max-w-xs text-left font-sans text-xs sm:text-sm font-semibold text-white [text-wrap:balance] md:text-base lg:text-lg">
-            {item.name}
-          </p>
-          <p className="mt-0.5 text-left font-sans text-[10px] text-white/70">
-            {item.region}
-          </p>
+          <div className="absolute top-3 left-3 right-3 flex flex-wrap gap-2">
+            {categories.slice(0, 2).map((category) => (
+              <span
+                key={category}
+                className="rounded-full bg-orange-500 px-3 py-1 text-xs font-medium text-white"
+              >
+                {category}
+              </span>
+            ))}
+          </div>
+
+          <div className="absolute inset-x-0 bottom-0 flex flex-col justify-end p-3 sm:p-4">
+            <h2 className="mb-1.5 line-clamp-2 text-base font-bold text-white transition-colors group-hover:text-orange-200 lg:text-lg">
+              {title}
+            </h2>
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] text-gray-300 sm:text-xs">
+              <span>{formatDate(publishedAt)}</span>
+              <span>-</span>
+              <span>{readTime} min read</span>
+              <span>-</span>
+              <span className="inline-flex items-center gap-1">
+                <svg
+                  className="h-3.5 w-3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M2.25 12s3.75-6.75 9.75-6.75S21.75 12 21.75 12 18 18.75 12 18.75 2.25 12 2.25 12z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"
+                  />
+                </svg>
+                {formatBlogViewCount(viewCount)}
+              </span>
+            </div>
+          </div>
         </div>
-        <img
-          src={getImageUrl(item.image, { width: 400, quality: 75 })}
-          alt={item.name}
-          className="absolute inset-0 w-full h-full object-cover z-10"
-          loading="lazy"
-        />
-      </div>
-    </Link>
+      </Link>
+    </article>
   );
 }
 
 export default async function HiddenGems() {
-  const { topActivities, topBeaches, topPlaces, hiddenGems } =
-    await getExploreSectionsEnriched();
-  const exploreSectionsWithEnrichedImages: AcrossSectionConfig[] = [
-    { ...acrossSections[0], items: topActivities },
-    { ...acrossSections[1], items: topBeaches },
-    { ...acrossSections[2], items: topPlaces },
-  ];
+  const [allPosts, blogCategories] = await Promise.all([
+    getAllBlogPosts(),
+    getBlogCategories(),
+  ]);
+
+  const selectedFeaturedPosts = ([1, 2, 3] as const)
+    .map((rank) => allPosts.find((post) => post.featuredRank === rank))
+    .filter(isBlogPost);
+  const fallbackFeaturedPosts = allPosts.filter(
+    (post) => !selectedFeaturedPosts.some((featuredPost) => featuredPost?.slug === post.slug)
+  );
+  const featuredPosts = (
+    selectedFeaturedPosts.length > 0
+      ? [...selectedFeaturedPosts, ...fallbackFeaturedPosts]
+      : allPosts
+  ).slice(0, 4);
+
+  const viewCounts = Object.fromEntries(
+    await Promise.all(
+      featuredPosts.map(async (post) => [post.slug, await getBlogViewCount(post.slug)] as const)
+    )
+  );
 
   return (
-    <main id="main-content">
-      {/* Marquee */}
-      <section className="pt-6 pb-4 bg-white">
-        <div className="container mx-auto px-4 mb-5">
-          <div className="text-center mb-4">
-            <span className="text-orange-500 text-sm font-medium tracking-wider uppercase">
-              Off the Beaten Path
-            </span>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">
-            Explore Hidden Gems of Mauritius
-          </h2>
-          <p className="text-gray-600 text-center max-w-2xl mx-auto">
-            Secret beaches and secluded spots that only locals know about — away
-            from the crowds
-          </p>
-        </div>
-        <div className="container mx-auto w-full pt-4 pb-4 space-y-0">
-          <div className="relative">
-            <Marquee className="[--duration:70s] [--gap:0.375rem] sm:[--gap:0.75rem]">
-              {[...topActivities, ...topActivities].map((item, index) => (
-                <MarqueeCard
-                  key={`act-${item.slug}-${index}`}
-                  item={item}
-                  label="Activity"
-                  href={`/mauritius-activities/${item.slug}`}
-                />
-              ))}
-            </Marquee>
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-16 md:w-24 bg-gradient-to-r from-white" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-16 md:w-24 bg-gradient-to-l from-white" />
-          </div>
-          <div className="relative mt-1">
-            <Marquee
-              reverse
-              className="[--duration:70s] [--gap:0.375rem] sm:[--gap:0.75rem]"
-            >
-              {[...topBeaches, ...topBeaches].map((item, index) => (
-                <MarqueeCard
-                  key={`beach-${item.slug}-${index}`}
-                  item={item}
-                  label="Beach"
-                  href={`/beaches-in-mauritius/${item.slug}`}
-                />
-              ))}
-            </Marquee>
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-16 md:w-24 bg-gradient-to-r from-white" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-16 md:w-24 bg-gradient-to-l from-white" />
+    <main id="main-content" className="min-h-screen bg-white">
+      <Navbar />
+
+      <section className="relative h-[44vh] min-h-[280px]">
+        <Image
+          src={getImageUrl("/images/banners/le-morne-coastline-aerial-mauritius.jpg")}
+          alt="Hidden Gems of Mauritius"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
+        <div className="absolute inset-0 flex items-center justify-center z-10">
+          <div className="mx-auto max-w-4xl translate-y-[2rem] px-4 text-center">
+            <h1 className="mb-4 text-3xl font-bold text-white sm:text-4xl md:text-5xl lg:text-6xl">
+              Hidden Gems of Mauritius
+            </h1>
+            <p className="mx-auto max-w-2xl text-base text-white/90 md:text-lg">
+              Quiet beaches and lesser-known corners of the island worth discovering.
+            </p>
           </div>
         </div>
       </section>
+
+      <section className="py-12 md:py-16">
+        <div className="container mx-auto max-w-7xl px-4">
+          <div className="mb-8 text-center">
+            <span className="text-sm font-medium uppercase tracking-wider text-orange-500">
+              Featured Stories
+            </span>
+            <h2 className="mt-3 text-2xl font-bold text-gray-900 md:text-3xl">
+              Hidden Gems Stories
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-gray-600">
+              Featured blog stories from the API, shown here in a compact four-column layout.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:gap-5">
+            {featuredPosts.slice(0, 4).map((post) => (
+              <HiddenGemCard
+                key={post.slug}
+                title={post.title}
+                categories={post.categories.map(
+                  (category) => blogCategories.find((item) => item.id === category)?.label ?? category
+                )}
+                image={post.image}
+                slug={post.slug}
+                publishedAt={post.publishedAt}
+                readTime={post.readTime}
+                viewCount={viewCounts[post.slug] ?? 0}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </main>
   );
 }

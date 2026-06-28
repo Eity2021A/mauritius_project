@@ -162,12 +162,12 @@ html {
 
 /* ===== MOSAIC TILE — fixed height, natural width ===== */
 .mosaic-tile {
-  height: 176px;
+  height: 124px;
   width: auto;
 }
-@media (min-width: 640px)  { .mosaic-tile { height: 208px; } }
-@media (min-width: 768px)  { .mosaic-tile { height: 256px; } }
-@media (min-width: 1024px) { .mosaic-tile { height: 304px; } }
+@media (min-width: 640px)  { .mosaic-tile { height: 148px; } }
+@media (min-width: 768px)  { .mosaic-tile { height: 184px; } }
+@media (min-width: 1024px) { .mosaic-tile { height: 216px; } }
 
 /* ===== MARQUEE ANIMATIONS ===== */
 @layer utilities {
