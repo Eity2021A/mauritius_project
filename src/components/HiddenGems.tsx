@@ -129,30 +129,6 @@ export default async function HiddenGems() {
 
   return (
     <main id="main-content" className="min-h-screen bg-white">
-      <Navbar />
-
-      <section className="relative h-[44vh] min-h-[280px]">
-        <Image
-          src={getImageUrl("/images/banners/le-morne-coastline-aerial-mauritius.jpg")}
-          alt="Hidden Gems of Mauritius"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
-        <div className="absolute inset-0 flex items-center justify-center z-10">
-          <div className="mx-auto max-w-4xl translate-y-[2rem] px-4 text-center">
-            <h1 className="mb-4 text-3xl font-bold text-white sm:text-4xl md:text-5xl lg:text-6xl">
-              Hidden Gems of Mauritius
-            </h1>
-            <p className="mx-auto max-w-2xl text-base text-white/90 md:text-lg">
-              Quiet beaches and lesser-known corners of the island worth discovering.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <section className="py-12 md:py-16">
         <div className="container mx-auto max-w-7xl px-4">
           <div className="mb-8 text-center">
@@ -185,8 +161,6 @@ export default async function HiddenGems() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }
