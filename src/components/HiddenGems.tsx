@@ -128,7 +128,7 @@ export default async function HiddenGems() {
   );
 
   return (
-    <main id="main-content" className="min-h-screen bg-white">
+
       <section className="py-12 md:py-16">
         <div className="container mx-auto max-w-7xl px-4">
           <div className="mb-8 text-center">
@@ -161,6 +161,6 @@ export default async function HiddenGems() {
           </div>
         </div>
       </section>
-    </main>
+
   );
 }
