@@ -85,7 +85,7 @@ function BlogCard({
           
           {/* Content - Bottom */}
           <div className="absolute inset-x-0 bottom-0 flex flex-col justify-end p-4 sm:p-5 lg:p-6">
-            <h2 className={`mb-2 line-clamp-4 font-bold text-white transition-colors group-hover:text-orange-200 ${featured ? "text-lg sm:text-xl xl:text-2xl" : "text-lg md:text-xl"}`}>
+            <h2 className={`mb-2 line-clamp-3 font-bold text-white transition-colors group-hover:text-orange-200 ${featured ? "text-base sm:text-lg xl:text-xl" : "text-base md:text-lg"}`}>
               {post.title}
             </h2>
             {featured && (
@@ -280,8 +280,8 @@ export default function BlogPostsGrid({
 
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <div className="grid gap-10 xl:grid-cols-12 xl:items-start">
-            <aside className="xl:col-span-4">
+          <div className="grid gap-8 xl:grid-cols-12 xl:items-start">
+            <aside className="xl:col-span-3">
               <div className="space-y-6 xl:sticky xl:top-28">
                 <section className="rounded-3xl border border-gray-100 bg-white p-6 shadow-sm">
                   <h3 className="text-2xl font-bold text-gray-900">About Author</h3>
@@ -403,11 +403,11 @@ export default function BlogPostsGrid({
               </div>
             </aside>
 
-            <div className="xl:col-span-8">
+            <div className="xl:col-span-9">
               {shouldShowFeaturedPosts && featuredPosts.length > 0 && (
                 <section className="mb-12">
                   <h2 className="mb-6 text-2xl font-bold text-gray-900">Featured Story</h2>
-                  <div className="grid gap-6 sm:grid-cols-2">
+                  <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                     {featuredPosts.map((post) => (
                       <BlogCard
                         key={post.slug}
@@ -433,7 +433,7 @@ export default function BlogPostsGrid({
               </div>
 
               {filteredPosts.length > 0 ? (
-                <div className="grid gap-8 md:grid-cols-2">
+                <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
                   {filteredPosts.map(post => (
                     <BlogCard
                       key={post.slug}

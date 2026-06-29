@@ -128,9 +128,9 @@ export default async function HiddenGems() {
   );
 
   return (
-
+    <main id="main-content" className="bg-white">
       <section className="py-12 md:py-16">
-        <div className="container mx-auto max-w-7xl px-4">
+        <div className="container mx-auto px-4">
           <div className="mb-8 text-center">
             <span className="text-sm font-medium uppercase tracking-wider text-orange-500">
               Featured Stories
@@ -161,6 +161,6 @@ export default async function HiddenGems() {
           </div>
         </div>
       </section>
-
+    </main>
   );
 }

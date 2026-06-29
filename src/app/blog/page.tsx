@@ -90,7 +90,7 @@ export default async function BlogPage() {
   ).slice(0, 3);
 
   return (
-    <main id="main-content" className="min-h-screen bg-white">
+    <main id="main-content" className=" bg-white">
       <BlogListJsonLd posts={allPosts} />
       <Navbar />
 
@@ -118,7 +118,7 @@ export default async function BlogPage() {
       </section>
 
       {/* Main content */}
-      <div className="container mx-auto px-4 max-w-7xl">
+      <div className="container mx-auto px-4 ">
         <div className="pt-4 pb-8 md:pt-6 md:pb-12">
           <BlogPostsGrid
             posts={allPosts}
