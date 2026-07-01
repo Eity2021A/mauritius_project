@@ -238,16 +238,13 @@ export default function BeachesListClient({ topBeaches, allBeaches, regions, bea
       </section>
 
       {/* Where to Go Section */}
-      <section className="pt-6 md:pt-8 pb-12 md:pb-16 bg-gray-50">
+     {/* <section className="pt-6 md:pt-8 pb-12 md:pb-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 items-stretch">
-              {/* Interactive Map - stretches to match height of list on the right */}
-              <div className="h-full min-h-[280px]">
+          <div className="max-w-6xl mx-auto"> 
+             <div className="grid md:grid-cols-2 gap-12 items-stretch"> 
+               <div className="h-full min-h-[280px]">
                 <MauritiusMap />
-              </div>
-
-              {/* Top Beaches List */}
+              </div> 
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Where to Go</h2>
                 <p className="text-orange-500 uppercase tracking-wider text-sm font-semibold mb-6">
@@ -280,10 +277,10 @@ export default function BeachesListClient({ topBeaches, allBeaches, regions, bea
                   Find your Beach
                 </a>
               </div>
-            </div>
-          </div>
+             </div> 
+           </div>
         </div>
-      </section>
+      </section>   */}
 
       {/* Beach Cards Section - Sidebar + Grid (same UX as Best Places to Visit) */}
       <section ref={resultsSectionRef} id="beach-cards" className="py-10 md:py-14 bg-white scroll-mt-20">

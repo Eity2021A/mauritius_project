@@ -103,7 +103,7 @@ export default function PhotoMosaic() {
 
       <div className="hidden lg:block">
         <div className="container w-full mx-auto px-4 pt-4 pb-4">
-          <div className="grid grid-cols-12 auto-rows-[5rem] gap-2 xl:auto-rows-[6rem] 2xl:auto-rows-[7rem]">
+          <div className="grid grid-cols-12 auto-rows-[6rem] gap-2 xl:auto-rows-[7rem] 2xl:auto-rows-[8rem]">
             {MOSAIC_ITEMS.map((item, index) => (
               <DesktopMosaicCard key={`desktop-${item.src}-${index}`} item={item} index={index} />
             ))}

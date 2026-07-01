@@ -90,7 +90,7 @@ export default async function BlogPage() {
   ).slice(0, 3);
 
   return (
-    <main id="main-content" className=" bg-white">
+    <main id="main-content" className="min-h-screen bg-white">
       <BlogListJsonLd posts={allPosts} />
       <Navbar />
 
@@ -118,7 +118,7 @@ export default async function BlogPage() {
       </section>
 
       {/* Main content */}
-      <div className="container mx-auto px-4 ">
+     <div className="container mx-auto px-4 ">
         <div className="pt-4 pb-8 md:pt-6 md:pb-12">
           <BlogPostsGrid
             posts={allPosts}
@@ -127,7 +127,7 @@ export default async function BlogPage() {
             viewCounts={viewCounts}
           />
         </div>
-      </div>
+      </div> 
 
       {/* Newsletter CTA */}
       <section className="py-16 bg-gray-50">
