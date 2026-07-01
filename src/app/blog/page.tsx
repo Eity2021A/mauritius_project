@@ -93,7 +93,6 @@ export default async function BlogPage() {
     <main id="main-content" className="min-h-screen bg-white">
       <BlogListJsonLd posts={allPosts} />
       <Navbar />
-
       {/* Hero Section with Banner */}
       <section className="relative h-[44vh] min-h-[280px]">
         <Image
