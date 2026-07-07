@@ -56,7 +56,7 @@ const menuItems: MenuItem[] = [
     name: "Transport",
     href: "/transport",
     children: [
-      { name: "Car Rental", href: "/rental" },
+      { name: "Car Rental", href: "/car-rental" },
       { name: "Transfer", href: "/transfer" },
       { name: "Taxi", href: "/taxi" },
     ],
