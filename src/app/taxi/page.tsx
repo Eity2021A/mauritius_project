@@ -498,7 +498,7 @@ export default function TaxiPage() {
                 Getting Around / Private Driver
               </p>
               <h2 className="text-3xl md:text-5xl font-bold text-[#1d2435] mt-2">
-                Popular RoadTrip
+                Popular itineraries
               </h2>
             </div>
 

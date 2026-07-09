@@ -28,6 +28,7 @@ const menuItems: MenuItem[] = [
       { name: "🎁 Giveaway", href: "/giveaway" },
     ],
   },
+    { name: "Pocket Guide", href: "/pocket-guide" },
     { name: "Beaches", href: "/beaches-in-mauritius" },
     { name: "Best Place to Visit", href: "/best-places-to-visit-in-mauritius" },
     { name: "Activities", href: "/mauritius-activities" },
@@ -35,7 +36,7 @@ const menuItems: MenuItem[] = [
     name: "Itinerary",
     href: "/itineraries-mauritius",
     children: [
-      { name: "All itineraries", href: "/itineraries-mauritius" },
+      { name: "All RoadTrip", href: "/itineraries-mauritius" },
       { name: "Mauritius Itineraries", href: "/mauritius-itinerary" },
       { name: "Recommended itineraries", href: "/itineraries-mauritius" },
       { name: "Community itineraries", href: "/itineraries-mauritius#community" },
@@ -63,6 +64,7 @@ const menuItems: MenuItem[] = [
   },
 
   { name: "Blog", href: "/blog" },
+  { name: "Veranda Collection", href: "/veranda-collection" },
   { name: "About Us", href: "/about" },
 ];
 

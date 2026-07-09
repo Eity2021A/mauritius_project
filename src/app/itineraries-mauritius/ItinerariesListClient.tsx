@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import type { PreDesignedItinerary } from "@/data/predesigned-itineraries";
 import { ITINERARY_DETAIL_BASE } from "@/data/predesigned-itineraries";
@@ -22,6 +22,43 @@ const FILTERS: { id: ItineraryFilterId; label: string }[] = [
   { id: "explore", label: "Explore" },
   { id: "full-day", label: "Full day" },
 ];
+
+function buildImageCandidates(itinerary: PreDesignedItinerary) {
+  return [
+    itinerary.listingImage,
+    itinerary.image,
+    itinerary.stops[0]?.image,
+  ].filter((value): value is string => Boolean(value));
+}
+
+function ItineraryCardImage({ itinerary }: { itinerary: PreDesignedItinerary }) {
+  const candidates = useMemo(() => buildImageCandidates(itinerary), [itinerary]);
+  const [imageIndex, setImageIndex] = useState(0);
+
+  useEffect(() => {
+    setImageIndex(0);
+  }, [candidates]);
+
+  const activeImage = candidates[imageIndex] ?? "";
+
+  if (!activeImage) {
+    return <span className="absolute inset-0 bg-gray-100" />;
+  }
+
+  return (
+    <img
+      src={getImageUrl(activeImage, { width: 300, quality: 75 })}
+      alt={itinerary.title}
+      className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+      loading="lazy"
+      onError={() => {
+        if (imageIndex < candidates.length - 1) {
+          setImageIndex((current) => current + 1);
+        }
+      }}
+    />
+  );
+}
 
 function getUniqueRegions(itinerary: PreDesignedItinerary) {
   return new Set(itinerary.stops.map((stop) => stop.regionLabel).filter(Boolean)).size;
@@ -127,12 +164,7 @@ export default function ItinerariesListClient({
                       className="group flex gap-4 rounded-xl border border-gray-200 bg-white p-4 pr-20 shadow-sm transition-all hover:border-orange-400 hover:shadow-md"
                     >
                       <span className="relative h-28 w-28 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100 sm:h-32 sm:w-32">
-                        <img
-                          src={getImageUrl(itinerary.listingImage || itinerary.image || "", { width: 300, quality: 75 })}
-                          alt={itinerary.title}
-                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                          loading="lazy"
-                        />
+                        <ItineraryCardImage itinerary={itinerary} />
                       </span>
                       <span className="flex min-w-0 flex-1 flex-col justify-between">
                         <span>

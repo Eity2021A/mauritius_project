@@ -157,6 +157,12 @@ export default function CarRentalPage() {
                 Reliable self-drive cars across the island so every day of your
                 holiday stays easy, flexible, and comfortable.
               </p>
+              <p className="mx-auto mt-4 max-w-2xl text-sm italic leading-7 text-gray-500 sm:text-base">
+                15% discount on any cars{" "}
+                <span className="font-bold text-orange-500">
+                  USE PROMO CODE MEXP26
+                </span>
+              </p>
             </div>
 
             <div className="mx-auto mt-10 max-w-4xl text-center">
@@ -227,7 +233,7 @@ export default function CarRentalPage() {
                     className="rounded-2xl border border-orange-100 bg-white px-4 py-4 shadow-[0_10px_30px_-24px_rgba(17,24,39,0.45)] transition-colors hover:border-orange-200"
                   >
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                      <div className="flex items-start gap-4">
+                      <div className="flex items-center gap-4">
                         <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-orange-50 text-lg font-bold text-orange-500">
                           {category.code}
                         </div>
@@ -240,14 +246,19 @@ export default function CarRentalPage() {
                               {category.rateCode}
                             </span>
                           </div>
-                          <p className="mt-1 text-sm leading-6 text-gray-500">
+                          
+                          <p className="mt-0 text-[12px] leading-6 text-gray-500">
                             {category.models}
                           </p>
-                        </div>
-                      </div>
-                      <div className="inline-flex items-center justify-center self-start rounded-full bg-orange-50 px-5 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-orange-500 sm:self-center">
+                            <div className=" mt-2 inline-flex items-center justify-center self-start rounded-full bg-orange-50 px-5 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-orange-500 sm:self-center">
                         {category.badge}
                       </div>
+                        </div>
+                      </div>
+                    
+                      <button className="inline-flex items-center justify-center self-start rounded-lg bg-orange-500 px-6 py-2 text-xs font-bold uppercase  text-white sm:self-center">
+                        SEARCH CAR
+                      </button>
                     </div>
                   </article>
                 ))}
