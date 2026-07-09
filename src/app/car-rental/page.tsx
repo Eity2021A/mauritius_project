@@ -157,12 +157,12 @@ export default function CarRentalPage() {
                 Reliable self-drive cars across the island so every day of your
                 holiday stays easy, flexible, and comfortable.
               </p>
-              <p className="mx-auto mt-4 max-w-2xl text-sm italic leading-7 text-gray-500 sm:text-base">
+              <p className="mx-auto mt-4 max-w-2xl italic leading-7 font-bold text-black md:text-xl sm:text-base">
                 15% discount on any cars{" "}
-                <span className="font-bold text-orange-500">
-                  USE PROMO CODE MEXP26
-                </span>
               </p>
+               <p className="font-bold text-orange-500 md:text-xl sm:text-base">
+                  USE PROMO CODE MEXP26
+                </p>
             </div>
 
             <div className="mx-auto mt-10 max-w-4xl text-center">
@@ -212,6 +212,9 @@ export default function CarRentalPage() {
                     15% OFF{" "}
                     <span className="text-xl font-semibold">
                       all new bookings
+                    </span>
+                    <span className="pl-12 font-bold text-xl uppercase text-white/90">
+                       -PROMO CODE: MEXP26
                     </span>
                   </p>
                   <p className="mt-1 text-sm font-semibold text-white/90">

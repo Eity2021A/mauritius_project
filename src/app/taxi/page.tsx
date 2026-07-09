@@ -6,6 +6,8 @@ import { DEFAULT_OG_IMAGE } from "@/lib/constants";
 import { HOME_ITINERARIES } from "@/data/home";
 import { getImageSrcSet, getImageUrl } from "@/lib/image-url";
 
+const TAXI_WHATSAPP_URL = "https://wa.me/23057364118";
+
 export const metadata: Metadata = {
   title: "Taxi Service in Mauritius",
   description:
@@ -207,7 +209,7 @@ export default function TaxiPage() {
               discuss your route, availability and price.
             </p>
           </div>
-  <div className="mt-6 text-center">
+           <div className="mt-6 text-center">
               <button
                 type="button"
                 className="rounded-[1.05rem] bg-[#f26d21] px-10 py-5 text-left text-white shadow-[0_14px_30px_rgba(242,109,33,0.22)] transition-colors hover:bg-[#e96217]"
@@ -341,12 +343,14 @@ export default function TaxiPage() {
                 </div>
               </div>
 
-              <button
-                type="button"
-                className="inline-flex min-h-[48px] items-center justify-center rounded-xl bg-[#f26d21] px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-[#e96217] sm:min-w-[146px]"
+              <Link
+                href={TAXI_WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-green-200 bg-green-50 px-6 py-3 text-sm font-bold text-green-700 transition-colors hover:bg-green-100 sm:min-w-[146px]"
               >
-                Contact Now
-              </button>
+                WhatsApp
+              </Link>
             </div>
           </div>
 

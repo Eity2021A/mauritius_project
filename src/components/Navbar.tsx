@@ -55,7 +55,7 @@ const menuItems: MenuItem[] = [
   // },
   {
     name: "Transport",
-    href: "/transport",
+    href: "#",
     children: [
       { name: "Car Rental", href: "/car-rental" },
       { name: "Transfer", href: "/transfer" },
@@ -64,7 +64,18 @@ const menuItems: MenuItem[] = [
   },
 
   { name: "Blog", href: "/blog" },
-  { name: "Veranda", href: "/veranda-collection" },
+  // { name: "Veranda", href: "/veranda-collection" },
+    {
+    name: "Veranda",
+    href: "/veranda-collection",
+    children: [
+      { name: "Veranda Pointe aux Biches", href: "/" },
+      { name: "Veranda Paul & Virginie", href: "/" },
+      { name: "Veranda Grand Baie", href: "/" },
+      { name: "Veranda Tamarin", href: "/" },
+      { name: "Veranda Palmar Beach", href: "/" },
+    ],
+  },
   
 ];
 

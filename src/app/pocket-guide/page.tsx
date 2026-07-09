@@ -405,6 +405,15 @@ export default function PocketGuidePage() {
               </article>
             ))}
           </div>
+
+            <div className="mt-10 flex justify-center">
+          <Link
+            href="#get"
+            className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#f0712a] px-7 py-4 text-base font-extrabold text-white shadow-[0_10px_24px_rgba(218,90,24,0.32)] transition hover:bg-[#da5a18] sm:min-h-0"
+          >
+            Get the pocket guide
+          </Link>
+        </div>
         </div>
       </section>
 

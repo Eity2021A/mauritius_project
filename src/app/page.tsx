@@ -22,12 +22,10 @@ export default function Home() {
       <section className="relative h-[62svh] min-h-[540px]">
         <HeroSlideshow />
       </section>
-
       <RotatingAdBanner />
-
       {/* Best of Mauritius Island – photo mosaic */}
       <LazyPhotoMosaicSection />
-
+     <RotatingAdBanner />
     <AcrossMauritius />
 
       {/* Itineraries & Road Trips Section */}
