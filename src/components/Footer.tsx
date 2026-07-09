@@ -61,6 +61,8 @@ export default function Footer() {
             <h3 className="text-white text-lg sm:text-xl font-semibold mb-3 sm:mb-4">About</h3>
             <ul className="space-y-1 sm:space-y-2">
               {[
+
+                { name: "About Us", href: "/about" },
                 { name: "Welcome", href: "/mauritius-island" },
                 { name: "Festivals", href: "/festivals-in-mauritius" },
                 { name: "Events", href: "/events-in-mauritius" },

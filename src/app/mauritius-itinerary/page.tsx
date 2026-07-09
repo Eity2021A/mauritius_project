@@ -139,6 +139,289 @@ const TRAVEL_TIPS: string[] = [
   "Always check weather conditions for snorkeling and boat trips",
 ];
 
+const ROUTE_SUMMARY = [
+  {
+    days: "3",
+    title: "3-Day Route",
+    description: "North beaches, the wild west & south coast.",
+  },
+  {
+    days: "5",
+    title: "5-Day Route",
+    description: "Beaches, nature, culture & a lagoon day.",
+  },
+  {
+    days: "7",
+    title: "7-Day Route",
+    description: "Every coast, waterfalls & an island boat day.",
+  },
+  {
+    days: "10",
+    title: "10-Day Route",
+    description: "Coast to interior and back, one region a day.",
+  },
+];
+
+const PLAN_SMART_TIPS = [
+  {
+    title: "Self-drive freedom",
+    description: "a rental reaches secluded spots, drive on the left.",
+  },
+  {
+    title: "Stay in 2+ bases",
+    description: "split North and South/West to cut driving.",
+  },
+  {
+    title: "Go digital",
+    description: "complete the mandatory travel form before you fly.",
+  },
+  {
+    title: "More than beaches",
+    description: "from street dholl puri to fine dining.",
+  },
+];
+
+const THREE_DAY_DRIVE_STOPS = [
+  {
+    step: "1",
+    color: "bg-[#1596a4]",
+    route: "Port Louis \u2192 Cap Malheureux",
+    region: "North",
+    stops: "Central Market - Mont Choisy - Pereybere - red-roof church",
+  },
+  {
+    step: "2",
+    color: "bg-[#f17316]",
+    route: "Tamarin Bay \u2192 Chamarel",
+    region: "West",
+    stops: "Dolphin trip - Flic en Flac - Le Morne - Chamarel Falls - sunset",
+  },
+  {
+    step: "3",
+    color: "bg-[#37956d]",
+    route: "\u00cele aux Cerfs \u2192 Gris Gris",
+    region: "South-West",
+    stops: "GRSE Waterfall - Blue Bay snorkel - Gris Gris cliffs",
+  },
+];
+
+const THREE_DAY_ROAD_TIPS = [
+  {
+    title: "Drive on the left",
+    description: "roads are well-signed; an automatic is easiest.",
+  },
+  {
+    title: "Start early",
+    description: "beat the traffic, heat and crowds.",
+  },
+  {
+    title: "Book ahead",
+    description: "reserve boat trips & catamaran days.",
+  },
+  {
+    title: "Rent from ~$21/day",
+    description: "your own pace, full island freedom.",
+  },
+];
+const FIVE_DAYS_DRIVE_STOPS = [
+  {
+    step: "1",
+    color: "bg-[#1596a4]",
+    route: "Port Louis \u2192 Cap Malheureux",
+    region:"NORTH",
+    stops: "Central Market · Caudan · Mont Choisy · Pereybère",
+  },
+  {
+    step: "2",
+    color: "bg-[#e25d18]",
+    route: "Tamarin Bay \u2192 Albion",
+    region:"WEST",
+    stops: "Dolphin watching · Flic en Flac · Albion Beach",
+  },
+  {
+    step: "3",
+    color: "bg-[#2d855a]",
+    route: "Le Morne \u2192 Chamarel",
+    region:"SOUTH-WEST",
+    stops: "Le Morne Brabant · Chamarel Falls · Black River Gorges viewpoint",
+  },
+  {
+    step: "4",
+    color: "bg-[#0b74b1]",
+    route: "Trou d'Eau Douce \u2192 \u00cele aux Cerfs",
+    region:"EAST",
+    stops: "\u00cele aux Cerfs · GRSE Waterfall \u2014 full lagoon day",
+  },
+  {
+    step: "5",
+    color: "bg-[#236b56]",
+    route: "Blue Bay \u2192 Souillac",
+    region:"SOUTH",
+    stops: "Blue Bay · Mahébourg · Gris Gris · Souillac (+ Grand Bassin)",
+  },
+];
+const SEVEN_DAYS_DRIVE_STOPS = [
+  {
+    step: "1",
+    color: "bg-[#1596a4]",
+    route: "Airport \u2192 Grand Baie",
+    region: "NORTH",
+    stops: "Settle in · Mont Choisy · Grand Baie by night",
+  },
+  {
+    step: "2",
+    color: "bg-[#1596a4]",
+    route: "Grand Baie \u2192 Cap Malheureux",
+    region: "NORTH",
+    stops: "Central Market · Caudan · Pereybère · sunset church",
+  },
+  {
+    step: "3",
+    color: "bg-[#e25d18]",
+    route: "Tamarin \u2192 Flic en Flac",
+    region: "WEST",
+    stops: "Dolphin watching · Flic en Flac beach",
+  },
+  {
+    step: "4",
+    color: "bg-[#2d855a]",
+    route: "Flic en Flac \u2192 Chamarel",
+    region: "SOUTH-WEST",
+    stops: "Le Morne · Chamarel Falls · scenic viewpoints",
+  },
+  {
+    step: "5",
+    color: "bg-[#0b74b1]",
+    route: "Trou d'Eau Douce \u2192 \u00cele aux Cerfs",
+    region: "EAST",
+    stops: "\u00cele aux Cerfs · GRSE Waterfall \u2014 boat day",
+  },
+  {
+    step: "6",
+    color: "bg-[#236b56]",
+    route: "Blue Bay \u2192 Gris Gris",
+    region: "SOUTH",
+    stops: "Blue Bay snorkel · Mahébourg · Gris Gris cliffs",
+  },
+  {
+    step: "7",
+    color: "bg-[#dfa12a]",
+    route: "Grand Bassin \u2192 Black River Gorges",
+    region: "INLAND",
+    stops: "Sacred crater lake · gorge hikes & viewpoints",
+  },
+];
+const TEN_DAYS_DRIVE_STOPS = [
+  {
+    step: "1",
+    color: "bg-[#1596a4]",
+    route: "Airport \u2192 Your resort",
+    region: "NORTH",
+    stops: "Settle in · first swim · sunset",
+  },
+  {
+    step: "2",
+    color: "bg-[#e25d18]",
+    route: "Resort \u2192 Le Morne",
+    region: "WEST",
+    stops: "Casela park · Flic en Flac · Tamarin · Le Morne",
+  },
+  {
+    step: "3",
+    color: "bg-[#0b74b1]",
+    route: "West coast \u2192 Blue Bay",
+    region: "EAST",
+    stops: "Blue Bay Marine Park · \u00cele aux Aigrettes",
+  },
+  {
+    step: "4",
+    color: "bg-[#2d855a]",
+    route: "Coast \u2192 Highlands",
+    region: "SOUTH-WEST",
+    stops: "Seven Waterfalls or Black River Gorges",
+  },
+  {
+    step: "5",
+    color: "bg-[#236b56]",
+    route: "Interior \u2192 Gris Gris",
+    region: "SOUTH",
+    stops: "La Vanille · Bel Ombre · Gris Gris · Natural Bridge",
+  },
+  {
+    step: "6",
+    color: "bg-[#dfa12a]",
+    route: "Chamarel \u2192 Black River",
+    region: "INLAND",
+    stops: "7 Coloured Earth · Chamarel Falls · Rum Distillery",
+  },
+  {
+    step: "7",
+    color: "bg-[#0b74b1]",
+    route: "Coast \u2192 \u00cele aux Cerfs",
+    region: "EAST",
+    stops: "\u00cele aux Cerfs · GRSE Waterfall · \u00cele de la Passe",
+  },
+  {
+    step: "8",
+    color: "bg-[#1596a4]",
+    route: "Beaches \u2192 Port Louis",
+    region: "NORTH",
+    stops: "Central Market · Caudan · Aapravasi Ghat",
+  },
+  {
+    step: "9",
+    color: "bg-[#1596a4]",
+    route: "Port Louis \u2192 Grand Baie",
+    region: "NORTH",
+    stops: "Mont Choisy · Trou aux Biches · Grand Baie · Pereybère",
+  },
+  {
+    step: "10",
+    color: "bg-[#e25d18]",
+    route: "Resort \u2192 Airport",
+    region: "WEST",
+    stops: "Beach walk · spa · final swim before you fly",
+  },
+];
+function ItineraryInfoIcon({ type }: { type: "taxi" | "car" }) {
+  return (
+    <svg
+      className="h-5 w-5"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      strokeWidth={1.2}
+      aria-hidden="true"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M4 14V11.8a2 2 0 0 1 1.4-1.9l2.2-.7 1.6-2.8A2 2 0 0 1 10.9 5h2.2a2 2 0 0 1 1.7.9l1.6 2.8 2.2.7A2 2 0 0 1 20 11.8V14"
+      />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M6 14h12v2.2a1.8 1.8 0 0 1-1.8 1.8H7.8A1.8 1.8 0 0 1 6 16.2V14Z"
+      />
+      <circle cx="8.5" cy="16" r="1" fill="currentColor" stroke="none" />
+      <circle cx="15.5" cy="16" r="1" fill="currentColor" stroke="none" />
+      {type === "taxi" ? (
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M9.2 10.2h5.6M10.4 7.8h3.2"
+        />
+      ) : (
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M7.7 10.2h8.6"
+        />
+      )}
+    </svg>
+  );
+}
+
 const PAGE_DESCRIPTION =
   "Complete Mauritius itinerary guide for 3, 5, 7 and 10 day trips. Plan beaches, activities, waterfalls and culture across the north, west, east and south of the island.";
 
@@ -371,79 +654,418 @@ export default function MauritiusItineraryPage() {
       </section>
 
       {/* Itinerary cards */}
-      <section className="py-12 md:py-16 bg-white">
+      <section className="bg-white py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6 md:gap-8">
-            {ITINERARY_GUIDES.map((g) => (
-              <article
-                key={g.days}
-                id={g.anchor}
-                className="bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col scroll-mt-24"
-              >
-                <div className="bg-gradient-to-r from-orange-500 to-amber-500 px-6 py-4">
-                  <p className="text-white/90 text-xs font-semibold uppercase tracking-wider">
-                    {g.subtitle}
-                  </p>
-                  <h2 className="text-xl md:text-2xl font-bold text-white">
-                    {g.title}
-                  </h2>
+          <div className="mx-auto max-w-5xl rounded-[26px] border border-[#eadbcf]  p-6 shadow-[0_18px_50px_rgba(31,24,19,0.06)] md:p-8">
+            <h2 className="text-[2rem] font-extrabold leading-[1.12] tracking-[-0.03em] text-[#1d2433] md:text-[2.55rem]">
+              The Ultimate 3-5-7-10 Day Trip
+            </h2>
+            <p className="mt-3 text-[13px] italic leading-6 text-[#6e645d] md:text-[14px]">
+              Ten days, three regions - turquoise north, wild south and golden
+              west, at an easy pace.
+            </p>
+
+            <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
+              {[
+                { value: "10", label: "Days" },
+                { value: "3", label: "Regions" },
+                { value: "~60%", label: "Coastline" },
+                { value: "~40%", label: "Interior" },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="rounded-xl border border-[#eadfd7] bg-white px-4 py-4 text-center shadow-[0_6px_16px_rgba(31,24,19,0.04)]"
+                >
+                  <div className="text-[1.7rem] font-extrabold leading-none text-[#f26522]">
+                    {item.value}
+                  </div>
+                  <div className="mt-2 text-[12px] tracking-[0.04em] text-[#9d938d]">
+                    {item.label}
+                  </div>
                 </div>
-                <div className="relative h-48 bg-gray-100">
-                  <Image
-                    src={getImageUrl(g.image, { width: 900, quality: 75 })}
-                    alt={`${g.title} guide`}
-                    fill
-                    sizes="(min-width: 768px) 50vw, 100vw"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <p className="text-gray-700 leading-relaxed mb-6 flex-1">
-                    {g.description}
-                  </p>
-                  {g.href ? (
-                    <Link
-                      href={g.href}
-                      className="inline-flex items-center justify-center gap-2 px-5 py-3 min-h-[44px] bg-teal-600 text-white text-sm font-semibold rounded-lg border border-teal-700 hover:bg-teal-700 transition-colors no-underline self-start"
+              ))}
+            </div>
+
+            <p className="mt-6 max-w-4xl text-[14px] leading-7 text-[#433c39] md:text-[15px]">
+              One island, four ready-made drives. Pick the length that fits
+              your trip - each route builds on the last, so from three to ten
+              days you still loop the island and cover its main regions.
+              Follow the Drive Route pages for exact, day-by-day directions.
+            </p>
+
+            <div className="mt-7 grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+              <div>
+                <p className="text-[12px] font-extrabold uppercase tracking-[0.18em] text-[#f26522]">
+                  Choose your trip length
+                </p>
+                <div className="mt-4 space-y-2.5">
+                  {ROUTE_SUMMARY.map((route) => (
+                    <div
+                      key={route.days}
+                      className="flex items-start gap-3 border-b border-[#e9ddd3] pb-2.5 last:border-b-0 last:pb-0"
                     >
-                      Read full itinerary
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        strokeWidth={2.5}
-                        aria-hidden="true"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M17 8l4 4m0 0l-4 4m4-4H3"
-                        />
-                      </svg>
-                    </Link>
-                  ) : (
-                    <span className="inline-flex items-center gap-2 px-5 py-3 min-h-[44px] bg-gray-100 text-gray-500 text-sm font-medium rounded-lg cursor-not-allowed self-start">
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        strokeWidth={2}
-                        aria-hidden="true"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
-                      Full guide coming soon
-                    </span>
-                  )}
+                      <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] bg-[#f26522] text-[18px] font-extrabold text-white">
+                        {route.days}
+                      </span>
+                      <div className="pt-0.5">
+                        <h3 className="text-[1.05rem] font-extrabold leading-5 text-[#1d2433]">
+                          {route.title}
+                        </h3>
+                        <p className="mt-1 text-[12.5px] leading-5 text-[#7a716b]">
+                          {route.description}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              </article>
-            ))}
+              </div>
+
+              <div className="flex flex-col items-center justify-center pt-2">
+                <div className="relative h-[230px] w-full max-w-[245px]">
+                  <svg
+                    viewBox="0 0 240 220"
+                    className="h-full w-full text-[#cfcfcf]"
+                    aria-label="Stylised Mauritius island map"
+                    role="img"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M134 12l7 3 6-4 8 3 4 7 8 2 4 6 7 2 3 7-1 8 6 4 4 7 6 3 3 8-1 8 4 6 1 8-3 8 2 7-2 8 3 7-2 8 2 8-4 7-1 8-5 6-3 7-8 2-2 8-8 2-5 6-8 2-5 6-8 1-6 5-9 1-7 4-8-2-7 3-8-2-7 2-8-4-7 1-7-4-7 1-5-6-8-1-5-6-8-2-3-8-7-2-1-8-6-5-1-8-4-7 1-8-3-7 2-8-2-8 3-7-1-8 4-7 1-8 5-6 2-7 7-3 3-8 8-2 4-6 8-2 4-7 8-2 5-5 8-1 6-5 8 1Z"
+                    />
+                    {[
+                      { cx: 126, cy: 20 },
+                      { cx: 214, cy: 88 },
+                      { cx: 42, cy: 104 },
+                      { cx: 66, cy: 183 },
+                      { cx: 150, cy: 182 },
+                    ].map((dot) => (
+                      <circle
+                        key={`${dot.cx}-${dot.cy}`}
+                        cx={dot.cx}
+                        cy={dot.cy}
+                        r="4"
+                        fill="#f26522"
+                      />
+                    ))}
+                  </svg>
+                </div>
+                <p className="-mt-2 text-center text-[12px] text-[#b6917f]">
+                  Every route loops the island
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-7 grid gap-3 md:grid-cols-2">
+              <div className="rounded-xl border border-[#eadfd7] bg-white px-4 py-4 shadow-[0_6px_16px_rgba(31,24,19,0.04)]">
+                <div className="flex items-start gap-3">
+                  <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-[#f2e4d8] text-[#1b76c5]">
+                    <ItineraryInfoIcon type="taxi" />
+                  </span>
+                  <div>
+                    <h3 className="text-[1.02rem] font-extrabold text-[#1d2433]">
+                      Taxi & Transfers
+                    </h3>
+                    <p className="mt-1 text-[12.5px] leading-5 text-[#7a716b]">
+                      Airport transfers & day driver hire.
+                    </p>
+                    <p className="mt-1.5 text-[12.5px] leading-5 text-[#f26522]">
+                      Book - mauritiusexplored.com
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-xl border border-[#eadfd7] bg-white px-4 py-4 shadow-[0_6px_16px_rgba(31,24,19,0.04)]">
+                <div className="flex items-start gap-3">
+                  <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-[#f2e4d8] text-[#1b76c5]">
+                    <ItineraryInfoIcon type="car" />
+                  </span>
+                  <div>
+                    <h3 className="text-[1.02rem] font-extrabold text-[#1d2433]">
+                      Car Rental
+                    </h3>
+                    <p className="mt-1 text-[12.5px] leading-5 text-[#7a716b]">
+                      Automatic advised - drive on the left.
+                    </p>
+                    <p className="mt-1.5 text-[12.5px] leading-5 text-[#f26522]">
+                      Book - mauritiusexplored.com
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-5 rounded-xl bg-[#F5F3F0] px-5 py-5">
+              <p className="text-[12px] font-extrabold uppercase tracking-[0.18em] text-[#f26522]">
+                Plan smart
+              </p>
+              <div className="mt-4 grid gap-x-7 gap-y-4 md:grid-cols-2">
+                {PLAN_SMART_TIPS.map((tip) => (
+                  <p
+                    key={tip.title}
+                    className="text-[13px] leading-6 text-[#493f39]"
+                  >
+                    <span className="font-extrabold text-[#1d2433]">
+                      {tip.title}
+                    </span>{" "}
+                    - {tip.description}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+{/* 3 days Itineraries */}
+      <section className="bg-white py-6 md:py-8">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-5xl rounded-[26px] border border-[#eadbcf]  p-10 shadow-[0_18px_50px_rgba(31,24,19,0.06)] bg-white">
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#f26522]">
+              03 - Itineraries | Drive Route
+            </p>
+            <h2 className="mt-2 text-[2.15rem] font-extrabold leading-none tracking-[-0.03em] text-[#1c2432] md:text-[2.35rem]">
+              3-Day{" "}
+              <span className="font-medium italic text-[#f26522]">
+                Drive Route
+              </span>
+            </h2>
+            <p className="mt-5 max-w-3xl text-[14px] italic leading-6 text-[#413a36] md:text-[15px]">
+              A short island lap - north beaches, the wild west, and the
+              east-to-south coast, all by car.
+            </p>
+
+            <div className="relative mt-10 space-y-10 md:space-y-12">
+              <div
+                className="absolute bottom-5 left-[21px] top-5 w-px bg-[#eddccf]"
+                aria-hidden="true"
+              />
+              {THREE_DAY_DRIVE_STOPS.map((item) => (
+                <div
+                  key={item.step}
+                  className="relative grid grid-cols-[auto_1fr_auto] items-start gap-x-6 gap-y-2 md:gap-x-7 mb-20"
+                >
+                  <span
+                    className={`relative z-10 mt-0.5 inline-flex h-11 w-11 items-center justify-center rounded-full text-[1.25rem] font-extrabold text-white ${item.color}`}
+                  >
+                    {item.step}
+                  </span>
+                  <div>
+                    <h3 className="text-[1rem] font-semibold tracking-[-0.03em] text-[#1d2433] md:text-[1.25rem]">
+                      {item.route}
+                    </h3>
+                    <p className="mt-1.5 text-[12px] leading-5 text-[#f26522] md:text-[13px]">
+                      <span className="font-extrabold text-[#f26522]">
+                        Stops
+                      </span>{" "}
+                      {item.stops}
+                    </p>
+                  </div>
+                  <p className="pt-1.5 text-[9px] font-bold uppercase tracking-[0.18em] text-[#9a918c] md:text-[10px]">
+                    {item.region}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-20 rounded-[10px] bg-[#f5f3f0] px-5 py-4 md:px-6 md:py-5">
+              <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#f26522]">
+                On the road
+              </p>
+              <div className="mt-3 grid gap-x-8 gap-y-2 md:grid-cols-2">
+                {THREE_DAY_ROAD_TIPS.map((tip) => (
+                  <p
+                    key={tip.title}
+                    className="text-[11.5px] leading-5 text-[#4e453f] md:text-[12px]"
+                  >
+                    <span className="font-bold text-[#1d2433]">
+                      - {tip.title}
+                    </span>{" "}
+                    - {tip.description}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+{/* 5 days Itineraries */}
+      <section className="bg-white  py-6 md:py-8">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-5xl rounded-[26px] border border-[#eadbcf]  p-10 shadow-[0_18px_50px_rgba(31,24,19,0.06)] bg-white">
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#f26522]">
+              03 - Itineraries | Drive Route
+            </p>
+            <h2 className="mt-2 text-[2.15rem] font-extrabold leading-none tracking-[-0.03em] text-[#1c2432] md:text-[2.35rem]">
+              5 -Day{" "}
+              <span className="font-medium italic text-[#f26522]">
+                Drive Route
+              </span>
+            </h2>
+            <p className="mt-5 max-w-3xl text-[14px] italic leading-6 text-[#413a36] md:text-[15px]">
+             A balanced loop of beaches, nature, culture and a lagoon day — unhurried, one leg a day.
+            </p>
+
+            <div className="relative mt-10 space-y-10 md:space-y-12">
+              <div
+                className="absolute bottom-5 left-[21px] top-5 w-px bg-[#eddccf]"
+                aria-hidden="true"
+              />
+              {FIVE_DAYS_DRIVE_STOPS.map((item) => (
+                <div
+                  key={item.step}
+                  className="relative grid grid-cols-[auto_1fr_auto] items-start gap-x-6 gap-y-2 md:gap-x-7 mb-20"
+                >
+                  <span
+                    className={`relative z-10 mt-0.5 inline-flex h-11 w-11 items-center justify-center rounded-full text-[1.25rem] font-extrabold text-white ${item.color}`}
+                  >
+                    {item.step}
+                  </span>
+                  <div>
+                    <h3 className="text-[1rem] font-semibold tracking-[-0.03em] text-[#1d2433] md:text-[1.25rem]">
+                      {item.route}
+                    </h3>
+                    <p className="mt-1.5 text-[12px] leading-5 text-[#f26522] md:text-[13px]">
+                      <span className="font-extrabold text-[#f26522]">
+                        Stops
+                      </span>{" "}
+                      {item.stops}
+                    </p>
+                  </div>
+                  <p className="pt-1.5 text-[9px] font-bold uppercase tracking-[0.18em] text-[#9a918c] md:text-[10px]">
+                    {item.region}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-20 rounded-[10px] bg-[#f5f3f0] px-5 py-4 md:px-6 md:py-5">
+              <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#f26522]">
+                On the road
+              </p>
+              <div className="mt-3 grid gap-x-8 gap-y-2 md:grid-cols-2">
+                {THREE_DAY_ROAD_TIPS.map((tip) => (
+                  <p
+                    key={tip.title}
+                    className="text-[11.5px] leading-5 text-[#4e453f] md:text-[12px]"
+                  >
+                    <span className="font-bold text-[#1d2433]">
+                      - {tip.title}
+                    </span>{" "}
+                    - {tip.description}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+{/* 7 days Itineraries */}
+      <section className="bg-white  py-6 md:py-8">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-5xl rounded-[26px] border border-[#eadbcf]  p-10 shadow-[0_18px_50px_rgba(31,24,19,0.06)] bg-white">
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#f26522]">
+              03 - Itineraries | Drive Route
+            </p>
+            <h2 className="mt-2 text-[2.15rem] font-extrabold leading-none tracking-[-0.03em] text-[#1c2432] md:text-[2.35rem]">
+              7 -Day{" "}
+              <span className="font-medium italic text-[#f26522]">
+                Drive Route
+              </span>
+            </h2>
+            <p className="mt-5 max-w-3xl text-[14px] italic leading-6 text-[#413a36] md:text-[15px]">
+The complete island lap — every coast, waterfalls, an island boat day and the inland highlands.
+            </p>
+
+            <div className="relative mt-10 space-y-10 md:space-y-12">
+              <div
+                className="absolute bottom-5 left-[21px] top-5 w-px bg-[#eddccf]"
+                aria-hidden="true"
+              />
+              {SEVEN_DAYS_DRIVE_STOPS.map((item) => (
+                <div
+                  key={item.step}
+                  className="relative grid grid-cols-[auto_1fr_auto] items-start gap-x-6 gap-y-2 md:gap-x-7 mb-10"
+                >
+                  <span
+                    className={`relative z-10 mt-0.5 inline-flex h-11 w-11 items-center justify-center rounded-full text-[1.25rem] font-extrabold text-white ${item.color}`}
+                  >
+                    {item.step}
+                  </span>
+                  <div>
+                    <h3 className="text-[1rem] font-semibold tracking-[-0.03em] text-[#1d2433] md:text-[1.25rem]">
+                      {item.route}
+                    </h3>
+                    <p className="mt-1.5 text-[12px] leading-5 text-[#f26522] md:text-[13px]">
+                      <span className="font-extrabold text-[#f26522]">
+                        Stops
+                      </span>{" "}
+                      {item.stops}
+                    </p>
+                  </div>
+                  <p className="pt-1.5 text-[9px] font-bold uppercase tracking-[0.18em] text-[#9a918c] md:text-[10px]">
+                    {item.region}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+        
+          </div>
+        </div>
+      </section>
+{/* 10 days Itineraries */}
+      <section className="bg-white py-6 md:py-8">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-5xl rounded-[26px] border border-[#eadbcf]  p-10 shadow-[0_18px_50px_rgba(31,24,19,0.06)] bg-white">
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#f26522]">
+              03 - Itineraries | Drive Route
+            </p>
+            <h2 className="mt-2 text-[2.15rem] font-extrabold leading-none tracking-[-0.03em] text-[#1c2432] md:text-[2.35rem]">
+              10 -Day{" "}
+              <span className="font-medium italic text-[#f26522]">
+                Drive Route
+              </span>
+            </h2>
+            <p className="mt-5 max-w-3xl text-[14px] italic leading-6 text-[#413a36] md:text-[15px]">
+The full island at an easy pace — coast to interior and back, discovering one region a day.
+            </p>
+
+            <div className="relative mt-10 space-y-10 md:space-y-12">
+              <div
+                className="absolute bottom-5 left-[21px] top-5 w-px bg-[#eddccf]"
+                aria-hidden="true"
+              />
+              {TEN_DAYS_DRIVE_STOPS.map((item) => (
+                <div
+                  key={item.step}
+                  className="relative grid grid-cols-[auto_1fr_auto] items-start gap-x-6 gap-y-2 md:gap-x-7 mb-8"
+                >
+                  <span
+                    className={`relative z-10 mt-0.5 inline-flex h-11 w-11 items-center justify-center rounded-full text-[1.25rem] font-extrabold text-white ${item.color}`}
+                  >
+                    {item.step}
+                  </span>
+                  <div>
+                    <h3 className="text-[1rem] font-semibold tracking-[-0.03em] text-[#1d2433] md:text-[1.25rem]">
+                      {item.route}
+                    </h3>
+                    <p className="mt-1.5 text-[12px] leading-5 text-[#f26522] md:text-[13px]">
+                      <span className="font-extrabold text-[#f26522]">
+                        Stops
+                      </span>{" "}
+                      {item.stops}
+                    </p>
+                  </div>
+                  <p className="pt-1.5 text-[9px] font-bold uppercase tracking-[0.18em] text-[#9a918c] md:text-[10px]">
+                    {item.region}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+        
           </div>
         </div>
       </section>

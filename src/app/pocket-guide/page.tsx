@@ -89,7 +89,13 @@ const insideItems = [
   },
 ];
 
-function PocketIcon({ name, className = "h-6 w-6" }: { name: string; className?: string }) {
+function PocketIcon({
+  name,
+  className = "h-6 w-6",
+}: {
+  name: string;
+  className?: string;
+}) {
   const props = {
     className,
     fill: "none",
@@ -200,9 +206,10 @@ export default function PocketGuidePage() {
   return (
     <main
       id="main-content"
-      className="min-h-screen bg-[#fffdf7] text-[#0a2e3d]">
+      className="min-h-screen bg-[#fffdf7] text-[#0a2e3d]"
+    >
       <Navbar />
-      <section className="relative overflow-hidden bg-[linear-gradient(180deg,#0e3d6e_0%,#2e6ba5_52%,#6a9acc_100%)] px-4 pb-20 pt-24 text-white sm:px-8 sm:pb-24 sm:pt-32 lg:px-10">
+      {/* <section className="relative overflow-hidden bg-[linear-gradient(180deg,#0e3d6e_0%,#2e6ba5_52%,#6a9acc_100%)] px-4 pb-20 pt-24 text-white sm:px-8 sm:pb-24 sm:pt-32 lg:px-10">
         <div className="absolute left-[-60px] top-[290px] h-[100px] w-[260px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.85),rgba(255,255,255,0))] opacity-50" />
         <div className="absolute right-[-40px] top-[320px] h-[110px] w-[260px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.85),rgba(255,255,255,0))] opacity-40" />
 
@@ -313,8 +320,26 @@ export default function PocketGuidePage() {
             fill="#FFFDF7"
           />
         </svg>
+      </section> */}
+      <section className="pt-24 sm:pt-16 relative">
+        <Image
+          src={getImageUrl(
+            "/images/banners/Mauritius-Pocket-Guide-Where-to-go.png",
+          )}
+          alt="Mauritius Summer 2026 pocket guide cover"
+          width={1200}
+          height={500}
+          className="w-full object-cover"
+        />
+        <div className="absolute bottom-20 left-6 right-0">
+          <Link
+            href="#get"
+            className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#f0712a] px-7 py-4 text-base font-extrabold text-white shadow-[0_10px_24px_rgba(218,90,24,0.32)] transition hover:bg-[#da5a18] sm:min-h-0"
+          >
+            Get the pocket guide
+          </Link>
+        </div>
       </section>
-
       <section className="relative z-10 px-4 sm:px-8 lg:px-10">
         <div className="mx-auto -mt-10 max-w-7xl rounded-[22px] border border-[#e9dbbb] bg-white p-5 shadow-[0_20px_50px_rgba(20,40,46,0.08)] sm:-mt-12 sm:p-7">
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">

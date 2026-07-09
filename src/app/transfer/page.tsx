@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { Metadata } from "next";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import TransferDatePicker from "@/components/transfer/TransferDatePicker";
+import TransferRequestForm from "@/components/transfer/TransferRequestForm";
 import { DEFAULT_OG_IMAGE } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -134,113 +134,11 @@ const transferTypes = [
   },
 ];
 
-const transferTypeHints = [
-  "Airport",
-  "Hotel",
-  "Hotel Location",
-  "Activity",
-  "Hotel + Hotel",
-  "Private Day Trip",
-  "Other",
-];
-
-const luggageHints = ["None", "1-2", "3-4", "more than 4 bags"];
-
-const childSeatHints = ["No", "baby seat", "child seat"];
-
 function SectionHeading({ children }: { children: ReactNode }) {
   return (
     <h2 className="text-[1.3rem] sm:text-[1.45rem] font-bold uppercase tracking-[0.01em] text-[#1e2434]">
       {children}
     </h2>
-  );
-}
-
-function FieldLabel({ children }: { children: ReactNode }) {
-  return <label className="mb-2 block text-[0.92rem] font-semibold text-[#1d2435]">{children}</label>;
-}
-
-function TextInput({
-  placeholder,
-  type = "text",
-}: {
-  placeholder: string;
-  type?: string;
-}) {
-  return (
-    <input
-      type={type}
-      placeholder={placeholder}
-      className="h-12 w-full rounded-md border border-[#dfd4c7] bg-white px-4 text-sm text-[#384255] placeholder:text-[#9a938f] focus:border-[#f26d21] focus:outline-none"
-    />
-  );
-}
-
-function TimeInput() {
-  return (
-    <div className="relative">
-      <input
-        type="time"
-        step={900}
-        className="h-12 w-full appearance-none rounded-md border border-[#dfd4c7] bg-white px-4 pr-12 text-sm text-[#384255] focus:border-[#f26d21] focus:outline-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-clear-button]:hidden [&::-webkit-inner-spin-button]:hidden"
-      />
-      <svg
-        className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#9a938f]"
-        viewBox="0 0 24 24"
-        fill="none"
-        aria-hidden="true"
-      >
-        <circle cx="12" cy="12" r="7.25" stroke="currentColor" strokeWidth="1.8" />
-        <path
-          d="M12 8.25v4.1l2.75 1.65"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </div>
-  );
-}
-
-function SelectInput({
-  placeholder,
-  options,
-  hints,
-}: {
-  placeholder: string;
-  options: string[];
-  hints?: string[];
-}) {
-  return (
-    <div>
-      <div className="relative">
-        <select
-          defaultValue=""
-          className="h-12 w-full appearance-none rounded-md border border-[#dfd4c7] bg-white px-4 pr-10 text-sm text-[#7b746e] focus:border-[#f26d21] focus:outline-none"
-        >
-          <option value="" disabled>
-            {placeholder}
-          </option>
-          {options.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-        <svg
-          className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#9a938f]"
-          viewBox="0 0 20 20"
-          fill="none"
-          aria-hidden="true"
-        >
-          <path d="m5 7.5 5 5 5-5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
-        </svg>
-      </div>
-      {hints ? (
-        <p className="mt-2 text-[0.68rem] leading-5 text-[#9a938f]">{hints.join(" / ")}</p>
-      ) : null}
-    </div>
   );
 }
 
@@ -336,130 +234,7 @@ export default function TransferPage() {
             </div>
           </div>
 
-          <div className="mt-14 rounded-[1.8rem] bg-white px-5 py-8 border border-[#fcfcfc] shadow-[0_18px_40px_rgba(99,78,50,0.08)] sm:px-8 sm:py-10 lg:px-10">
-            <div className="text-center">
-              <p className="text-[0.82rem] font-semibold uppercase tracking-[0.18em] text-[#f26d21] sm:text-[0.9rem]">
-                Private Transfers <span aria-hidden="true">&middot;</span> Enquiry
-              </p>
-              <h2 className="mt-3 text-[2rem] leading-tight font-bold text-[#1d2435] sm:text-[2.6rem]">
-                Transfer Request Form
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-sm italic leading-7 text-[#8b8782] sm:text-[1rem]">
-                Fill in the details below and we&apos;ll email you availability and a price to
-                confirm.
-              </p>
-            </div>
-
-            <form className="mt-8 sm:mt-10">
-              <div className="grid gap-x-4 gap-y-5 md:grid-cols-2 md:gap-x-6 md:gap-y-6">
-                <div>
-                  <FieldLabel>Full Name</FieldLabel>
-                  <TextInput placeholder="Your full name" />
-                </div>
-                <div>
-                  <FieldLabel>Email Address</FieldLabel>
-                  <TextInput placeholder="you@email.com" type="email" />
-                </div>
-                <div>
-                  <FieldLabel>Phone / WhatsApp Number</FieldLabel>
-                  <TextInput placeholder="+ country code" />
-                </div>
-                <div>
-                  <FieldLabel>Type of Transfer</FieldLabel>
-                  <SelectInput
-                    placeholder="Select transfer type"
-                    options={transferTypeHints}
-                    hints={transferTypeHints}
-                  />
-                </div>
-                <div>
-                  <FieldLabel>Pick-Up Location</FieldLabel>
-                  <TextInput placeholder="Hotel, airport or address" />
-                </div>
-                <div>
-                  <FieldLabel>Drop-Off Location</FieldLabel>
-                  <TextInput placeholder="Hotel, airport or address" />
-                </div>
-                <div>
-                  <FieldLabel>Pick-Up Date</FieldLabel>
-                  <TransferDatePicker placeholder="DD / MM / YYYY" />
-                </div>
-                <div>
-                  <FieldLabel>Pick-Up Time</FieldLabel>
-                  <TimeInput />
-                </div>
-                <div>
-                  <FieldLabel>Number of Passengers</FieldLabel>
-                  <TextInput placeholder="e.g. 2" />
-                </div>
-                <div>
-                  <FieldLabel>Luggage</FieldLabel>
-                  <SelectInput
-                    placeholder="Select amount"
-                    options={luggageHints}
-                    hints={luggageHints}
-                  />
-                </div>
-                <div>
-                  <FieldLabel>Child Seat Required?</FieldLabel>
-                  <SelectInput
-                    placeholder="Select option"
-                    options={childSeatHints}
-                    hints={childSeatHints}
-                  />
-                </div>
-                <div>
-                  <FieldLabel>Flight Number</FieldLabel>
-                  <TextInput placeholder="e.g. MK015" />
-                </div>
-                <div className="md:col-span-2">
-                  <FieldLabel>Additional Details</FieldLabel>
-                  <textarea
-                    placeholder="Anything else we should know - stops, timings, special requests..."
-                    className="min-h-[110px] w-full rounded-md border border-[#dfd4c7] bg-white px-4 py-3 text-sm text-[#384255] placeholder:text-[#9a938f] focus:border-[#f26d21] focus:outline-none"
-                  />
-                </div>
-              </div>
-
-              <label className="mt-6 flex items-start gap-3 text-sm leading-6 text-[#6a7387]">
-                <input
-                  type="checkbox"
-                  className="mt-1 h-10 w-10 rounded border border-[#d8ccbf] accent-[#f26d21]"
-                />
-                <span>
-                  I understand that Mauritius Explored will share my request with an independent
-                  transfer provider, and that all bookings, prices and services are managed
-                  directly by the provider.
-                </span>
-              </label>
-
-              <div className="mt-8 flex justify-center">
-                <button
-                  type="button"
-                  className="inline-flex min-h-[52px] w-full max-w-[320px] items-center justify-center gap-3 rounded-2xl bg-[#f26d21] px-6 py-3 text-base font-bold text-white shadow-[0_12px_26px_rgba(242,109,33,0.28)] transition-colors hover:bg-[#e96217]"
-                >
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#f26d21]">
-                    <svg className="h-8 w-8" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                      <path
-                        d="M10 4.5v7m0 0 2.5-2.5M10 11.5 7.5 9"
-                        stroke="currentColor"
-                        strokeWidth="1.8"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M4.5 11.5v1A2.5 2.5 0 0 0 7 15h6a2.5 2.5 0 0 0 2.5-2.5v-1"
-                        stroke="currentColor"
-                        strokeWidth="1.8"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                  </span>
-                  Request Transfer Quote
-                </button>
-              </div>
-            </form>
-          </div>
+          <TransferRequestForm />
         </div>
       </section>
       <Footer />

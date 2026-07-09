@@ -207,7 +207,25 @@ export default function TaxiPage() {
               discuss your route, availability and price.
             </p>
           </div>
-
+  <div className="mt-6 text-center">
+              <button
+                type="button"
+                className="rounded-[1.05rem] bg-[#f26d21] px-10 py-5 text-left text-white shadow-[0_14px_30px_rgba(242,109,33,0.22)] transition-colors hover:bg-[#e96217]"
+              >
+                <div className="flex items-center gap-4">
+                  <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white text-[#f26d21]">
+                    <svg className="h-8 w-8" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <rect x="8" y="3.5" width="8" height="17" rx="1.2" stroke="currentColor" strokeWidth="1.8" />
+                      <path d="M10.5 17.5h3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                    </svg>
+                  </span>
+                  <div>
+                    <div className="text-[1.8rem] font-bold leading-none">Book Your Driver</div>
+                    <div className="mt-1 text-sm text-white/90">WhatsApp - +230 5xxx xxxx</div>
+                  </div>
+                </div>
+              </button>
+            </div>
           <div className="mx-auto mt-12 max-w-4xl">
             <h2 className="text-[1rem] font-semibold uppercase tracking-[0.08em] text-[#f26d21] sm:text-[1.05rem]">
               Services Available
@@ -449,10 +467,10 @@ export default function TaxiPage() {
               </p>
             </div>
 
-            <div className="mt-6 grid gap-4 md:grid-cols-2">
+            <div className="mt-6 text-center">
               <button
                 type="button"
-                className="rounded-[1.05rem] bg-[#f26d21] px-5 py-5 text-left text-white shadow-[0_14px_30px_rgba(242,109,33,0.22)] transition-colors hover:bg-[#e96217]"
+                className="rounded-[1.05rem] bg-[#f26d21] px-10 py-5 text-left text-white shadow-[0_14px_30px_rgba(242,109,33,0.22)] transition-colors hover:bg-[#e96217]"
               >
                 <div className="flex items-center gap-4">
                   <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white text-[#f26d21]">
@@ -468,7 +486,7 @@ export default function TaxiPage() {
                 </div>
               </button>
 
-              <button
+              {/* <button
                 type="button"
                 className="rounded-[1.05rem] bg-[#4a9a48] px-5 py-5 text-left text-white shadow-[0_14px_30px_rgba(74,154,72,0.2)] transition-colors hover:bg-[#438a41]"
               >
@@ -484,7 +502,7 @@ export default function TaxiPage() {
                     <div className="mt-1 text-sm text-white/90">mauritiusexplored.com/taxi</div>
                   </div>
                 </div>
-              </button>
+              </button> */}
             </div>
 
             <p className="mt-5 text-center text-[0.78rem] italic text-[#8f8b86] sm:text-[0.86rem]">
@@ -498,7 +516,7 @@ export default function TaxiPage() {
                 Getting Around / Private Driver
               </p>
               <h2 className="text-3xl md:text-5xl font-bold text-[#1d2435] mt-2">
-                Popular itineraries
+                Popular RoadTrip
               </h2>
             </div>
 

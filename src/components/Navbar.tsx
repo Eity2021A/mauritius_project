@@ -30,7 +30,7 @@ const menuItems: MenuItem[] = [
   },
     { name: "Pocket Guide", href: "/pocket-guide" },
     { name: "Beaches", href: "/beaches-in-mauritius" },
-    { name: "Best Place to Visit", href: "/best-places-to-visit-in-mauritius" },
+    { name: "Place to Visit", href: "/best-places-to-visit-in-mauritius" },
     { name: "Activities", href: "/mauritius-activities" },
   {
     name: "Itinerary",
@@ -64,8 +64,8 @@ const menuItems: MenuItem[] = [
   },
 
   { name: "Blog", href: "/blog" },
-  { name: "Veranda Collection", href: "/veranda-collection" },
-  { name: "About Us", href: "/about" },
+  { name: "Veranda", href: "/veranda-collection" },
+  
 ];
 
 function DropdownMenu({ item }: { item: MenuItem }) {

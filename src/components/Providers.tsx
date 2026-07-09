@@ -13,7 +13,7 @@ export default function Providers({ children }: { children: ReactNode }) {
 
     return (
       pathname.startsWith("/itineraries-mauritius") ||
-      pathname.startsWith("/itineraries-mauritius") ||
+      pathname.startsWith("/roadtrip-mauritius") ||
       pathname.startsWith("/my-trips") ||
       pathname.startsWith("/top-activities-mauritius") ||
       pathname.startsWith("/beaches-in-mauritius/") ||
