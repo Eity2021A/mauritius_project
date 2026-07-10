@@ -329,7 +329,9 @@ function HotelCard({
         <h3 className="font-sans text-[21px] font-semibold leading-tight text-[#1c2a2e]">
           {hotel.name}
         </h3>
-        <p className="flex-1 text-sm leading-6 text-[#5f7378]">{hotel.tagline}</p>
+        <p className="flex-1 text-sm leading-6 text-[#5f7378]">
+          {hotel.tagline}
+        </p>
         <div className="flex flex-wrap gap-2">
           {hotel.tags.map((tag) => (
             <span
@@ -347,7 +349,9 @@ function HotelCard({
             </span>
             <span className="ml-1 text-xs text-[#5f7378]">/ night</span>
           </div>
-          <span className="text-sm font-semibold text-[#12909c]">Discover -&gt;</span>
+          <span className="text-sm font-semibold text-[#12909c]">
+            Discover -&gt;
+          </span>
         </div>
       </div>
     </>
@@ -479,8 +483,8 @@ export default function VerandaCollectionPage() {
             <p className="mt-4 text-base leading-7 text-[#42565b]">
               Instead of vast, look-alike complexes, you get intimate,
               character-filled properties where local flavours, sega rhythms,
-              barefoot ease and the warmth of island hospitality matter far
-              more than marble lobbies.
+              barefoot ease and the warmth of island hospitality matter far more
+              than marble lobbies.
             </p>
             <p className="mt-4 text-base leading-7 text-[#42565b]">
               The five hotels span the whole spice-box of a Mauritian holiday,
@@ -588,15 +592,14 @@ export default function VerandaCollectionPage() {
                 className="h-auto w-full"
                 aria-hidden="true"
               >
-                <g>
-                  <path
-                    d="M430,70 L472,82 514,104 548,120 575,150 560,186 596,214 638,256 662,300 682,346 712,396 722,442 706,486 712,536 690,576 650,620 610,664 586,700 560,734 520,752 470,760 430,772 386,772 340,762 300,752 252,742 226,756 210,774 208,744 234,704 242,672 250,628 246,584 256,544 252,504 260,464 250,430 248,394 264,358 286,330 300,300 300,268 292,238 300,214 286,192 306,170 332,150 356,128 380,110 402,92 Z"
-                    transform="translate(265,40) scale(0.72)"
-                    fill="#DDE6E6"
-                    stroke="#C7D6D6"
-                    strokeWidth="1"
-                  />
-                </g>
+                <image
+                  href="/images/map.png"
+                  x="410"
+                  y="120"
+                  width="400"
+                  height="400"
+                  preserveAspectRatio="xMidYMid meet"
+                />
 
                 <path
                   d="M567.4,149.44 L567.4,150 L560,150"
@@ -682,16 +685,46 @@ export default function VerandaCollectionPage() {
                     }}
                   >
                     <div style={{ textAlign: "center" }}>
-                      <div style={{ fontSize: "11px", letterSpacing: ".16em", color: "#12909C", fontWeight: 600, textTransform: "uppercase" }}>
+                      <div
+                        style={{
+                          fontSize: "11px",
+                          letterSpacing: ".16em",
+                          color: "#12909C",
+                          fontWeight: 600,
+                          textTransform: "uppercase",
+                        }}
+                      >
                         Lively &amp; All-Inclusive
                       </div>
-                      <div style={{ fontSize: "19px", fontWeight: 600, color: "#1C2A2E", margin: "2px 0 4px", lineHeight: 1.1 }}>
+                      <div
+                        style={{
+                          fontSize: "19px",
+                          fontWeight: 600,
+                          color: "#1C2A2E",
+                          margin: "2px 0 4px",
+                          lineHeight: 1.1,
+                        }}
+                      >
                         Veranda Grand Baie
                       </div>
-                      <div style={{ fontSize: "13px", color: "#5F7378", lineHeight: 1.5 }}>
-                        A bright all-inclusive hotel in the heart of the island&apos;s most vibrant coastal village.
+                      <div
+                        style={{
+                          fontSize: "13px",
+                          color: "#5F7378",
+                          lineHeight: 1.5,
+                        }}
+                      >
+                        A bright all-inclusive hotel in the heart of the
+                        island&apos;s most vibrant coastal village.
                       </div>
-                      <div style={{ marginTop: "7px", fontWeight: 600, fontSize: "13px", color: "#1C2A2E" }}>
+                      <div
+                        style={{
+                          marginTop: "7px",
+                          fontWeight: 600,
+                          fontSize: "13px",
+                          color: "#1C2A2E",
+                        }}
+                      >
                         Grand Baie
                       </div>
                     </div>
@@ -699,68 +732,220 @@ export default function VerandaCollectionPage() {
                 </foreignObject>
 
                 <foreignObject x="848" y="132" width="344" height="126">
-                  <div style={{ textAlign: "left", display: "flex", flexDirection: "column", alignItems: "flex-start", fontFamily: "Inter, system-ui, sans-serif" }}>
-                    <div style={{ fontSize: "11px", letterSpacing: ".16em", color: "#12909C", fontWeight: 600, textTransform: "uppercase" }}>
+                  <div
+                    style={{
+                      textAlign: "left",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-start",
+                      fontFamily: "Inter, system-ui, sans-serif",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontSize: "11px",
+                        letterSpacing: ".16em",
+                        color: "#12909C",
+                        fontWeight: 600,
+                        textTransform: "uppercase",
+                      }}
+                    >
                       Adults-Only Romance
                     </div>
-                    <div style={{ fontSize: "19px", fontWeight: 600, color: "#1C2A2E", margin: "2px 0 4px", lineHeight: 1.1 }}>
+                    <div
+                      style={{
+                        fontSize: "19px",
+                        fontWeight: 600,
+                        color: "#1C2A2E",
+                        margin: "2px 0 4px",
+                        lineHeight: 1.1,
+                      }}
+                    >
                       Veranda Paul &amp; Virginie
                     </div>
-                    <div style={{ fontSize: "13px", color: "#5F7378", lineHeight: 1.5 }}>
-                      An intimate, couples-only boutique beach retreat in an authentic fishing village.
+                    <div
+                      style={{
+                        fontSize: "13px",
+                        color: "#5F7378",
+                        lineHeight: 1.5,
+                      }}
+                    >
+                      An intimate, couples-only boutique beach retreat in an
+                      authentic fishing village.
                     </div>
-                    <div style={{ marginTop: "7px", fontWeight: 600, fontSize: "13px", color: "#1C2A2E" }}>
+                    <div
+                      style={{
+                        marginTop: "7px",
+                        fontWeight: 600,
+                        fontSize: "13px",
+                        color: "#1C2A2E",
+                      }}
+                    >
                       Grand Gaube
                     </div>
                   </div>
                 </foreignObject>
 
                 <foreignObject x="8" y="150" width="352" height="132">
-                  <div style={{ textAlign: "right", display: "flex", flexDirection: "column", alignItems: "flex-end", fontFamily: "Inter, system-ui, sans-serif" }}>
-                    <div style={{ fontSize: "11px", letterSpacing: ".16em", color: "#12909C", fontWeight: 600, textTransform: "uppercase" }}>
+                  <div
+                    style={{
+                      textAlign: "right",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      fontFamily: "Inter, system-ui, sans-serif",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontSize: "11px",
+                        letterSpacing: ".16em",
+                        color: "#12909C",
+                        fontWeight: 600,
+                        textTransform: "uppercase",
+                      }}
+                    >
                       Family &amp; Barefoot
                     </div>
-                    <div style={{ fontSize: "19px", fontWeight: 600, color: "#1C2A2E", margin: "2px 0 4px", lineHeight: 1.1 }}>
+                    <div
+                      style={{
+                        fontSize: "19px",
+                        fontWeight: 600,
+                        color: "#1C2A2E",
+                        margin: "2px 0 4px",
+                        lineHeight: 1.1,
+                      }}
+                    >
                       Veranda Pointe aux Biches
                     </div>
-                    <div style={{ fontSize: "13px", color: "#5F7378", lineHeight: 1.5 }}>
-                      A relaxed barefoot beach hotel with a dedicated adults-only wing, spa and freshwater pools.
+                    <div
+                      style={{
+                        fontSize: "13px",
+                        color: "#5F7378",
+                        lineHeight: 1.5,
+                      }}
+                    >
+                      A relaxed barefoot beach hotel with a dedicated
+                      adults-only wing, spa and freshwater pools.
                     </div>
-                    <div style={{ marginTop: "7px", fontWeight: 600, fontSize: "13px", color: "#1C2A2E" }}>
+                    <div
+                      style={{
+                        marginTop: "7px",
+                        fontWeight: 600,
+                        fontSize: "13px",
+                        color: "#1C2A2E",
+                      }}
+                    >
                       Pointe aux Piments
                     </div>
                   </div>
                 </foreignObject>
 
                 <foreignObject x="8" y="432" width="352" height="118">
-                  <div style={{ textAlign: "right", display: "flex", flexDirection: "column", alignItems: "flex-end", fontFamily: "Inter, system-ui, sans-serif" }}>
-                    <div style={{ fontSize: "11px", letterSpacing: ".16em", color: "#12909C", fontWeight: 600, textTransform: "uppercase" }}>
+                  <div
+                    style={{
+                      textAlign: "right",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      fontFamily: "Inter, system-ui, sans-serif",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontSize: "11px",
+                        letterSpacing: ".16em",
+                        color: "#12909C",
+                        fontWeight: 600,
+                        textTransform: "uppercase",
+                      }}
+                    >
                       Surf &amp; Bohemian
                     </div>
-                    <div style={{ fontSize: "19px", fontWeight: 600, color: "#1C2A2E", margin: "2px 0 4px", lineHeight: 1.1 }}>
+                    <div
+                      style={{
+                        fontSize: "19px",
+                        fontWeight: 600,
+                        color: "#1C2A2E",
+                        margin: "2px 0 4px",
+                        lineHeight: 1.1,
+                      }}
+                    >
                       Veranda Tamarin
                     </div>
-                    <div style={{ fontSize: "13px", color: "#5F7378", lineHeight: 1.5 }}>
-                      A laid-back, surf-inspired boutique on a bay famous for dolphins and golden sunsets.
+                    <div
+                      style={{
+                        fontSize: "13px",
+                        color: "#5F7378",
+                        lineHeight: 1.5,
+                      }}
+                    >
+                      A laid-back, surf-inspired boutique on a bay famous for
+                      dolphins and golden sunsets.
                     </div>
-                    <div style={{ marginTop: "7px", fontWeight: 600, fontSize: "13px", color: "#1C2A2E" }}>
+                    <div
+                      style={{
+                        marginTop: "7px",
+                        fontWeight: 600,
+                        fontSize: "13px",
+                        color: "#1C2A2E",
+                      }}
+                    >
                       Tamarin Bay
                     </div>
                   </div>
                 </foreignObject>
 
                 <foreignObject x="848" y="398" width="344" height="126">
-                  <div style={{ textAlign: "left", display: "flex", flexDirection: "column", alignItems: "flex-start", fontFamily: "Inter, system-ui, sans-serif" }}>
-                    <div style={{ fontSize: "11px", letterSpacing: ".16em", color: "#12909C", fontWeight: 600, textTransform: "uppercase" }}>
+                  <div
+                    style={{
+                      textAlign: "left",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-start",
+                      fontFamily: "Inter, system-ui, sans-serif",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontSize: "11px",
+                        letterSpacing: ".16em",
+                        color: "#12909C",
+                        fontWeight: 600,
+                        textTransform: "uppercase",
+                      }}
+                    >
                       Relaxed Family Beach
                     </div>
-                    <div style={{ fontSize: "19px", fontWeight: 600, color: "#1C2A2E", margin: "2px 0 4px", lineHeight: 1.1 }}>
+                    <div
+                      style={{
+                        fontSize: "19px",
+                        fontWeight: 600,
+                        color: "#1C2A2E",
+                        margin: "2px 0 4px",
+                        lineHeight: 1.1,
+                      }}
+                    >
                       Veranda Palmar Beach
                     </div>
-                    <div style={{ fontSize: "13px", color: "#5F7378", lineHeight: 1.5 }}>
-                      A family-friendly resort on a long white-sand beach beside a calm, protected lagoon.
+                    <div
+                      style={{
+                        fontSize: "13px",
+                        color: "#5F7378",
+                        lineHeight: 1.5,
+                      }}
+                    >
+                      A family-friendly resort on a long white-sand beach beside
+                      a calm, protected lagoon.
                     </div>
-                    <div style={{ marginTop: "7px", fontWeight: 600, fontSize: "13px", color: "#1C2A2E" }}>
+                    <div
+                      style={{
+                        marginTop: "7px",
+                        fontWeight: 600,
+                        fontSize: "13px",
+                        color: "#1C2A2E",
+                      }}
+                    >
                       Palmar / Belle Mare
                     </div>
                   </div>
@@ -831,7 +1016,10 @@ export default function VerandaCollectionPage() {
                       {hotel.description}
                     </p>
                     <div className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#1c2a2e]">
-                      <VerandaIcon name="pin" className="h-4 w-4 text-[#12909c]" />
+                      <VerandaIcon
+                        name="pin"
+                        className="h-4 w-4 text-[#12909c]"
+                      />
                       {hotel.location}
                     </div>
                   </div>
@@ -916,9 +1104,9 @@ export default function VerandaCollectionPage() {
                 />
               </div>
               <p className="mt-4 max-w-[280px] text-sm leading-7 text-[#9db8bb]">
-                Your guide to discovering the beauty of Mauritius. From
-                pristine beaches to lush mountains, explore everything this
-                island paradise has to offer.
+                Your guide to discovering the beauty of Mauritius. From pristine
+                beaches to lush mountains, explore everything this island
+                paradise has to offer.
               </p>
             </div>
 
@@ -1009,7 +1197,6 @@ export default function VerandaCollectionPage() {
           </div>
         </div>
       </footer>
-
     </main>
   );
 }

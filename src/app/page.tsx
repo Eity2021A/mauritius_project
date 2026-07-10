@@ -12,6 +12,7 @@ import RotatingAdBanner from "@/components/RotatingAdBanner";
 import { HOME_ITINERARIES, SERVICES, STATS } from "@/data/home";
 import { getImageSrcSet, getImageUrl } from "@/lib/image-url";
 import HiddenGems from "@/components/HiddenGems";
+import CarRentalAdBanner from "@/components/CarRentalAdBanner";
 
 export default function Home() {
   return (
@@ -25,8 +26,8 @@ export default function Home() {
       <RotatingAdBanner />
       {/* Best of Mauritius Island – photo mosaic */}
       <LazyPhotoMosaicSection />
-     <RotatingAdBanner />
-    <AcrossMauritius />
+      <CarRentalAdBanner />
+      <AcrossMauritius />
 
       {/* Itineraries & Road Trips Section */}
       <section className="py-4 md:py-10 bg-white dark:bg-neutral-900">
@@ -39,12 +40,15 @@ export default function Home() {
               Itineraries & Road Trips
             </h2>
             <p className="text-gray-600 dark:text-gray-400 text-center max-w-4xl mx-auto mt-2 md:mt-3">
-              A guide to explore Mauritius | What are the best places to visit | Be inspired to explore
+              A guide to explore Mauritius | What are the best places to visit |
+              Be inspired to explore
             </p>
           </div>
-          
+
           {/* Itinerary Cards - Horizontal scroll on mobile, grid on larger screens */}
-          <p className="md:hidden text-xs text-gray-500 text-right mb-2">Swipe to explore →</p>
+          <p className="md:hidden text-xs text-gray-500 text-right mb-2">
+            Swipe to explore →
+          </p>
           <div className="flex md:grid md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 overflow-x-auto pb-4 md:pb-0 -mx-4 px-4 pr-6 md:pr-0 md:mx-0 md:px-0 snap-x snap-mandatory md:snap-none scrollbar-hide">
             {HOME_ITINERARIES.map((itinerary, index) => (
               <Link
@@ -53,8 +57,14 @@ export default function Home() {
                 className="group relative flex-shrink-0 w-40 h-72 sm:w-48 sm:h-80 md:w-auto md:h-96 lg:h-[28rem] rounded-lg overflow-hidden cursor-pointer snap-start img-shimmer"
               >
                 <img
-                  src={getImageUrl(itinerary.image, { width: 400, quality: 75 })}
-                  srcSet={getImageSrcSet(itinerary.image, { widths: [320, 480, 800, 1200], quality: 68 })}
+                  src={getImageUrl(itinerary.image, {
+                    width: 400,
+                    quality: 75,
+                  })}
+                  srcSet={getImageSrcSet(itinerary.image, {
+                    widths: [320, 480, 800, 1200],
+                    quality: 68,
+                  })}
                   sizes="(max-width: 768px) 45vw, (max-width: 1200px) 25vw, 20vw"
                   alt={itinerary.title}
                   loading="lazy"
@@ -79,8 +89,8 @@ export default function Home() {
       </section>
 
       {/* <LazyFeaturedDestinationsMarquee /> */}
-     <HiddenGems />
-    
+      <HiddenGems />
+
       {/* Services Section */}
       <section className="pt-3 sm:pt-5 md:pt-6 pb-5 sm:pb-10 md:pb-12 bg-gray-50 dark:bg-neutral-800">
         <div className="container mx-auto px-4">
@@ -100,8 +110,14 @@ export default function Home() {
               >
                 <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden img-shimmer">
                   <img
-                    src={getImageUrl(service.image, { width: 400, quality: 75 })}
-                    srcSet={getImageSrcSet(service.image, { widths: [320, 480, 800], quality: 66 })}
+                    src={getImageUrl(service.image, {
+                      width: 400,
+                      quality: 75,
+                    })}
+                    srcSet={getImageSrcSet(service.image, {
+                      widths: [320, 480, 800],
+                      quality: 66,
+                    })}
                     sizes="(max-width: 768px) 50vw, (max-width: 1280px) 25vw, 20vw"
                     alt={service.title}
                     className="absolute inset-0 w-full h-full object-cover"
@@ -132,7 +148,9 @@ export default function Home() {
       {/* CTA Section */}
       <section className="relative py-8 sm:py-14 md:py-16">
         <Image
-          src={getImageUrl("/images/banners/traditional-pirogue-sailing-mauritius.jpg")}
+          src={getImageUrl(
+            "/images/banners/traditional-pirogue-sailing-mauritius.jpg",
+          )}
           alt="Mauritius beach"
           fill
           loading="lazy"
@@ -145,14 +163,18 @@ export default function Home() {
             Your Mauritius Adventure Awaits
           </h2>
           <p className="text-white/80 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-6 sm:mb-8 px-2">
-            From pristine beaches to lush mountains, discover everything this island paradise has to offer. Let us help you plan the perfect getaway.
+            From pristine beaches to lush mountains, discover everything this
+            island paradise has to offer. Let us help you plan the perfect
+            getaway.
           </p>
           <PlanTripButton
             href="/itineraries-mauritius#build-your-own"
             className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-orange-500 text-white text-sm sm:text-base font-medium rounded-full hover:bg-orange-600 transition-colors min-h-[48px] disabled:opacity-90 disabled:cursor-wait"
           >
             Plan Your Trip
-            <span className="text-[10px] font-semibold uppercase tracking-wide px-1.5 py-0.5 rounded bg-white text-orange-500">New</span>
+            <span className="text-[10px] font-semibold uppercase tracking-wide px-1.5 py-0.5 rounded bg-white text-orange-500">
+              New
+            </span>
           </PlanTripButton>
         </div>
       </section>
@@ -166,7 +188,9 @@ export default function Home() {
                 <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-orange-500 mb-1 sm:mb-2">
                   {stat.number}
                 </p>
-                <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm md:text-base">{stat.label}</p>
+                <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm md:text-base">
+                  {stat.label}
+                </p>
               </div>
             ))}
           </div>
