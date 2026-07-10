@@ -211,10 +211,10 @@ export default function CarRentalPage() {
                   <p className="text-3xl font-bold leading-none sm:text-4xl">
                     15% OFF{" "}
                     <span className="text-xl font-semibold">
-                      all new bookings
+                      all new bookings {" "}
                     </span>
-                    <span className="pl-12 font-bold text-xl uppercase text-white/90">
-                       -PROMO CODE: MEXP26
+                    <span className="font-bold text-xl uppercase text-white/90">
+                       {" "} -PROMO CODE: MEXP26
                     </span>
                   </p>
                   <p className="mt-1 text-sm font-semibold text-white/90">

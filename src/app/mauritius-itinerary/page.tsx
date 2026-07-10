@@ -228,35 +228,35 @@ const FIVE_DAYS_DRIVE_STOPS = [
     step: "1",
     color: "bg-[#1596a4]",
     route: "Port Louis \u2192 Cap Malheureux",
-    region:"NORTH",
+    region: "NORTH",
     stops: "Central Market · Caudan · Mont Choisy · Pereybère",
   },
   {
     step: "2",
     color: "bg-[#e25d18]",
     route: "Tamarin Bay \u2192 Albion",
-    region:"WEST",
+    region: "WEST",
     stops: "Dolphin watching · Flic en Flac · Albion Beach",
   },
   {
     step: "3",
     color: "bg-[#2d855a]",
     route: "Le Morne \u2192 Chamarel",
-    region:"SOUTH-WEST",
+    region: "SOUTH-WEST",
     stops: "Le Morne Brabant · Chamarel Falls · Black River Gorges viewpoint",
   },
   {
     step: "4",
     color: "bg-[#0b74b1]",
     route: "Trou d'Eau Douce \u2192 \u00cele aux Cerfs",
-    region:"EAST",
+    region: "EAST",
     stops: "\u00cele aux Cerfs · GRSE Waterfall \u2014 full lagoon day",
   },
   {
     step: "5",
     color: "bg-[#236b56]",
     route: "Blue Bay \u2192 Souillac",
-    region:"SOUTH",
+    region: "SOUTH",
     stops: "Blue Bay · Mahébourg · Gris Gris · Souillac (+ Grand Bassin)",
   },
 ];
@@ -412,11 +412,7 @@ function ItineraryInfoIcon({ type }: { type: "taxi" | "car" }) {
           d="M9.2 10.2h5.6M10.4 7.8h3.2"
         />
       ) : (
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M7.7 10.2h8.6"
-        />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M7.7 10.2h8.6" />
       )}
     </svg>
   );
@@ -464,8 +460,7 @@ export const metadata: Metadata = {
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline:
-    "Mauritius Itinerary: 3, 5, 7 & 10 Day Travel Plans (2026 Guide)",
+  headline: "Mauritius Itinerary: 3, 5, 7 & 10 Day Travel Plans (2026 Guide)",
   description: PAGE_DESCRIPTION,
   image: [OG_IMAGE_URL],
   mainEntityOfPage: {
@@ -559,10 +554,10 @@ export default function MauritiusItineraryPage() {
               <span className="font-semibold text-orange-500">
                 Mauritius itinerary guide
               </span>{" "}
-              is designed to help you plan the perfect trip, whether you have
-              3 days, 5 days, 1 week, or 10 days on the island. From white
-              sandy beaches and turquoise lagoons to waterfalls, mountains,
-              and cultural landmarks, Mauritius offers one of the most diverse
+              is designed to help you plan the perfect trip, whether you have 3
+              days, 5 days, 1 week, or 10 days on the island. From white sandy
+              beaches and turquoise lagoons to waterfalls, mountains, and
+              cultural landmarks, Mauritius offers one of the most diverse
               travel experiences in the Indian Ocean. This page acts as your
               central hub, guiding you to detailed itineraries tailored to
               different trip lengths, travel styles, and must-see highlights.
@@ -597,11 +592,11 @@ export default function MauritiusItineraryPage() {
               >
                 south
               </Link>{" "}
-              reveals a wild and untouched coastline. A well-planned
-              itinerary ensures you experience the best of each region without
-              wasting time travelling back and forth. This guide helps you
-              structure your days efficiently while linking to full detailed
-              itineraries you can follow step by step.
+              reveals a wild and untouched coastline. A well-planned itinerary
+              ensures you experience the best of each region without wasting
+              time travelling back and forth. This guide helps you structure
+              your days efficiently while linking to full detailed itineraries
+              you can follow step by step.
             </p>
           </div>
         </div>
@@ -615,9 +610,9 @@ export default function MauritiusItineraryPage() {
               How Many Days Do You Need in Mauritius?
             </h2>
             <p className="text-gray-700 text-base md:text-lg leading-relaxed text-center mb-8 max-w-3xl mx-auto">
-              The ideal duration depends on your travel style. A short stay of
-              3 days allows you to explore key highlights, while 5 days gives
-              a more balanced mix of beaches and inland attractions. A 7-day
+              The ideal duration depends on your travel style. A short stay of 3
+              days allows you to explore key highlights, while 5 days gives a
+              more balanced mix of beaches and inland attractions. A 7-day
               itinerary is perfect for a full island experience, and 10 days
               allows for a relaxed and immersive journey with time to explore
               hidden gems.
@@ -641,8 +636,7 @@ export default function MauritiusItineraryPage() {
                         {g.days === 5 &&
                           "Balanced itinerary with key attractions"}
                         {g.days === 7 && "Complete island experience"}
-                        {g.days === 10 &&
-                          "Ultimate itinerary with hidden gems"}
+                        {g.days === 10 && "Ultimate itinerary with hidden gems"}
                       </span>
                     </span>
                   </a>
@@ -687,10 +681,10 @@ export default function MauritiusItineraryPage() {
             </div>
 
             <p className="mt-6 max-w-4xl text-[14px] leading-7 text-[#433c39] md:text-[15px]">
-              One island, four ready-made drives. Pick the length that fits
-              your trip - each route builds on the last, so from three to ten
-              days you still loop the island and cover its main regions.
-              Follow the Drive Route pages for exact, day-by-day directions.
+              One island, four ready-made drives. Pick the length that fits your
+              trip - each route builds on the last, so from three to ten days
+              you still loop the island and cover its main regions. Follow the
+              Drive Route pages for exact, day-by-day directions.
             </p>
 
             <div className="mt-7 grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
@@ -721,7 +715,7 @@ export default function MauritiusItineraryPage() {
               </div>
 
               <div className="flex flex-col items-center justify-center pt-2">
-                <div className="relative h-[230px] w-full max-w-[245px]">
+                {/* <div className="relative h-[230px] w-full max-w-[245px]">
                   <svg
                     viewBox="0 0 240 220"
                     className="h-full w-full text-[#cfcfcf]"
@@ -748,8 +742,17 @@ export default function MauritiusItineraryPage() {
                       />
                     ))}
                   </svg>
-                </div>
-                <p className="-mt-2 text-center text-[12px] text-[#b6917f]">
+                </div> */}
+
+                <Image
+                  src="/images/map.png"
+                  alt="Mauritius map route"
+                  width={240}
+                  height={240}
+                  className="h-auto w-[240px] object-contain"
+                />
+
+                <p className="mt-2 text-center text-[12px] text-[#b6917f]">
                   Every route loops the island
                 </p>
               </div>
@@ -763,7 +766,7 @@ export default function MauritiusItineraryPage() {
                   </span>
                   <div>
                     <h3 className="text-[1.02rem] font-extrabold text-[#1d2433]">
-                      Taxi & Transfers
+                      Taxi
                     </h3>
                     <p className="mt-1 text-[12.5px] leading-5 text-[#7a716b]">
                       Airport transfers & day driver hire.
@@ -785,7 +788,7 @@ export default function MauritiusItineraryPage() {
                       Car Rental
                     </h3>
                     <p className="mt-1 text-[12.5px] leading-5 text-[#7a716b]">
-                      Automatic advised - drive on the left.
+                      15% Discount - use promo code MEXP26
                     </p>
                     <p className="mt-1.5 text-[12.5px] leading-5 text-[#f26522]">
                       Book - mauritiusexplored.com
@@ -816,7 +819,7 @@ export default function MauritiusItineraryPage() {
           </div>
         </div>
       </section>
-{/* 3 days Itineraries */}
+      {/* 3 days Itineraries */}
       <section className="bg-white py-6 md:py-8">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-5xl rounded-[26px] border border-[#eadbcf]  p-10 shadow-[0_18px_50px_rgba(31,24,19,0.06)] bg-white">
@@ -888,7 +891,7 @@ export default function MauritiusItineraryPage() {
           </div>
         </div>
       </section>
-{/* 5 days Itineraries */}
+      {/* 5 days Itineraries */}
       <section className="bg-white  py-6 md:py-8">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-5xl rounded-[26px] border border-[#eadbcf]  p-10 shadow-[0_18px_50px_rgba(31,24,19,0.06)] bg-white">
@@ -902,7 +905,8 @@ export default function MauritiusItineraryPage() {
               </span>
             </h2>
             <p className="mt-5 max-w-3xl text-[14px] italic leading-6 text-[#413a36] md:text-[15px]">
-             A balanced loop of beaches, nature, culture and a lagoon day — unhurried, one leg a day.
+              A balanced loop of beaches, nature, culture and a lagoon day —
+              unhurried, one leg a day.
             </p>
 
             <div className="relative mt-10 space-y-10 md:space-y-12">
@@ -960,8 +964,7 @@ export default function MauritiusItineraryPage() {
         </div>
       </section>
 
-
-{/* 7 days Itineraries */}
+      {/* 7 days Itineraries */}
       <section className="bg-white  py-6 md:py-8">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-5xl rounded-[26px] border border-[#eadbcf]  p-10 shadow-[0_18px_50px_rgba(31,24,19,0.06)] bg-white">
@@ -975,7 +978,8 @@ export default function MauritiusItineraryPage() {
               </span>
             </h2>
             <p className="mt-5 max-w-3xl text-[14px] italic leading-6 text-[#413a36] md:text-[15px]">
-The complete island lap — every coast, waterfalls, an island boat day and the inland highlands.
+              The complete island lap — every coast, waterfalls, an island boat
+              day and the inland highlands.
             </p>
 
             <div className="relative mt-10 space-y-10 md:space-y-12">
@@ -1010,12 +1014,10 @@ The complete island lap — every coast, waterfalls, an island boat day and the 
                 </div>
               ))}
             </div>
-
-        
           </div>
         </div>
       </section>
-{/* 10 days Itineraries */}
+      {/* 10 days Itineraries */}
       <section className="bg-white py-6 md:py-8">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-5xl rounded-[26px] border border-[#eadbcf]  p-10 shadow-[0_18px_50px_rgba(31,24,19,0.06)] bg-white">
@@ -1029,7 +1031,8 @@ The complete island lap — every coast, waterfalls, an island boat day and the 
               </span>
             </h2>
             <p className="mt-5 max-w-3xl text-[14px] italic leading-6 text-[#413a36] md:text-[15px]">
-The full island at an easy pace — coast to interior and back, discovering one region a day.
+              The full island at an easy pace — coast to interior and back,
+              discovering one region a day.
             </p>
 
             <div className="relative mt-10 space-y-10 md:space-y-12">
@@ -1064,8 +1067,6 @@ The full island at an easy pace — coast to interior and back, discovering one 
                 </div>
               ))}
             </div>
-
-        
           </div>
         </div>
       </section>
@@ -1212,11 +1213,11 @@ The full island at an easy pace — coast to interior and back, discovering one 
             <p className="text-gray-700 text-base md:text-lg leading-relaxed text-center max-w-3xl mx-auto">
               This Mauritius itinerary hub is designed to help you plan your
               trip efficiently while discovering the best the island has to
-              offer. Whether you are staying for a few days or more than a
-              week, these itineraries provide a clear structure to maximize
-              your experience. By following these travel plans and exploring
-              each region, you will enjoy a perfect balance of beaches,
-              nature, culture, and adventure in one unforgettable destination.
+              offer. Whether you are staying for a few days or more than a week,
+              these itineraries provide a clear structure to maximize your
+              experience. By following these travel plans and exploring each
+              region, you will enjoy a perfect balance of beaches, nature,
+              culture, and adventure in one unforgettable destination.
             </p>
           </div>
         </div>
@@ -1230,8 +1231,8 @@ The full island at an easy pace — coast to interior and back, discovering one 
               Ready to Build Your Own Itinerary?
             </h2>
             <p className="text-orange-100 text-base md:text-lg mb-8">
-              Pick beaches, activities and places — see your route on the
-              map, then save and share your trip.
+              Pick beaches, activities and places — see your route on the map,
+              then save and share your trip.
             </p>
             <Link
               href="/itineraries-mauritius/create"

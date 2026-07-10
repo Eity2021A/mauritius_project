@@ -254,8 +254,8 @@ export default function PocketGuidePage() {
                 for travelling.
               </p>
               <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap sm:gap-4 lg:justify-start">
-                <Link
-                  href="#get"
+              <Link
+                  href="/pocket-guide/checkout"
                   className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#f0712a] px-7 py-4 text-base font-extrabold text-white shadow-[0_10px_24px_rgba(218,90,24,0.32)] transition hover:bg-[#da5a18] sm:min-h-0"
                 >
                   Get the pocket guide
@@ -331,14 +331,16 @@ export default function PocketGuidePage() {
           height={500}
           className="w-full object-cover"
         />
+        
         <div className="absolute bottom-20 left-6 right-0">
           <Link
-            href="#get"
+            href="/pocket-guide/checkout"
             className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#f0712a] px-7 py-4 text-base font-extrabold text-white shadow-[0_10px_24px_rgba(218,90,24,0.32)] transition hover:bg-[#da5a18] sm:min-h-0"
           >
             Get the pocket guide
           </Link>
         </div>
+
       </section>
       <section className="relative z-10 px-4 sm:px-8 lg:px-10">
         <div className="mx-auto -mt-10 max-w-7xl rounded-[22px] border border-[#e9dbbb] bg-white p-5 shadow-[0_20px_50px_rgba(20,40,46,0.08)] sm:-mt-12 sm:p-7">
@@ -407,8 +409,8 @@ export default function PocketGuidePage() {
           </div>
 
             <div className="mt-10 flex justify-center">
-          <Link
-            href="#get"
+        <Link
+            href="/pocket-guide/checkout"
             className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#f0712a] px-7 py-4 text-base font-extrabold text-white shadow-[0_10px_24px_rgba(218,90,24,0.32)] transition hover:bg-[#da5a18] sm:min-h-0"
           >
             Get the pocket guide
@@ -477,7 +479,7 @@ export default function PocketGuidePage() {
             rainy-afternoon plan B, it&apos;s all in there.
           </p>
           <Link
-            href="/contact"
+            href="/pocket-guide/checkout"
             className="mt-8 inline-flex min-h-12 items-center justify-center rounded-full bg-[#f0712a] px-8 py-4 text-lg font-extrabold text-white shadow-[0_14px_34px_rgba(0,0,0,0.28)] transition hover:bg-[#da5a18]"
           >
             Get the pocket guide
