@@ -25,7 +25,7 @@ export default function Home() {
       </section>
       <RotatingAdBanner />
       {/* Best of Mauritius Island – photo mosaic */}
-      <LazyPhotoMosaicSection />
+      <LazyPhotoMosaicSection locale="en" />
       <CarRentalAdBanner />
       <AcrossMauritius />
 

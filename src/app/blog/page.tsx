@@ -8,7 +8,6 @@ import { getAllBlogPosts, getBlogCategories } from "@/lib/content";
 import { getImageUrl } from "@/lib/image-url";
 import { DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/constants";
 import NewsletterForm from "@/components/NewsletterForm";
-import { getBlogViewCount } from "@/lib/blog-view-counts";
 
 export const metadata: Metadata = {
   title: "Blog - Travel Tips & Mauritius Guides",
@@ -69,14 +68,6 @@ export default async function BlogPage() {
     getAllBlogPosts(),
     getBlogCategories(),
   ]);
-  const viewCounts = Object.fromEntries(
-    await Promise.all(
-      allPosts.map(async (post) => [
-        post.slug,
-        await getBlogViewCount(post.slug),
-      ] as const)
-    )
-  );
   const selectedFeaturedPosts = ([1, 2, 3] as const)
     .map((rank) => allPosts.find((post) => post.featuredRank === rank))
     .filter((post): post is BlogPost => Boolean(post));
@@ -123,7 +114,6 @@ export default async function BlogPage() {
             posts={allPosts}
             featuredPosts={featuredPosts}
             categories={blogCategories}
-            viewCounts={viewCounts}
           />
         </div>
       </div> 
