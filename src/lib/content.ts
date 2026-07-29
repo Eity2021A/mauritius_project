@@ -12,6 +12,7 @@ import type { Region, Coordinates, PlaceCategory, ActivityCategory, BeachCategor
 import type { Beach, TopBeach, BeachDetails } from "@/data/beaches"
 import { type PlaceDetails, getAllPlaces as staticGetAllPlaces } from "@/data/place-details"
 import { type Activity, type ActivityDetails, type PricingOption, ACTIVITIES as STATIC_ACTIVITIES, ACTIVITY_CATEGORIES as STATIC_ACTIVITY_CATEGORIES } from "@/data/activities"
+import { type VerandaHotel, VERANDA_HOTELS as STATIC_VERANDA_HOTELS } from "@/data/veranda-hotels"
 import type { BlogPost, BlogCategory } from "@/data/blog"
 
 // Static fallbacks
@@ -98,6 +99,31 @@ function sortedMediaUrls(media: DbItemPayload["media"]): string[] {
 
 function sortedHotelNames(hotels: DbItemPayload["hotels"]): string[] {
   return sortByOrder(hotels, (h) => h.name)
+}
+
+function nonEmptyString(value: string | null | undefined): string | undefined {
+  if (typeof value !== "string") return undefined
+  const trimmed = value.trim()
+  return trimmed.length ? trimmed : undefined
+}
+
+function splitParagraphs(value: string | null | undefined): string[] {
+  const text = nonEmptyString(value)
+  return text ? text.split("\n\n") : []
+}
+
+function normalizeKey(value: string | null | undefined): string {
+  return (value ?? "")
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+}
+
+function looksLikeSlugTitle(title: string | null | undefined, slug: string): boolean {
+  const normalizedTitle = normalizeKey(title)
+  const normalizedSlug = normalizeKey(slug)
+  return !!normalizedTitle && normalizedTitle === normalizedSlug
 }
 
 type BlogMediaPayload = {
@@ -307,6 +333,46 @@ function mapToActivityDetails(d: DbItemPayload): ActivityDetails {
   }
 }
 
+function mapToVerandaHotel(d: DbItemPayload, fallback?: VerandaHotel): VerandaHotel {
+  const firstPrice = d.pricing?.find((p) => p.price_amount !== null)
+  const detailImages = sortedMediaUrls(d.media)
+  const mergedGallery = detailImages.length ? detailImages : (fallback?.gallery ?? [])
+  const hasBrokenTitle = looksLikeSlugTitle(d.translation.title, d.slug)
+  const name = hasBrokenTitle ? fallback?.name : nonEmptyString(d.translation.title)
+  const tagline = hasBrokenTitle ? fallback?.tagline : nonEmptyString(d.translation.quote)
+  const description = hasBrokenTitle ? [] : splitParagraphs(d.translation.description_richtext)
+
+  return {
+    slug: d.slug,
+    name: name ?? fallback?.name ?? d.slug,
+    shortName: fallback?.shortName ?? name ?? d.slug,
+    location: nonEmptyString(d.address_text) ?? fallback?.location ?? "",
+    region: d.region?.slug ?? fallback?.region ?? "various",
+    rating: fallback?.rating ?? "",
+    style: fallback?.style ?? "",
+    priceFrom:
+      firstPrice?.price_amount !== null && firstPrice?.price_amount !== undefined
+        ? `From ${firstPrice.currency ?? "EUR"}${firstPrice.price_amount}`
+        : (fallback?.priceFrom ?? ""),
+    tagline: tagline ?? fallback?.tagline ?? "",
+    description: description.length ? description : (fallback?.description ?? []),
+    highlights: sortedTexts(d.highlights).length ? sortedTexts(d.highlights) : (fallback?.highlights ?? []),
+    idealFor: sortedLabels(d.includes).length ? sortedLabels(d.includes) : (fallback?.idealFor ?? []),
+    experiences: sortedTexts(d.tips).length ? sortedTexts(d.tips) : (fallback?.experiences ?? []),
+    practicalTips: sortedLabels(d.what_to_bring).length ? sortedLabels(d.what_to_bring) : (fallback?.practicalTips ?? []),
+    rooms: fallback?.rooms ?? [],
+    dining: fallback?.dining ?? [],
+    gallery: mergedGallery,
+    heroImage: nonEmptyString(d.hero_image_path) ?? mergedGallery[0] ?? fallback?.heroImage ?? "",
+    coordinates: toCoords(d.lat, d.lng),
+    tags: d.categories?.length ? d.categories.map((c) => c.label_en || c.slug) : (fallback?.tags ?? []),
+    accent: fallback?.accent ?? "from-[#0f6e8c] to-[#46b2cc]",
+    boardBasis: fallback?.boardBasis ?? "",
+    beachStyle: fallback?.beachStyle ?? "",
+    bookingUrl: d.booking_url ?? fallback?.bookingUrl,
+  }
+}
+
 // ---- Public API ----
 const isDev = process.env.NODE_ENV !== "production"
 let _shouldUseDb: boolean | null = null
@@ -314,7 +380,7 @@ let _shouldUseDb: boolean | null = null
 async function shouldUseDb(): Promise<boolean> {
   if (_shouldUseDb !== null) return _shouldUseDb
   if (!contentDb) {
-    if (isDev) console.log("[content] No CONTENT_SUPABASE_URL — using static data")
+    if (isDev) 
     _shouldUseDb = false
     return false
   }
@@ -578,6 +644,83 @@ export async function getAllPlaceSlugs(): Promise<string[]> {
 export async function getAllActivitySlugs(): Promise<string[]> {
   const details = await getAllActivityDetails()
   return Object.keys(details)
+}
+
+export async function getAllVerandaHotels(): Promise<VerandaHotel[]> {
+  if (!(await shouldUseDb())) return STATIC_VERANDA_HOTELS
+
+  const slugs = await fetchAllPublishedSlugs("hotel")
+  if (!slugs.length) return STATIC_VERANDA_HOTELS
+
+  const fallbackBySlug = new Map(STATIC_VERANDA_HOTELS.map((hotel) => [hotel.slug, hotel]))
+  const fallbackByName = new Map(
+    STATIC_VERANDA_HOTELS.flatMap((hotel) => [
+      [normalizeKey(hotel.name), hotel],
+      [normalizeKey(hotel.shortName), hotel],
+    ])
+  )
+  const results = await Promise.all(slugs.map((slug) => fetchItemBySlug(slug, "hotel")))
+  const hotels = results
+    .map((item, index) => {
+      if (!item) return null
+      const fallback =
+        fallbackBySlug.get(slugs[index]) ??
+        fallbackByName.get(normalizeKey(item.translation.title)) ??
+        fallbackByName.get(normalizeKey(item.slug))
+      return mapToVerandaHotel(item, fallback)
+    })
+    .filter((hotel): hotel is VerandaHotel => Boolean(hotel))
+
+  return hotels.length ? hotels : STATIC_VERANDA_HOTELS
+}
+
+export async function getVerandaHotelBySlugFromDb(slug: string): Promise<VerandaHotel | null> {
+  const fallbackBySlug = STATIC_VERANDA_HOTELS.find((hotel) => hotel.slug === slug)
+  if (!(await shouldUseDb())) return fallbackBySlug ?? null
+
+  const item = await fetchItemBySlug(slug, "hotel")
+  if (!item) return fallbackBySlug ?? null
+
+  const fallbackByName = STATIC_VERANDA_HOTELS.find((hotel) => {
+    const normalizedTitle = normalizeKey(item.translation.title)
+    return (
+      normalizeKey(hotel.name) === normalizedTitle ||
+      normalizeKey(hotel.shortName) === normalizedTitle
+    )
+  })
+
+  return mapToVerandaHotel(item, fallbackBySlug ?? fallbackByName)
+}
+
+export async function getAllVerandaHotelSlugsFromDb(): Promise<string[]> {
+  const hotels = await getAllVerandaHotels()
+  return hotels.map((hotel) => hotel.slug)
+}
+
+export async function getRelatedVerandaHotelsFromDb(slug: string, limit = 3): Promise<VerandaHotel[]> {
+  const hotels = await getAllVerandaHotels()
+  const currentHotel = hotels.find((hotel) => hotel.slug === slug)
+  if (!currentHotel) return hotels.filter((hotel) => hotel.slug !== slug).slice(0, limit)
+
+  const sameRegion = hotels.filter(
+    (hotel) => hotel.slug !== slug && hotel.region === currentHotel.region
+  )
+  const others = hotels.filter(
+    (hotel) => hotel.slug !== slug && hotel.region !== currentHotel.region
+  )
+
+  return [...sameRegion, ...others].slice(0, limit)
+}
+
+export async function getVerandaHotelsListingData(): Promise<{
+  allHotels: VerandaHotel[]
+  hotelSlugsWithPages: string[]
+}> {
+  const allHotels = await getAllVerandaHotels()
+  return {
+    allHotels,
+    hotelSlugsWithPages: allHotels.map((hotel) => hotel.slug),
+  }
 }
 
 /** Single fetch for beaches listing page — avoids 3x duplicate fetches */

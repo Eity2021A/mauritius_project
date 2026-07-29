@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect, useRef, useMemo, useCallback } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useLocale, useTranslations } from "next-intl";
+import { Link, useRouter } from "@/i18n/navigation";
 import dynamic from "next/dynamic";
 import MapSkeleton from "@/components/ui/MapSkeleton";
 import { getImageUrl, getImageSrcSet } from "@/lib/image-url";
@@ -13,6 +13,7 @@ import AuthModal from "@/components/AuthModal";
 import { createClient } from "@/lib/supabase/client";
 import { saveItinerary } from "@/lib/itinerary-actions";
 import { formatDuration } from "@/lib/utils";
+import { getItineraryTranslations } from "@/data/itinerary-translations";
 
 const ItineraryBuilderMap = dynamic(() => import("@/components/ItineraryBuilderMap"), {
   ssr: false,
@@ -55,6 +56,9 @@ export default function SharedItineraryDetailView({
 }: {
   itinerary: SharedItinerary;
 }) {
+  const t = useTranslations("Buttons");
+  const locale = useLocale();
+  const ui = getItineraryTranslations(locale).detailUi;
   const router = useRouter();
   const [focusStopIndex, setFocusStopIndex] = useState<number | null>(null);
   const [mobileView, setMobileView] = useState<"list" | "map">("list");
@@ -139,7 +143,7 @@ export default function SharedItineraryDetailView({
         JSON.stringify({ slug: itinerary.slug, title: itinerary.title, stops, coverImage: itinerary.cover_image ?? undefined })
       );
     } catch {}
-    router.push(`/itineraries-mauritius/create?preset=${itinerary.slug}`);
+    router.push(`/roadtrip-mauritius/create?preset=${itinerary.slug}`);
   }, [itinerary, router]);
 
   const mapStops: StopForMap[] = useMemo(
@@ -203,19 +207,19 @@ export default function SharedItineraryDetailView({
         <div className="relative z-10 w-full pb-5 md:pb-6 px-4 pt-[calc(env(safe-area-inset-top)+4.5rem)]">
           <div className="container mx-auto max-w-6xl">
             <Link
-              href="/itineraries-mauritius"
+              href="/roadtrip-mauritius"
               className="inline-flex items-center gap-1.5 text-sm text-white/80 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-lg transition-colors mb-3 md:mb-4"
             >
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
-              Back to all Itineraries
+              {t("backToItineraries")}
             </Link>
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-1 md:mb-2">
               {itinerary.title}
             </h1>
             <p className="text-white/80 text-sm md:text-base">
-              {itinerary.stop_count} stops · by {itinerary.author_name}
+              {itinerary.stop_count} {itinerary.stop_count !== 1 ? ui.stopPlural : ui.stopSingular} · {ui.by} {itinerary.author_name}
             </p>
           </div>
         </div>
@@ -229,13 +233,13 @@ export default function SharedItineraryDetailView({
             {/* Row 1: Back | Save | Edit only */}
             <div className="flex items-center gap-2 sm:gap-3 sm:flex-initial">
               <Link
-                href="/itineraries-mauritius"
+                href="/roadtrip-mauritius"
                 className="flex shrink-0 items-center justify-center sm:justify-start gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors bg-white text-gray-700 border border-gray-200 hover:border-gray-300 hover:bg-gray-50"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
                 </svg>
-                Back
+                {t("back")}
               </Link>
               <div className="flex flex-1 min-w-0 gap-2 sm:gap-3">
                 <button
@@ -252,17 +256,17 @@ export default function SharedItineraryDetailView({
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                       </svg>
-                      Saved
+                      {t("saved")}
                     </>
                   ) : saving ? (
-                    "Saving..."
+                    t("saving")
                   ) : (
                     <>
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
                       </svg>
-                      <span className="sm:hidden">Save</span>
-                      <span className="hidden sm:inline">Save itinerary</span>
+                      <span className="sm:hidden">{t("save")}</span>
+                      <span className="hidden sm:inline">{t("saveItinerary")}</span>
                     </>
                   )}
                 </button>
@@ -273,8 +277,8 @@ export default function SharedItineraryDetailView({
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                   </svg>
-                  <span className="sm:hidden">Edit</span>
-                  <span className="hidden sm:inline">Edit this itinerary</span>
+                  <span className="sm:hidden">{t("edit")}</span>
+                  <span className="hidden sm:inline">{t("editItinerary")}</span>
                 </button>
               </div>
             </div>
@@ -285,7 +289,7 @@ export default function SharedItineraryDetailView({
                 {routeInfo && (
                   <>
                     <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gray-50 border border-gray-200 text-sm font-semibold text-orange-600">
-                      {itinerary.stops.length} stop{itinerary.stops.length !== 1 ? "s" : ""}
+                      {itinerary.stops.length} {itinerary.stops.length !== 1 ? ui.stopPlural : ui.stopSingular}
                     </span>
                     <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gray-50 border border-gray-200 text-sm font-semibold text-orange-600">
                       {routeInfo.totalDistanceKm} km
@@ -317,7 +321,7 @@ export default function SharedItineraryDetailView({
                 : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
             }`}
           >
-            Map
+            {ui.map}
           </button>
           <button
             type="button"
@@ -328,7 +332,7 @@ export default function SharedItineraryDetailView({
                 : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
             }`}
           >
-            Stops
+            {ui.stops}
           </button>
         </div>
 
@@ -336,7 +340,7 @@ export default function SharedItineraryDetailView({
           {/* Stops list */}
           <div className={`lg:order-1 lg:pr-2 ${mobileView === "list" ? "block" : "hidden lg:block"}`}>
             <h2 className="text-xl font-semibold text-gray-900 mb-4">
-              Stops on this itinerary
+              {ui.stopsOnItinerary}
             </h2>
             <div className="space-y-3 lg:max-h-[calc(100vh-12rem)] lg:overflow-y-auto lg:pr-2">
               <ul className="space-y-2">
@@ -373,7 +377,7 @@ export default function SharedItineraryDetailView({
                             <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                             </svg>
-                            Stop details
+                            {ui.stopDetails}
                           </Link>
                           <button
                             type="button"
@@ -384,7 +388,7 @@ export default function SharedItineraryDetailView({
                               <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                               <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                             </svg>
-                            Zoom on map
+                            {ui.zoomOnMap}
                           </button>
                           {routeInfo?.legs[i] && i < itinerary.stops.length - 1 && (
                             <>
@@ -398,7 +402,7 @@ export default function SharedItineraryDetailView({
                                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
-                                {formatDuration(routeInfo.legs[i].durationMin)} to next stop
+                                {formatDuration(routeInfo.legs[i].durationMin)} {ui.toNextStop}
                               </span>
                             </>
                           )}
@@ -417,7 +421,7 @@ export default function SharedItineraryDetailView({
             className={`lg:order-2 lg:sticky lg:top-24 lg:self-start ${mobileView === "map" ? "block" : "hidden lg:block"} scroll-mt-20`}
           >
             <h2 className="text-xl font-semibold text-gray-900 mb-4">
-              Map for this itinerary
+              {ui.mapForItinerary}
             </h2>
             <div className="h-[420px] sm:h-[480px] lg:h-[calc(100vh-8rem)] lg:min-h-[400px] rounded-lg overflow-hidden border border-gray-200 shadow-lg">
               {mapContainerVisible && (

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import SocialFollowButtons from "@/components/SocialFollowButtons";
 import { getImageUrl } from "@/lib/image-url";
@@ -30,6 +31,7 @@ const instagramPosts = [
 ];
 
 function VideoCard({ post }: { post: typeof instagramPosts[0] }) {
+  const t = useTranslations("Home.instagram");
   const cardRef = useRef<HTMLAnchorElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const playPromiseRef = useRef<Promise<void> | null>(null);
@@ -175,10 +177,10 @@ function VideoCard({ post }: { post: typeof instagramPosts[0] }) {
           {post.caption}
         </p>
         <p className="text-white/70 text-xs sm:text-sm mt-1 hidden sm:block">
-          {isPlaying ? "Tap to watch on Instagram" : "Hover to preview"}
+          {isPlaying ? t("tapToWatch") : t("hoverToPreview")}
         </p>
         <p className="text-white/70 text-xs sm:text-sm mt-1 sm:hidden">
-          {isPlaying ? "Tap again for Instagram" : "Tap to play"}
+          {isPlaying ? t("tapAgain") : t("tapToPlay")}
         </p>
       </div>
     </a>
@@ -186,10 +188,14 @@ function VideoCard({ post }: { post: typeof instagramPosts[0] }) {
 }
 
 function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(true);
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window === "undefined"
+      ? true
+      : window.matchMedia("(max-width: 767px)").matches
+  );
+
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 767px)");
-    setIsMobile(mq.matches);
     const handler = () => setIsMobile(mq.matches);
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
@@ -198,6 +204,7 @@ function useIsMobile() {
 }
 
 export default function InstagramFeed() {
+  const t = useTranslations("Home.instagram");
   const isMobile = useIsMobile();
 
   return (
@@ -209,10 +216,10 @@ export default function InstagramFeed() {
             @mauritius__explored
           </span>
           <h2 className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white mt-2">
-            Follow Our Adventures
+            {t("title")}
           </h2>
           <p className="text-gray-600 dark:text-gray-400 mt-3 max-w-xl mx-auto text-sm md:text-base">
-            Discover stunning destinations through our Instagram feed
+            {t("subtitle")}
           </p>
         </div>
 

@@ -1,18 +1,18 @@
 "use client";
 
 import { useMemo } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname } from "@/i18n/navigation";
 import { ItineraryDraftProvider } from "@/lib/itinerary-draft";
 import type { ReactNode } from "react";
 
 export default function Providers({ children }: { children: ReactNode }) {
+  // Locale-aware pathname (no /fr, /de, … prefix)
   const pathname = usePathname();
 
   const shouldUseItineraryDraftProvider = useMemo(() => {
     if (!pathname) return false;
 
     return (
-      pathname.startsWith("/itineraries-mauritius") ||
       pathname.startsWith("/roadtrip-mauritius") ||
       pathname.startsWith("/my-trips") ||
       pathname.startsWith("/top-activities-mauritius") ||

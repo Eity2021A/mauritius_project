@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import { Marquee } from "@/components/ui/marquee";
+import { HOME_MOSAIC_TRANSLATIONS } from "@/data/home-mosaic-translations";
 import { MOSAIC_ITEMS, type MosaicItem } from "@/data/mosaic";
+import type { AppLocale } from "@/i18n/routing";
 import { getImageSrcSet, getImageUrl } from "@/lib/image-url";
 
 function MosaicCard({ item }: { item: MosaicItem }) {
@@ -63,7 +65,12 @@ function DesktopMosaicCard({ item, index }: { item: MosaicItem; index: number })
   );
 }
 
-export default function PhotoMosaic() {
+type PhotoMosaicProps = {
+  locale: AppLocale;
+};
+
+export default function PhotoMosaic({ locale }: PhotoMosaicProps) {
+  const content = HOME_MOSAIC_TRANSLATIONS[locale] ?? HOME_MOSAIC_TRANSLATIONS.en;
   const half = Math.ceil(MOSAIC_ITEMS.length / 2);
   const row1 = MOSAIC_ITEMS.slice(0, half);
   const row2 = MOSAIC_ITEMS.slice(half);
@@ -73,13 +80,13 @@ export default function PhotoMosaic() {
       <div className="mx-auto w-full max-w-6xl px-4">
         <div className="text-center mb-3 md:mb-6">
           <p className="text-orange-500 text-sm font-medium tracking-wider uppercase">
-            EMPOWERING SUSTAINABLE TOURISM & TRAVEL FOR MAURITIUS
+            {content.kicker}
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mt-2">
-            Best of Mauritius Island 2026
+            {content.title}
           </h2>
           <p className="text-gray-600 dark:text-gray-400 text-center max-w-4xl mx-auto mt-2 md:mt-3">
-            All The Inspiration You Need To Start Planning Your Next Adventure
+            {content.subtitle}
           </p>
         </div>
       </div>

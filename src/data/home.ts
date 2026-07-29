@@ -39,6 +39,7 @@ export const POPULAR_DESTINATIONS: Destination[] = [
 ];
 
 export interface Service {
+  key: string;
   title: string;
   description: string;
   image: string;
@@ -48,32 +49,36 @@ export interface Service {
 
 export const SERVICES: Service[] = [
   {
+    key: "beachEscapes",
     title: "Beach Escapes",
     description: "Crystal clear waters and pristine white sand beaches await you.",
     image: "beach-of-le-morne-in-the-morning.jpg",
     href: "/beaches-in-mauritius",
-    buttonLabel: "Explore Beaches",
+    buttonLabel: "Explore Mauritius beaches",
   },
   {
+    key: "waterSports",
     title: "Water Sports",
     description: "Diving, snorkeling, kitesurfing, and underwater adventures.",
     image: "swimming-with-dolphins.jpg",
     href: "/mauritius-activities?category=sea",
-    buttonLabel: "View Activities",
+    buttonLabel: "Browse Mauritius water activities",
   },
   {
+    key: "natureWildlife",
     title: "Nature & Wildlife",
     description: "Explore national parks, waterfalls, and unique wildlife.",
     image: "alexandra-falls.jpg",
     href: "/best-places-to-visit-in-mauritius?category=nature",
-    buttonLabel: "Discover Places",
+    buttonLabel: "Discover Mauritius nature places",
   },
   {
+    key: "festivalsHolidays",
     title: "Festivals & Holidays",
     description: "Discover Mauritius's vibrant festivals and public holidays throughout the year.",
     image: "grand-bassin-shiva-statue.jpg",
     href: "/festivals-in-mauritius",
-    buttonLabel: "Explore Festivals",
+    buttonLabel: "Explore Mauritius festivals",
   },
 ];
 

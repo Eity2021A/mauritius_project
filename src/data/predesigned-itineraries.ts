@@ -1,7 +1,7 @@
 /**
  * Pre-designed itineraries for the itinerary page.
  * Road Trip North is fully populated; others are stubs for future content.
- * slug is used in URLs: /top-activities-mauritius/[slug]
+ * slug is used in URLs: /itineraries/[slug]
  */
 
 import { BEACH_DETAILS } from "@/data/beaches";
@@ -32,7 +32,7 @@ export interface PreDesignedStop {
 
 export interface PreDesignedItinerary {
   id: string;
-  /** URL slug for /top-activities-mauritius/[slug] */
+  /** URL slug for /itineraries/[slug] */
   slug: string;
   title: string;
   subtitle?: string;
@@ -48,7 +48,7 @@ export interface PreDesignedItinerary {
   routeTotals?: { totalDistanceKm: number; totalDurationMin: number };
 }
 
-export const ITINERARY_DETAIL_BASE = "/top-activities-mauritius";
+export const ITINERARY_DETAIL_BASE = "/itineraries";
 
 export function getPreDesignedItineraryBySlug(slug: string): PreDesignedItinerary | null {
   return PREDESIGNED_ITINERARIES.find((i) => i.slug === slug) ?? null;

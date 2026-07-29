@@ -47,7 +47,7 @@ export interface AcrossSectionConfig {
   dotColor: string;
   items: AcrossItem[];
   hrefPrefix: string;
-  ctaText: string;
+  ctaKey: "exploreAllActivities" | "exploreAllBeaches" | "exploreAllPlaces";
   ctaHref: string;
 }
 
@@ -57,7 +57,7 @@ export const acrossSections: AcrossSectionConfig[] = [
     dotColor: "bg-blue-500",
     items: topActivities,
     hrefPrefix: "/mauritius-activities",
-    ctaText: "Explore All Activities",
+    ctaKey: "exploreAllActivities",
     ctaHref: "/mauritius-activities",
   },
   {
@@ -65,7 +65,7 @@ export const acrossSections: AcrossSectionConfig[] = [
     dotColor: "bg-orange-500",
     items: topBeaches,
     hrefPrefix: "/beaches-in-mauritius",
-    ctaText: "Explore All Beaches",
+    ctaKey: "exploreAllBeaches",
     ctaHref: "/beaches-in-mauritius",
   },
   {
@@ -73,7 +73,7 @@ export const acrossSections: AcrossSectionConfig[] = [
     dotColor: "bg-green-500",
     items: topPlaces,
     hrefPrefix: "/top-activities-mauritius",
-    ctaText: "Explore All Places",
+    ctaKey: "exploreAllPlaces",
     ctaHref: "/best-places-to-visit-in-mauritius",
   },
 ];

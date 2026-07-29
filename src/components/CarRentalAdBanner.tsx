@@ -1,7 +1,9 @@
+import Image from "next/image";
+
 const ad = {
-  desktopSrc: "/images/ads//Rent-Car-in-Mauritius-Best-Prices-Discount.webp",
-  mobileSrc: "/images/ads/mobile-ad-1.png",
-  href: "/",
+  desktopSrc: "/images/ads/Rent-Car-in-Mauritius-Best-Prices-Discount.webp",
+  mobileSrc: "/images/ads/Rent-Car-in-Mauritius-Best-Prices-Discount.webp",
+  href: "/car-rental-mauritius",
   alt: "Rent a car in Mauritius",
 };
 
@@ -17,16 +19,16 @@ export default function CarRentalAdBanner() {
             href={ad.href}
             className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
           >
-            <picture>
-              <source media="(max-width: 767px)" srcSet={ad.mobileSrc} />
-              <img
+            <span className="relative block aspect-[1200/240] w-full">
+              <Image
                 src={ad.desktopSrc}
                 alt={ad.alt}
-                className="block h-auto w-full rounded-xl align-middle"
+                fill
+                sizes="(max-width: 1280px) 100vw, 1280px"
+                className="rounded-xl object-cover"
                 loading="lazy"
-                decoding="async"
               />
-            </picture>
+            </span>
           </a>
         </div>
       </div>

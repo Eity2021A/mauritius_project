@@ -11,7 +11,7 @@ const LISTING_PAGES = [
   "/explore/activities",
   "/explore/beaches",
   "/top-15-things-to-do-in-mauritius",
-  "/itineraries-mauritius",
+  "/roadtrip-mauritius",
   "/mauritius-itinerary",
 ]
 

@@ -2,22 +2,10 @@
 
 import type { ReactNode } from "react";
 import { useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import TransferDatePicker from "@/components/transfer/TransferDatePicker";
 import TransferTimePicker from "@/components/transfer/TransferTimePicker";
-
-const transferTypeHints = [
-  "Airport",
-  "Hotel",
-  "Hotel Location",
-  "Activity",
-  "Hotel + Hotel",
-  "Private Day Trip",
-  "Other",
-];
-
-const luggageHints = ["None", "1-2", "3-4", "more than 4 bags"];
-
-const childSeatHints = ["No", "baby seat", "child seat"];
+import { getTransportTranslations } from "@/data/transport-translations";
 
 function FieldLabel({ children }: { children: ReactNode }) {
   return (
@@ -106,6 +94,9 @@ function SelectInput({
 type SubmitState = "idle" | "submitting" | "success" | "error";
 
 export default function TransferRequestForm() {
+  const t = useTranslations("Buttons");
+  const locale = useLocale();
+  const { form } = getTransportTranslations(locale);
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [message, setMessage] = useState("");
   const [formInstanceKey, setFormInstanceKey] = useState(0);
@@ -135,7 +126,7 @@ export default function TransferRequestForm() {
 
     if (!payload.consent) {
       setSubmitState("error");
-      setMessage("Please confirm the provider-sharing notice before submitting.");
+      setMessage(form.consentError);
       return;
     }
 
@@ -154,7 +145,7 @@ export default function TransferRequestForm() {
       const result = (await response.json()) as { error?: string; message?: string };
 
       if (!response.ok) {
-        throw new Error(result.error || "Something went wrong while sending your request.");
+        throw new Error(result.error || form.sendError);
       }
 
       form.reset();
@@ -162,14 +153,14 @@ export default function TransferRequestForm() {
       setSubmitState("success");
       setMessage(
         result.message ||
-          "Your request has been sent. Please check your email for confirmation."
+          form.success
       );
     } catch (error) {
       setSubmitState("error");
       setMessage(
         error instanceof Error
           ? error.message
-          : "Something went wrong while sending your request."
+          : form.sendError
       );
     }
   }
@@ -178,14 +169,13 @@ export default function TransferRequestForm() {
     <div className="mt-14 rounded-[1.8rem] border border-[#fcfcfc] bg-white px-5 py-8 shadow-[0_18px_40px_rgba(99,78,50,0.08)] sm:px-8 sm:py-10 lg:px-10">
       <div className="text-center">
         <p className="text-[0.82rem] font-semibold uppercase tracking-[0.18em] text-[#f26d21] sm:text-[0.9rem]">
-          Private Transfers <span aria-hidden="true">&middot;</span> Enquiry
+          {form.kicker}
         </p>
         <h2 className="mt-3 text-[2rem] font-bold leading-tight text-[#1d2435] sm:text-[2.6rem]">
-          Transfer Request Form
+          {form.title}
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-sm italic leading-7 text-[#8b8782] sm:text-[1rem]">
-          Fill in the details below and we&apos;ll email you availability and a
-          price to confirm.
+          {form.subtitle}
         </p>
       </div>
 
@@ -196,109 +186,109 @@ export default function TransferRequestForm() {
       >
         <div className="grid gap-x-4 gap-y-5 md:grid-cols-2 md:gap-x-6 md:gap-y-6">
           <div>
-            <FieldLabel>Full Name</FieldLabel>
+            <FieldLabel>{form.labels[0]}</FieldLabel>
             <TextInput
               name="fullName"
-              placeholder="Your full name"
+              placeholder={form.placeholders[0]}
               required
             />
           </div>
           <div>
-            <FieldLabel>Email Address</FieldLabel>
+            <FieldLabel>{form.labels[1]}</FieldLabel>
             <TextInput
               name="email"
-              placeholder="you@email.com"
+              placeholder={form.placeholders[1]}
               type="email"
               required
             />
           </div>
           <div>
-            <FieldLabel>Phone / WhatsApp Number</FieldLabel>
+            <FieldLabel>{form.labels[2]}</FieldLabel>
             <TextInput
               name="phone"
-              placeholder="+ country code"
+              placeholder={form.placeholders[2]}
               required
             />
           </div>
           <div>
-            <FieldLabel>Type of Transfer</FieldLabel>
+            <FieldLabel>{form.labels[3]}</FieldLabel>
             <SelectInput
               name="transferType"
-              placeholder="Select transfer type"
-              options={transferTypeHints}
-              hints={transferTypeHints}
+              placeholder={form.placeholders[3]}
+              options={form.transferTypes}
+              hints={form.transferTypes}
               required
             />
           </div>
           <div>
-            <FieldLabel>Pick-Up Location</FieldLabel>
+            <FieldLabel>{form.labels[4]}</FieldLabel>
             <TextInput
               name="pickupLocation"
-              placeholder="Hotel, airport or address"
+              placeholder={form.placeholders[4]}
               required
             />
           </div>
           <div>
-            <FieldLabel>Drop-Off Location</FieldLabel>
+            <FieldLabel>{form.labels[5]}</FieldLabel>
             <TextInput
               name="dropoffLocation"
-              placeholder="Hotel, airport or address"
+              placeholder={form.placeholders[5]}
               required
             />
           </div>
           <div>
-            <FieldLabel>Pick-Up Date</FieldLabel>
+            <FieldLabel>{form.labels[6]}</FieldLabel>
             <TransferDatePicker
               name="pickupDate"
-              placeholder="DD / MM / YYYY"
+              placeholder={form.placeholders[6]}
             />
           </div>
           <div>
-            <FieldLabel>Pick-Up Time</FieldLabel>
+            <FieldLabel>{form.labels[7]}</FieldLabel>
             <TransferTimePicker
               name="pickupTime"
-              placeholder="--:--"
+              placeholder={form.placeholders[7]}
             />
           </div>
           <div>
-            <FieldLabel>Number of Passengers</FieldLabel>
+            <FieldLabel>{form.labels[8]}</FieldLabel>
             <TextInput
               name="passengers"
-              placeholder="e.g. 2"
+              placeholder={form.placeholders[8]}
               required
             />
           </div>
           <div>
-            <FieldLabel>Luggage</FieldLabel>
+            <FieldLabel>{form.labels[9]}</FieldLabel>
             <SelectInput
               name="luggage"
-              placeholder="Select amount"
-              options={luggageHints}
-              hints={luggageHints}
+              placeholder={form.placeholders[9]}
+              options={form.luggage}
+              hints={form.luggage}
               required
             />
           </div>
           <div>
-            <FieldLabel>Child Seat Required?</FieldLabel>
+            <FieldLabel>{form.labels[10]}</FieldLabel>
             <SelectInput
               name="childSeat"
-              placeholder="Select option"
-              options={childSeatHints}
-              hints={childSeatHints}
+              placeholder={form.placeholders[10]}
+              options={form.childSeats}
+              hints={form.childSeats}
             />
           </div>
           <div>
-            <FieldLabel>Flight Number</FieldLabel>
+            <FieldLabel>{form.labels[11]}</FieldLabel>
             <TextInput
               name="flightNumber"
-              placeholder="e.g. MK015"
+              placeholder={form.placeholders[11]}
             />
           </div>
           <div className="md:col-span-2">
-            <FieldLabel>Additional Details</FieldLabel>
+            <FieldLabel>{form.labels[12]}</FieldLabel>
             <textarea
               name="additionalDetails"
-              placeholder="Anything else we should know - stops, timings, special requests..."
+              placeholder={form.placeholders[12]}
               className="min-h-[110px] w-full rounded-md border border-[#dfd4c7] bg-white px-4 py-3 text-sm text-[#384255] placeholder:text-[#9a938f] focus:border-[#f26d21] focus:outline-none"
             />
           </div>
@@ -312,9 +302,7 @@ export default function TransferRequestForm() {
             className="mt-1 h-10 w-10 rounded border border-[#d8ccbf] accent-[#f26d21]"
           />
           <span>
-            I understand that Mauritius Explored will share my request with an
-            independent transfer provider, and that all bookings, prices and
-            services are managed directly by the provider.
+            {form.consent}
           </span>
         </label>
 
@@ -354,10 +342,13 @@ export default function TransferRequestForm() {
               </svg>
             </span>
             {submitState === "submitting"
-              ? "Sending Request..."
-              : "Request Transfer Quote"}
+              ? t("submitting")
+              : t("requestTransferQuote")}
           </button>
         </div>
+        <p className="mt-3 text-center text-xs leading-5 text-[#6a7387]">
+          {form.response}
+        </p>
       </form>
     </div>
   );

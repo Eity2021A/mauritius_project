@@ -1,8 +1,7 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
-import PlanTripButton from "@/components/PlanTripButton";
+import { getTranslations } from "next-intl/server";
+import AcrossSectionCta from "@/components/AcrossSectionCta";
 import { getImageUrl } from "@/lib/image-url";
 import { Marquee } from "@/components/ui/marquee";
 import type { Metadata } from "next";
@@ -34,6 +33,7 @@ function SmallCard({
   return (
     <Link
       href={href}
+      aria-label={`See ${name} in Mauritius`}
       className="group flex items-center gap-3 p-2 bg-gray-100 rounded-lg border border-gray-200 hover:bg-orange-500 hover:border-orange-500 transition-colors shadow-sm"
     >
       <div className="relative w-12 h-12 flex-shrink-0 rounded-lg overflow-hidden">
@@ -70,24 +70,6 @@ function SmallCard({
   );
 }
 
-function ArrowIcon() {
-  return (
-    <svg
-      className="w-4 h-4"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M17 8l4 4m0 0l-4 4m4-4H3"
-      />
-    </svg>
-  );
-}
-
 function AcrossSection({ config }: { config: AcrossSectionConfig }) {
   return (
     <div>
@@ -104,15 +86,7 @@ function AcrossSection({ config }: { config: AcrossSectionConfig }) {
           />
         ))}
       </div>
-      <div className="mt-4">
-        <PlanTripButton
-          href={config.ctaHref}
-          className="inline-flex items-center gap-2 bg-orange-500 text-white px-6 py-2.5 rounded-full font-medium hover:bg-orange-600 transition-colors text-sm disabled:opacity-90 disabled:cursor-wait"
-        >
-          {config.ctaText}
-          <ArrowIcon />
-        </PlanTripButton>
-      </div>
+      <AcrossSectionCta ctaKey={config.ctaKey} ctaHref={config.ctaHref} />
     </div>
   );
 }
@@ -127,7 +101,7 @@ function MarqueeCard({
   href: string;
 }) {
   return (
-    <Link href={href}>
+    <Link href={href} aria-label={`See ${item.name} in Mauritius`}>
       <div className="relative flex h-44 w-28 sm:h-52 sm:w-36 md:h-64 md:w-44 lg:h-72 lg:w-52 flex-col items-start justify-start overflow-hidden rounded-lg bg-gray-200 shrink-0 cursor-pointer hover:scale-105 transition-transform duration-200">
         <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-1/2 bg-gradient-to-b from-black/70 via-black/40 to-transparent" />
         <div className="relative z-40 p-3 sm:p-4">
@@ -153,12 +127,13 @@ function MarqueeCard({
 }
 
 export default async function AcrossMauritius() {
+  const t = await getTranslations("Home.across");
   const { topActivities, topBeaches, topPlaces, hiddenGems } =
     await getAcrossSectionsEnriched();
   const acrossSectionsWithEnrichedImages: AcrossSectionConfig[] = [
-    { ...acrossSections[0], items: topActivities },
-    { ...acrossSections[1], items: topBeaches },
-    { ...acrossSections[2], items: topPlaces },
+    { ...acrossSections[0], title: t("sections.activities"), items: topActivities },
+    { ...acrossSections[1], title: t("sections.beaches"), items: topBeaches },
+    { ...acrossSections[2], title: t("sections.places"), items: topPlaces },
   ];
 
   return (
@@ -169,14 +144,13 @@ export default async function AcrossMauritius() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-8">
               <span className="text-orange-500 font-medium tracking-wider text-sm uppercase">
-                Discover
+                {t("kicker")}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2">
-                Explore Top Picks Across Mauritius
+                {t("title")}
               </h2>
               <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-                From thrilling activities to pristine beaches and must-see
-                landmarks — start exploring here
+                {t("subtitle")}
               </p>
             </div>
 

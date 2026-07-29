@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { PREDESIGNED_ITINERARIES } from "@/data/predesigned-itineraries";
 import { getImageUrl } from "@/lib/image-url";
 import { getPublicItineraries, getFeaturedUpvotes } from "@/lib/itinerary-actions";
 import UpvoteButton from "@/components/UpvoteButton";
@@ -10,6 +9,7 @@ import ScrollToCommunitySection from "./ScrollToCommunitySection";
 import ItinerariesListClient from "./ItinerariesListClient";
 import type { Metadata } from "next";
 import { DEFAULT_OG_IMAGE } from "@/lib/constants";
+import { getFeaturedItineraries } from "@/lib/featured-itineraries";
 
 export const metadata: Metadata = {
   title: "Mauritius Itineraries - Plan Your Trip",
@@ -19,13 +19,14 @@ export const metadata: Metadata = {
     description: "Explore pre-designed itineraries and road trips for Mauritius.",
     images: [DEFAULT_OG_IMAGE],
   },
-  alternates: { canonical: "/itineraries-mauritius" },
+  alternates: { canonical: "/itineraries" },
 };
 
 export const revalidate = 3600;
 
 export default async function ItinerariesMauritiusPage() {
-  const [communityItineraries, featuredUpvotes] = await Promise.all([
+  const [itineraries, communityItineraries, featuredUpvotes] = await Promise.all([
+    getFeaturedItineraries(),
     getPublicItineraries(),
     getFeaturedUpvotes(),
   ]);
@@ -61,7 +62,7 @@ export default async function ItinerariesMauritiusPage() {
 
           {/* Recommended itineraries — 2-col listing view */}
           <ItinerariesListClient
-            itineraries={PREDESIGNED_ITINERARIES}
+            itineraries={itineraries}
             featuredUpvotes={featuredUpvotes}
           />
 

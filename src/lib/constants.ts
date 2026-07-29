@@ -13,12 +13,25 @@ export const DROPDOWN_CLOSE_DELAY = 150;
 // Image loading shimmer placeholder (base64 SVG)
 export const SHIMMER_PLACEHOLDER = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjNmNGY2Ii8+PC9zdmc+";
 
+function normalizeSiteUrl(url: string) {
+  return url.replace(/\/+$/, "");
+}
+
 /**
- * Canonical site URL. Set NEXT_PUBLIC_SITE_URL in Vercel for production.
- * Use https://mauritiusexplored.com once the custom domain is connected.
+ * Canonical public domain used for crawlable SEO assets.
+ * Keep this on the preferred www host so generated sitemaps do not expose
+ * Vercel preview URLs or competing hostnames.
  */
-export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://mauritius-explored.vercel.app";
+export const CANONICAL_SITE_URL = normalizeSiteUrl(
+  process.env.NEXT_PUBLIC_CANONICAL_SITE_URL || "https://www.mauritiusexplored.com"
+);
+
+/**
+ * Public site URL for metadata, JSON-LD and share links.
+ */
+export const SITE_URL = normalizeSiteUrl(
+  process.env.NEXT_PUBLIC_SITE_URL || CANONICAL_SITE_URL
+);
 
 /** Official Facebook Page for the brand */
 export const FACEBOOK_PAGE_URL = "https://www.facebook.com/MauritiusExplored";

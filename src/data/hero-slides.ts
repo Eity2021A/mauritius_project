@@ -10,7 +10,7 @@ export const FIRST_HERO_WIDTHS = [480, 720, 960, 1280];
 export const SLIDES: SlideContent[] = [
   {
     image: "/images/banners/le-morne-beach-resort-sunset-mauritius.jpg",
-    title: "Travel & Adventure",
+    title: "Mauritius Travel Guide",
     subtitle: "All you need to plan your holidays in Mauritius Island",
   },
   {

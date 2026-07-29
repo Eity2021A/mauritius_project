@@ -114,7 +114,8 @@ export async function saveItinerary(input: SaveItineraryInput): Promise<SaveResu
   }
 
   revalidatePath("/my-trips");
-  revalidatePath("/itineraries-mauritius");
+  revalidatePath("/itineraries");
+  revalidatePath("/roadtrip-mauritius");
   return { ok: true, itineraryId: itinerary.id };
 }
 
@@ -265,7 +266,8 @@ export async function updateItinerary(
   }
 
   revalidatePath("/my-trips");
-  revalidatePath("/itineraries-mauritius");
+  revalidatePath("/itineraries");
+  revalidatePath("/roadtrip-mauritius");
   return { ok: true, itineraryId: id };
 }
 
@@ -330,7 +332,8 @@ export async function savePreDesignedToMyTrips(
   }
 
   revalidatePath("/my-trips");
-  revalidatePath("/itineraries-mauritius");
+  revalidatePath("/itineraries");
+  revalidatePath("/roadtrip-mauritius");
   return { ok: true, itineraryId: itinerary.id };
 }
 
@@ -385,7 +388,8 @@ export async function ensureFeaturedItinerary(
     );
   }
 
-  revalidatePath("/itineraries-mauritius");
+  revalidatePath("/itineraries");
+  revalidatePath("/roadtrip-mauritius");
   return created.id;
 }
 
@@ -487,7 +491,8 @@ export async function toggleUpvote(
     .eq("id", itineraryId)
     .single();
 
-  revalidatePath("/itineraries-mauritius");
+  revalidatePath("/itineraries");
+  revalidatePath("/roadtrip-mauritius");
   return { ok: true, upvoted: !existing, count: itin?.upvote_count ?? 0 };
 }
 
@@ -529,7 +534,8 @@ export async function toggleItineraryPublic(
 
   if (error) return { ok: false, error: error.message };
   revalidatePath("/my-trips");
-  revalidatePath("/itineraries-mauritius");
+  revalidatePath("/itineraries");
+  revalidatePath("/roadtrip-mauritius");
   return { ok: true, slug: data.slug };
 }
 

@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
 import AuthModal from "@/components/AuthModal";
 import { createClient } from "@/lib/supabase/client";
 import {
@@ -32,6 +33,7 @@ function stopsToInput(itinerary: PreDesignedItinerary): SaveItineraryInput["stop
 }
 
 export default function ItinerarySaveRate({ itinerary, routeInfo }: Props) {
+  const t = useTranslations("Buttons");
   const router = useRouter();
   const [showAuth, setShowAuth] = useState(false);
   const [pendingAction, setPendingAction] = useState<"save" | null>(null);
@@ -112,7 +114,7 @@ export default function ItinerarySaveRate({ itinerary, routeInfo }: Props) {
         JSON.stringify({ slug: itinerary.slug, title: itinerary.title, stops, coverImage: itinerary.listingImage ?? itinerary.image })
       );
     } catch {}
-    router.push(`/itineraries-mauritius/create?preset=${itinerary.slug}`);
+    router.push(`/roadtrip-mauritius/create?preset=${itinerary.slug}`);
   }, [itinerary, router]);
 
   useEffect(() => {
@@ -140,7 +142,7 @@ export default function ItinerarySaveRate({ itinerary, routeInfo }: Props) {
             {/* Row 1: Back + primary actions */}
             <div className="flex items-center gap-2 md:gap-3 md:flex-initial">
               <Link
-                href="/itineraries-mauritius"
+                href="/itineraries"
                 className="flex shrink-0 items-center justify-center md:justify-start gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors bg-white text-gray-700 border border-gray-200 hover:border-gray-300 hover:bg-gray-50"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
@@ -163,17 +165,17 @@ export default function ItinerarySaveRate({ itinerary, routeInfo }: Props) {
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                       </svg>
-                      Saved
+                      {t("saved")}
                     </>
                   ) : saving ? (
-                    "Saving..."
+                    t("saving")
                   ) : (
                     <>
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
                       </svg>
-                      <span className="md:hidden">Save</span>
-                      <span className="hidden md:inline">Save itinerary</span>
+                      <span className="md:hidden">{t("save")}</span>
+                      <span className="hidden md:inline">{t("saveItinerary")}</span>
                     </>
                   )}
                 </button>
@@ -184,28 +186,28 @@ export default function ItinerarySaveRate({ itinerary, routeInfo }: Props) {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                   </svg>
-                  <span className="md:hidden">Edit</span>
-                  <span className="hidden md:inline">Edit this itinerary</span>
+                  <span className="md:hidden">{t("edit")}</span>
+                  <span className="hidden md:inline">{t("editItinerary")}</span>
                 </button>
                 <Link
-                  href="/rental"
+                  href="/car-rental-mauritius"
                   className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors bg-yellow-400 text-yellow-950 border border-yellow-400 hover:bg-yellow-500 hover:border-yellow-500 md:flex-initial"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 14.25h16.5M6.75 18.75a1.5 1.5 0 113 0m7.5 0a1.5 1.5 0 113 0m-15-4.5V9.75A2.25 2.25 0 018.25 7.5h6.69a2.25 2.25 0 011.59.66l2.81 2.81a2.25 2.25 0 01.66 1.59v1.69M3 14.25h1.5m15.75 0H21" />
                   </svg>
-                  <span className="md:hidden">Rental</span>
-                  <span className="hidden md:inline">Add car rental</span>
+                  <span className="md:hidden">{t("rental")}</span>
+                  <span className="hidden md:inline">{t("addCarRental")}</span>
                 </Link>
                 <Link
-                  href="/taxi"
+                  href="/mauritius-taxi"
                   className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors bg-green-500 text-white border border-green-500 hover:bg-green-600 hover:border-green-600 md:flex-initial"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 16.5h7.5M9 6.75h6l1.5 3.75H7.5L9 6.75zm-1.5 3.75h9a2.25 2.25 0 012.25 2.25v2.25a1.5 1.5 0 01-1.5 1.5h-.75a1.5 1.5 0 01-3 0h-3a1.5 1.5 0 01-3 0h-.75a1.5 1.5 0 01-1.5-1.5v-2.25A2.25 2.25 0 017.5 10.5zm1.125 2.625h.008v.008h-.008v-.008zm6.75 0h.008v.008h-.008v-.008z" />
                   </svg>
-                  <span className="md:hidden">Taxi</span>
-                  <span className="hidden md:inline">Add taxi</span>
+                  <span className="md:hidden">{t("taxi")}</span>
+                  <span className="hidden md:inline">{t("addTaxi")}</span>
                 </Link>
               </div>
             </div>

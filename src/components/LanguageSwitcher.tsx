@@ -1,15 +1,17 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useTransition } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { usePathname, useRouter } from "@/i18n/navigation";
+import type { AppLocale } from "@/i18n/routing";
 
-export type LocaleCode = "en" | "fr" | "de" | "zh" | "hi";
-
-const LANGUAGES: { code: LocaleCode; name: string; flag: string }[] = [
-  { code: "en", name: "English", flag: "🇬🇧" },
-  { code: "fr", name: "French", flag: "🇫🇷" },
-  { code: "de", name: "German", flag: "🇩🇪" },
-  { code: "zh", name: "Chinese", flag: "🇨🇳" },
-  { code: "hi", name: "Hindi", flag: "🇮🇳" },
+const LANGUAGES: { code: AppLocale; nameKey: string; flag: string }[] = [
+  { code: "en", nameKey: "english", flag: "🇬🇧" },
+  { code: "fr", nameKey: "french", flag: "🇫🇷" },
+  { code: "de", nameKey: "german", flag: "🇩🇪" },
+  { code: "it", nameKey: "italian", flag: "🇮🇹" },
+  { code: "es", nameKey: "spanish", flag: "🇪🇸" },
+  { code: "ru", nameKey: "russian", flag: "🇷🇺" },
 ];
 
 interface LanguageSwitcherProps {
@@ -26,8 +28,12 @@ export default function LanguageSwitcher({
   compact = false,
   onSelect,
 }: LanguageSwitcherProps) {
+  const t = useTranslations("LanguageSwitcher");
+  const locale = useLocale() as AppLocale;
+  const router = useRouter();
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState<LocaleCode>("en");
+  const [isPending, startTransition] = useTransition();
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -49,7 +55,20 @@ export default function LanguageSwitcher({
     };
   }, [open]);
 
-  const current = LANGUAGES.find((l) => l.code === selected) ?? LANGUAGES[0];
+  const switchLocale = (nextLocale: AppLocale) => {
+    if (nextLocale === locale) {
+      setOpen(false);
+      onSelect?.();
+      return;
+    }
+    startTransition(() => {
+      router.replace(pathname, { locale: nextLocale });
+      setOpen(false);
+      onSelect?.();
+    });
+  };
+
+  const current = LANGUAGES.find((l) => l.code === locale) ?? LANGUAGES[0];
   const isLight = variant === "light";
 
   const buttonClass = compact
@@ -58,33 +77,33 @@ export default function LanguageSwitcher({
         isLight
           ? "border-white/40 text-white hover:bg-white/10"
           : "border-gray-200 bg-gray-50 text-gray-700 hover:border-gray-300 hover:bg-gray-100"
-      }`;
+      } ${isPending ? "opacity-70" : ""}`;
 
   if (compact) {
     return (
       <div className="border-t pt-2 mt-2">
         <div className="px-2 pb-1 text-xs font-semibold text-gray-500 uppercase tracking-wide">
-          Select Language
+          {t("selectLanguage")}
         </div>
         {LANGUAGES.map((lang) => (
           <button
             key={lang.code}
             type="button"
-            onClick={() => {
-              setSelected(lang.code);
-              onSelect?.();
-            }}
-            className={`${buttonClass} flex items-center justify-between w-full`}
+            onClick={() => switchLocale(lang.code)}
+            disabled={isPending}
+            className={`${buttonClass} flex items-center justify-between w-full ${
+              lang.code === locale ? "bg-orange-50 text-orange-700 font-medium" : ""
+            }`}
           >
             <div className="flex items-center gap-2">
               <span className="text-xl leading-none" aria-hidden>
                 {lang.flag}
               </span>
-              <span>{lang.name}</span>
+              <span>{t(lang.nameKey)}</span>
             </div>
-            {lang.code !== "en" && (
-              <span className="text-[10px] font-medium text-gray-500 bg-gray-100 rounded px-1.5 py-0.5 shrink-0">
-                Coming soon
+            {lang.code === locale && (
+              <span className="text-[10px] font-medium text-orange-600 bg-orange-100 rounded px-1.5 py-0.5 shrink-0">
+                ✓
               </span>
             )}
           </button>
@@ -101,7 +120,8 @@ export default function LanguageSwitcher({
         className={buttonClass}
         aria-haspopup="listbox"
         aria-expanded={open}
-        aria-label={`Language: ${current.name}. Choose language`}
+        aria-label={t("ariaLabel", { name: t(current.nameKey) })}
+        disabled={isPending}
       >
         <span className="text-2xl leading-none" aria-hidden>
           {current.flag}
@@ -124,7 +144,7 @@ export default function LanguageSwitcher({
       {open && (
         <div
           role="listbox"
-          aria-label="Select language"
+          aria-label={t("listLabel")}
           className="absolute top-full right-0 mt-2 min-w-[200px] w-56 bg-white rounded-lg shadow-lg py-2 z-[60] border border-gray-100 overflow-hidden"
         >
           {LANGUAGES.map((lang) => (
@@ -132,14 +152,11 @@ export default function LanguageSwitcher({
               key={lang.code}
               role="option"
               type="button"
-              aria-selected={selected === lang.code}
-              onClick={() => {
-                setSelected(lang.code);
-                setOpen(false);
-                // Dummy: ready for future i18n — e.g. router.push(`/${lang.code}${pathname}`)
-              }}
+              aria-selected={lang.code === locale}
+              onClick={() => switchLocale(lang.code)}
+              disabled={isPending}
               className={`flex items-center justify-between gap-2 w-full px-4 py-2.5 text-left text-sm transition-colors ${
-                selected === lang.code
+                lang.code === locale
                   ? "bg-orange-50 text-orange-700 font-medium"
                   : "text-gray-700 hover:bg-gray-50"
               }`}
@@ -148,11 +165,11 @@ export default function LanguageSwitcher({
                 <span className="text-xl leading-none shrink-0" aria-hidden>
                   {lang.flag}
                 </span>
-                <span className="truncate">{lang.name}</span>
+                <span className="truncate">{t(lang.nameKey)}</span>
               </div>
-              {lang.code !== "en" && (
-                <span className="text-[10px] font-medium text-gray-500 bg-gray-100 rounded px-1.5 py-0.5 shrink-0 whitespace-nowrap">
-                  Coming soon
+              {lang.code === locale && (
+                <span className="text-orange-600 shrink-0" aria-hidden>
+                  ✓
                 </span>
               )}
             </button>

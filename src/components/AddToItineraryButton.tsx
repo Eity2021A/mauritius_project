@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
-import Link from "next/link";
 import { createPortal } from "react-dom";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { useItineraryDraft } from "@/lib/itinerary-draft";
 import ItineraryToast from "@/components/ItineraryToast";
 
@@ -27,6 +28,7 @@ export default function AddToItineraryButton({
   bookingUrl,
   whatsappUrl,
 }: AddToItineraryButtonProps) {
+  const t = useTranslations("Buttons");
   const { addStop, removeStop, hasStop, stopCount } = useItineraryDraft();
   const added = hasStop(slug, type);
   const [toastVisible, setToastVisible] = useState(false);
@@ -37,13 +39,13 @@ export default function AddToItineraryButton({
   const handleClick = useCallback(() => {
     if (added) {
       removeStop(slug, type);
-      setToastMessage(`Removed from your itinerary`);
+      setToastMessage(t("removedFromItinerary"));
     } else {
       addStop({ type, slug, name, lat, lng, image });
-      setToastMessage(`Added to your itinerary`);
+      setToastMessage(t("addedToast"));
     }
     setToastVisible(true);
-  }, [added, addStop, removeStop, type, slug, name, lat, lng, image]);
+  }, [added, addStop, removeStop, type, slug, name, lat, lng, image, t]);
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => setMounted(true));
@@ -77,7 +79,6 @@ export default function AddToItineraryButton({
 
   return (
     <>
-      {/* Desktop: inline button */}
       <div className="hidden lg:block">
         <button
           onClick={handleClick}
@@ -92,14 +93,14 @@ export default function AddToItineraryButton({
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              Added to itinerary
+              {t("addedToItinerary")}
             </>
           ) : (
             <>
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
               </svg>
-              Add to my itinerary
+              {t("addToMyItinerary")}
             </>
           )}
         </button>
@@ -116,68 +117,68 @@ export default function AddToItineraryButton({
           >
             <div className="px-4 pt-3 pb-3 space-y-3">
               <div className="flex items-center gap-3">
-              {bookingUrl && (
-                <Link
-                  href={bookingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center px-4 py-3.5 rounded-lg bg-orange-500 text-sm font-semibold text-white shadow-md touch-manipulation whitespace-nowrap"
-                >
-                  Book Now
-                </Link>
-              )}
-              <button
-                onClick={handleClick}
-                className={`flex-1 flex items-center justify-center gap-2 px-4 py-3.5 rounded-lg text-sm font-semibold transition-all whitespace-nowrap ${
-                  added
-                    ? "bg-green-50 text-green-700 border border-green-200"
-                    : "bg-blue-600 text-white shadow-md"
-                }`}
-              >
-                {added ? (
-                  <>
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    Added
-                  </>
-                ) : (
-                  <>
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                    </svg>
-                    Add to itinerary
-                  </>
+                {bookingUrl && (
+                  <a
+                    href={bookingUrl}
+                    target="_blank"
+                    rel="sponsored noopener noreferrer"
+                    className="flex-1 flex items-center justify-center px-4 py-3.5 rounded-lg bg-orange-500 text-sm font-semibold text-white shadow-md touch-manipulation whitespace-nowrap"
+                  >
+                    {t("bookNow")}
+                  </a>
                 )}
-              </button>
-              {stopCount > 0 && (
-                <Link
-                  href="/itineraries-mauritius/create"
-                  onClick={(e) => e.stopPropagation()}
-                  className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-bold touch-manipulation"
-                  aria-label="Open my itinerary"
+                <button
+                  onClick={handleClick}
+                  className={`flex-1 flex items-center justify-center gap-2 px-4 py-3.5 rounded-lg text-sm font-semibold transition-all whitespace-nowrap ${
+                    added
+                      ? "bg-green-50 text-green-700 border border-green-200"
+                      : "bg-blue-600 text-white shadow-md"
+                  }`}
                 >
-                  {stopCount}
-                </Link>
-              )}
+                  {added ? (
+                    <>
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      {t("added")}
+                    </>
+                  ) : (
+                    <>
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                      {t("addToItinerary")}
+                    </>
+                  )}
+                </button>
+                {stopCount > 0 && (
+                  <Link
+                    href="/roadtrip-mauritius/create"
+                    onClick={(e) => e.stopPropagation()}
+                    className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-bold touch-manipulation"
+                    aria-label={t("openMyItinerary")}
+                  >
+                    {stopCount}
+                  </Link>
+                )}
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 {whatsappUrl && (
-                  <Link
+                  <a
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center px-4 py-3 rounded-lg border border-green-200 bg-green-50 text-sm font-semibold text-green-700 touch-manipulation"
                   >
-                    WhatsApp
-                  </Link>
+                    {t("whatsapp")}
+                  </a>
                 )}
                 <Link
-                  href="/transfer"
+                  href="/mauritius-transfer-airport-hotel"
                   className="flex items-center justify-center px-4 py-3 rounded-lg border border-blue-200 bg-blue-50 text-sm font-semibold text-blue-700 touch-manipulation"
                 >
-                  Transfer
+                  {t("transfer")}
                 </Link>
               </div>
             </div>

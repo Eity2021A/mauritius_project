@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { useTranslations } from "next-intl";
 import { subscribeToNewsletter } from "@/lib/actions";
 
 interface NewsletterFormProps {
@@ -8,6 +9,7 @@ interface NewsletterFormProps {
 }
 
 export default function NewsletterForm({ source = "blog" }: NewsletterFormProps) {
+  const t = useTranslations("Buttons");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
   const [isPending, startTransition] = useTransition();
@@ -19,10 +21,10 @@ export default function NewsletterForm({ source = "blog" }: NewsletterFormProps)
     startTransition(async () => {
       const result = await subscribeToNewsletter(email, source);
       if (result.success) {
-        setMessage({ type: "success", text: "You're subscribed! Welcome aboard." });
+        setMessage({ type: "success", text: t("subscribedSuccess") });
         setEmail("");
       } else {
-        setMessage({ type: "error", text: result.error ?? "Something went wrong." });
+        setMessage({ type: "error", text: result.error ?? t("somethingWrong") });
       }
     });
   };
@@ -30,13 +32,15 @@ export default function NewsletterForm({ source = "blog" }: NewsletterFormProps)
   return (
     <div>
       <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-        <label htmlFor="newsletter-email" className="sr-only">Email address</label>
+        <label htmlFor="newsletter-email" className="sr-only">
+          {t("emailAddress")}
+        </label>
         <input
           id="newsletter-email"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Enter your email"
+          placeholder={t("emailPlaceholder")}
           required
           disabled={isPending}
           className="flex-1 px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent disabled:opacity-50"
@@ -49,10 +53,10 @@ export default function NewsletterForm({ source = "blog" }: NewsletterFormProps)
           {isPending ? (
             <>
               <span className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin shrink-0" />
-              <span>Subscribing…</span>
+              <span>{t("subscribing")}</span>
             </>
           ) : (
-            "Subscribe"
+            t("subscribe")
           )}
         </button>
       </form>

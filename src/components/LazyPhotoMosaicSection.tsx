@@ -2,12 +2,19 @@
 
 import { useRef, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
+import type { AppLocale } from "@/i18n/routing";
 
 const PhotoMosaic = dynamic(() => import("@/components/PhotoMosaic"), {
   ssr: false,
 });
 
-export default function LazyPhotoMosaicSection() {
+type LazyPhotoMosaicSectionProps = {
+  locale: AppLocale;
+};
+
+export default function LazyPhotoMosaicSection({
+  locale,
+}: LazyPhotoMosaicSectionProps) {
   const sentinelRef = useRef<HTMLDivElement>(null);
   const [isNearView, setIsNearView] = useState(false);
 
@@ -32,7 +39,11 @@ export default function LazyPhotoMosaicSection() {
   return (
     <>
       <div ref={sentinelRef} className="min-h-[1px]" aria-hidden="true" />
-      {isNearView ? <PhotoMosaic /> : <section className="py-4 md:py-10 bg-white dark:bg-neutral-900 min-h-[320px]" aria-hidden="true" />}
+      {isNearView ? (
+        <PhotoMosaic locale={locale} />
+      ) : (
+        <section className="py-4 md:py-10 bg-white dark:bg-neutral-900 min-h-[320px]" aria-hidden="true" />
+      )}
     </>
   );
 }

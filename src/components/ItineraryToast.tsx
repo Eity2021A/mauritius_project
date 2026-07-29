@@ -26,7 +26,7 @@ export default function ItineraryToast({ message, visible, onClose }: ItineraryT
         </svg>
         <span className="truncate">{message}</span>
         <Link
-          href="/itineraries-mauritius/create"
+          href="/roadtrip-mauritius/create"
           className="flex-shrink-0 text-orange-400 hover:text-orange-300 font-medium whitespace-nowrap"
         >
           View itinerary

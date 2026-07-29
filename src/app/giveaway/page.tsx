@@ -7,15 +7,14 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getImageUrl } from "@/lib/image-url";
 import { GIVEAWAY_FEATURE_IMAGE } from "@/lib/giveaway-assets";
+import {
+  DEFAULT_GIVEAWAY_CAMPAIGN,
+  fetchGiveawayCampaign,
+  type GiveawayCampaignData,
+} from "@/lib/giveaway-campaign";
 import { submitGiveawayEntry } from "@/lib/actions";
 import { COUNTRY_OPTIONS } from "@/lib/countries";
 import { Trophy } from "lucide-react";
-
-const GIVEAWAY_SLUG = "weekend-experiences-2026";
-
-const PRIZE_ROUNDS: { date: string; prize: string }[] = [
-  { date: "7th June 2026", prize: "Weekend at Shangri-La Le Touessrok" },
-];
 
 export default function GiveawayPage() {
   const [country, setCountry] = useState("");
@@ -29,9 +28,33 @@ export default function GiveawayPage() {
   const [shareUrl, setShareUrl] = useState("");
   const [igCopied, setIgCopied] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [campaign, setCampaign] = useState<GiveawayCampaignData>(DEFAULT_GIVEAWAY_CAMPAIGN);
 
   useEffect(() => {
     setShareUrl(`${window.location.origin}/giveaway`);
+  }, []);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetchGiveawayCampaign(controller.signal)
+      .then((data) => {
+        setCampaign({
+          ...DEFAULT_GIVEAWAY_CAMPAIGN,
+          ...data,
+          slug: data.slug || DEFAULT_GIVEAWAY_CAMPAIGN.slug,
+          draw_date_label: data.draw_date_label ?? DEFAULT_GIVEAWAY_CAMPAIGN.draw_date_label,
+          subtitle: data.subtitle ?? DEFAULT_GIVEAWAY_CAMPAIGN.subtitle,
+          headline: data.headline || DEFAULT_GIVEAWAY_CAMPAIGN.headline,
+          card_title: data.card_title || DEFAULT_GIVEAWAY_CAMPAIGN.card_title,
+          card_text: data.card_text || DEFAULT_GIVEAWAY_CAMPAIGN.card_text,
+        });
+      })
+      .catch(() => {
+        // Keep the default campaign content if the API is unavailable.
+      });
+
+    return () => controller.abort();
   }, []);
 
   const openFacebookShare = () => {
@@ -80,7 +103,7 @@ export default function GiveawayPage() {
         sharedFacebook,
         sharedInstagram,
         agreedToTerms,
-        giveawaySlug: GIVEAWAY_SLUG,
+        giveawaySlug: campaign.slug,
       });
 
       if (result.success) {
@@ -134,18 +157,18 @@ export default function GiveawayPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center text-gray-900 mb-8">
             <p className="text-lg md:text-xl font-medium">
-              Draw on <strong className="text-orange-600">7th June 2026</strong> (Mauritius time)
+              Draw on <strong className="text-orange-600">{campaign.draw_date_label}</strong> (Mauritius time)
             </p>
             <p className="text-gray-600 text-sm mt-2">
-              Simply enter your details below, re-share on Facebook or Instagram, and you could be our lucky winner.
+              {campaign.subtitle}
             </p>
           </div>
           <div className="max-w-4xl mx-auto">
             <h2 className="text-center text-gray-900 text-xl md:text-2xl font-bold mb-6">
-              This week&apos;s giveaway (for 2 people)
+              {campaign.headline}
             </h2>
             <ul className="max-w-2xl mx-auto">
-              {PRIZE_ROUNDS.map((row) => (
+              {[{ date: campaign.card_title, prize: campaign.card_text }].map((row) => (
                 <li
                   key={`${row.date}-${row.prize}`}
                   className="flex items-center gap-4 md:gap-5 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl px-6 py-6 md:px-8 md:py-8 text-left text-white shadow-md border border-orange-400/30 min-h-[5.5rem] md:min-h-[6.5rem]"

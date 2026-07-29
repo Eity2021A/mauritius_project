@@ -120,6 +120,17 @@ async function sendResendEmail({
   }
 }
 
+function getRequiredTransferNotificationRecipients() {
+  const notifyEmail1 = process.env.TRANSFER_NOTIFY_EMAIL_1?.trim();
+  const notifyEmail2 = process.env.TRANSFER_NOTIFY_EMAIL_2?.trim();
+
+  if (!notifyEmail1 || !notifyEmail2) {
+    return null;
+  }
+
+  return [notifyEmail1, notifyEmail2];
+}
+
 export async function POST(request: Request) {
   try {
     const payload = (await request.json()) as Partial<TransferRequestPayload>;
@@ -129,12 +140,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: validationError }, { status: 400 });
     }
 
-    const notifyEmail1 = process.env.TRANSFER_NOTIFY_EMAIL_1;
-    const notifyEmail2 = process.env.TRANSFER_NOTIFY_EMAIL_2;
+    const notifyEmails = getRequiredTransferNotificationRecipients();
 
-    if (!notifyEmail1 || !notifyEmail2) {
+    if (!notifyEmails) {
       return NextResponse.json(
-        { error: "Missing transfer notification email configuration." },
+        {
+          error:
+            "Missing transfer notification email configuration. Both TRANSFER_NOTIFY_EMAIL_1 and TRANSFER_NOTIFY_EMAIL_2 are required.",
+        },
         { status: 500 }
       );
     }
@@ -213,6 +226,27 @@ export async function POST(request: Request) {
           </div>
 
           <div style="padding:18px 30px 30px;">
+            <div style="border:1px solid #eee7df;border-radius:18px;overflow:hidden;background:#fffdfa;margin-bottom:18px;">
+              <div style="padding:16px 18px;border-bottom:1px solid #eee7df;background:#fbf7f2;">
+                <p style="margin:0;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#b38d76;">Your Request Details</p>
+              </div>
+              <table style="width:100%;border-collapse:collapse;">
+                ${formatField("Full Name", payload.fullName!)}
+                ${formatField("Email Address", payload.email!)}
+                ${formatField("Phone / WhatsApp", payload.phone!)}
+                ${formatField("Type of Transfer", payload.transferType!)}
+                ${formatField("Pick-Up Location", payload.pickupLocation!)}
+                ${formatField("Drop-Off Location", payload.dropoffLocation!)}
+                ${formatField("Pick-Up Date", payload.pickupDate!)}
+                ${formatField("Pick-Up Time", payload.pickupTime!)}
+                ${formatField("Passengers", payload.passengers!)}
+                ${formatField("Luggage", payload.luggage!)}
+                ${formatField("Child Seat", payload.childSeat || "-")}
+                ${formatField("Flight Number", payload.flightNumber || "-")}
+                ${formatField("Additional Details", payload.additionalDetails || "-")}
+              </table>
+            </div>
+
             <div style="border:1px solid #e6ecef;border-radius:18px;background:linear-gradient(180deg,#f8fcfc 0%,#f3f9f9 100%);padding:20px 22px;">
               <p style="margin:0 0 10px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#0d6b78;">What happens next</p>
               <p style="margin:0 0 8px;font-size:15px;line-height:1.75;color:#4f5a6d;">
@@ -232,7 +266,7 @@ export async function POST(request: Request) {
 
     await Promise.all([
       sendResendEmail({
-        to: [notifyEmail1, notifyEmail2],
+        to: notifyEmails,
         subject: `New transfer request from ${payload.fullName}`,
         html: adminHtml,
         replyTo: payload.email,

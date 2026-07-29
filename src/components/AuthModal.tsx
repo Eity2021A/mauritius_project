@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { createClient } from "@/lib/supabase/client";
 
 interface AuthModalProps {
@@ -10,6 +11,7 @@ interface AuthModalProps {
 }
 
 export default function AuthModal({ open, onClose, redirectTo }: AuthModalProps) {
+  const t = useTranslations("Buttons");
   const [oauthLoading, setOauthLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -75,10 +77,10 @@ export default function AuthModal({ open, onClose, redirectTo }: AuthModalProps)
         setOauthLoading(false);
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+      setError(err instanceof Error ? err.message : t("tryAgain"));
       setOauthLoading(false);
     }
-  }, [buildCallbackUrl]);
+  }, [buildCallbackUrl, t]);
 
   if (!open) return null;
 
@@ -99,12 +101,12 @@ export default function AuthModal({ open, onClose, redirectTo }: AuthModalProps)
           {/* Header */}
           <div className="flex items-center justify-between p-5 border-b">
             <h2 className="text-lg font-semibold text-gray-900">
-              Sign in to continue
+              {t("signInToContinue")}
             </h2>
             <button
               onClick={onClose}
               className="p-2 -mr-2 text-gray-400 hover:text-gray-600 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
-              aria-label="Close"
+              aria-label={t("close")}
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -115,7 +117,7 @@ export default function AuthModal({ open, onClose, redirectTo }: AuthModalProps)
           {/* Body */}
           <div className="p-5 space-y-4">
             <p className="text-sm text-gray-600 text-center">
-              Sign in with your Google account to save itineraries and manage your trips.
+              {t("signInDescription")}
             </p>
 
             <button
@@ -127,7 +129,7 @@ export default function AuthModal({ open, onClose, redirectTo }: AuthModalProps)
               {oauthLoading ? (
                 <>
                   <span className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin shrink-0" />
-                  <span>Redirecting...</span>
+                  <span>{t("redirecting")}</span>
                 </>
               ) : (
                 <>
@@ -137,7 +139,7 @@ export default function AuthModal({ open, onClose, redirectTo }: AuthModalProps)
                     aria-hidden
                     className="w-5 h-5"
                   />
-                  Continue with Google
+                  {t("continueWithGoogle")}
                 </>
               )}
             </button>
@@ -147,7 +149,7 @@ export default function AuthModal({ open, onClose, redirectTo }: AuthModalProps)
             )}
 
             <p className="text-xs text-gray-400 text-center leading-relaxed">
-              By signing in, you agree to our terms of service.
+              {t("agreeTerms")}
             </p>
           </div>
         </div>

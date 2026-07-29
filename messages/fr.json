@@ -1,0 +1,950 @@
+{
+  "LanguageSwitcher": {
+    "selectLanguage": "Choisir la langue",
+    "ariaLabel": "Langue : {name}. Choisir la langue",
+    "listLabel": "Choisir la langue",
+    "english": "English",
+    "french": "French",
+    "german": "German",
+    "italian": "Italian",
+    "spanish": "Spanish",
+    "russian": "Russian"
+  },
+  "Common": {
+    "skipToContent": "Aller au contenu principal",
+    "home": "Accueil",
+    "blog": "Blog",
+    "beaches": "Plages",
+    "activities": "Activités",
+    "pocketGuide": "Guide de poche",
+    "menu": "Menu",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "expand": "Développer {name}",
+    "collapse": "Réduire {name}",
+    "badgeNew": "Nouveau"
+  },
+  "Nav": {
+    "home": "Accueil",
+    "aboutMauritius": "À propos de Maurice",
+    "welcomeIsland": "Bienvenue à l'île Maurice",
+    "top15Things": "Top 15 des choses à faire",
+    "bestTimeToVisit": "Meilleure période pour visiter",
+    "visaRequirements": "Conditions de visa",
+    "festivals": "Festivals à Maurice",
+    "events": "Événements à Maurice",
+    "giveaway": "🎁 Concours",
+    "explore": "Explorer",
+    "regions": "Régions",
+    "bestof": "Le meilleur",
+    "quickTrips": "Escapades",
+    "travelPlanner": "Planificateur de voyage",
+    "familyHolidayGuide": "Guide vacances en famille",
+    "northGuide": "Guide du Nord de Maurice",
+    "southGuide": "Guide du Sud de Maurice",
+    "eastGuide": "Guide de l'Est de Maurice",
+    "westGuide": "Guide de l'Ouest de Maurice",
+    "centralGuide": "Guide du Centre de Maurice",
+    "bestBeachesOfMauritius": "Meilleures plages de Maurice",
+    "bestCatamaranCruises": "Meilleures croisières en catamaran",
+    "bestHikesInMauritius": "Meilleures randonnées à Maurice",
+    "bestMarketsOfMauritius": "Meilleurs marchés de Maurice",
+    "bestWaterfallsOfMauritius": "Meilleures cascades de Maurice",
+    "culturalPlacesOfMauritius": "Lieux culturels de Maurice",
+    "dayInPortLouis": "Une journée à Port Louis",
+    "exploringGrandBaie": "Explorer Grand Baie",
+    "exploringChamarel": "Explorer Chamarel",
+    "exploringMahebourg": "Explorer Mahébourg",
+    "leMorneAndChamarels": "Le Morne et Chamarel",
+    "natureReservesAndParks": "Réserves naturelles et parcs",
+    "secretPlacesToDiscover": "Lieux secrets à découvrir",
+    "sevenWaterfallsHike": "Randonnée des Sept Cascades",
+    "swimWithSeaTurtles": "Nager avec les tortues de mer",
+    "conquerLeMorne": "Conquérir Le Morne",
+    "whalesAndDolphins": "Baleines et dauphins",
+    "beachRestaurants": "Restaurants de plage",
+    "seeMonkeys": "Où voir des singes",
+    "snorkel": "Où faire de la plongée libre",
+    "pocketGuide": "Guide de poche",
+    "beaches": "Plages",
+    "placesToVisit": "Lieux à visiter",
+    "activities": "Activités",
+    "search": "Search",
+    "itinerary": "Itinéraire",
+    "allRoadTrip": "Tous les road trips",
+    "mauritiusItineraries": "Itinéraires à Maurice",
+    "recommendedItineraries": "Itinéraires recommandés",
+    "communityItineraries": "Itinéraires de la communauté",
+    "createItinerary": "Créer votre itinéraire",
+    "transport": "Transport",
+    "carRental": "Location de voiture",
+    "transfer": "Transfert",
+    "taxi": "Taxi",
+    "blog": "Blog",
+    "veranda": "Veranda",
+    "verandaPointeAuxBiches": "Veranda Pointe aux Biches",
+    "verandaPaulVirginie": "Veranda Paul & Virginie",
+    "verandaGrandBaie": "Veranda Grand Baie",
+    "verandaTamarin": "Veranda Tamarin",
+    "verandaPalmarBeach": "Veranda Palmar Beach"
+  },
+  "Buttons": {
+    "planYourTrip": "Planifiez votre voyage",
+    "exploreMauritius": "Explorer Maurice",
+    "exploreBeaches": "Explorer les plages",
+    "viewActivities": "Voir les activités",
+    "exploreAllActivities": "Toutes les activités",
+    "exploreAllBeaches": "Toutes les plages",
+    "exploreAllPlaces": "Tous les lieux",
+    "addToItinerary": "Ajouter à l'itinéraire",
+    "addToMyItinerary": "Ajouter à mon itinéraire",
+    "added": "Ajouté",
+    "addedToItinerary": "Ajouté à l'itinéraire",
+    "removedFromItinerary": "Retiré de votre itinéraire",
+    "addedToast": "Ajouté à votre itinéraire",
+    "bookNow": "Réserver",
+    "whatsapp": "WhatsApp",
+    "transfer": "Transfert",
+    "loading": "Chargement...",
+    "loadingItineraries": "Chargement des itinéraires",
+    "subscribe": "S'abonner",
+    "subscribing": "Abonnement…",
+    "emailPlaceholder": "Entrez votre e-mail",
+    "emailAddress": "Adresse e-mail",
+    "subscribedSuccess": "Vous êtes abonné ! Bienvenue.",
+    "somethingWrong": "Une erreur est survenue.",
+    "signIn": "Se connecter",
+    "signOut": "Se déconnecter",
+    "signInToContinue": "Connectez-vous pour continuer",
+    "signInDescription": "Connectez-vous avec Google pour enregistrer vos itinéraires et gérer vos voyages.",
+    "continueWithGoogle": "Continuer avec Google",
+    "redirecting": "Redirection...",
+    "close": "Fermer",
+    "userMenu": "Menu utilisateur",
+    "myItineraries": "Mes itinéraires",
+    "myMauritiusItinerary": "Mon itinéraire à Maurice",
+    "createItinerary": "Créer un itinéraire",
+    "save": "Enregistrer",
+    "saveItinerary": "Enregistrer l'itinéraire",
+    "saved": "Enregistré",
+    "saving": "Enregistrement...",
+    "edit": "Modifier",
+    "editItinerary": "Modifier cet itinéraire",
+    "addCarRental": "Ajouter une location",
+    "addTaxi": "Ajouter un taxi",
+    "rental": "Location",
+    "taxi": "Taxi",
+    "createNew": "Créer",
+    "createFirstItinerary": "Créer votre premier itinéraire",
+    "requestTransferQuote": "Demander un devis transfert",
+    "submitting": "Envoi…",
+    "openMyItinerary": "Ouvrir mon itinéraire",
+    "badgeNew": "Nouveau",
+    "contactUs": "Nous contacter",
+    "festivalsInMauritius": "Festivals à Maurice",
+    "tryAgain": "Une erreur est survenue. Veuillez réessayer.",
+    "agreeTerms": "En vous connectant, vous acceptez nos conditions d'utilisation.",
+    "delete": "Supprimer",
+    "deleteConfirm": "Supprimer ?",
+    "yes": "Oui",
+    "no": "Non",
+    "makePublic": "Rendre public",
+    "makePrivate": "Rendre privé",
+    "publicAnonymous": "Public (anonyme)",
+    "shareWithCommunity": "Partager avec la communauté",
+    "shareVisibleHint": "Votre itinéraire sera visible par tous",
+    "hideMyName": "Masquer mon nom",
+    "hideMyNameHint": "Votre itinéraire affichera « par Community User » au lieu de votre nom",
+    "cancel": "Annuler",
+    "share": "Partager",
+    "sharing": "Partage...",
+    "copied": "Copié !",
+    "bookYourTaxi": "Réserver votre taxi",
+    "submitEntry": "Envoyer ma participation",
+    "shareThisGiveaway": "Partager ce concours",
+    "back": "Retour",
+    "backToItineraries": "Retour à tous les itinéraires",
+    "backToMyItineraries": "Retour à mes itinéraires",
+    "backToPlaces": "Retour à tous les lieux",
+    "backToBeaches": "Retour à toutes les plages",
+    "backToActivities": "Retour à toutes les activités",
+    "updateItinerary": "Mettre à jour l'itinéraire",
+    "saveToMyAccount": "Enregistrer sur mon compte",
+    "editTitle": "Modifier le titre",
+    "comingSoon": "Bientôt disponible",
+    "upvote": "Voter",
+    "removeUpvote": "Retirer le vote"
+  },
+  "Home": {
+    "intro": "Mauritius Explored vous aide à mieux organiser vos vacances sur l'île avec des guides pratiques sur les plages, cascades, road trips, hôtels, restaurants et activités locales. Utilisez le site pour comparer les régions, choisir la bonne côte, trouver quoi faire à Maurice et construire un itinéraire adapté à votre style de voyage.",
+    "hero": {
+      "title": "Guide de voyage à Maurice",
+      "subtitle": "Tout ce qu'il vous faut pour préparer vos vacances à l'île Maurice"
+    },
+    "mosaic": {
+      "kicker": "Pour un tourisme durable et des voyages responsables à Maurice",
+      "title": "Le meilleur de l'île Maurice 2026",
+      "subtitle": "Toute l'inspiration nécessaire pour commencer à planifier votre prochaine aventure"
+    },
+    "across": {
+      "kicker": "Découvrir",
+      "title": "Explorer les meilleurs choix à Maurice",
+      "subtitle": "Des activités passionnantes aux plages immaculées et aux sites incontournables — commencez ici",
+      "sections": {
+        "activities": "Activités",
+        "beaches": "Plages",
+        "places": "Lieux à visiter"
+      }
+    },
+    "hiddenGems": {
+      "kicker": "Articles en vedette",
+      "title": "Histoires de lieux secrets",
+      "subtitle": "Des articles de blog sélectionnés, présentés ici dans une mise en page compacte en quatre colonnes.",
+      "readTime": "min de lecture"
+    },
+    "instagram": {
+      "title": "Suivez nos aventures",
+      "subtitle": "Découvrez des lieux magnifiques à travers notre fil Instagram",
+      "loading": "Chargement...",
+      "tapToWatch": "Touchez pour regarder sur Instagram",
+      "hoverToPreview": "Survolez pour prévisualiser",
+      "tapAgain": "Touchez encore pour Instagram",
+      "tapToPlay": "Touchez pour lire"
+    },
+    "itineraries": {
+      "kicker": "Explorer les itinéraires",
+      "title": "Itinéraires et road trips à Maurice",
+      "subtitle": "Un guide pour explorer Maurice | Les meilleurs lieux à visiter | Des idées pour partir à la découverte",
+      "body": "Commencez avec des itinéraires prêts à l'emploi pour le nord, le sud, l'est et l'ouest, ou créez votre propre road trip autour des plages, cascades, marchés et points de vue. Ces routes sont pensées pour éviter les détours inutiles et rendre chaque journée plus simple à planifier.",
+      "swipe": "Faites glisser pour explorer →",
+      "viewItinerary": "Voir l'itinéraire",
+      "seeThis": "Voir cet itinéraire : {title}"
+    },
+    "services": {
+      "kicker": "Vivre Maurice",
+      "title": "Que faire à Maurice",
+      "description": "Parcourez les principales idées d'activités à Maurice, des plages et sports nautiques aux randonnées, à la culture, à la cuisine et aux sorties en famille. Chaque section mène vers un guide plus complet pour comparer vos options avant de réserver ou d'ajouter une étape à votre itinéraire.",
+      "cards": {
+        "beachEscapes": {
+          "title": "Escapades plage",
+          "description": "Des eaux cristallines et des plages de sable blanc vous attendent.",
+          "buttonLabel": "Explorer les plages de Maurice"
+        },
+        "waterSports": {
+          "title": "Sports nautiques",
+          "description": "Plongée, snorkeling, kitesurf et aventures sous-marines.",
+          "buttonLabel": "Voir les activités nautiques à Maurice"
+        },
+        "natureWildlife": {
+          "title": "Nature et faune",
+          "description": "Explorez les parcs nationaux, les cascades et la faune unique.",
+          "buttonLabel": "Découvrir les lieux nature de Maurice"
+        },
+        "festivalsHolidays": {
+          "title": "Festivals et jours fériés",
+          "description": "Découvrez les festivals vibrants et les jours fériés de Maurice toute l'année.",
+          "buttonLabel": "Explorer les festivals de Maurice"
+        }
+      }
+    },
+    "cta": {
+      "title": "Votre aventure à Maurice vous attend",
+      "body": "Des plages immaculées aux montagnes verdoyantes, découvrez tout ce que ce paradis insulaire a à offrir. Nous vous aidons à préparer l'escapade parfaite."
+    },
+    "stats": {
+      "Hotels": "Hôtels",
+      "Beaches": "Plages",
+      "Activities": "Activités",
+      "Places to Visit": "Lieux à visiter"
+    }
+  },
+  "PocketGuide": {
+    "metadata": {
+      "title": "Guide de poche Maurice : le guide de voyage hors ligne complet",
+      "description": "Téléchargez le Guide de poche Maurice pour les plages, cascades, road trips, bonnes adresses et conseils locaux utilisables hors ligne."
+    },
+    "product": {
+      "name": "Guide de poche Maurice",
+      "description": "Guide de voyage hors ligne pour Maurice avec plages, cascades, road trips, bonnes adresses et notes pratiques locales."
+    },
+    "hero": {
+      "imageAlt": "Couverture du guide de poche Maurice été 2026"
+    },
+    "buttons": {
+      "getGuide": "Obtenir le guide de poche"
+    },
+    "stats": [
+      { "value": "105", "label": "Plages et lieux à visiter" },
+      { "value": "16", "label": "Expériences sélectionnées" },
+      { "label": "Plan de voyage en famille", "icon": "family" },
+      { "label": "Meilleurs endroits où manger", "icon": "food" },
+      { "label": "Région par région", "icon": "map" }
+    ],
+    "reasonsKicker": "Pourquoi vous allez l'aimer",
+    "reasonsTitle": "Tout le site, pensé pour la route",
+    "reasons": [
+      {
+        "title": "Tout le site dans votre poche",
+        "description": "Nous avons rassemblé MauritiusExplored.com dans un guide compact : plages, cascades, road trips, lieux secrets, conseils locaux, tout dans un format pratique pour voyager.",
+        "tone": "orange",
+        "icon": "phone"
+      },
+      {
+        "title": "Touchez, naviguez, partez",
+        "description": "Chaque lieu contient une position cliquable. Une plage vous plaît ? Touchez-la et votre application de cartes ouvre l'itinéraire instantanément.",
+        "tone": "teal",
+        "icon": "pin"
+      },
+      {
+        "title": "Fonctionne partout, même hors ligne",
+        "description": "Gardez-le sur votre téléphone : il reste disponible dans l'avion, sur un sentier de montagne ou là où le réseau ne passe pas.",
+        "tone": "slate",
+        "icon": "plane"
+      },
+      {
+        "title": "Toute l'inspiration nécessaire",
+        "description": "Des road trips sur la côte nord aux cascades parfaites pour les photos, le guide donne des idées pour le voyage dont vous aurez vraiment envie de parler.",
+        "tone": "gold",
+        "icon": "bulb"
+      }
+    ],
+    "inside": {
+      "kicker": "Ce qu'il contient",
+      "title": "Le meilleur, en détail",
+      "description": "Des conseils concrets et testés sur la route, ceux qui font gagner du temps, de l'argent et évitent le stress du premier jour.",
+      "items": [
+        {
+          "title": "Les itinéraires régionaux en voiture",
+          "description": "Des parcours prêts à l'emploi pour le nord, le sud et l'ouest afin de voir le meilleur de chaque côte dans le bon ordre, sans détours inutiles.",
+          "badge": "Très utile si vous louez une voiture",
+          "icon": "route"
+        },
+        {
+          "title": "Les plages classées selon vos envies",
+          "description": "Lagons calmes, spots de snorkeling, plages de surf et de coucher de soleil, organisés par région pour choisir la bonne plage au bon moment.",
+          "icon": "wave"
+        },
+        {
+          "title": "Le comparatif des croisières en catamaran",
+          "description": "Quelles croisières valent vraiment le coup, ce qui est inclus, où elles vont et à quoi s'attendre pour mieux choisir sa sortie.",
+          "icon": "boat"
+        },
+        {
+          "title": "Des guides détaillés des zones incontournables",
+          "description": "Des lieux comme Chamarel et Mahébourg sont expliqués avec quoi voir, combien de temps prévoir et comment les intégrer dans une journée fluide.",
+          "icon": "compass"
+        },
+        {
+          "title": "Se déplacer, simplement",
+          "description": "Des conseils clairs sur les transferts aéroport, chauffeurs privés et locations de voiture, avec les questions à poser et ce qu'il faut prévoir.",
+          "icon": "car"
+        },
+        {
+          "title": "Des conseils locaux introuvables en première page de Google",
+          "description": "Les petits détails pratiques : horaires, étiquette, ce qui vaut le coup et ce qu'il vaut mieux éviter, pour voyager avec plus d'assurance.",
+          "icon": "star"
+        }
+      ]
+    },
+    "finalCta": {
+      "title": "Votre voyage parfait à Maurice commence ici",
+      "description": "Enregistrez-le sur votre téléphone et vous êtes prêt : journée plage, road trip ou plan B un après-midi de pluie, tout est dedans."
+    },
+    "faqKicker": "Réponses rapides",
+    "faqTitle": "FAQ du Guide de poche Maurice",
+    "faqs": [
+      {
+        "question": "Que contient le Guide de poche Maurice ?",
+        "answer": "Le guide inclut plages, cascades, road trips, conseils locaux, idées de restaurants et notes pratiques hors ligne pour voyager à Maurice."
+      },
+      {
+        "question": "Puis-je utiliser le Guide de poche Maurice hors ligne ?",
+        "answer": "Oui. Le guide est conçu pour être enregistré sur votre téléphone afin de garder les informations clés même lorsque le signal mobile est faible."
+      },
+      {
+        "question": "À qui s'adresse le Guide de poche Maurice ?",
+        "answer": "Il est utile aux visiteurs qui viennent pour la première fois, aux familles, aux couples et aux voyageurs en road trip qui veulent accéder vite aux points forts de l'île."
+      }
+    ]
+  },
+  "BeachesHub": {
+    "metadata": {
+      "title": "Meilleures plages à Maurice - Guide complet 2026",
+      "description": "Découvrez les plages de Maurice, des lagons calmes et sable blanc aux falaises sauvages et baies cachées.",
+      "ogTitle": "Meilleures plages à Maurice - Guide complet"
+    },
+    "schema": {
+      "name": "Les meilleures plages de Maurice",
+      "description": "Un répertoire des plages, lagons, spots de snorkeling et baies cachées de Maurice."
+    },
+    "hero": {
+      "imageAlt": "Meilleures plages de Maurice",
+      "title": "Les meilleures plages de Maurice",
+      "subtitle": "Guide plage 2026 pour lagons calmes, spots de snorkeling et baies cachées."
+    },
+    "intro": {
+      "beforeBeaches": "Il existe de nombreuses",
+      "beachesLink": "plages à Maurice",
+      "afterBeaches": "; la meilleure dépend de vos envies. Découvrez les plus belles plages et où passer votre",
+      "honeymoonLink": "lune de miel",
+      "afterHoneymoon": ", ainsi que pourquoi Maurice est célèbre au-delà du dodo et de la cascade sous-marine. Du nord au sud, explorez plages connues et lieux plus secrets : le sable blanc de",
+      "afterBelleMare": "à l'est,",
+      "afterMontChoisy": ", ou",
+      "afterPointeAuxPiments": "avec ses criques rocheuses idéales pour le",
+      "snorkelingLink": "snorkeling",
+      "afterSnorkeling": "vers Balaclava.",
+      "afterTrouAuxBiches": "séduit avec ses cocotiers, son sable blanc et ses bons spots pour observer les tortues marines."
+    },
+    "filters": {
+      "all": "Tout",
+      "searchPlaceholder": "Rechercher des plages...",
+      "searchAria": "Rechercher des plages",
+      "openFilters": "Ouvrir les filtres",
+      "category": "Catégorie",
+      "region": "Région",
+      "countAria": "{count} plages",
+      "reset": "Réinitialiser les filtres",
+      "title": "Filtres",
+      "apply": "Appliquer les filtres",
+      "resetShort": "Réinitialiser",
+      "close": "Fermer les filtres"
+    },
+    "empty": {
+      "title": "Aucune plage ne correspond à vos filtres.",
+      "clear": "Effacer les filtres"
+    },
+    "categories": {
+      "snorkeling": "Snorkeling",
+      "amenities": "Équipements",
+      "familyFriendly": "Adaptée aux familles",
+      "surfing": "Surf",
+      "secluded": "Isolée"
+    },
+    "regions": {
+      "north": "Nord",
+      "south": "Sud",
+      "east": "Est",
+      "west": "Ouest",
+      "northWest": "Nord-ouest",
+      "northEast": "Nord-est",
+      "southWest": "Sud-ouest",
+      "southEast": "Sud-est",
+      "central": "Centre",
+      "rodrigues": "Rodrigues",
+      "various": "Divers"
+    }
+  },
+  "ActivitiesHub": {
+    "metadata": {
+      "title": "Activités à Maurice - Tours et aventures 2026",
+      "description": "Réservez des activités et aventures à Maurice, des catamarans et dauphins aux randonnées et tours en hélicoptère.",
+      "ogTitle": "Activités à Maurice - Tours et aventures",
+      "ogImageAlt": "Nager avec les dauphins - Activités et aventures à Maurice"
+    },
+    "schema": {
+      "name": "Choses à faire à Maurice : tours et activités",
+      "description": "Un répertoire de tours, aventures en mer, randonnées, expériences aériennes et activités insulaires à Maurice."
+    },
+    "hero": {
+      "imageAlt": "Meilleures activités à Maurice",
+      "title": "Choses à faire à Maurice : tours et activités",
+      "subtitle": "La plus grande collection d'activités à Maurice, des aventures en mer aux randonnées en montagne"
+    },
+    "intro": {
+      "beforeAdventure": "Maurice offre une grande variété d'activités pour chaque type de voyageur. Que vous cherchiez des",
+      "adventure": "aventures riches en adrénaline",
+      "afterAdventure": "comme nager avec les dauphins, faire du parachutisme ou du quad, ou que vous préfériez des expériences plus calmes comme les",
+      "cruises": "croisières en catamaran",
+      "and": "et",
+      "boatTours": "sorties en bateau au coucher du soleil",
+      "afterCruises": ", il y en a pour tous les goûts. Explorez la beauté naturelle de l'île grâce aux",
+      "hiking": "sentiers de randonnée",
+      "afterHiking": "vers les cascades et sommets, ou découvrez le monde sous-marin avec le",
+      "snorkeling": "snorkeling",
+      "scuba": "la plongée sous-marine",
+      "afterScuba": ". Des vols en hélicoptère au-dessus de la célèbre cascade sous-marine aux balades à cheval sur des plages préservées, créez des souvenirs inoubliables au paradis."
+    },
+    "filters": {
+      "all": "Tous",
+      "allRegions": "Toutes les régions",
+      "searchPlaceholder": "Rechercher des activités...",
+      "searchAria": "Rechercher des activités",
+      "openFilters": "Ouvrir les filtres",
+      "category": "Catégorie",
+      "region": "Région",
+      "countAria": "{count} activités",
+      "reset": "Réinitialiser les filtres",
+      "title": "Filtres",
+      "apply": "Appliquer les filtres",
+      "resetShort": "Réinitialiser",
+      "close": "Fermer les filtres"
+    },
+    "empty": {
+      "title": "Aucune activité ne correspond à vos filtres.",
+      "clear": "Effacer les filtres"
+    },
+    "categories": {
+      "bestSeller": "Meilleure vente",
+      "adventure": "Aventure",
+      "air": "Air",
+      "land": "Terre",
+      "sea": "Mer",
+      "hiking": "Randonnée",
+      "unique": "Unique"
+    },
+    "regions": {
+      "north": "Nord",
+      "south": "Sud",
+      "east": "Est",
+      "west": "Ouest",
+      "northWest": "Nord-ouest",
+      "northEast": "Nord-est",
+      "southWest": "Sud-ouest",
+      "southEast": "Sud-est",
+      "central": "Centre",
+      "rodrigues": "Rodrigues",
+      "various": "Divers"
+    },
+    "cta": {
+      "title": "Besoin d'aide pour planifier votre aventure ?",
+      "body": "Contactez-nous pour des recommandations personnalisées et de l'aide pour réserver les meilleures activités de votre voyage à Maurice.",
+      "button": "Nous contacter"
+    }
+  },
+  "PlacesHub": {
+    "metadata": {
+      "title": "Meilleurs endroits à visiter à Maurice - Attractions 2026",
+      "description": "Explorez les attractions de Maurice, des cascades et parcs naturels aux îles et trésors cachés.",
+      "ogTitle": "Meilleurs endroits à visiter à Maurice",
+      "ogImageAlt": "Jardin botanique de Pamplemousses - Meilleurs lieux à visiter à Maurice"
+    },
+    "schema": {
+      "name": "Meilleurs endroits à visiter à Maurice",
+      "description": "Un répertoire des attractions, cascades, parcs, îles, marchés et lieux cachés de Maurice."
+    },
+    "hero": {
+      "imageAlt": "Meilleurs endroits à visiter à Maurice",
+      "title": "Meilleurs endroits à visiter à Maurice",
+      "subtitle": "Choses à faire en 2026, des cascades et parcs naturels aux îles et trésors cachés."
+    },
+    "filters": {
+      "all": "Tous",
+      "allRegions": "Toutes les régions",
+      "searchPlaceholder": "Rechercher des lieux...",
+      "searchAria": "Rechercher des lieux",
+      "openFilters": "Ouvrir les filtres",
+      "category": "Catégorie",
+      "region": "Région",
+      "reset": "Réinitialiser les filtres",
+      "title": "Filtres",
+      "apply": "Appliquer les filtres",
+      "resetShort": "Réinitialiser",
+      "close": "Fermer les filtres"
+    },
+    "empty": {
+      "title": "Aucun lieu ne correspond à vos filtres.",
+      "clear": "Effacer les filtres"
+    },
+    "categories": {
+      "nature": "Nature",
+      "waterfalls": "Cascades",
+      "discover": "Découvrir",
+      "hideaways": "Coins secrets",
+      "islands": "Îles",
+      "local": "Local",
+      "history": "Histoire"
+    },
+    "regions": {
+      "north": "Nord",
+      "south": "Sud",
+      "east": "Est",
+      "west": "Ouest",
+      "northWest": "Nord-ouest",
+      "northEast": "Nord-est",
+      "southWest": "Sud-ouest",
+      "southEast": "Sud-est",
+      "central": "Centre",
+      "rodrigues": "Rodrigues",
+      "various": "Divers"
+    },
+    "tips": {
+      "title": "Conseils de Mauritius Explored",
+      "tipLabel": "Conseil :",
+      "body": "N'hésitez pas à louer une voiture. La petite île se découvre facilement par quelques routes principales, et la circulation ressemble beaucoup aux habitants : détendue et peu dense.",
+      "note": "Nous avons inclus les meilleurs lieux à visiter que presque personne ne visite. Cherchez la catégorie « Coins secrets » pour nos spots cachés !"
+    }
+  },
+  "FamilyHolidayGuide": {
+    "metadata": {
+      "title": "Guide des vacances en famille à Maurice",
+      "description": "Guide familial de Maurice : sécurité, meilleure période avec enfants, budget, aventures et plages adaptées aux familles."
+    },
+    "hero": {
+      "title": "Guide des vacances en famille à Maurice :",
+      "edition": "Édition 2026",
+      "subtitle": "Planifiez l'escapade tropicale parfaite dans le terrain de jeu insulaire le plus sûr d'Afrique."
+    },
+    "paradise": {
+      "title": "Pourquoi Maurice est un paradis familial",
+      "items": [
+        { "title": "Très sûre", "description": "Régulièrement citée parmi les destinations familiales les plus sûres d'Afrique : paisible et facile à explorer.", "color": "#1689c3" },
+        { "title": "Saine et rassurante", "description": "Un environnement sans paludisme, avec soins fiables et accueil chaleureux.", "color": "#76acc2" },
+        { "title": "Peu de décalage horaire", "description": "Le décalage de 3 à 4 heures et le vol raisonnable gardent toute la famille en forme.", "color": "#1689c3" },
+        { "title": "Mélange culturel riche", "description": "Une salle de classe vivante entre influences créoles, indiennes et françaises.", "color": "#76acc2" }
+      ]
+    },
+    "seasons": {
+      "title": "La meilleure période avec des enfants",
+      "items": [
+        { "title": "Le moment idéal", "period": "Oct - Déc", "description": "La fenêtre parfaite : eau chaude, lagons calmes et ambiance familiale festive." },
+        { "title": "Saison active", "period": "Juil - Août", "description": "Les températures plus fraîches sont parfaites pour randonner et explorer sans forte humidité." },
+        { "title": "Saison cyclonique", "period": "Jan - Mar", "description": "Toujours belle, mais c'est la période cyclonique principale : gardez de la flexibilité." }
+      ]
+    },
+    "budget": {
+      "title": "Bien gérer le budget familial",
+      "estimateLabel": "Dépense quotidienne estimée",
+      "amount": "$150 - $250",
+      "description": "Pour une famille de quatre en milieu de gamme, avec hébergement confortable, location de voiture et visites guidées.",
+      "options": [
+        { "title": "Tout compris", "description": "Le plus rassurant : repas et nombreuses activités inclus. Idéal pour maîtriser le budget." },
+        { "title": "Demi-pension", "description": "Petit-déjeuner et dîner inclus, avec liberté de découvrir des adresses locales au déjeuner." }
+      ]
+    },
+    "adventures": {
+      "title": "Aventures familiales iconiques",
+      "items": [
+        { "title": "Tortues de la côte ouest", "description": "Une expérience magique à hauteur d'enfant.", "color": "#1689c3" },
+        { "title": "Catamaran à l'île aux Cerfs", "description": "Lagons sûrs et île pique-nique.", "color": "#67aabf" },
+        { "title": "Bateau à fond de verre à Blue Bay", "description": "Explorez les récifs en restant au sec.", "color": "#1689c3" },
+        { "title": "Terre des Sept Couleurs", "description": "Une merveille naturelle sans équipement spécial.", "color": "#4aa0c5" },
+        { "title": "Sentiers de Black River", "description": "Une randonnée facile avec de belles surprises.", "color": "#1689c3" },
+        { "title": "Fête séga locale", "description": "Dansez ensemble sous les étoiles.", "color": "#4aa0c5" }
+      ]
+    },
+    "coasts": {
+      "title": "Trouvez la côte parfaite pour votre famille",
+      "items": [
+        { "title": "La côte nord", "subtitle": "Animée et vivante", "description": "Idéale pour les familles qui aiment les villes accessibles à pied, les sports nautiques, restaurants et boutiques." },
+        { "title": "La côte ouest", "subtitle": "Paisible et panoramique", "description": "Parfaite pour un rythme plus lent : lagons faciles, mer calme et baignade douce." }
+      ]
+    }
+  },
+  "TravelPlanner": {
+    "metadata": {
+      "title": "Planificateur de voyage pour Maurice",
+      "description": "Le planificateur essentiel pour Maurice : quand partir, comment se déplacer, quel budget prévoir et comment organiser le voyage parfait étape par étape."
+    },
+    "hero": {
+      "titleBefore": "Maurice",
+      "titleAfter": "Votre planificateur de voyage essentiel",
+      "subtitle": "Découvrez les clés de l'île : climat, formalités d'entrée et choix de la côte idéale."
+    },
+    "labels": {
+      "climate": "Climat :",
+      "bestFor": "Idéal pour :",
+      "keyLocations": "Lieux clés :"
+    },
+    "timing": {
+      "title": "Choisir le bon moment pour votre escapade tropicale",
+      "summer": {
+        "title": "Été (octobre - avril)",
+        "climate": "Plus chaud (24C-31C) avec plus d'humidité ; quelques averses tropicales gardent les paysages luxuriants.",
+        "bestFor": "Explorer les lagons et profiter des eaux cristallines."
+      },
+      "winter": {
+        "title": "Hiver (mai - septembre)",
+        "climate": "Plus frais et plus sec, avec des températures agréables et moins d'humidité.",
+        "bestFor": "Randonnée, surf et exploration des paysages variés de l'île."
+      },
+      "sweetSpot": {
+        "title": "Meilleure période de voyage pour 2026",
+        "before": "Pour un équilibre parfait entre douceur et faible humidité, planifiez votre séjour en",
+        "months": "mai, juin ou septembre."
+      }
+    },
+    "checklist": {
+      "title": "Checklist d'arrivée sans stress pour 2026",
+      "items": [
+        { "title": "Formulaire numérique tout-en-un", "description": "À remplir en ligne sur le portail officiel dans les 72 heures avant l'arrivée. Plus de carte d'atterrissage !", "color": "#2391c9", "background": "#fff" },
+        { "title": "Visa à l'arrivée", "description": "Visa de 90 jours accordé à l'arrivée aux citoyens de 100 pays ; un billet retour est requis.", "color": "#2391c9", "background": "#fff" },
+        { "title": "Preuve financière", "description": "Préparez une preuve de fonds, environ 100 USD par jour de séjour.", "color": "#2391c9", "background": "#fff" },
+        { "title": "Devise", "description": "La monnaie locale est la roupie mauricienne (MUR). Les distributeurs sont largement disponibles.", "color": "#438aa9", "background": "#fff" },
+        { "title": "Documents requis", "description": "Gardez votre billet retour confirmé et votre preuve d'hébergement prêts pour l'immigration.", "color": "#438aa9", "background": "#fff" },
+        { "title": "Restrictions sanitaires", "description": "En 2026, aucune entrée spéciale n'est requise pour les voyageurs ayant récemment visité le Royaume-Uni ; les documents éligibles s'appliquent.", "color": "#df633e", "background": "#FBEEE2", "accent": true }
+      ]
+    },
+    "coasts": {
+      "title": "Trouvez votre côte idéale",
+      "items": [
+        { "title": "Le Nord vibrant", "color": "#e65e35", "background": "#F5F3F0", "description": "Le cœur animé de l'île, idéal pour les soirées vivantes et les aventures en lagon.", "tags": ["Énergie", "Boutiques", "Vie nocturne"], "best": "Idéal pour les familles : lagons calmes et eaux peu profondes.", "location": "Grand Baie" },
+        { "title": "L'Est paisible", "color": "#278d54", "background": "#F5F3F0", "description": "Sables blancs et retraites haut de gamme pour une élégance tranquille.", "tags": ["Luxe", "Isolement", "Lever du soleil"], "best": "Idéal pour le romantisme : baies privées et dîners sous les étoiles.", "location": "Belle Mare" },
+        { "title": "L'Ouest aventureux", "color": "#e65e35", "background": "#F5F3F0", "description": "Un terrain de jeu où montagnes spectaculaires et mer se rencontrent, avec des couchers de soleil iconiques.", "tags": ["Aventure", "Coucher de soleil", "Sports nautiques"], "best": "Idéal pour l'aventure : randonnée, surf et dauphins.", "location": "Flic en Flac, Le Morne" },
+        { "title": "Le Sud sauvage", "color": "#2789b4", "background": "#F5F3F0", "description": "Beauté brute et intacte, avec vagues sur falaises volcaniques loin des resorts policés.", "tags": ["Préservé", "Rugueux", "Dramatique"], "best": "Idéal pour la beauté sauvage : ambiance reculée et authentique.", "location": "Gris Gris" }
+      ]
+    }
+  },
+  "BlogIndex": {
+    "metadata": {
+      "title": "Blog Maurice | Conseils et guides de voyage",
+      "description": "Blog voyage sur Maurice avec guides pratiques, conseils locaux, plages, activités, hôtels et aide à la planification."
+    },
+    "schema": {
+      "name": "Blog Mauritius Explored",
+      "description": "Conseils de voyage, guides et secrets locaux sur Maurice"
+    },
+    "hero": {
+      "imageAlt": "Blog Maurice",
+      "title": "Le blog voyage de Maurice : guides, conseils et secrets locaux",
+      "subtitle": "Découvrez des conseils d'initiés, des trésors cachés et des expériences authentiques issues de nos aventures à travers Maurice."
+    },
+    "newsletter": {
+      "title": "Restez informé",
+      "description": "Recevez les derniers conseils de voyage et guides directement dans votre boîte mail."
+    },
+    "grid": {
+      "searchArticles": "Rechercher des articles...",
+      "searchArticlesAria": "Rechercher des articles du blog",
+      "openFilters": "Ouvrir les filtres",
+      "author": {
+        "title": "À propos de l'auteur",
+        "description": "Rédigé par Mauritius Explored avec plus de dix ans d'expérience à guider familles, couples et visiteurs réguliers vers les meilleures expériences de l'île. Toutes les recommandations reposent sur une connaissance personnelle et une expérience indépendante."
+      },
+      "searchKeywords": "Rechercher des mots-clés...",
+      "categoriesTitle": "Catégories",
+      "allPosts": "Tous les articles",
+      "latestPosts": "Derniers articles",
+      "tags": "Tags",
+      "allTags": "Tous les tags",
+      "instagramGallery": "Galerie Instagram",
+      "visit": "Voir",
+      "reel": "Reel",
+      "featuredStory": "Article à la une",
+      "latestArticles": "Derniers articles",
+      "tagHeading": "Tag : {tag}",
+      "articles": "Articles",
+      "results": "{count} résultats pour \"{query}\"",
+      "noArticlesSearch": "Aucun article trouvé pour cette recherche.",
+      "noArticlesCategory": "Aucun article trouvé dans cette catégorie.",
+      "filters": "Filtres",
+      "applyFilters": "Appliquer les filtres",
+      "reset": "Réinitialiser",
+      "closeFilters": "Fermer les filtres",
+      "category": "Catégorie",
+      "categories": {
+        "discover-mauritius": "Découvrir Maurice",
+        "beaches": "Plages",
+        "nature": "Nature",
+        "activities": "Activités",
+        "culinary": "Cuisine",
+        "culture": "Culture",
+        "accommodation": "Où séjourner",
+        "wedding": "Mariages"
+      }
+    }
+  },
+  "SearchPage": {
+    "metadata": {
+      "title": "Recherche Mauritius Explored",
+      "description": "Recherchez sur Mauritius Explored des plages, activités, hôtels, lieux, guides et articles de blog."
+    },
+    "kicker": "Recherche Mauritius Explored",
+    "title": "Trouvez plages, lieux, guides et activités",
+    "label": "Recherche Mauritius Explored",
+    "placeholder": "Rechercher plages, activités, hôtels, lieux ou guides du blog...",
+    "button": "Rechercher",
+    "results": "{count} résultats pour \"{query}\"",
+    "popular": "Pages et guides populaires",
+    "itineraryDescription": "Itinéraire road trip à Maurice sélectionné : {title}.",
+    "types": {
+      "beach": "Plage",
+      "place": "Lieu",
+      "activity": "Activité",
+      "hotel": "Hôtel",
+      "itinerary": "Itinéraire",
+      "blog": "Blog"
+    },
+    "staticGuides": [
+      { "title": "Meilleure période pour visiter Maurice", "description": "Météo, saisons, cyclones et conseils de voyage mois par mois.", "href": "/best-time-to-visit-to-mauritius", "type": "Guide" },
+      { "title": "Exigences de visa pour Maurice", "description": "Informations d'entrée et exigences de visa par nationalité.", "href": "/visa-requirements", "type": "Guide" },
+      { "title": "Transferts à Maurice", "description": "Transferts aéroport, navettes hôtel et demandes de trajets privés.", "href": "/mauritius-transfer-airport-hotel", "type": "Transport" },
+      { "title": "Service de taxi à Maurice", "description": "Demandes de taxi et chauffeur privé dans toute l'île.", "href": "/mauritius-taxi", "type": "Transport" },
+      { "title": "Location de voiture à Maurice", "description": "Catégories de véhicules, options et conseils de location à Maurice.", "href": "/car-rental-mauritius", "type": "Transport" },
+      { "title": "Guide eSIM et Internet à Maurice", "description": "Données mobiles, Wi-Fi, eSIM et conseils SIM locale pour Maurice.", "href": "/mauritius-esim-and-internet", "type": "Guide" },
+      { "title": "Trouver sa plage à Maurice", "description": "Trouvez la bonne plage pour nager, admirer le coucher du soleil ou faire du snorkeling.", "href": "/mauritius-beach-finder", "type": "Outil" },
+      { "title": "Media kit Mauritius Explored", "description": "Informations audience et partenariats pour hôtels, opérateurs et marques voyage.", "href": "/media-kit", "type": "Partenariat" }
+    ]
+  },
+  "Festivals": {
+    "metadata": { "title": "Festivals à Maurice 2026 | Célébrations et événements", "description": "Découvrez les dates 2026 des festivals à Maurice, de Diwali au Nouvel An chinois, Maha Shivaratree, Cavadee, Eid et Holi.", "ogTitle": "Festivals à Maurice 2026 | Célébrations culturelles", "ogDescription": "Planifiez autour des festivals 2026 à Maurice, dont Diwali, Nouvel An chinois, Cavadee, Eid, Holi et Maha Shivaratree.", "ogImageAlt": "Fête du Printemps - Nouvel An chinois à Maurice" },
+    "hero": { "imageAlt": "Festivals à Maurice", "title": "Festivals à Maurice 2026", "subtitle": "Découvrez les célébrations multiculturelles vibrantes de notre île avec les dates de l'année en cours." },
+    "intro": { "title": "Un creuset de cultures", "p1Before": "Maurice est fière d'être une", "highlight1": "société multiculturelle", "p1After": ", où religions, langues et cultures coexistent dans une même communauté.", "p2": "L'histoire de l'île a réuni des influences françaises, britanniques, africaines, indiennes et chinoises.", "p3Before": "Ce mélange a créé une", "highlight2": "société mauricienne unique", "p3After": " avec des fêtes colorées, spirituelles et profondément familiales." },
+    "grid": { "title": "Célébrations annuelles", "subtitle": "Les dates des jours fériés 2026 sont indiquées lorsqu'elles sont disponibles. Les dates de l'Eid peuvent dépendre de l'observation de la lune.", "visitorLabel": "Pour les visiteurs :" },
+    "cta": { "title": "Vivez la culture mauricienne", "body": "Planifiez votre séjour pendant un festival et plongez dans le riche patrimoine culturel de Maurice.", "button": "Meilleure période pour visiter Maurice" },
+    "items": [
+      { "name": "Réveillon du Nouvel An", "date": "2026 : 1-2 janvier", "description": "Maurice fête le Nouvel An avec dîners sur la plage, soirées d'hôtel et feux d'artifice sur la côte.", "visitorTip": "Réservez les dîners tôt et demandez à votre hôtel les meilleurs points de vue.", "imageAlt": "Réveillon du Nouvel An à Maurice" },
+      { "name": "Fête du Printemps (Nouvel An chinois)", "date": "2026 : 17 février", "description": "Danses du lion, dragons, lanternes rouges et cuisine festive animent Port Louis et Chinatown.", "visitorTip": "Allez à Port Louis ou Chinatown le matin pour les couleurs et l'ambiance.", "imageAlt": "Nouvel An chinois à Maurice" },
+      { "name": "Abolition de l'esclavage", "date": "2026 : 1 février", "description": "Ce jour férié rappelle l'abolition de l'esclavage et un moment majeur de l'histoire mauricienne.", "visitorTip": "Associez la journée au Morne Brabant pour comprendre l'histoire marronne et UNESCO.", "imageAlt": "Commémoration de l'abolition de l'esclavage" },
+      { "name": "Thaipusam Cavadee", "date": "2026 : 1 février", "description": "Grand festival tamoul marqué par jeûne, offrandes, processions et dévotion près des temples.", "visitorTip": "Observez avec respect, habillez-vous modestement et ne bloquez pas les processions.", "imageAlt": "Procession Thaipusam Cavadee à Maurice" },
+      { "name": "Maha Shivaratree", "date": "2026 : 15 février", "description": "Les fidèles marchent vers Grand Bassin avec des kanwars décorés pour honorer Shiva.", "visitorTip": "Grand Bassin est puissant mais très fréquenté; prévoyez du trafic et restez discret.", "imageAlt": "Pèlerinage Maha Shivaratree à Grand Bassin" },
+      { "name": "Holi", "date": "2026 : 4 mars", "description": "Holi célèbre la victoire du bien sur le mal avec feux, couleurs et rassemblements joyeux.", "visitorTip": "Participez seulement si vous êtes invité, protégez les appareils photo.", "imageAlt": "Couleurs de Holi à Maurice" },
+      { "name": "Fête de l'indépendance", "date": "2026 : 12 mars", "description": "Maurice marque son indépendance avec drapeaux, cérémonies publiques et rassemblements locaux.", "visitorTip": "Cherchez les cérémonies autour des villes, écoles et bâtiments publics.", "imageAlt": "Fête de l'indépendance à Maurice" },
+      { "name": "Ugaadi", "date": "2026 : 19 mars", "description": "Ugaadi marque le Nouvel An de certaines communautés indiennes et se vit surtout en famille et au temple.", "visitorTip": "C'est plus familial que touristique; observez calmement si vous êtes invité.", "imageAlt": "Célébration Ugaadi à Maurice" },
+      { "name": "Eid-ul-Fitr", "date": "2026 : 21 mars*", "description": "Eid-ul-Fitr marque la fin du Ramadan avec prières, repas festifs et réunions familiales.", "visitorTip": "Les dates peuvent changer avec la lune; attendez-vous à une ambiance familiale.", "imageAlt": "Eid à Maurice" },
+      { "name": "Ganesh Chaturthi", "date": "2026 : 16 septembre", "description": "Ganesh Chaturthi honore Ganesha avec prières, autels temporaires et processions.", "visitorTip": "Demandez avant de photographier les fidèles.", "imageAlt": "Ganesh Chaturthi à Maurice" },
+      { "name": "Pèlerinage Père Laval", "date": "2026 : 9 septembre", "description": "Des personnes de toutes confessions visitent le sanctuaire du Père Laval à Sainte Croix.", "visitorTip": "Sainte Croix est très fréquentée autour de la veillée; avancez lentement.", "imageAlt": "Pèlerinage Père Laval à Maurice" },
+      { "name": "Diwali", "date": "2026 : 8 novembre", "description": "Diwali illumine les maisons avec lampes, douceurs et célébration de la lumière.", "visitorTip": "Promenez-vous avec respect après la tombée de la nuit et acceptez les douceurs seulement si offertes.", "imageAlt": "Lumières de Diwali à Maurice" }
+    ]
+  },
+  "VisaRequirements": {
+    "hero": { "imageAlt": "Conditions de visa pour Maurice", "title": "Conditions de visa", "subtitle": "Conditions d'entrée pour visiter Maurice selon la nationalité" },
+    "lastUpdated": "Dernière mise à jour : {date}",
+    "filters": { "allCountries": "Tous les pays", "noVisaRequired": "Aucun visa requis", "visaOnArrival60": "Visa à l'arrivée (60 jours)", "visaOnArrival14": "Visa à l'arrivée (14 jours)", "visaRequired": "Visa requis" },
+    "badges": { "noVisa": "Sans visa", "sixtyDays": "60 jours", "fourteenDays": "14 jours", "visaRequired": "Visa requis" },
+    "types": {
+      "title": "Types de visas",
+      "tourist": { "title": "Visa touristique", "description": "Permet de séjourner pour des vacances. Une durée maximale de 6 mois par année civile peut être accordée au cas par cas." },
+      "business": { "title": "Visa d'affaires", "description": "Pour établir ou mener des activités professionnelles. Maximum 120 jours par année civile, chaque séjour ne dépassant pas 90 jours." },
+      "medical": { "title": "Visa médical", "description": "Accordé à l'arrivée pour un traitement dans des établissements privés enregistrés. Valable pendant le traitement, jusqu'à 6 mois." },
+      "premium": { "title": "Premium Visa", "description": "Visa long séjour pour télétravailleurs et retraités souhaitant rester à Maurice plus longtemps." }
+    },
+    "source": { "label": "Source :", "name": "Passport and Immigration Office, Gouvernement de Maurice" },
+    "popular": { "title": "Réponses visa pour les nationalités populaires", "subtitle": "Réponses rapides aux recherches courantes. Vérifiez toujours la liste complète et la source officielle avant de voyager.", "cardTitle": "Visa Maurice pour {country}", "cardAnswer": "Aucun visa n'est requis pour le tourisme dans la liste actuelle, mais des documents de voyage valides, une adresse d'hébergement et une preuve de retour ou continuation restent nécessaires." },
+    "countryList": { "title": "Conditions de visa par pays", "searchLabel": "Rechercher un pays", "searchPlaceholder": "Rechercher votre pays...", "showing": "{count} pays affichés", "fullListTitle": "Liste complète des visas pour Maurice", "empty": "Aucun pays ne correspond à votre recherche." },
+    "requirementText": { "no-visa": "aucun visa requis", "visa-on-arrival-60": "visa à l'arrivée, 60 jours", "visa-on-arrival-14": "visa à l'arrivée, 14 jours", "visa-required": "visa requis avant le voyage" },
+    "faqTitle": "FAQ visa Maurice",
+    "faqs": [
+      { "question": "Ai-je besoin d'un visa pour Maurice ?", "answer": "Cela dépend de votre nationalité. Beaucoup de visiteurs entrent sans visa, certains reçoivent un visa à l'arrivée et un petit groupe doit demander un visa avant le voyage. Utilisez la liste du pays et confirmez avec la source officielle." },
+      { "question": "Le visa pour Maurice est-il gratuit ?", "answer": "Les visas et prolongations de séjour sont délivrés gratuitement selon les informations officielles du Passport and Immigration Office." },
+      { "question": "Combien de temps puis-je rester à Maurice comme touriste ?", "answer": "Un séjour touristique peut être accordé jusqu'à six mois par année civile au cas par cas. L'admission finale et la durée sont décidées par l'officier d'immigration." }
+    ],
+    "important": {
+      "title": "Informations importantes",
+      "items": [
+        "Un visa permet de voyager vers Maurice mais ne garantit pas l'entrée. La décision finale revient à l'officier d'immigration.",
+        "Les visas et prolongations de séjour sont délivrés gratuitement.",
+        "Les voyageurs sans visa requis peuvent être rapatriés aux frais du transporteur.",
+        "Dépasser la durée du visa est une infraction et peut entraîner des poursuites.",
+        "Les étudiants doivent voyager seulement après l'approbation de leur demande d'études.",
+        "Les titulaires de passeports de l'UE et de passeports diplomatiques, sauf certains pays, sont exemptés des règles de visa."
+      ],
+      "sourceBefore": "Pour les informations les plus récentes, consultez le site officiel",
+      "sourceLink": "du Passport and Immigration Office"
+    }
+  },
+  "BestTimeToVisit": {
+    "metadata": { "title": "Meilleure période pour visiter Maurice", "description": "La meilleure période pour visiter Maurice par saison, mois, météo, risque cyclonique, activités et budget." },
+    "hero": { "imageAlt": "Meilleure période pour visiter Maurice", "title": "Meilleure période pour visiter Maurice", "subtitle": "Du soleil toute l'année vous attend. Découvrez quand partir pour des vacances idéales." },
+    "intro": {
+      "title": "Quelle est la meilleure période pour visiter Maurice ?",
+      "p1Before": "C'est l'une des questions les plus fréquentes. La réponse courte :",
+      "bestMonths": "avril, mai, septembre, octobre et novembre",
+      "p1After": "offrent souvent le meilleur équilibre entre soleil, températures agréables et meilleurs prix pour les vols ou hôtels.",
+      "p2": "Quelle que soit la période, la météo mauricienne sait faire plaisir. L'île profite d'un climat de vacances toute l'année, avec du soleil presque quotidien et des pluies limitées.",
+      "mythTitle": "Le mythe : quand est la saison des pluies à Maurice ?",
+      "mythAnswer": "Pas de vraie saison des pluies à Maurice",
+      "p3": "Maurice est une île subtropicale et n'a pas de mousson classique. En été, l'humidité peut provoquer de courtes averses fortes l'après-midi, et les cyclones peuvent influencer la météo entre décembre et mars. Prévoyez de la flexibilité, surtout pour les sorties en bateau, randonnées et longues routes côtières."
+    },
+    "seasons": { "title": "Les saisons en bref", "summer": "Été", "summerPeriod": "novembre - mars", "winter": "Hiver", "winterPeriod": "juin - août" },
+    "weather": { "title": "Carte météo en direct et prévisions", "iframeTitle": "Carte météo en direct de Maurice", "credit": "Données météo fournies par Windy.com" },
+    "monthSummaryTitle": "Météo à Maurice mois par mois",
+    "monthSummarySubtitle": "Un aperçu rapide de la météo, de l'affluence et des événements sur l'île.",
+    "monthSummaries": [
+      { "month": "Janvier", "summary": "Chaud, humide et animé, avec lagons tièdes et foule du Nouvel An. Les averses de l'après-midi sont courantes." },
+      { "month": "Février", "summary": "Toujours plein été : mer chaude, pluies tropicales brèves et énergie des vacances scolaires. Maha Shivaratree et Cavadee peuvent marquer le mois." },
+      { "month": "Mars", "summary": "Mois d'entre-saison chaud, avec moins de foule. Mer agréable, quelques averses fortes et fête de l'indépendance autour du 12 mars." },
+      { "month": "Avril", "summary": "Un excellent mois polyvalent : eau chaude, humidité plus douce et très peu de risque cyclonique." },
+      { "month": "Mai", "summary": "Sec, lumineux et confortable. Idéal pour road trips, randonnées et couchers de soleil sur la côte ouest." },
+      { "month": "Juin", "summary": "Plus frais, plus sec et souvent bon rapport qualité-prix. Les lagons restent agréables et la saison des baleines commence à l'ouest." },
+      { "month": "Juillet", "summary": "Mois d'hiver venteux avec soirées fraîches. L'est et le sud-est sont plus exposés, Le Morne attire les sports de glisse." },
+      { "month": "Août", "summary": "Sec et parfois venteux, avec plus de demande pendant les vacances européennes. Préférez le nord ou l'ouest pour nager." },
+      { "month": "Septembre", "summary": "Mois d'épaule très apprécié : faible humidité, journées lumineuses et chaleur qui revient." },
+      { "month": "Octobre", "summary": "Ensoleillé, chaud et souvent calme avant le plein été. Eau claire et affluence modérée." },
+      { "month": "Novembre", "summary": "Début d'été avec mer plus chaude, paysages verts et humidité en hausse. Diwali illumine souvent les quartiers." },
+      { "month": "Décembre", "summary": "Festif, chaud et très demandé autour de Noël et Nouvel An. Réservez tôt et suivez la météo tropicale." }
+    ],
+    "faqTitle": "FAQ - meilleure période pour visiter Maurice",
+    "faqs": [
+      { "question": "Quand est la saison cyclonique à Maurice ?", "answer": "La saison cyclonique s'étend généralement de novembre à avril, avec un risque plus élevé de janvier à mars. Les cyclones sérieux ne sont pas constants, mais il faut suivre les alertes officielles avant les sorties en mer, randonnées et longs trajets." },
+      { "question": "Quand est la saison des pluies à Maurice ?", "answer": "Maurice n'a pas de mousson. Les mois chauds de novembre à avril apportent plus d'humidité et de courtes averses fortes, tandis que mai à octobre est souvent plus frais et sec." },
+      { "question": "Quel est le mois le moins cher pour visiter Maurice ?", "answer": "Les meilleurs prix se trouvent souvent en mai, juin, septembre et début octobre, hors vacances scolaires et périodes festives." },
+      { "question": "Quel est le meilleur mois pour visiter Maurice ?", "answer": "Mai, juin, septembre et octobre offrent souvent le meilleur équilibre entre météo agréable, faible humidité et bons prix. Novembre à avril est plus chaud pour la baignade, mais parfois plus humide." }
+    ],
+    "seasonCopy": {
+      "title": "À quoi ressemblent les saisons ?",
+      "p1": "Pour commencer, l'été va de novembre à mars, et l'hiver de juin à août.",
+      "summerLabel": "L'été",
+      "summerBody": "est la période la plus chaude de l'année, avec des nuits autour de 25 degrés et des journées autour de 30 degrés. C'est une saison animée pour les locaux et visiteurs. L'humidité peut être élevée, les averses de l'après-midi sont normales et c'est aussi la principale période cyclonique.",
+      "autumnLabel": "L'automne",
+      "autumnBody": "fait la transition vers un ciel plus doux et moins de vent. Avril et mai sont excellents pour les familles, lunes de miel, plages, pêche et eau claire.",
+      "winterBefore": "Il faut dire que",
+      "winterLabel": "l'hiver",
+      "winterBody": "à Maurice reste très doux, souvent entre 22°C et 25°C sur la côte. C'est une très bonne saison pour randonnées, cascades, baleines, kitesurf et windsurf.",
+      "p5": "En hiver, Maurice devient un paradis pour la voile et les sports de vent.",
+      "springBefore": "Après les vents d'hiver arrive",
+      "springLabel": "le printemps",
+      "springBody": "avec une météo qui s'améliore en septembre et octobre. Les journées se réchauffent, l'humidité reste basse et l'île est souvent sèche et lumineuse."
+    },
+    "mythBox": { "title": "Mythe courant : \"saison des pluies\"", "bold": "Il n'y a pas de vraie saison des pluies à Maurice.", "body": "Comme île subtropicale, Maurice n'a pas de mousson. En été, de brèves pluies d'après-midi peuvent arriver à cause de l'humidité, mais elles durent souvent une ou deux heures seulement." },
+    "seasonActivities": {
+      "title": "Activités saisonnières",
+      "aria": "{title} - meilleur en {season}",
+      "best": "Meilleur : {season}",
+      "items": [
+        { "title": "Observation des baleines", "description": "Les baleines à bosse passent le long des côtes ouest et nord de juin à octobre.", "bestSeason": "juin - octobre", "image": "speedboat-tours-in-mauritius.jpg", "href": "/top-activities-mauritius/whale-watching", "alt": "Sortie bateau pour observer les baleines à Maurice" },
+        { "title": "Kitesurf et windsurf", "description": "Le Morne devient un haut lieu des sports de vent grâce aux alizés puissants.", "bestSeason": "juin - septembre", "image": "beach-of-le-morne-in-the-morning.jpg", "href": "/beaches-in-mauritius/le-morne", "alt": "Plage du Morne, kitesurf et windsurf à Maurice" },
+        { "title": "Baignade et snorkeling", "description": "Eaux claires et lagons calmes, parfaits pour explorer sous l'eau.", "bestSeason": "novembre - avril", "image": "blue-bay-sea-turtle.jpg", "href": "/top-activities-mauritius/snorkeling-blue-bay", "alt": "Snorkeling au parc marin de Blue Bay à Maurice" },
+        { "title": "Randonnée et nature", "description": "Températures confortables et cascades avec un bon débit.", "bestSeason": "mai - septembre", "image": "7-waterfall-hike.jpg", "href": "/top-activities-mauritius/seven-waterfalls", "alt": "Randonnée des Sept Cascades à Maurice" }
+      ]
+    },
+    "cta": { "title": "Prêt à planifier votre voyage ?", "body": "Explorez nos plages, activités et commencez à organiser vos vacances parfaites à Maurice." },
+    "monthGuide": {
+      "title": "Guide mois par mois",
+      "subtitle": "Sélectionnez un mois pour voir la météo détaillée et à quoi vous attendre",
+      "seasonLabel": "Saison : {season}",
+      "temperatureRange": "Températures",
+      "whatToExpect": "À quoi s'attendre",
+      "highlights": "Temps forts",
+      "bestFor": "Idéal pour",
+      "rainfall": "Pluie",
+      "humidity": "Humidité",
+      "cycloneRisk": "Risque cyclonique",
+      "months": [
+        { "name": "Janvier", "season": "Été", "seasonKey": "Summer", "tempMin": 22, "tempMax": 32, "rainfall": "Élevée", "humidity": "80%", "cycloneRisk": "Modéré", "highlights": ["Ambiance festive", "Plage", "Nouvel An chinois", "Haute saison"], "description": "Janvier est le plein été : chaud, humide et animé. Lagons tièdes, averses tropicales courtes et forte demande touristique.", "bestFor": ["Plages", "Lunes de miel", "Resorts", "Sports nautiques", "Culture"] },
+        { "name": "Février", "season": "Été", "seasonKey": "Summer", "tempMin": 24, "tempMax": 33, "rainfall": "Élevée", "humidity": "78%", "cycloneRisk": "Modéré", "highlights": ["Saint-Valentin", "Séjours romantiques", "Mer chaude", "Nouvel An chinois"], "description": "Février reste très tropical, avec mer chaude et pluies brèves. Idéal pour couples, plongée, snorkeling et hôtels de luxe.", "bestFor": ["Couples", "Plage", "Plongée", "Snorkeling", "Luxe"] },
+        { "name": "Mars", "season": "Été", "seasonKey": "Summer", "tempMin": 22, "tempMax": 31, "rainfall": "Modérée", "humidity": "75%", "cycloneRisk": "Faible", "highlights": ["Moins de foule", "Paysages verts", "Bon prix", "Nature"], "description": "Mars est chaud mais plus calme. L'île est verte, les cascades coulent bien et les foules diminuent.", "bestFor": ["Chaleur", "Moins de foule", "Paysages verts", "Plage et aventure"] },
+        { "name": "Avril", "season": "Automne", "seasonKey": "Autumn", "tempMin": 21, "tempMax": 30, "rainfall": "Faible", "humidity": "70%", "cycloneRisk": "Très faible", "highlights": ["Meilleure période", "Météo stable", "Pas de cyclone", "Pâques"], "description": "Avril est l'un des meilleurs mois : chaud, plus sec, plus calme et excellent pour familles, couples, plage et nature.", "bestFor": ["Couples", "Familles", "Plages", "Nature", "Resorts"] },
+        { "name": "Mai", "season": "Automne", "seasonKey": "Autumn", "tempMin": 19, "tempMax": 28, "rainfall": "Très faible", "humidity": "68%", "cycloneRisk": "Aucun", "highlights": ["Météo idéale", "Saison sèche", "Pas de cyclone", "Plein air"], "description": "Mai est sec, lumineux et confortable. Parfait pour routes panoramiques, randonnées, Chamarel et couchers de soleil.", "bestFor": ["Doux", "Sec", "Randonnée", "Voyage calme", "Bon rapport qualité-prix"] },
+        { "name": "Juin", "season": "Hiver", "seasonKey": "Winter", "tempMin": 17, "tempMax": 26, "rainfall": "Faible", "humidity": "72%", "cycloneRisk": "Aucun", "highlights": ["Début hiver", "Ciel clair", "Randonnée", "Moins de foule"], "description": "Juin ouvre l'hiver doux mauricien. Les journées sont fraîches et sèches, idéales pour visites, randonnées et observation des baleines.", "bestFor": ["Visites", "Moins de foule", "Randonnée", "Vacances actives"] },
+        { "name": "Juillet", "season": "Hiver", "seasonKey": "Winter", "tempMin": 16, "tempMax": 25, "rainfall": "Très faible", "humidity": "70%", "cycloneRisk": "Aucun", "highlights": ["Kitesurf", "Mois le plus frais", "Sports de vent", "Randonnée"], "description": "Juillet est frais, sec et venteux. Très bon pour voyageurs actifs et sports de vent, avec baignade plus agréable au nord et à l'ouest.", "bestFor": ["Visites", "Randonnée", "Kitesurf", "Photo", "Hôtels disponibles"] },
+        { "name": "Août", "season": "Hiver", "seasonKey": "Winter", "tempMin": 16, "tempMax": 26, "rainfall": "Très faible", "humidity": "68%", "cycloneRisk": "Aucun", "highlights": ["Sports de vent", "Dauphins", "Vacances européennes", "Météo stable"], "description": "Août est ensoleillé, peu humide et parfois venteux. L'ouest et le nord sont plus calmes pour la plage.", "bestFor": ["Climat agréable", "Randonnée", "Kitesurf", "Ciel clair", "Familles et couples"] },
+        { "name": "Septembre", "season": "Printemps", "seasonKey": "Spring", "tempMin": 17, "tempMax": 27, "rainfall": "Très faible", "humidity": "65%", "cycloneRisk": "Aucun", "highlights": ["Printemps", "Plages meilleures", "Dauphins et plongée", "Moins de touristes"], "description": "Septembre est lumineux, sec et de plus en plus chaud. Excellent pour snorkeling, plongée, dauphins, croisières et routes côtières.", "bestFor": ["Moins de touristes", "Plein air", "Faible humidité", "Plage et exploration"] },
+        { "name": "Octobre", "season": "Printemps", "seasonKey": "Spring", "tempMin": 18, "tempMax": 29, "rainfall": "Très faible", "humidity": "62%", "cycloneRisk": "Aucun", "highlights": ["Mois sec", "Lagons calmes", "Chaleur", "Soleil"], "description": "Octobre est chaud, ensoleillé et souvent calme avant le plein été. Eau claire et conditions très faciles à recommander.", "bestFor": ["Plages", "Lunes de miel", "Sports nautiques", "Moins de foule", "Resorts"] },
+        { "name": "Novembre", "season": "Été", "seasonKey": "Summer", "tempMin": 20, "tempMax": 31, "rainfall": "Modérée", "humidity": "72%", "cycloneRisk": "Faible", "highlights": ["Début été", "Plage idéale", "Avant haute saison", "Lune de miel"], "description": "Novembre marque le début de l'été : mer chaude, paysages verts et ambiance tropicale avant les prix de décembre.", "bestFor": ["Plages", "Lunes de miel", "Sports nautiques", "Luxe", "Avant les fêtes"] },
+        { "name": "Décembre", "season": "Été", "seasonKey": "Summer", "tempMin": 22, "tempMax": 33, "rainfall": "Modérée", "humidity": "78%", "cycloneRisk": "Modéré", "highlights": ["Fêtes", "Noël et Nouvel An", "Plein été", "Célébrations"], "description": "Décembre est chaud, festif et très demandé. Réservez tôt et suivez les prévisions tropicales.", "bestFor": ["Noël tropical", "Nouvel An", "Plage", "Ambiance festive", "Échapper à l'hiver"] }
+      ]
+    }
+  },
+  "Footer": {
+    "tagline": "Votre guide pour découvrir la beauté de Maurice. Des plages immaculées aux montagnes verdoyantes, explorez tout ce que ce paradis insulaire a à offrir.",
+    "explore": "Explorer",
+    "beaches": "Plages",
+    "bestPlaces": "Meilleurs lieux à visiter",
+    "activities": "Activités",
+    "planYourTrip": "Planifiez votre voyage",
+    "giveaway": "Concours",
+    "about": "À propos",
+    "aboutUs": "À propos de nous",
+    "welcome": "Bienvenue",
+    "festivals": "Festivals",
+    "events": "Événements",
+    "faq": "FAQ",
+    "privacyPolicy": "Politique de confidentialité",
+    "connect": "Nous suivre",
+    "location": "République de Maurice",
+    "contactUs": "Nous contacter",
+    "instagramAria": "Suivre Mauritius Explored sur Instagram",
+    "facebookAria": "Aimer Mauritius Explored sur Facebook",
+    "copyright": "Copyright © {year} Tous droits réservés | Mauritius Explored"
+  }
+}

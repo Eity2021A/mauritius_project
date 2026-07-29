@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { createPortal } from "react-dom";
 import { createClient } from "@/lib/supabase/client";
 import { toggleUpvote, ensureFeaturedItinerary } from "@/lib/itinerary-actions";
@@ -26,6 +27,7 @@ export default function UpvoteButton({
   initialCount,
   compact = false,
 }: Props) {
+  const t = useTranslations("Buttons");
   const [count, setCount] = useState(initialCount);
   const [upvoted, setUpvoted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -147,7 +149,7 @@ export default function UpvoteButton({
               ? "bg-orange-50 border-orange-300 text-orange-600"
               : "bg-white border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-700 active:bg-gray-50"
           }`}
-          aria-label={upvoted ? "Remove upvote" : "Upvote"}
+          aria-label={upvoted ? t("removeUpvote") : t("upvote")}
         >
           {submitting ? (
             <span className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin shrink-0" />
@@ -184,7 +186,7 @@ export default function UpvoteButton({
             ? "bg-orange-50 border-orange-300 text-orange-600"
             : "bg-white border-gray-200 text-gray-600 hover:border-gray-300 hover:text-gray-800"
         }`}
-        aria-label={upvoted ? "Remove upvote" : "Upvote"}
+        aria-label={upvoted ? t("removeUpvote") : t("upvote")}
       >
         {submitting ? (
           <span className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin shrink-0" />

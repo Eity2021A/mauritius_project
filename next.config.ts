@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 import path from "path";
 import bundleAnalyzer from "@next/bundle-analyzer";
+import createNextIntlPlugin from "next-intl/plugin";
 
+const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 const withBundleAnalyzer = bundleAnalyzer({ enabled: process.env.ANALYZE === "true" });
 
 const modernPolyfillPath = path.resolve(process.cwd(), "src/lib/modern-polyfill.js");
@@ -125,6 +127,34 @@ const nextConfig: NextConfig = {
       },
 
       // ========================================
+      // BLOG SLUG TYPO -> CORRECT SLUG
+      // ========================================
+      {
+        source: '/blog/10-beaches-to-vsit-in-mauritius',
+        destination: '/blog/10-beaches-to-visit-in-mauritius',
+        permanent: true,
+      },
+      {
+        source: '/blog/10-beaches-to-vsit-in-mauritius/',
+        destination: '/blog/10-beaches-to-visit-in-mauritius',
+        permanent: true,
+      },
+
+      // ========================================
+      // OLD ITINERARY TOOL URLS -> CURRENT ROADTRIP URLS
+      // ========================================
+      {
+        source: '/itineraries-mauritius',
+        destination: '/roadtrip-mauritius',
+        permanent: true,
+      },
+      {
+        source: '/itineraries-mauritius/:path*',
+        destination: '/roadtrip-mauritius/:path*',
+        permanent: true,
+      },
+
+      // ========================================
       // TOP 10 -> TOP 15 (page expanded)
       // ========================================
       {
@@ -151,8 +181,10 @@ const nextConfig: NextConfig = {
         destination: '/visa-requirements',
         permanent: true,
       },
+      
+  
     ];
   },
 };
 
-export default withBundleAnalyzer(nextConfig);
+export default withBundleAnalyzer(withNextIntl(nextConfig));

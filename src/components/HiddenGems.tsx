@@ -1,14 +1,10 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import Image from "next/image";
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { getImageSrcSet, getImageUrl } from "@/lib/image-url";
 import type { Metadata } from "next";
 import type { BlogPost } from "@/data/blog";
 import { getAllBlogPosts, getBlogCategories } from "@/lib/content";
-import { getBlogViewCount } from "@/lib/blog-view-counts";
 import { formatDate } from "@/data/blog";
-import { formatBlogViewCount } from "@/lib/blog-view-format";
 
 export const metadata: Metadata = {
   title: "Explore Mauritius - Beaches, Places & Activities",
@@ -28,7 +24,7 @@ function HiddenGemCard({
   slug,
   publishedAt,
   readTime,
-  viewCount,
+  readTimeLabel,
 }: {
   title: string;
   categories: string[];
@@ -36,7 +32,7 @@ function HiddenGemCard({
   slug: string;
   publishedAt: string;
   readTime: number;
-  viewCount: number;
+  readTimeLabel: string;
 }) {
   return (
     <article className="group h-full">
@@ -71,30 +67,7 @@ function HiddenGemCard({
             <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] text-gray-300 sm:text-xs">
               <span>{formatDate(publishedAt)}</span>
               <span>-</span>
-              <span>{readTime} min read</span>
-              <span>-</span>
-              <span className="inline-flex items-center gap-1">
-                <svg
-                  className="h-3.5 w-3.5"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M2.25 12s3.75-6.75 9.75-6.75S21.75 12 21.75 12 18 18.75 12 18.75 2.25 12 2.25 12z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"
-                  />
-                </svg>
-                {formatBlogViewCount(viewCount)}
-              </span>
+              <span>{readTime} {readTimeLabel}</span>
             </div>
           </div>
         </div>
@@ -104,6 +77,7 @@ function HiddenGemCard({
 }
 
 export default async function HiddenGems() {
+  const t = await getTranslations("Home.hiddenGems");
   const [allPosts, blogCategories] = await Promise.all([
     getAllBlogPosts(),
     getBlogCategories(),
@@ -121,25 +95,19 @@ export default async function HiddenGems() {
       : allPosts
   ).slice(0, 4);
 
-  const viewCounts = Object.fromEntries(
-    await Promise.all(
-      featuredPosts.map(async (post) => [post.slug, await getBlogViewCount(post.slug)] as const)
-    )
-  );
-
   return (
     <main id="main-content" className="bg-white">
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <div className="mb-8 text-center">
             <span className="text-sm font-medium uppercase tracking-wider text-orange-500">
-              Featured Stories
+              {t("kicker")}
             </span>
             <h2 className="mt-3 text-2xl font-bold text-gray-900 md:text-3xl">
-              Hidden Gems Stories
+              {t("title")}
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-gray-600">
-              Featured blog stories from the API, shown here in a compact four-column layout.
+              {t("subtitle")}
             </p>
           </div>
 
@@ -155,7 +123,7 @@ export default async function HiddenGems() {
                 slug={post.slug}
                 publishedAt={post.publishedAt}
                 readTime={post.readTime}
-                viewCount={viewCounts[post.slug] ?? 0}
+                readTimeLabel={t("readTime")}
               />
             ))}
           </div>

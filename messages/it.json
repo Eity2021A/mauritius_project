@@ -1,0 +1,927 @@
+{
+  "LanguageSwitcher": {
+    "selectLanguage": "Seleziona lingua",
+    "ariaLabel": "Lingua: {name}. Scegli la lingua",
+    "listLabel": "Seleziona lingua",
+    "english": "English",
+    "french": "French",
+    "german": "German",
+    "italian": "Italian",
+    "spanish": "Spanish",
+    "russian": "Russian"
+  },
+  "Common": {
+    "skipToContent": "Vai al contenuto principale",
+    "home": "Home",
+    "blog": "Blog",
+    "beaches": "Spiagge",
+    "activities": "Attività",
+    "pocketGuide": "Guida tascabile",
+    "menu": "Menu",
+    "openMenu": "Apri menu",
+    "closeMenu": "Chiudi menu",
+    "expand": "Espandi {name}",
+    "collapse": "Comprimi {name}",
+    "badgeNew": "Nuovo"
+  },
+  "Nav": {
+    "home": "Home",
+    "aboutMauritius": "Su Mauritius",
+    "welcomeIsland": "Benvenuti sull'isola di Mauritius",
+    "top15Things": "Le 15 cose da fare",
+    "bestTimeToVisit": "Periodo migliore per visitare",
+    "visaRequirements": "Requisiti per il visto",
+    "festivals": "Festival a Mauritius",
+    "events": "Eventi a Mauritius",
+    "giveaway": "🎁 Giveaway",
+    "explore": "Esplora",
+    "regions": "Regioni",
+    "bestof": "Il meglio",
+    "quickTrips": "Viaggi rapidi",
+    "travelPlanner": "Pianificatore di viaggio",
+    "familyHolidayGuide": "Guida vacanze in famiglia",
+    "northGuide": "Guida del Nord di Mauritius",
+    "southGuide": "Guida del Sud di Mauritius",
+    "eastGuide": "Guida dell'Est di Mauritius",
+    "westGuide": "Guida dell'Ovest di Mauritius",
+    "centralGuide": "Guida del Centro di Mauritius",
+    "bestBeachesOfMauritius": "Le migliori spiagge di Mauritius",
+    "bestCatamaranCruises": "Le migliori crociere in catamarano",
+    "bestHikesInMauritius": "Le migliori escursioni a Mauritius",
+    "bestMarketsOfMauritius": "I migliori mercati di Mauritius",
+    "bestWaterfallsOfMauritius": "Le migliori cascate di Mauritius",
+    "culturalPlacesOfMauritius": "Luoghi culturali di Mauritius",
+    "dayInPortLouis": "Un giorno a Port Louis",
+    "exploringGrandBaie": "Esplorare Grand Baie",
+    "exploringChamarel": "Esplorare Chamarel",
+    "exploringMahebourg": "Esplorare Mahébourg",
+    "leMorneAndChamarels": "Le Morne e Chamarel",
+    "natureReservesAndParks": "Riserve naturali e parchi",
+    "secretPlacesToDiscover": "Luoghi segreti da scoprire",
+    "sevenWaterfallsHike": "Escursione alle Sette Cascate",
+    "swimWithSeaTurtles": "Nuotare con le tartarughe marine",
+    "conquerLeMorne": "Conquista Le Morne",
+    "whalesAndDolphins": "Balene e delfini",
+    "beachRestaurants": "Dove mangiare: ristoranti in spiaggia",
+    "seeMonkeys": "Dove vedere le scimmie",
+    "snorkel": "Dove fare snorkeling",
+    "pocketGuide": "Guida tascabile",
+    "beaches": "Spiagge",
+    "placesToVisit": "Luoghi da visitare",
+    "activities": "Attività",
+    "search": "Search",
+    "itinerary": "Itinerario",
+    "allRoadTrip": "Tutti i RoadTrip",
+    "mauritiusItineraries": "Itinerari Mauritius",
+    "recommendedItineraries": "Itinerari consigliati",
+    "communityItineraries": "Itinerari della community",
+    "createItinerary": "Crea il tuo itinerario",
+    "transport": "Trasporto",
+    "carRental": "Noleggio auto",
+    "transfer": "Transfer",
+    "taxi": "Taxi",
+    "blog": "Blog",
+    "veranda": "Veranda",
+    "verandaPointeAuxBiches": "Veranda Pointe aux Biches",
+    "verandaPaulVirginie": "Veranda Paul & Virginie",
+    "verandaGrandBaie": "Veranda Grand Baie",
+    "verandaTamarin": "Veranda Tamarin",
+    "verandaPalmarBeach": "Veranda Palmar Beach"
+  },
+  "Buttons": {
+    "planYourTrip": "Pianifica il viaggio",
+    "exploreMauritius": "Esplora Mauritius",
+    "exploreBeaches": "Esplora le spiagge",
+    "viewActivities": "Vedi attività",
+    "exploreAllActivities": "Esplora tutte le attività",
+    "exploreAllBeaches": "Esplora tutte le spiagge",
+    "exploreAllPlaces": "Esplora tutti i luoghi",
+    "addToItinerary": "Aggiungi all'itinerario",
+    "addToMyItinerary": "Aggiungi al mio itinerario",
+    "added": "Aggiunto",
+    "addedToItinerary": "Aggiunto all'itinerario",
+    "removedFromItinerary": "Rimosso dal tuo itinerario",
+    "addedToast": "Aggiunto al tuo itinerario",
+    "bookNow": "Prenota ora",
+    "whatsapp": "WhatsApp",
+    "transfer": "Transfer",
+    "loading": "Caricamento...",
+    "loadingItineraries": "Caricamento itinerari",
+    "subscribe": "Iscriviti",
+    "subscribing": "Iscrizione…",
+    "emailPlaceholder": "Inserisci la tua email",
+    "emailAddress": "Indirizzo email",
+    "subscribedSuccess": "Iscrizione completata! Benvenuto a bordo.",
+    "somethingWrong": "Qualcosa è andato storto.",
+    "signIn": "Accedi",
+    "signOut": "Esci",
+    "signInToContinue": "Accedi per continuare",
+    "signInDescription": "Accedi con il tuo account Google per salvare gli itinerari e gestire i tuoi viaggi.",
+    "continueWithGoogle": "Continua con Google",
+    "redirecting": "Reindirizzamento...",
+    "close": "Chiudi",
+    "userMenu": "Menu utente",
+    "myItineraries": "I miei itinerari",
+    "myMauritiusItinerary": "Il mio itinerario a Mauritius",
+    "createItinerary": "Crea itinerario",
+    "save": "Salva",
+    "saveItinerary": "Salva itinerario",
+    "saved": "Salvato",
+    "saving": "Salvataggio...",
+    "edit": "Modifica",
+    "editItinerary": "Modifica questo itinerario",
+    "addCarRental": "Aggiungi noleggio auto",
+    "addTaxi": "Aggiungi taxi",
+    "rental": "Noleggio",
+    "taxi": "Taxi",
+    "createNew": "Crea nuovo",
+    "createFirstItinerary": "Crea il tuo primo itinerario",
+    "requestTransferQuote": "Richiedi preventivo transfer",
+    "submitting": "Invio…",
+    "openMyItinerary": "Apri il mio itinerario",
+    "badgeNew": "Nuovo",
+    "contactUs": "Contattaci",
+    "festivalsInMauritius": "Festival a Mauritius",
+    "tryAgain": "Qualcosa è andato storto. Riprova.",
+    "agreeTerms": "Accedendo, accetti i nostri termini di servizio.",
+    "delete": "Elimina",
+    "deleteConfirm": "Eliminare?",
+    "yes": "Sì",
+    "no": "No",
+    "makePublic": "Rendi pubblico",
+    "makePrivate": "Rendi privato",
+    "publicAnonymous": "Pubblico (Anonimo)",
+    "shareWithCommunity": "Condividi con la community",
+    "shareVisibleHint": "Il tuo itinerario sarà visibile a tutti",
+    "hideMyName": "Nascondi il mio nome",
+    "hideMyNameHint": "Il tuo itinerario mostrerà \"by Community User\" al posto del tuo nome",
+    "cancel": "Annulla",
+    "share": "Condividi",
+    "sharing": "Condivisione...",
+    "copied": "Copiato!",
+    "bookYourTaxi": "Prenota il tuo taxi",
+    "submitEntry": "Invia partecipazione",
+    "shareThisGiveaway": "Condividi questo giveaway",
+    "back": "Indietro",
+    "backToItineraries": "Torna a tutti gli itinerari",
+    "backToMyItineraries": "Torna a tutti i miei itinerari",
+    "backToPlaces": "Torna a tutti i luoghi",
+    "backToBeaches": "Torna a tutte le spiagge",
+    "backToActivities": "Torna a tutte le attività",
+    "updateItinerary": "Aggiorna itinerario",
+    "saveToMyAccount": "Salva sul mio account",
+    "editTitle": "Modifica titolo",
+    "comingSoon": "Prossimamente",
+    "upvote": "Mi piace",
+    "removeUpvote": "Rimuovi mi piace"
+  },
+  "Home": {
+    "intro": "Mauritius Explored ti aiuta a pianificare una vacanza migliore sull'isola con guide pratiche su spiagge, cascate, road trip, hotel, ristoranti e attività locali. Usa il sito per confrontare le regioni, scegliere la costa giusta, trovare cose da fare a Mauritius e creare un itinerario adatto al tuo stile di viaggio.",
+    "hero": {
+      "title": "Guida di viaggio a Mauritius",
+      "subtitle": "Tutto ciò che ti serve per pianificare le vacanze sull'isola di Mauritius"
+    },
+    "mosaic": {
+      "kicker": "Per un turismo sostenibile e viaggi responsabili a Mauritius",
+      "title": "Il meglio dell'isola di Mauritius 2026",
+      "subtitle": "Tutta l'ispirazione che ti serve per iniziare a pianificare la tua prossima avventura"
+    },
+    "across": {
+      "kicker": "Scopri",
+      "title": "Esplora le migliori scelte a Mauritius",
+      "subtitle": "Dalle attività emozionanti alle spiagge incontaminate e ai luoghi imperdibili — inizia da qui",
+      "sections": {
+        "activities": "Attività",
+        "beaches": "Spiagge",
+        "places": "Luoghi da visitare"
+      }
+    },
+    "hiddenGems": {
+      "kicker": "Storie in evidenza",
+      "title": "Storie di luoghi nascosti",
+      "subtitle": "Storie selezionate dal blog, mostrate qui in un layout compatto a quattro colonne.",
+      "readTime": "min di lettura"
+    },
+    "instagram": {
+      "title": "Segui le nostre avventure",
+      "subtitle": "Scopri destinazioni meravigliose attraverso il nostro feed Instagram",
+      "loading": "Caricamento...",
+      "tapToWatch": "Tocca per guardare su Instagram",
+      "hoverToPreview": "Passa sopra per l'anteprima",
+      "tapAgain": "Tocca di nuovo per Instagram",
+      "tapToPlay": "Tocca per riprodurre"
+    },
+    "itineraries": {
+      "kicker": "Esplora itinerari",
+      "title": "Itinerari e road trip a Mauritius",
+      "subtitle": "Una guida per esplorare Mauritius | I migliori luoghi da visitare | Lasciati ispirare",
+      "body": "Inizia con itinerari già pronti per nord, sud, est e ovest, oppure crea il tuo road trip tra spiagge, cascate, mercati e punti panoramici. Questi percorsi sono pensati per ridurre gli spostamenti inutili e rendere ogni giornata più facile da organizzare.",
+      "swipe": "Scorri per esplorare →",
+      "viewItinerary": "Vedi itinerario",
+      "seeThis": "Vedi questo itinerario: {title}"
+    },
+    "services": {
+      "kicker": "Vivi Mauritius",
+      "title": "Cose da fare a Mauritius",
+      "description": "Sfoglia le principali idee di attività a Mauritius, dalle spiagge e dagli sport acquatici alle escursioni, alla cultura, al cibo e alle giornate adatte alle famiglie. Ogni sezione porta a una guida più approfondita per confrontare le opzioni prima di prenotare o aggiungerle al tuo itinerario.",
+      "cards": {
+        "beachEscapes": {
+          "title": "Fughe in spiaggia",
+          "description": "Acque cristalline e spiagge di sabbia bianca ti aspettano.",
+          "buttonLabel": "Esplora le spiagge di Mauritius"
+        },
+        "waterSports": {
+          "title": "Sport acquatici",
+          "description": "Immersioni, snorkeling, kitesurf e avventure subacquee.",
+          "buttonLabel": "Scopri le attività acquatiche a Mauritius"
+        },
+        "natureWildlife": {
+          "title": "Natura e fauna",
+          "description": "Esplora parchi nazionali, cascate e fauna unica.",
+          "buttonLabel": "Scopri i luoghi naturali di Mauritius"
+        },
+        "festivalsHolidays": {
+          "title": "Festival e festività",
+          "description": "Scopri i vivaci festival e le festività di Mauritius durante tutto l'anno.",
+          "buttonLabel": "Esplora i festival di Mauritius"
+        }
+      }
+    },
+    "cta": {
+      "title": "La tua avventura a Mauritius ti aspetta",
+      "body": "Dalle spiagge incontaminate alle montagne rigogliose, scopri tutto ciò che questo paradiso insulare ha da offrire. Ti aiutiamo a pianificare la fuga perfetta."
+    },
+    "stats": {
+      "Hotels": "Hotel",
+      "Beaches": "Spiagge",
+      "Activities": "Attività",
+      "Places to Visit": "Luoghi da visitare"
+    }
+  },
+  "PocketGuide": {
+    "metadata": {
+      "title": "Mauritius Pocket Guide: la guida di viaggio offline completa",
+      "description": "Scarica il Mauritius Pocket Guide per spiagge, cascate, road trip, consigli gastronomici e pianificazione locale offline."
+    },
+    "product": {
+      "name": "Mauritius Pocket Guide",
+      "description": "Guida di viaggio offline per Mauritius con spiagge, cascate, road trip, consigli gastronomici e note pratiche locali."
+    },
+    "hero": {
+      "imageAlt": "Copertina del Mauritius Pocket Guide estate 2026"
+    },
+    "buttons": {
+      "getGuide": "Ottieni la guida tascabile"
+    },
+    "stats": [
+      { "value": "105", "label": "Spiagge e luoghi da visitare" },
+      { "value": "16", "label": "Esperienze selezionate" },
+      { "label": "Piano viaggio in famiglia", "icon": "family" },
+      { "label": "Migliori posti dove mangiare", "icon": "food" },
+      { "label": "Regione per regione", "icon": "map" }
+    ],
+    "reasonsKicker": "Perché ti piacerà",
+    "reasonsTitle": "Un intero sito, pensato per la strada",
+    "reasons": [
+      {
+        "title": "Tutto il sito nella tua tasca",
+        "description": "Abbiamo raccolto MauritiusExplored.com in una guida compatta: spiagge, cascate, road trip, luoghi nascosti, consigli locali e tutto ciò che serve mentre viaggi.",
+        "tone": "orange",
+        "icon": "phone"
+      },
+      {
+        "title": "Tocca, naviga, parti",
+        "description": "Ogni luogo ha una posizione cliccabile. Vedi una spiaggia che ti piace, la tocchi e l'app mappe apre subito le indicazioni.",
+        "tone": "teal",
+        "icon": "pin"
+      },
+      {
+        "title": "Funziona ovunque, anche offline",
+        "description": "Tienila salvata sul telefono ed è sempre con te, in aereo, su un sentiero di montagna o dove il segnale non arriva.",
+        "tone": "slate",
+        "icon": "plane"
+      },
+      {
+        "title": "Tutta l'ispirazione che ti serve",
+        "description": "Dai road trip sulla costa nord alle cascate perfette per le foto, la guida accende idee per il viaggio che vorrai davvero raccontare.",
+        "tone": "gold",
+        "icon": "bulb"
+      }
+    ],
+    "inside": {
+      "kicker": "Cosa contiene",
+      "title": "Il meglio, in dettaglio",
+      "description": "Consigli reali e testati su strada, quelli che fanno risparmiare tempo, denaro e stress del primo giorno.",
+      "items": [
+        {
+          "title": "Gli itinerari regionali in auto",
+          "description": "Percorsi giornalieri pronti per nord, sud e ovest per vedere il meglio di ogni costa nell'ordine giusto, senza deviazioni e senza tornare indietro.",
+          "badge": "Vale già da solo se noleggi un'auto",
+          "icon": "route"
+        },
+        {
+          "title": "Spiagge ordinate per ciò che vuoi davvero",
+          "description": "Lagune calme, punti per snorkeling, surf e tramonti, organizzati per regione per scegliere sempre la spiaggia giusta.",
+          "icon": "wave"
+        },
+        {
+          "title": "La guida alle crociere in catamarano",
+          "description": "Quali crociere meritano davvero, cosa includono, dove vanno e cosa aspettarsi, così spendi per la giornata giusta.",
+          "icon": "boat"
+        },
+        {
+          "title": "Guide approfondite alle zone più importanti",
+          "description": "Luoghi come Chamarel e Mahebourg sono spiegati con cosa vedere, quanto tempo dedicare e come inserirli in una giornata fluida.",
+          "icon": "compass"
+        },
+        {
+          "title": "Muoversi, in modo semplice",
+          "description": "Indicazioni chiare su transfer aeroportuali, autisti privati e noleggio auto, incluse le domande da fare e cosa aspettarsi.",
+          "icon": "car"
+        },
+        {
+          "title": "Consigli locali che non trovi nella prima pagina di Google",
+          "description": "Le piccole cose pratiche: orari, etichetta, cosa vale la pena e cosa evitare, per sentirti meno spaesato.",
+          "icon": "star"
+        }
+      ]
+    },
+    "finalCta": {
+      "title": "Il tuo viaggio perfetto a Mauritius inizia qui",
+      "description": "Salvala sul telefono e sei pronto: giornata in spiaggia, road trip o piano B per un pomeriggio di pioggia, c'è tutto."
+    },
+    "faqKicker": "Risposte rapide",
+    "faqTitle": "FAQ Mauritius Pocket Guide",
+    "faqs": [
+      {
+        "question": "Cosa contiene il Mauritius Pocket Guide?",
+        "answer": "La guida include spiagge, cascate, road trip, consigli locali, idee gastronomiche e note di pianificazione offline per viaggiare a Mauritius."
+      },
+      {
+        "question": "Posso usare il Mauritius Pocket Guide offline?",
+        "answer": "Sì. La guida è pensata per essere salvata sul telefono, così le informazioni principali restano disponibili anche quando il segnale è debole."
+      },
+      {
+        "question": "Per chi è pensato il Mauritius Pocket Guide?",
+        "answer": "È utile per chi visita Mauritius per la prima volta, famiglie, coppie e viaggiatori on the road che vogliono accesso rapido ai punti forti dell'isola."
+      }
+    ]
+  },
+  "BeachesHub": {
+    "metadata": {
+      "title": "Migliori spiagge di Mauritius - Guida completa 2026",
+      "description": "Scopri le spiagge di Mauritius, dalle lagune calme e sabbia bianca alle scogliere selvagge e baie nascoste.",
+      "ogTitle": "Migliori spiagge di Mauritius - Guida completa"
+    },
+    "schema": {
+      "name": "Le migliori spiagge di Mauritius",
+      "description": "Una directory di spiagge, lagune, punti per snorkeling e baie nascoste di Mauritius."
+    },
+    "hero": {
+      "imageAlt": "Migliori spiagge di Mauritius",
+      "title": "Le migliori spiagge di Mauritius",
+      "subtitle": "Guida spiagge 2026 per lagune calme, snorkeling e baie nascoste."
+    },
+    "intro": {
+      "beforeBeaches": "Ci sono molte splendide",
+      "beachesLink": "spiagge a Mauritius",
+      "afterBeaches": "; la migliore dipende dalle tue preferenze. Scopri le spiagge più belle e dove trascorrere la tua",
+      "honeymoonLink": "luna di miele",
+      "afterHoneymoon": ", e perché Mauritius è famosa oltre al dodo e alla cascata sottomarina. Da nord a sud, esplora spiagge celebri e gemme nascoste: la sabbia bianca di",
+      "afterBelleMare": "a est,",
+      "afterMontChoisy": ", oppure",
+      "afterPointeAuxPiments": "con calette rocciose ideali per lo",
+      "snorkelingLink": "snorkeling",
+      "afterSnorkeling": "verso Balaclava.",
+      "afterTrouAuxBiches": "affascina con palme da cocco, sabbia bianca ed è un ottimo punto per vedere tartarughe marine."
+    },
+    "filters": {
+      "all": "Tutto",
+      "searchPlaceholder": "Cerca spiagge...",
+      "searchAria": "Cerca spiagge",
+      "openFilters": "Apri filtri",
+      "category": "Categoria",
+      "region": "Regione",
+      "countAria": "{count} spiagge",
+      "reset": "Reimposta filtri",
+      "title": "Filtri",
+      "apply": "Applica filtri",
+      "resetShort": "Reimposta",
+      "close": "Chiudi filtri"
+    },
+    "empty": {
+      "title": "Nessuna spiaggia corrisponde ai tuoi filtri.",
+      "clear": "Cancella filtri"
+    },
+    "categories": {
+      "snorkeling": "Snorkeling",
+      "amenities": "Servizi",
+      "familyFriendly": "Adatta alle famiglie",
+      "surfing": "Surf",
+      "secluded": "Isolata"
+    },
+    "regions": {
+      "north": "Nord",
+      "south": "Sud",
+      "east": "Est",
+      "west": "Ovest",
+      "northWest": "Nord-ovest",
+      "northEast": "Nord-est",
+      "southWest": "Sud-ovest",
+      "southEast": "Sud-est",
+      "central": "Centro",
+      "rodrigues": "Rodrigues",
+      "various": "Varie"
+    }
+  },
+  "ActivitiesHub": {
+    "metadata": {
+      "title": "Attività a Mauritius - Tour e avventure 2026",
+      "description": "Prenota attività e avventure a Mauritius, dai catamarani e delfini alle escursioni e tour in elicottero.",
+      "ogTitle": "Attività a Mauritius - Tour e avventure",
+      "ogImageAlt": "Nuotare con i delfini - Attività e avventure a Mauritius"
+    },
+    "schema": {
+      "name": "Cose da fare a Mauritius: tour e attività",
+      "description": "Una directory di tour, avventure in mare, escursioni, esperienze in cielo e attività sull'isola a Mauritius."
+    },
+    "hero": {
+      "imageAlt": "Migliori attività a Mauritius",
+      "title": "Cose da fare a Mauritius: tour e attività",
+      "subtitle": "La più grande raccolta di attività a Mauritius, dalle avventure in mare alle escursioni in montagna"
+    },
+    "intro": {
+      "beforeAdventure": "Mauritius offre tantissime attività per ogni tipo di viaggiatore. Se cerchi",
+      "adventure": "avventure adrenaliniche",
+      "afterAdventure": "come nuotare con i delfini, paracadutismo o quad, o preferisci esperienze più rilassanti come",
+      "cruises": "crociere in catamarano",
+      "and": "e",
+      "boatTours": "gite in barca al tramonto",
+      "afterCruises": ", c'è qualcosa per tutti. Esplora la bellezza naturale dell'isola con",
+      "hiking": "sentieri escursionistici",
+      "afterHiking": "verso cascate e cime montuose, oppure scopri il mondo sottomarino con",
+      "snorkeling": "snorkeling",
+      "scuba": "immersioni",
+      "afterScuba": ". Dai voli in elicottero sopra la famosa cascata sottomarina alle passeggiate a cavallo su spiagge incontaminate, crea ricordi indimenticabili in paradiso."
+    },
+    "filters": {
+      "all": "Tutto",
+      "allRegions": "Tutte le regioni",
+      "searchPlaceholder": "Cerca attività...",
+      "searchAria": "Cerca attività",
+      "openFilters": "Apri filtri",
+      "category": "Categoria",
+      "region": "Regione",
+      "countAria": "{count} attività",
+      "reset": "Reimposta filtri",
+      "title": "Filtri",
+      "apply": "Applica filtri",
+      "resetShort": "Reimposta",
+      "close": "Chiudi filtri"
+    },
+    "empty": {
+      "title": "Nessuna attività corrisponde ai tuoi filtri.",
+      "clear": "Cancella filtri"
+    },
+    "categories": {
+      "bestSeller": "Più venduta",
+      "adventure": "Avventura",
+      "air": "Aria",
+      "land": "Terra",
+      "sea": "Mare",
+      "hiking": "Escursioni",
+      "unique": "Unica"
+    },
+    "regions": {
+      "north": "Nord",
+      "south": "Sud",
+      "east": "Est",
+      "west": "Ovest",
+      "northWest": "Nord-ovest",
+      "northEast": "Nord-est",
+      "southWest": "Sud-ovest",
+      "southEast": "Sud-est",
+      "central": "Centro",
+      "rodrigues": "Rodrigues",
+      "various": "Varie"
+    },
+    "cta": {
+      "title": "Hai bisogno di aiuto per pianificare la tua avventura?",
+      "body": "Contattaci per consigli personalizzati e supporto nella prenotazione delle attività perfette per il tuo viaggio a Mauritius.",
+      "button": "Contattaci"
+    }
+  },
+  "PlacesHub": {
+    "metadata": {
+      "title": "Migliori luoghi da visitare a Mauritius - Attrazioni 2026",
+      "description": "Esplora le attrazioni di Mauritius, tra cascate, parchi naturali, isole e gemme nascoste.",
+      "ogTitle": "Migliori luoghi da visitare a Mauritius",
+      "ogImageAlt": "Giardino botanico di Pamplemousses - Migliori luoghi da visitare a Mauritius"
+    },
+    "schema": {
+      "name": "I migliori luoghi da visitare a Mauritius",
+      "description": "Una directory di attrazioni, cascate, parchi, isole, mercati e luoghi nascosti di Mauritius."
+    },
+    "hero": {
+      "imageAlt": "I migliori luoghi da visitare a Mauritius",
+      "title": "I migliori luoghi da visitare a Mauritius",
+      "subtitle": "Cose da fare nel 2026, tra cascate, parchi naturali, isole e gemme nascoste."
+    },
+    "filters": {
+      "all": "Tutto",
+      "allRegions": "Tutte le regioni",
+      "searchPlaceholder": "Cerca luoghi...",
+      "searchAria": "Cerca luoghi",
+      "openFilters": "Apri filtri",
+      "category": "Categoria",
+      "region": "Regione",
+      "reset": "Reimposta filtri",
+      "title": "Filtri",
+      "apply": "Applica filtri",
+      "resetShort": "Reimposta",
+      "close": "Chiudi filtri"
+    },
+    "empty": {
+      "title": "Nessun luogo corrisponde ai tuoi filtri.",
+      "clear": "Cancella filtri"
+    },
+    "categories": {
+      "nature": "Natura",
+      "waterfalls": "Cascate",
+      "discover": "Scoprire",
+      "hideaways": "Luoghi nascosti",
+      "islands": "Isole",
+      "local": "Locale",
+      "history": "Storia"
+    },
+    "regions": {
+      "north": "Nord",
+      "south": "Sud",
+      "east": "Est",
+      "west": "Ovest",
+      "northWest": "Nord-ovest",
+      "northEast": "Nord-est",
+      "southWest": "Sud-ovest",
+      "southEast": "Sud-est",
+      "central": "Centro",
+      "rodrigues": "Rodrigues",
+      "various": "Varie"
+    },
+    "tips": {
+      "title": "Consigli da Mauritius Explored",
+      "tipLabel": "Consiglio:",
+      "body": "Non avere paura di noleggiare un'auto. La piccola isola è facile da esplorare attraverso poche strade principali e il traffico è come la popolazione locale: rilassato e scarso.",
+      "note": "Abbiamo incluso anche luoghi bellissimi che quasi nessuno visita. Cerca la categoria \"Luoghi nascosti\" per i nostri posti segreti!"
+    }
+  },
+  "FamilyHolidayGuide": {
+    "metadata": {
+      "title": "Guida vacanze in famiglia a Mauritius",
+      "description": "Guida per famiglie a Mauritius: sicurezza, periodo migliore con bambini, budget, avventure e spiagge adatte."
+    },
+    "hero": {
+      "title": "Guida vacanze in famiglia a Mauritius:",
+      "edition": "Edizione 2026",
+      "subtitle": "Pianifica la fuga tropicale perfetta nel parco giochi insulare più sicuro d'Africa per le famiglie."
+    },
+    "paradise": {
+      "title": "Perché Mauritius è un paradiso per famiglie",
+      "items": [
+        { "title": "Molto sicura", "description": "Spesso indicata tra le destinazioni familiari più sicure d'Africa: tranquilla e facile da esplorare.", "color": "#1689c3" },
+        { "title": "Sana e senza pensieri", "description": "Ambiente senza malaria, sanità affidabile e ospitalità calorosa.", "color": "#76acc2" },
+        { "title": "Poco jet lag", "description": "La differenza di 3-4 ore mantiene fresca tutta la famiglia.", "color": "#1689c3" },
+        { "title": "Ricco mix culturale", "description": "Una classe vivente di influenze creole, indiane e francesi.", "color": "#76acc2" }
+      ]
+    },
+    "seasons": {
+      "title": "Il periodo migliore con bambini",
+      "items": [
+        { "title": "Il momento perfetto", "period": "Ott - Dic", "description": "Acqua calda, lagune calme e atmosfera festosa per famiglie." },
+        { "title": "Stagione attiva", "period": "Lug - Ago", "description": "Temperature più fresche, perfette per escursioni ed esplorazioni senza umidità estrema." },
+        { "title": "Stagione ciclonica", "period": "Gen - Mar", "description": "Ancora bella, ma è il periodo ciclonico principale: serve flessibilità." }
+      ]
+    },
+    "budget": {
+      "title": "Budget intelligente per la famiglia",
+      "estimateLabel": "Spesa giornaliera stimata",
+      "amount": "$150 - $250",
+      "description": "Per una famiglia di quattro persone di fascia media, con soggiorni comodi, auto a noleggio e tour guidati.",
+      "options": [
+        { "title": "All-inclusive", "description": "Massima tranquillità: pasti e molte attività incluse. Utile per controllare il budget." },
+        { "title": "Mezza pensione", "description": "Colazione e cena incluse, con libertà di provare pranzi locali autentici." }
+      ]
+    },
+    "adventures": {
+      "title": "Avventure familiari iconiche",
+      "items": [
+        { "title": "Tartarughe della costa ovest", "description": "Un'esperienza magica a misura di bambino.", "color": "#1689c3" },
+        { "title": "Catamarano all'Ile aux Cerfs", "description": "Lagune sicure più un'isola per picnic.", "color": "#67aabf" },
+        { "title": "Barca con fondo di vetro a Blue Bay", "description": "Esplora i reef restando comodo e asciutto.", "color": "#1689c3" },
+        { "title": "Terra dei Sette Colori", "description": "Una meraviglia naturale senza attrezzatura speciale.", "color": "#4aa0c5" },
+        { "title": "Sentieri di Black River", "description": "Una passeggiata facile con qualcosa di sorprendente.", "color": "#1689c3" },
+        { "title": "Festa Sega locale", "description": "Ballate insieme sotto le stelle.", "color": "#4aa0c5" }
+      ]
+    },
+    "coasts": {
+      "title": "Trova la costa perfetta per la famiglia",
+      "items": [
+        { "title": "La costa nord", "subtitle": "Vivace e animata", "description": "Ideale per famiglie che amano paesi vivaci, sport acquatici, ristoranti e negozi." },
+        { "title": "La costa ovest", "subtitle": "Serena e panoramica", "description": "Perfetta per un ritmo più lento: lagune facili, mare calmo e nuotate dolci." }
+      ]
+    }
+  },
+  "TravelPlanner": {
+    "metadata": {
+      "title": "Pianificatore di viaggio per Mauritius",
+      "description": "Il pianificatore essenziale per Mauritius: quando andare, come muoversi, che budget prevedere e come organizzare il viaggio perfetto passo dopo passo."
+    },
+    "hero": {
+      "titleBefore": "Mauritius",
+      "titleAfter": "Il tuo pianificatore di viaggio essenziale",
+      "subtitle": "Scopri i segreti dell'isola: clima, requisiti d'ingresso e la costa perfetta per te."
+    },
+    "labels": {
+      "climate": "Clima:",
+      "bestFor": "Ideale per:",
+      "keyLocations": "Luoghi chiave:"
+    },
+    "timing": {
+      "title": "Scegliere il momento giusto per la tua fuga tropicale",
+      "summer": {
+        "title": "Estate (ottobre - aprile)",
+        "climate": "Più caldo (24C-31C) e umido; brevi piogge tropicali mantengono il paesaggio rigoglioso.",
+        "bestFor": "Esplorare le lagune e godersi acque cristalline."
+      },
+      "winter": {
+        "title": "Inverno (maggio - settembre)",
+        "climate": "Più fresco e secco, con temperature piacevoli e meno umidità.",
+        "bestFor": "Escursioni, surf ed esplorazione dei paesaggi dell'isola."
+      },
+      "sweetSpot": {
+        "title": "Periodo ideale per il 2026",
+        "before": "Per il miglior equilibrio tra clima mite e minore umidità, visita Mauritius in",
+        "months": "maggio, giugno o settembre."
+      }
+    },
+    "checklist": {
+      "title": "Checklist d'arrivo senza stress per il 2026",
+      "items": [
+        { "title": "Modulo digitale tutto-in-uno", "description": "Compilalo online sul portale ufficiale entro 72 ore prima dell'arrivo. Niente più landing card!", "color": "#2391c9", "background": "#fff" },
+        { "title": "Visto all'arrivo", "description": "Visto di 90 giorni all'arrivo per cittadini di 100 paesi; serve prova del volo di ritorno.", "color": "#2391c9", "background": "#fff" },
+        { "title": "Prova finanziaria", "description": "Preparati a mostrare fondi disponibili, circa 100 USD al giorno per il soggiorno.", "color": "#2391c9", "background": "#fff" },
+        { "title": "Valuta", "description": "La valuta locale è la rupia mauriziana (MUR). Gli sportelli ATM sono molto diffusi.", "color": "#438aa9", "background": "#fff" },
+        { "title": "Documenti richiesti", "description": "Tieni pronti biglietto di ritorno confermato e prova dell'alloggio per l'immigrazione.", "color": "#438aa9", "background": "#fff" },
+        { "title": "Restrizioni sanitarie", "description": "Nel 2026 non è richiesto nulla di speciale per chi ha visitato di recente il Regno Unito; valgono i documenti idonei.", "color": "#df633e", "background": "#FBEEE2", "accent": true }
+      ]
+    },
+    "coasts": {
+      "title": "Trova la costa perfetta",
+      "items": [
+        { "title": "Il Nord vivace", "color": "#e65e35", "background": "#F5F3F0", "description": "Il cuore energico dell'isola, perfetto per serate sociali e avventure in laguna.", "tags": ["Energia", "Boutique", "Vita notturna"], "best": "Ideale per famiglie: lagune calme e acque basse.", "location": "Grand Baie" },
+        { "title": "L'Est sereno", "color": "#278d54", "background": "#F5F3F0", "description": "Sabbie bianche finissime e resort esclusivi per una tranquillità raffinata.", "tags": ["Lusso", "Privacy", "Alba"], "best": "Ideale per romanticismo: baie private e cene sotto le stelle.", "location": "Belle Mare" },
+        { "title": "L'Ovest avventuroso", "color": "#e65e35", "background": "#F5F3F0", "description": "Un parco giochi per l'avventura dove montagne spettacolari incontrano il mare.", "tags": ["Avventura", "Tramonto", "Sport acquatici"], "best": "Ideale per avventura: trekking, surf e delfini.", "location": "Flic en Flac, Le Morne" },
+        { "title": "Il Sud selvaggio", "color": "#2789b4", "background": "#F5F3F0", "description": "Bellezza grezza e incontaminata, con onde sulle scogliere vulcaniche lontano dai resort.", "tags": ["Incontaminato", "Selvaggio", "Drammatico"], "best": "Ideale per natura selvaggia: remoto e autentico.", "location": "Gris Gris" }
+      ]
+    }
+  },
+  "BlogIndex": {
+    "metadata": {
+      "title": "Blog Mauritius | Consigli e guide di viaggio",
+      "description": "Blog di viaggio su Mauritius con guide pratiche, consigli locali, spiagge, attività, hotel e pianificazione."
+    },
+    "schema": {
+      "name": "Blog Mauritius Explored",
+      "description": "Consigli di viaggio, guide e segreti locali su Mauritius"
+    },
+    "hero": {
+      "imageAlt": "Blog Mauritius",
+      "title": "Il blog di viaggio di Mauritius: guide, consigli e segreti locali",
+      "subtitle": "Scopri consigli da insider, gemme nascoste ed esperienze autentiche dalle nostre avventure a Mauritius."
+    },
+    "newsletter": {
+      "title": "Resta aggiornato",
+      "description": "Ricevi gli ultimi consigli di viaggio e le guide direttamente nella tua email."
+    },
+    "grid": {
+      "searchArticles": "Cerca articoli del blog...",
+      "searchArticlesAria": "Cerca articoli del blog",
+      "openFilters": "Apri filtri",
+      "author": {
+        "title": "Informazioni sull'autore",
+        "description": "Scritto da Mauritius Explored con oltre dieci anni di esperienza nell'accompagnare famiglie, coppie e visitatori abituali verso le migliori esperienze dell'isola. Tutti i consigli si basano su conoscenza personale ed esperienza indipendente."
+      },
+      "searchKeywords": "Cerca parole chiave del blog...",
+      "categoriesTitle": "Categorie",
+      "allPosts": "Tutti gli articoli",
+      "latestPosts": "Ultimi articoli",
+      "tags": "Tag",
+      "allTags": "Tutti i tag",
+      "instagramGallery": "Galleria Instagram",
+      "visit": "Visita",
+      "reel": "Reel",
+      "featuredStory": "Storia in evidenza",
+      "latestArticles": "Ultimi articoli",
+      "tagHeading": "Tag: {tag}",
+      "articles": "Articoli",
+      "results": "{count} risultati per \"{query}\"",
+      "noArticlesSearch": "Nessun articolo trovato per questa ricerca.",
+      "noArticlesCategory": "Nessun articolo trovato in questa categoria.",
+      "filters": "Filtri",
+      "applyFilters": "Applica filtri",
+      "reset": "Reimposta",
+      "closeFilters": "Chiudi filtri",
+      "category": "Categoria",
+      "categories": {
+        "discover-mauritius": "Scoprire Mauritius",
+        "beaches": "Spiagge",
+        "nature": "Natura",
+        "activities": "Attività",
+        "culinary": "Cucina",
+        "culture": "Cultura",
+        "accommodation": "Dove soggiornare",
+        "wedding": "Matrimoni"
+      }
+    }
+  },
+  "SearchPage": {
+    "metadata": {
+      "title": "Cerca su Mauritius Explored",
+      "description": "Cerca su Mauritius Explored spiagge, attività, hotel, luoghi, guide e articoli del blog."
+    },
+    "kicker": "Cerca su Mauritius Explored",
+    "title": "Trova spiagge, luoghi, guide e attività",
+    "label": "Cerca su Mauritius Explored",
+    "placeholder": "Cerca spiagge, attività, hotel, luoghi o guide del blog...",
+    "button": "Cerca",
+    "results": "{count} risultati per \"{query}\"",
+    "popular": "Pagine e guide popolari",
+    "itineraryDescription": "Itinerario road trip selezionato a Mauritius: {title}.",
+    "types": {
+      "beach": "Spiaggia",
+      "place": "Luogo",
+      "activity": "Attività",
+      "hotel": "Hotel",
+      "itinerary": "Itinerario",
+      "blog": "Blog"
+    },
+    "staticGuides": [
+      { "title": "Periodo migliore per visitare Mauritius", "description": "Meteo, stagioni, note sui cicloni e consigli mese per mese.", "href": "/best-time-to-visit-to-mauritius", "type": "Guida" },
+      { "title": "Requisiti per il visto a Mauritius", "description": "Informazioni d'ingresso e requisiti di visto per nazionalità.", "href": "/visa-requirements", "type": "Guida" },
+      { "title": "Transfer a Mauritius", "description": "Transfer aeroportuali, pickup in hotel e richieste di tratte private.", "href": "/mauritius-transfer-airport-hotel", "type": "Trasporto" },
+      { "title": "Servizio taxi a Mauritius", "description": "Richieste di taxi e autista privato in tutta Mauritius.", "href": "/mauritius-taxi", "type": "Trasporto" },
+      { "title": "Noleggio auto Mauritius", "description": "Categorie veicoli, extra e consigli per noleggiare auto a Mauritius.", "href": "/car-rental-mauritius", "type": "Trasporto" },
+      { "title": "Guida eSIM e Internet a Mauritius", "description": "Dati mobili, Wi-Fi, eSIM e consigli SIM locale per Mauritius.", "href": "/mauritius-esim-and-internet", "type": "Guida" },
+      { "title": "Mauritius Beach Finder", "description": "Trova la spiaggia giusta per nuotare, tramonti e snorkeling.", "href": "/mauritius-beach-finder", "type": "Strumento" },
+      { "title": "Media kit Mauritius Explored", "description": "Informazioni su pubblico e partnership per hotel, operatori e brand travel.", "href": "/media-kit", "type": "Partnership" }
+    ]
+  },
+  "Festivals": {
+    "metadata": { "title": "Festival a Mauritius 2026 | Cultura ed eventi", "description": "Scopri le date 2026 dei festival a Mauritius, da Diwali e Capodanno cinese a Maha Shivaratree, Cavadee, Eid e Holi.", "ogTitle": "Festival a Mauritius 2026 | Celebrazioni culturali", "ogDescription": "Pianifica attorno ai festival 2026 a Mauritius, inclusi Diwali, Capodanno cinese, Cavadee, Eid, Holi e Maha Shivaratree.", "ogImageAlt": "Festa di primavera - Capodanno cinese a Mauritius" },
+    "hero": { "imageAlt": "Festival a Mauritius", "title": "Festival a Mauritius 2026", "subtitle": "Vivi le celebrazioni multiculturali della nostra isola con le date aggiornate." },
+    "intro": { "title": "Un crogiolo di culture", "p1Before": "Mauritius è orgogliosa di essere una", "highlight1": "società multiculturale", "p1After": ", dove religioni, lingue e culture convivono.", "p2": "La storia dell'isola unisce influenze francesi, britanniche, africane, indiane e cinesi.", "p3Before": "Questo incontro ha creato una", "highlight2": "società mauriziana distinta", "p3After": " con feste colorate, spirituali e profondamente familiari." },
+    "grid": { "title": "Celebrazioni annuali", "subtitle": "Le date festive 2026 sono indicate dove disponibili. Le date dell'Eid possono dipendere dall'avvistamento lunare ufficiale.", "visitorLabel": "Per i visitatori:" },
+    "cta": { "title": "Vivi la cultura di Mauritius", "body": "Pianifica il viaggio durante un festival e immergiti nel ricco patrimonio culturale di Mauritius.", "button": "Periodo migliore per visitare Mauritius" },
+    "items": [
+      { "name": "Capodanno", "date": "2026: 1-2 gennaio", "description": "Mauritius celebra il Capodanno con cene in spiaggia, eventi nei resort e fuochi d'artificio sulla costa.", "visitorTip": "Prenota presto le cene in spiaggia e chiedi all'hotel i punti migliori.", "imageAlt": "Capodanno a Mauritius" },
+      { "name": "Festa di Primavera (Capodanno cinese)", "date": "2026: 17 febbraio", "description": "Danza del leone, draghi, lanterne rosse e cibo festivo animano Port Louis e Chinatown.", "visitorTip": "Vai a Port Louis o Chinatown al mattino per colori, cibo e atmosfera.", "imageAlt": "Capodanno cinese a Mauritius" },
+      { "name": "Abolizione della schiavitù", "date": "2026: 1 febbraio", "description": "Questa festività ricorda l'abolizione della schiavitù e un momento decisivo della storia dell'isola.", "visitorTip": "Abbinala a Le Morne Brabant per capire la storia maroon e UNESCO.", "imageAlt": "Commemorazione abolizione schiavitù a Mauritius" },
+      { "name": "Thaipusam Cavadee", "date": "2026: 1 febbraio", "description": "Importante festa tamil con digiuno, offerte, processioni e intensa devozione.", "visitorTip": "Osserva con rispetto, vestiti con modestia e non bloccare le processioni.", "imageAlt": "Processione Thaipusam Cavadee a Mauritius" },
+      { "name": "Maha Shivaratree", "date": "2026: 15 febbraio", "description": "I fedeli camminano verso Grand Bassin con kanwar decorati per onorare Shiva.", "visitorTip": "Grand Bassin è potente ma affollato; aspettati traffico e mantieni rispetto.", "imageAlt": "Pellegrinaggio Maha Shivaratree a Grand Bassin" },
+      { "name": "Holi", "date": "2026: 4 marzo", "description": "Holi celebra la vittoria del bene sul male con falò, colori e incontri gioiosi.", "visitorTip": "Partecipa solo se invitato, proteggi la fotocamera e usa abiti sacrificabili.", "imageAlt": "Colori Holi a Mauritius" },
+      { "name": "Giorno dell'indipendenza", "date": "2026: 12 marzo", "description": "Mauritius celebra l'indipendenza con bandiere, cerimonie e raduni locali.", "visitorTip": "Cerca cerimonie in città, scuole e spazi pubblici.", "imageAlt": "Giorno dell'indipendenza a Mauritius" },
+      { "name": "Ugaadi", "date": "2026: 19 marzo", "description": "Ugaadi segna il Capodanno per alcune comunità indiane, soprattutto in famiglia e nei templi.", "visitorTip": "È più familiare che turistico; osserva con calma se invitato.", "imageAlt": "Ugaadi a Mauritius" },
+      { "name": "Eid-ul-Fitr", "date": "2026: 21 marzo*", "description": "Eid-ul-Fitr conclude il Ramadan con preghiere, riunioni familiari e pasti festivi.", "visitorTip": "Le date possono cambiare con la luna; aspettati attività in moschea e pasti familiari.", "imageAlt": "Eid a Mauritius" },
+      { "name": "Ganesh Chaturthi", "date": "2026: 16 settembre", "description": "Ganesh Chaturthi onora Ganesha con preghiere, santuari temporanei e processioni.", "visitorTip": "Chiedi prima di fotografare i fedeli.", "imageAlt": "Ganesh Chaturthi a Mauritius" },
+      { "name": "Pellegrinaggio Père Laval", "date": "2026: 9 settembre", "description": "Persone di molte fedi visitano il santuario di Père Laval a Sainte Croix.", "visitorTip": "Sainte Croix è affollata nei giorni principali; muoviti lentamente e segui le indicazioni.", "imageAlt": "Pellegrinaggio Père Laval a Mauritius" },
+      { "name": "Diwali", "date": "2026: 8 novembre", "description": "Diwali illumina case e quartieri con lampade, dolci e celebrazione della luce.", "visitorTip": "Passeggia con rispetto dopo il tramonto e accetta dolci solo se offerti.", "imageAlt": "Luci Diwali a Mauritius" }
+    ]
+  },
+  "VisaRequirements": {
+    "hero": { "imageAlt": "Requisiti per il visto Mauritius", "title": "Requisiti per il visto", "subtitle": "Requisiti di ingresso per visitare Mauritius in base alla nazionalità" },
+    "lastUpdated": "Ultimo aggiornamento: {date}",
+    "filters": { "allCountries": "Tutti i paesi", "noVisaRequired": "Nessun visto richiesto", "visaOnArrival60": "Visto all'arrivo (60 giorni)", "visaOnArrival14": "Visto all'arrivo (14 giorni)", "visaRequired": "Visto richiesto" },
+    "badges": { "noVisa": "Senza visto", "sixtyDays": "60 giorni", "fourteenDays": "14 giorni", "visaRequired": "Visto richiesto" },
+    "types": {
+      "title": "Tipi di visto",
+      "tourist": { "title": "Visto turistico", "description": "Consente il soggiorno per vacanza. Può essere concesso fino a 6 mesi per anno civile, caso per caso." },
+      "business": { "title": "Visto business", "description": "Per stabilire o svolgere attività commerciali. Massimo 120 giorni per anno civile, con ogni viaggio non oltre 90 giorni." },
+      "medical": { "title": "Visto medico", "description": "Concesso all'arrivo per cure presso strutture sanitarie private registrate. Valido per la durata del trattamento, fino a 6 mesi." },
+      "premium": { "title": "Premium Visa", "description": "Visto di lungo soggiorno per lavoratori da remoto e pensionati che desiderano restare più a lungo a Mauritius." }
+    },
+    "source": { "label": "Fonte:", "name": "Passport and Immigration Office, Governo di Mauritius" },
+    "popular": { "title": "Risposte sui visti per nazionalità popolari", "subtitle": "Risposte rapide alle ricerche più comuni. Controlla sempre l'elenco completo e la fonte ufficiale prima di partire.", "cardTitle": "Visto Mauritius per {country}", "cardAnswer": "Secondo l'elenco attuale non è richiesto un visto turistico, ma servono comunque documenti validi, dettagli dell'alloggio e prova di ritorno o proseguimento." },
+    "countryList": { "title": "Requisiti per paese", "searchLabel": "Cerca paese", "searchPlaceholder": "Cerca il tuo paese...", "showing": "{count} paesi mostrati", "fullListTitle": "Elenco completo dei visti per Mauritius", "empty": "Nessun paese trovato per la tua ricerca." },
+    "requirementText": { "no-visa": "nessun visto richiesto", "visa-on-arrival-60": "visto all'arrivo, 60 giorni", "visa-on-arrival-14": "visto all'arrivo, 14 giorni", "visa-required": "visto richiesto prima del viaggio" },
+    "faqTitle": "FAQ visto Mauritius",
+    "faqs": [
+      { "question": "Ho bisogno di un visto per Mauritius?", "answer": "Dipende dalla nazionalità. Molti visitatori entrano senza visto, alcuni ricevono un visto all'arrivo e un gruppo più piccolo deve richiederlo prima del viaggio. Usa l'elenco e conferma con la fonte ufficiale." },
+      { "question": "Il visto per Mauritius è gratuito?", "answer": "Visti e proroghe di soggiorno sono rilasciati gratuitamente secondo le indicazioni ufficiali." },
+      { "question": "Quanto posso restare a Mauritius come turista?", "answer": "Il soggiorno turistico può essere concesso fino a sei mesi per anno civile, caso per caso. La decisione finale spetta all'ufficiale immigrazione." }
+    ],
+    "important": { "title": "Informazioni importanti", "items": ["Un visto consente di viaggiare a Mauritius ma non garantisce l'ingresso. La decisione finale spetta all'ufficiale immigrazione.", "Visti e proroghe sono gratuiti.", "I viaggiatori senza visto richiesto possono essere rimpatriati a spese del vettore.", "Superare la durata del visto è un reato e può comportare procedimenti.", "Gli studenti devono viaggiare solo dopo l'approvazione della domanda di studio.", "I titolari di passaporti UE e diplomatici, salvo alcuni paesi, sono esenti dalle regole sui visti."], "sourceBefore": "Per informazioni aggiornate visita il sito ufficiale", "sourceLink": "del Passport and Immigration Office" }
+  },
+  "BestTimeToVisit": {
+    "metadata": { "title": "Periodo migliore per visitare Mauritius", "description": "Il periodo migliore per visitare Mauritius per stagione, mese, meteo, rischio cicloni, attività e budget." },
+    "hero": { "imageAlt": "Periodo migliore per visitare Mauritius", "title": "Periodo migliore per visitare Mauritius", "subtitle": "Il sole ti aspetta tutto l'anno. Scopri quando partire per la vacanza perfetta." },
+    "intro": {
+      "title": "Qual è il periodo migliore per visitare Mauritius?",
+      "p1Before": "È una delle domande più frequenti. La risposta breve:",
+      "bestMonths": "aprile, maggio, settembre, ottobre e novembre",
+      "p1After": "di solito offrono il miglior equilibrio tra sole, temperature piacevoli e prezzi migliori per voli o hotel.",
+      "p2": "In qualsiasi periodo dell'anno, il meteo di Mauritius sa sorprendere. L'isola offre clima da vacanza tutto l'anno, con sole quasi quotidiano e piogge limitate.",
+      "mythTitle": "Il mito: quando c'è la stagione delle piogge a Mauritius?",
+      "mythAnswer": "Nessuna vera stagione delle piogge a Mauritius",
+      "p3": "Mauritius è un'isola subtropicale e non ha un classico monsone. In estate l'umidità può causare brevi rovesci intensi nel pomeriggio, e i cicloni possono influenzare il meteo tra dicembre e marzo. Meglio pianificare con flessibilità, soprattutto per gite in barca, trekking e lunghi percorsi costieri."
+    },
+    "seasons": { "title": "Le stagioni in breve", "summer": "Estate", "summerPeriod": "novembre - marzo", "winter": "Inverno", "winterPeriod": "giugno - agosto" },
+    "weather": { "title": "Mappa meteo live e previsioni", "iframeTitle": "Mappa meteo live di Mauritius", "credit": "Dati meteo forniti da Windy.com" },
+    "monthSummaryTitle": "Meteo a Mauritius mese per mese",
+    "monthSummarySubtitle": "Una panoramica rapida su meteo, folla ed eventi sull'isola.",
+    "monthSummaries": [
+      { "month": "Gennaio", "summary": "Caldo, umido e vivace, con lagune tiepide e folla di Capodanno. I rovesci pomeridiani sono comuni." },
+      { "month": "Febbraio", "summary": "Ancora piena estate: mare caldo, piogge tropicali brevi ed energia da vacanze scolastiche." },
+      { "month": "Marzo", "summary": "Mese caldo di transizione, con meno folla. Mare piacevole, qualche rovescio forte e celebrazioni dell'indipendenza." },
+      { "month": "Aprile", "summary": "Uno dei mesi migliori: acqua calda, umidità più dolce e rischio cicloni molto basso." },
+      { "month": "Maggio", "summary": "Secco, luminoso e confortevole. Ideale per road trip, trekking e tramonti sulla costa ovest." },
+      { "month": "Giugno", "summary": "Più fresco, più secco e spesso conveniente. Le lagune restano piacevoli e inizia la stagione delle balene." },
+      { "month": "Luglio", "summary": "Mese invernale ventilato con serate fresche. Est e sud-est sono più ventosi; Le Morne attira gli sport del vento." },
+      { "month": "Agosto", "summary": "Secco e a tratti ventoso, con più domanda durante le vacanze europee. Nord e ovest sono migliori per nuotare." },
+      { "month": "Settembre", "summary": "Mese di spalla molto amato: bassa umidità, giornate luminose e calore in aumento." },
+      { "month": "Ottobre", "summary": "Soleggiato, caldo e spesso calmo prima del pieno caldo estivo. Acqua limpida e meno folla." },
+      { "month": "Novembre", "summary": "Inizia l'estate, con mare più caldo, paesaggi verdi e umidità in crescita. Diwali illumina spesso i quartieri." },
+      { "month": "Dicembre", "summary": "Festivo, caldo e molto richiesto a Natale e Capodanno. Prenota presto e segui gli aggiornamenti meteo." }
+    ],
+    "faqTitle": "FAQ sul periodo migliore per visitare Mauritius",
+    "faqs": [
+      { "question": "Quando è la stagione dei cicloni a Mauritius?", "answer": "Di solito va da novembre ad aprile, con rischio maggiore da gennaio a marzo. I cicloni importanti non sono continui, ma conviene seguire gli avvisi ufficiali prima di barche, trekking e lunghi tragitti." },
+      { "question": "Quando è la stagione delle piogge a Mauritius?", "answer": "Mauritius non ha un monsone. I mesi caldi da novembre ad aprile portano più umidità e brevi rovesci forti, mentre da maggio a ottobre è spesso più fresco e secco." },
+      { "question": "Qual è il mese più economico per visitare Mauritius?", "answer": "Il miglior valore si trova spesso a maggio, giugno, settembre e inizio ottobre, fuori dalle vacanze scolastiche e dai periodi festivi." },
+      { "question": "Qual è il mese migliore per visitare Mauritius?", "answer": "Maggio, giugno, settembre e ottobre offrono spesso il miglior equilibrio tra meteo piacevole, bassa umidità e buoni prezzi. Da novembre ad aprile il mare è più caldo, ma può essere più umido." }
+    ],
+    "seasonCopy": {
+      "title": "Come sono le stagioni?",
+      "p1": "L'estate va da novembre a marzo, mentre l'inverno va da giugno ad agosto.",
+      "summerLabel": "L'estate",
+      "summerBody": "è il periodo più caldo, con notti intorno ai 25 gradi e giornate intorno ai 30. L'isola è vivace, l'umidità può essere alta, i rovesci pomeridiani sono normali ed è il principale periodo ciclonico.",
+      "autumnLabel": "L'autunno",
+      "autumnBody": "porta il passaggio dal caldo estivo a giornate più calme e luminose. Aprile e maggio sono ottimi per famiglie, lune di miele, spiagge e acqua limpida.",
+      "winterBefore": "Va detto che",
+      "winterLabel": "l'inverno",
+      "winterBody": "a Mauritius è molto mite, spesso tra 22°C e 25°C sulla costa. È ideale per trekking, cascate, balene, kitesurf e windsurf.",
+      "p5": "In inverno Mauritius diventa un paradiso per vela e sport del vento.",
+      "springBefore": "Dopo i venti invernali arriva",
+      "springLabel": "la primavera",
+      "springBody": "con meteo in miglioramento a settembre e ottobre. Le giornate si scaldano, l'umidità resta bassa e l'isola è spesso secca e luminosa."
+    },
+    "mythBox": { "title": "Mito comune: \"stagione delle piogge\"", "bold": "A Mauritius non c'è una vera stagione delle piogge.", "body": "Essendo subtropicale, l'isola non ha monsoni. In estate possono arrivare brevi piogge pomeridiane per l'umidità, ma spesso durano solo una o due ore." },
+    "seasonActivities": {
+      "title": "Attività stagionali", "aria": "{title} - migliore in {season}", "best": "Migliore: {season}",
+      "items": [
+        { "title": "Whale watching", "description": "Le megattere passano lungo le coste ovest e nord da giugno a ottobre.", "bestSeason": "giugno - ottobre", "image": "speedboat-tours-in-mauritius.jpg", "href": "/top-activities-mauritius/whale-watching", "alt": "Tour in barca per osservare le balene a Mauritius" },
+        { "title": "Kitesurf e windsurf", "description": "Le Morne diventa un centro degli sport del vento grazie agli alisei potenti.", "bestSeason": "giugno - settembre", "image": "beach-of-le-morne-in-the-morning.jpg", "href": "/beaches-in-mauritius/le-morne", "alt": "Spiaggia di Le Morne, kitesurf e windsurf a Mauritius" },
+        { "title": "Nuoto e snorkeling", "description": "Acqua cristallina e lagune calme, perfette per esplorare sott'acqua.", "bestSeason": "novembre - aprile", "image": "blue-bay-sea-turtle.jpg", "href": "/top-activities-mauritius/snorkeling-blue-bay", "alt": "Snorkeling al Blue Bay Marine Park, Mauritius" },
+        { "title": "Trekking e natura", "description": "Temperature confortevoli e cascate con buona portata.", "bestSeason": "maggio - settembre", "image": "7-waterfall-hike.jpg", "href": "/top-activities-mauritius/seven-waterfalls", "alt": "Escursione Seven Waterfalls a Mauritius" }
+      ]
+    },
+    "cta": { "title": "Pronto a pianificare il viaggio?", "body": "Esplora spiagge e attività e inizia a organizzare la tua vacanza perfetta a Mauritius." },
+    "monthGuide": {
+      "title": "Guida mese per mese", "subtitle": "Seleziona un mese per vedere dettagli meteo e cosa aspettarti", "seasonLabel": "Stagione: {season}", "temperatureRange": "Temperature", "whatToExpect": "Cosa aspettarsi", "highlights": "Momenti chiave", "bestFor": "Ideale per", "rainfall": "Pioggia", "humidity": "Umidità", "cycloneRisk": "Rischio cicloni",
+      "months": [
+        { "name": "Gennaio", "season": "Estate", "seasonKey": "Summer", "tempMin": 22, "tempMax": 32, "rainfall": "Alta", "humidity": "80%", "cycloneRisk": "Moderato", "highlights": ["Atmosfera festiva", "Spiaggia", "Capodanno cinese", "Alta stagione"], "description": "Gennaio è piena estate: caldo, umido e vivace, con lagune calde, rovesci brevi e molta domanda.", "bestFor": ["Spiagge", "Lune di miele", "Resort", "Sport acquatici", "Cultura"] },
+        { "name": "Febbraio", "season": "Estate", "seasonKey": "Summer", "tempMin": 24, "tempMax": 33, "rainfall": "Alta", "humidity": "78%", "cycloneRisk": "Moderato", "highlights": ["San Valentino", "Romanticismo", "Mare caldo", "Capodanno cinese"], "description": "Febbraio resta tropicale e caldo, con mare piacevole e piogge brevi. Ottimo per coppie, immersioni, snorkeling e resort.", "bestFor": ["Coppie", "Spiaggia", "Immersioni", "Snorkeling", "Lusso"] },
+        { "name": "Marzo", "season": "Estate", "seasonKey": "Summer", "tempMin": 22, "tempMax": 31, "rainfall": "Moderata", "humidity": "75%", "cycloneRisk": "Basso", "highlights": ["Meno folla", "Paesaggi verdi", "Buon valore", "Natura"], "description": "Marzo è caldo ma più tranquillo. L'isola è verde, le cascate scorrono e i road trip sono piacevoli.", "bestFor": ["Caldo", "Meno folla", "Verde", "Spiaggia e avventura"] },
+        { "name": "Aprile", "season": "Autunno", "seasonKey": "Autumn", "tempMin": 21, "tempMax": 30, "rainfall": "Bassa", "humidity": "70%", "cycloneRisk": "Molto basso", "highlights": ["Periodo migliore", "Meteo stabile", "Niente cicloni", "Pasqua"], "description": "Aprile è uno dei mesi migliori: caldo, più tranquillo e ideale per famiglie, coppie, spiaggia e natura.", "bestFor": ["Coppie", "Famiglie", "Spiagge", "Natura", "Resort"] },
+        { "name": "Maggio", "season": "Autunno", "seasonKey": "Autumn", "tempMin": 19, "tempMax": 28, "rainfall": "Molto bassa", "humidity": "68%", "cycloneRisk": "Nessuno", "highlights": ["Meteo ideale", "Stagione secca", "Niente cicloni", "Outdoor"], "description": "Maggio è secco, luminoso e confortevole. Perfetto per road trip, trekking, Chamarel e tramonti.", "bestFor": ["Mite", "Secco", "Trekking", "Viaggio tranquillo", "Buon valore"] },
+        { "name": "Giugno", "season": "Inverno", "seasonKey": "Winter", "tempMin": 17, "tempMax": 26, "rainfall": "Bassa", "humidity": "72%", "cycloneRisk": "Nessuno", "highlights": ["Inizia inverno", "Cielo limpido", "Trekking", "Meno folla"], "description": "Giugno apre il mite inverno mauriziano. Buono per visite, trekking e whale watching.", "bestFor": ["Visite", "Meno folla", "Trekking", "Vacanze attive"] },
+        { "name": "Luglio", "season": "Inverno", "seasonKey": "Winter", "tempMin": 16, "tempMax": 25, "rainfall": "Molto bassa", "humidity": "70%", "cycloneRisk": "Nessuno", "highlights": ["Kitesurf", "Mese più fresco", "Sport del vento", "Trekking"], "description": "Luglio è fresco, secco e ventoso. Molto buono per viaggi attivi e sport del vento.", "bestFor": ["Visite", "Trekking", "Kitesurf", "Fotografia", "Hotel"] },
+        { "name": "Agosto", "season": "Inverno", "seasonKey": "Winter", "tempMin": 16, "tempMax": 26, "rainfall": "Molto bassa", "humidity": "68%", "cycloneRisk": "Nessuno", "highlights": ["Sport del vento", "Delfini", "Vacanze europee", "Meteo stabile"], "description": "Agosto è soleggiato, poco umido e talvolta ventoso. Ovest e nord sono più calmi per la spiaggia.", "bestFor": ["Clima piacevole", "Trekking", "Kitesurf", "Cielo limpido", "Famiglie e coppie"] },
+        { "name": "Settembre", "season": "Primavera", "seasonKey": "Spring", "tempMin": 17, "tempMax": 27, "rainfall": "Molto bassa", "humidity": "65%", "cycloneRisk": "Nessuno", "highlights": ["Primavera", "Spiagge migliori", "Delfini e immersioni", "Meno turisti"], "description": "Settembre è luminoso, secco e più caldo. Ottimo per snorkeling, immersioni, delfini, crociere e strade costiere.", "bestFor": ["Meno turisti", "Outdoor", "Bassa umidità", "Spiaggia ed esplorazione"] },
+        { "name": "Ottobre", "season": "Primavera", "seasonKey": "Spring", "tempMin": 18, "tempMax": 29, "rainfall": "Molto bassa", "humidity": "62%", "cycloneRisk": "Nessuno", "highlights": ["Mese secco", "Lagune calme", "Calore", "Sole"], "description": "Ottobre è caldo, soleggiato e spesso calmo. Acqua limpida e meteo affidabile lo rendono facile da consigliare.", "bestFor": ["Spiagge", "Lune di miele", "Sport acquatici", "Meno folla", "Valore resort"] },
+        { "name": "Novembre", "season": "Estate", "seasonKey": "Summer", "tempMin": 20, "tempMax": 31, "rainfall": "Moderata", "humidity": "72%", "cycloneRisk": "Basso", "highlights": ["Inizio estate", "Spiaggia ideale", "Prima alta stagione", "Luna di miele"], "description": "Novembre porta mare caldo, paesaggi verdi ed energia tropicale prima dei prezzi di dicembre.", "bestFor": ["Spiagge", "Lune di miele", "Sport acquatici", "Lusso", "Prima delle feste"] },
+        { "name": "Dicembre", "season": "Estate", "seasonKey": "Summer", "tempMin": 22, "tempMax": 33, "rainfall": "Moderata", "humidity": "78%", "cycloneRisk": "Moderato", "highlights": ["Feste", "Natale e Capodanno", "Piena estate", "Celebrazioni"], "description": "Dicembre è caldo, festivo e molto richiesto. Prenota presto e segui gli aggiornamenti tropicali.", "bestFor": ["Natale tropicale", "Capodanno", "Spiaggia", "Atmosfera festiva", "Fuga dall'inverno"] }
+      ]
+    }
+  },
+  "Footer": {
+    "tagline": "La tua guida per scoprire la bellezza di Mauritius. Dalle spiagge incontaminate alle montagne lussureggianti, esplora tutto ciò che questo paradiso isolano ha da offrire.",
+    "explore": "Esplora",
+    "beaches": "Spiagge",
+    "bestPlaces": "I migliori luoghi da visitare",
+    "activities": "Attività",
+    "planYourTrip": "Pianifica il viaggio",
+    "giveaway": "Giveaway",
+    "about": "Info",
+    "aboutUs": "Chi siamo",
+    "welcome": "Benvenuto",
+    "festivals": "Festival",
+    "events": "Eventi",
+    "faq": "FAQ",
+    "privacyPolicy": "Informativa sulla privacy",
+    "connect": "Contatti",
+    "location": "Repubblica di Mauritius",
+    "contactUs": "Contattaci",
+    "instagramAria": "Segui Mauritius Explored su Instagram",
+    "facebookAria": "Metti Mi piace a Mauritius Explored su Facebook",
+    "copyright": "Copyright © {year} Tutti i diritti riservati | Mauritius Explored"
+  }
+}

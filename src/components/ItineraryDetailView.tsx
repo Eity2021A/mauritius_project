@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import { useLocale } from "next-intl";
 import MapSkeleton from "@/components/ui/MapSkeleton";
 import { getImageSrcSet, getImageUrl } from "@/lib/image-url";
 import type { StopForMap, RouteInfo } from "@/components/ItineraryBuilderMap";
@@ -13,6 +14,7 @@ import Navbar from "@/components/Navbar";
 import ViewTracker from "@/components/ViewTracker";
 import Footer from "@/components/Footer";
 import ItinerarySaveRate from "@/components/ItinerarySaveRate";
+import { getItineraryTranslations } from "@/data/itinerary-translations";
 
 const OSRM_BASE = "https://router.project-osrm.org/route/v1/driving";
 const ItineraryBuilderMap = dynamic(() => import("@/components/ItineraryBuilderMap"), {
@@ -70,9 +72,13 @@ export default function ItineraryDetailView({
   initialRouteInfo?: RouteInfo | null;
   initialOtherRouteTotals?: Record<string, RouteInfo | null>;
 }) {
+  const locale = useLocale();
+  const t = getItineraryTranslations(locale).detailUi;
   const [focusStopIndex, setFocusStopIndex] = useState<number | null>(null);
   const [mobileView, setMobileView] = useState<"list" | "map">("list");
-  const [isLg, setIsLg] = useState(false);
+  const [isLg, setIsLg] = useState(() =>
+    typeof window !== "undefined" ? window.matchMedia("(min-width: 1024px)").matches : false
+  );
   const [routeInfo, setRouteInfo] = useState<RouteInfo | null>(initialRouteInfo);
   const [otherRouteTotals, setOtherRouteTotals] = useState<Record<string, RouteInfo | null>>(
     initialOtherRouteTotals
@@ -84,7 +90,6 @@ export default function ItineraryDetailView({
 
   useEffect(() => {
     const m = window.matchMedia("(min-width: 1024px)");
-    setIsLg(m.matches);
     const listener = () => setIsLg(m.matches);
     m.addEventListener("change", listener);
     return () => m.removeEventListener("change", listener);
@@ -212,13 +217,13 @@ export default function ItineraryDetailView({
         <div className="relative z-10 w-full pb-5 md:pb-6 px-4 pt-[calc(env(safe-area-inset-top)+4.5rem)]">
           <div className="container mx-auto max-w-6xl">
             <Link
-              href="/itineraries-mauritius"
+              href="/itineraries"
               className="inline-flex items-center gap-1.5 text-sm text-white/80 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-lg transition-colors mb-3 md:mb-4"
             >
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
-              Back to all Itineraries
+              {t.backToAll}
             </Link>
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-1 md:mb-2">
               {itinerary.title}
@@ -264,7 +269,7 @@ export default function ItineraryDetailView({
                 : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
             }`}
           >
-            Map
+            {t.map}
           </button>
           <button
             type="button"
@@ -275,7 +280,7 @@ export default function ItineraryDetailView({
                 : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
             }`}
           >
-            Stops
+            {t.stops}
           </button>
         </div>
 
@@ -283,12 +288,12 @@ export default function ItineraryDetailView({
           {/* Left: title fixed, then scrollable list of stops (hidden on mobile when map view) */}
           <div className={`lg:order-1 lg:pr-2 ${mobileView === "list" ? "block" : "hidden lg:block"}`}>
             <h2 className="text-xl font-semibold text-gray-900 mb-4">
-              Stops on this itinerary
+              {t.stopsOnItinerary}
             </h2>
             <div className="space-y-3 lg:max-h-[calc(100vh-12rem)] lg:overflow-y-auto lg:pr-2">
             {itinerary.stops.length === 0 ? (
               <p className="text-sm text-gray-500">
-                Stop details will be added here.
+                {t.emptyStops}
               </p>
             ) : (
               <ul className="space-y-2">
@@ -346,7 +351,7 @@ export default function ItineraryDetailView({
                               <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                               </svg>
-                              Stop details
+                              {t.stopDetails}
                             </Link>
                             <button
                               type="button"
@@ -357,7 +362,7 @@ export default function ItineraryDetailView({
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                               </svg>
-                              Zoom on map
+                              {t.zoomOnMap}
                             </button>
                             {routeInfo?.legs[i] && i < itinerary.stops.length - 1 && (
                               <>
@@ -371,7 +376,7 @@ export default function ItineraryDetailView({
                                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                                   </svg>
-                                  {formatDuration(routeInfo.legs[i].durationMin)} to next stop
+                                  {formatDuration(routeInfo.legs[i].durationMin)} {t.toNextStop}
                                 </span>
                               </>
                             )}
@@ -393,7 +398,7 @@ export default function ItineraryDetailView({
                     height={28}
                     className="flex-shrink-0"
                   />
-                  Tips
+                  {t.tips}
                 </h2>
                 <ul className="space-y-3">
                   {itinerary.info.map((line, i) => (
@@ -416,7 +421,7 @@ export default function ItineraryDetailView({
             className={`lg:order-2 lg:sticky lg:top-24 lg:self-start ${mobileView === "map" ? "block" : "hidden lg:block"} scroll-mt-20`}
           >
             <h2 className="text-xl font-semibold text-gray-900 mb-4">
-              Map for this itinerary
+              {t.mapForItinerary}
             </h2>
             <div
               className="h-[420px] sm:h-[480px] lg:h-[calc(100vh-8rem)] lg:min-h-[400px] rounded-lg overflow-hidden border border-gray-200 shadow-lg"
@@ -439,7 +444,7 @@ export default function ItineraryDetailView({
         <section className="border-t border-gray-200 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 py-10 lg:py-12">
             <h2 className="text-xl font-semibold text-gray-900 mb-6">
-              Other itineraries
+              {t.otherItineraries}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {otherItineraries.map((other) => {
@@ -448,7 +453,7 @@ export default function ItineraryDetailView({
                 return (
                   <Link
                     key={other.slug}
-                    href={`/top-activities-mauritius/${other.slug}`}
+                    href={`/itineraries/${other.slug}`}
                     className="group flex gap-4 p-4 rounded-lg bg-white border border-gray-200 hover:border-orange-300 hover:shadow-md transition"
                   >
                     {cardImage && (
@@ -478,7 +483,7 @@ export default function ItineraryDetailView({
                       )}
                       <div className="mt-2 flex items-center gap-2 flex-wrap">
                         <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gray-50 border border-gray-200 text-xs font-medium text-orange-600">
-                          {other.stops.length} stop{other.stops.length !== 1 ? "s" : ""}
+                          {other.stops.length} {other.stops.length !== 1 ? t.stopPlural : t.stopSingular}
                         </span>
                         {totals && totals.legs.length > 0 && (
                           <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gray-50 border border-gray-200 text-xs font-medium text-orange-600">
@@ -513,7 +518,7 @@ export default function ItineraryDetailView({
             <button
               onClick={closeLightbox}
               className="absolute top-4 right-4 z-50 min-w-[44px] min-h-[44px] flex items-center justify-center text-white/80 hover:text-white transition-colors"
-              aria-label="Close"
+              aria-label={t.close}
             >
               <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -536,7 +541,7 @@ export default function ItineraryDetailView({
                     );
                   }}
                   className="absolute left-4 top-1/2 -translate-y-1/2 z-50 min-w-[44px] min-h-[44px] flex items-center justify-center text-white/80 hover:text-white transition-colors"
-                  aria-label="Previous image"
+                  aria-label={t.previousImage}
                 >
                   <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -555,7 +560,7 @@ export default function ItineraryDetailView({
                     );
                   }}
                   className="absolute right-4 top-1/2 -translate-y-1/2 z-50 min-w-[44px] min-h-[44px] flex items-center justify-center text-white/80 hover:text-white transition-colors"
-                  aria-label="Next image"
+                  aria-label={t.nextImage}
                 >
                   <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -569,7 +574,7 @@ export default function ItineraryDetailView({
             >
               <img
                 src={lightboxUrls[imageIndex]}
-                alt={`${stop.name} photo ${imageIndex + 1}`}
+                alt={`${stop.name} ${t.photo} ${imageIndex + 1}`}
                 className="absolute inset-0 w-full h-full object-contain"
               />
             </div>

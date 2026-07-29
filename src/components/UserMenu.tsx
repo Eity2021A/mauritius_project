@@ -1,13 +1,15 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import Link from "next/link";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/client";
 import AuthModal from "@/components/AuthModal";
 import type { User } from "@supabase/supabase-js";
 
 export default function UserMenu() {
+  const t = useTranslations("Buttons");
   const [user, setUser] = useState<User | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [authModalOpen, setAuthModalOpen] = useState(false);
@@ -69,7 +71,7 @@ export default function UserMenu() {
         <button
           onClick={() => setAuthModalOpen(true)}
           className="flex items-center justify-center rounded-full border border-gray-200 bg-gray-50 text-gray-600 hover:border-gray-300 hover:bg-gray-100 hover:text-orange-500 min-w-[44px] min-h-[44px] p-2 transition-colors"
-          aria-label="Sign in"
+          aria-label={t("signIn")}
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
@@ -85,7 +87,7 @@ export default function UserMenu() {
       <button
         onClick={() => setDropdownOpen(!dropdownOpen)}
         className="flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 p-1 transition-colors hover:border-gray-300 hover:bg-gray-100 min-w-[44px] min-h-[44px] justify-center"
-        aria-label="User menu"
+        aria-label={t("userMenu")}
         aria-expanded={dropdownOpen}
       >
         {avatarUrl && !avatarError ? (
@@ -121,18 +123,18 @@ export default function UserMenu() {
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
             </svg>
-            My Itineraries
+            {t("myItineraries")}
           </Link>
 
           <Link
-            href="/itineraries-mauritius/create"
+            href="/roadtrip-mauritius/create"
             onClick={() => setDropdownOpen(false)}
             className="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors min-h-[44px]"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
             </svg>
-            Create Itinerary
+            {t("createItinerary")}
           </Link>
 
           <div className="border-t border-gray-100 mt-1">
@@ -143,7 +145,7 @@ export default function UserMenu() {
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
               </svg>
-              Sign Out
+              {t("signOut")}
             </button>
           </div>
         </div>

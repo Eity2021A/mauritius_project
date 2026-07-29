@@ -2,10 +2,12 @@
 
 import { useRef, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
+import { useTranslations } from "next-intl";
 
-const InstagramFeed = dynamic(() => import("@/components/InstagramFeed"), {
-  ssr: false,
-  loading: () => (
+function InstagramLoading() {
+  const t = useTranslations("Home.instagram");
+
+  return (
     <section className="py-16 md:py-20 bg-white dark:bg-neutral-900">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8 md:mb-12">
@@ -13,10 +15,10 @@ const InstagramFeed = dynamic(() => import("@/components/InstagramFeed"), {
             @mauritius__explored
           </span>
           <h2 className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white mt-2">
-            Follow Our Adventures
+            {t("title")}
           </h2>
           <p className="text-gray-600 dark:text-gray-400 mt-3 max-w-xl mx-auto text-sm md:text-base">
-            Loading...
+            {t("loading")}
           </p>
         </div>
         <div className="flex gap-4 overflow-hidden justify-center">
@@ -29,7 +31,12 @@ const InstagramFeed = dynamic(() => import("@/components/InstagramFeed"), {
         </div>
       </div>
     </section>
-  ),
+  );
+}
+
+const InstagramFeed = dynamic(() => import("@/components/InstagramFeed"), {
+  ssr: false,
+  loading: () => <InstagramLoading />,
 });
 
 function Placeholder() {

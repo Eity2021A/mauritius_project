@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const ROTATION_INTERVAL_MS = 5000;
@@ -87,19 +88,29 @@ export default function RotatingAdBanner() {
                 key={`${ad.href}-${index}`}
                 href={ad.href}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="sponsored noopener noreferrer"
                 className="block min-w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
               >
-                <picture>
-                  <source media="(max-width: 767px)" srcSet={ad.mobileSrc} />
-                  <img
+                <span className="relative hidden aspect-[1200/160] w-full md:block">
+                  <Image
                     src={ad.desktopSrc}
                     alt={ad.alt}
-                    className="block h-auto w-full rounded-xl align-middle"
+                    fill
+                    sizes="(max-width: 1280px) 100vw, 1280px"
+                    className="rounded-xl object-cover"
                     loading="lazy"
-                    decoding="async"
                   />
-                </picture>
+                </span>
+                <span className="relative block aspect-[640/220] w-full md:hidden">
+                  <Image
+                    src={ad.mobileSrc}
+                    alt={ad.alt}
+                    fill
+                    sizes="100vw"
+                    className="rounded-xl object-cover"
+                    loading="lazy"
+                  />
+                </span>
               </a>
             ))}
           </div>
