@@ -248,7 +248,7 @@ function DropdownMenu({
                     type="button"
                     onMouseEnter={() => setActiveGroup(group.nameKey)}
                     onFocus={() => setActiveGroup(group.nameKey)}
-                    className={`flex min-h-[44px] w-full items-center justify-between px-4 py-3 text-left text-xs font-bold uppercase tracking-[0.22em] transition-colors ${
+                    className={`flex min-h-[44px] w-full items-center justify-between px-4 py-3 text-left text-sm font-semibold transition-colors ${
                       activeGroup === group.nameKey
                         ? "bg-orange-50 text-orange-500"
                         : "text-gray-950 hover:bg-orange-50 hover:text-orange-500"
@@ -556,7 +556,7 @@ export default function Navbar() {
                                     expandedMobileGroup === child.nameKey ? null : child.nameKey,
                                   )
                                 }
-                                className="flex w-full items-center justify-between gap-3 px-8 py-3 text-left text-xs font-bold uppercase tracking-[0.16em] text-orange-500 hover:bg-orange-50 min-h-[48px] transition-colors"
+                                className="flex w-full items-center justify-between gap-3 px-8 py-3 text-left text-sm font-semibold text-orange-500 hover:bg-orange-50 min-h-[48px] transition-colors"
                                 aria-expanded={expandedMobileGroup === child.nameKey}
                               >
                                 <span>{labels[child.nameKey]}</span>
