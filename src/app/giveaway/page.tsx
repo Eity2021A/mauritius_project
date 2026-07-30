@@ -37,7 +37,7 @@ export default function GiveawayPage() {
   useEffect(() => {
     const controller = new AbortController();
 
-    fetchGiveawayCampaign(controller.signal)
+    fetchGiveawayCampaign("en", controller.signal)
       .then((data) => {
         setCampaign({
           ...DEFAULT_GIVEAWAY_CAMPAIGN,
