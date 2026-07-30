@@ -5,11 +5,49 @@ import { routing } from "./i18n/routing";
 
 const handleI18nRouting = createMiddleware(routing);
 
+const LANGUAGE_SLUG_LOCALE_MAP: Record<string, string> = {
+  english: "en",
+  french: "fr",
+  german: "de",
+  italian: "it",
+  spanish: "es",
+  russian: "ru",
+};
+
+const DYNAMIC_TRANSLATED_BASES = new Set([
+  "top-activities-mauritius",
+  "beaches-in-mauritius",
+  "best-places-to-visit-in-mauritius",
+  "veranda-hotels",
+  "blog",
+]);
+
+function getLanguageSlugRedirect(request: NextRequest) {
+  const segments = request.nextUrl.pathname.split("/").filter(Boolean);
+  const [base, slug] = segments;
+
+  if (!base || !slug || segments.length !== 2) return null;
+  if (!DYNAMIC_TRANSLATED_BASES.has(base)) return null;
+  if (routing.locales.includes(base as (typeof routing.locales)[number])) return null;
+
+  const targetLocale = LANGUAGE_SLUG_LOCALE_MAP[slug.toLowerCase()];
+  if (!targetLocale || targetLocale === routing.defaultLocale) return null;
+
+  const url = request.nextUrl.clone();
+  url.pathname = `/${targetLocale}/${base}/${slug}`;
+  return url;
+}
+
 /**
  * Locale routing + lightweight auth refresh.
  * Anonymous visitors (no Supabase cookies) only pay the i18n cost.
  */
 export default async function proxy(request: NextRequest) {
+  const languageSlugRedirect = getLanguageSlugRedirect(request);
+  if (languageSlugRedirect) {
+    return NextResponse.redirect(languageSlugRedirect);
+  }
+
   const response = handleI18nRouting(request);
 
   const hasAuthCookie = request.cookies

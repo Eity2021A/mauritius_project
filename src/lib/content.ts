@@ -14,6 +14,7 @@ import { type PlaceDetails, getAllPlaces as staticGetAllPlaces } from "@/data/pl
 import { type Activity, type ActivityDetails, type PricingOption, ACTIVITIES as STATIC_ACTIVITIES, ACTIVITY_CATEGORIES as STATIC_ACTIVITY_CATEGORIES } from "@/data/activities"
 import { type VerandaHotel, VERANDA_HOTELS as STATIC_VERANDA_HOTELS } from "@/data/veranda-hotels"
 import type { BlogPost, BlogCategory } from "@/data/blog"
+import { normalizeLocale } from "@/i18n/routing"
 
 // Static fallbacks
 import { BEACH_DETAILS as STATIC_BEACH_DETAILS, ALL_BEACHES as STATIC_ALL_BEACHES, TOP_BEACHES as STATIC_TOP_BEACHES, REGIONS as STATIC_REGIONS } from "@/data/beaches"
@@ -134,6 +135,16 @@ type BlogMediaPayload = {
   height?: number | null
 }
 
+type BlogPostTranslationPayload = {
+  title?: string | null
+  excerpt?: string | null
+  content?: string | null
+  content_richtext?: string | null
+  seo_title?: string | null
+  seo_description?: string | null
+  image_alt?: string | null
+}
+
 const BLOG_IMAGE_ORIENTATIONS = [
   "portrait-4x5",
   "landscape-16x9",
@@ -242,18 +253,60 @@ async function fetchAllPublishedSlugs(type: string): Promise<string[]> {
   return data.map((r) => r.slug)
 }
 
-async function fetchItemBySlug(slug: string, type?: string): Promise<DbItemPayload | null> {
+async function fetchItemBySlug(slug: string, type?: string, locale = "en"): Promise<DbItemPayload | null> {
   if (!contentDb) return null
+  const requestedLocale = normalizeLocale(locale)
   const params: Record<string, string> = { p_slug: slug }
   if (type) params.p_type = type
-  const { data, error } = await contentDb.rpc("get_explored_item_detail", params)
+  const { data, error } = await contentDb.rpc("get_explored_item_detail", {
+    ...params,
+    p_locale: requestedLocale,
+  })
+  if (error) {
+    const fallback = await contentDb.rpc("get_explored_item_detail", params)
+    if (fallback.error || !fallback.data) return null
+    return overlayItemTranslation(normalizeRpcItemPayload(fallback.data), requestedLocale)
+  }
   if (error || !data) return null
+  return overlayItemTranslation(normalizeRpcItemPayload(data), requestedLocale)
+}
+
+function normalizeRpcItemPayload(data: unknown): DbItemPayload {
   const raw = Array.isArray(data) && data.length ? data[0] : data
   const payload =
     raw && typeof raw === "object" && "get_explored_item_detail" in raw
       ? (raw as { get_explored_item_detail: DbItemPayload }).get_explored_item_detail
       : (raw as DbItemPayload)
   return payload
+}
+
+async function overlayItemTranslation(item: DbItemPayload | null, locale: string): Promise<DbItemPayload | null> {
+  if (!item || locale === "en" || !contentDb) return item
+
+  const { data } = await contentDb
+    .from("explored_item_translations")
+    .select("title,quote,description_richtext")
+    .eq("item_id", item.id)
+    .eq("locale", locale)
+    .maybeSingle()
+
+  if (!data) return item
+  const translation = data as {
+    title?: string | null
+    quote?: string | null
+    description_richtext?: string | null
+  }
+
+  return {
+    ...item,
+    translation: {
+      ...item.translation,
+      title: nonEmptyString(translation.title) ?? item.translation.title,
+      quote: nonEmptyString(translation.quote) ?? item.translation.quote,
+      description_richtext:
+        nonEmptyString(translation.description_richtext) ?? item.translation.description_richtext,
+    },
+  }
 }
 
 // ---- Mappers ----
@@ -397,10 +450,11 @@ async function fetchAllDetailsByType<T>(
   type: string,
   mapper: (d: DbItemPayload) => T,
   fallback: Record<string, T>,
+  locale = "en",
 ): Promise<Record<string, T>> {
   if (!(await shouldUseDb())) return fallback
   const slugs = await fetchAllPublishedSlugs(type)
-  const results = await Promise.all(slugs.map((slug) => fetchItemBySlug(slug, type)))
+  const results = await Promise.all(slugs.map((slug) => fetchItemBySlug(slug, type, locale)))
   const result: Record<string, T> = {}
   slugs.forEach((slug, i) => {
     const d = results[i]
@@ -409,37 +463,38 @@ async function fetchAllDetailsByType<T>(
   return Object.keys(result).length ? result : fallback
 }
 
-export async function getAllBeachDetails(): Promise<Record<string, BeachDetails>> {
-  return fetchAllDetailsByType("beach", mapToBeachDetails, STATIC_BEACH_DETAILS)
+export async function getAllBeachDetails(locale = "en"): Promise<Record<string, BeachDetails>> {
+  return fetchAllDetailsByType("beach", mapToBeachDetails, STATIC_BEACH_DETAILS, locale)
 }
 
-export async function getBeachDetailsBySlug(slug: string): Promise<BeachDetails | null> {
+export async function getBeachDetailsBySlug(slug: string, locale = "en"): Promise<BeachDetails | null> {
   if (!(await shouldUseDb())) return STATIC_BEACH_DETAILS[slug] ?? null
-  const d = await fetchItemBySlug(slug, "beach")
+  const d = await fetchItemBySlug(slug, "beach", locale)
   return d ? mapToBeachDetails(d) : STATIC_BEACH_DETAILS[slug] ?? null
 }
 
-export async function getAllPlaceDetails(): Promise<Record<string, PlaceDetails>> {
-  return fetchAllDetailsByType("place", mapToPlaceDetails, STATIC_PLACE_DETAILS)
+export async function getAllPlaceDetails(locale = "en"): Promise<Record<string, PlaceDetails>> {
+  return fetchAllDetailsByType("place", mapToPlaceDetails, STATIC_PLACE_DETAILS, locale)
 }
 
-export async function getPlaceDetailsBySlug(slug: string): Promise<PlaceDetails | null> {
+export async function getPlaceDetailsBySlug(slug: string, locale = "en"): Promise<PlaceDetails | null> {
   if (!(await shouldUseDb())) return STATIC_PLACE_DETAILS[slug] ?? null
-  const d = await fetchItemBySlug(slug, "place")
+  const d = await fetchItemBySlug(slug, "place", locale)
   return d ? mapToPlaceDetails(d) : STATIC_PLACE_DETAILS[slug] ?? null
 }
 
-export async function getAllActivityDetails(): Promise<Record<string, ActivityDetails>> {
-  return fetchAllDetailsByType("activity", mapToActivityDetails, STATIC_ACTIVITY_DETAILS)
+export async function getAllActivityDetails(locale = "en"): Promise<Record<string, ActivityDetails>> {
+  return fetchAllDetailsByType("activity", mapToActivityDetails, STATIC_ACTIVITY_DETAILS, locale)
 }
 
-export async function getActivityDetailsBySlugFromDb(slug: string): Promise<ActivityDetails | null> {
+export async function getActivityDetailsBySlugFromDb(slug: string, locale = "en"): Promise<ActivityDetails | null> {
   if (!(await shouldUseDb())) return STATIC_ACTIVITY_DETAILS[slug] ?? null
-  const d = await fetchItemBySlug(slug, "activity")
+  const d = await fetchItemBySlug(slug, "activity", locale)
   return d ? mapToActivityDetails(d) : STATIC_ACTIVITY_DETAILS[slug] ?? null
 }
 
-export async function getAllBlogPosts(): Promise<BlogPost[]> {
+export async function getAllBlogPosts(locale = "en"): Promise<BlogPost[]> {
+  const requestedLocale = normalizeLocale(locale)
   if (!(await shouldUseDb())) return STATIC_BLOG_POSTS
   if (!contentDb) return STATIC_BLOG_POSTS
 
@@ -454,12 +509,16 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
   const result: BlogPost[] = []
   for (const post of posts) {
     const [
-      { data: tr },
+      { data: translations },
       { data: cats },
       { data: tags },
       { data: media },
     ] = await Promise.all([
-      contentDb.from("explored_blog_post_translations").select("*").eq("post_id", post.id).eq("locale", "en").single(),
+      contentDb
+        .from("explored_blog_post_translations")
+        .select("*")
+        .eq("post_id", post.id)
+        .in("locale", requestedLocale === "en" ? ["en"] : [requestedLocale, "en"]),
       contentDb.from("explored_blog_post_categories").select("explored_blog_categories(slug)").eq("post_id", post.id),
       contentDb.from("explored_blog_post_tags").select("explored_blog_tags(label_en)").eq("post_id", post.id),
       contentDb
@@ -468,6 +527,11 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
         .eq("post_id", post.id)
         .order("sort_order"),
     ])
+
+    const translationRows = (translations ?? []) as (BlogPostTranslationPayload & { locale?: string | null })[]
+    const requestedTranslation = translationRows.find((translation) => translation.locale === requestedLocale)
+    const englishTranslation = translationRows.find((translation) => translation.locale === "en")
+    const tr = requestedTranslation ?? englishTranslation
 
     if (!tr) continue
 
@@ -492,7 +556,8 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
      * the per-section image mapping. So both formats continue to work.
      */
     const dbMedia = (media ?? []) as BlogMediaPayload[]
-    const rawDbContent = tr.content_richtext?.trim()
+    const rawDbContent =
+      (tr.content_richtext || tr.content || englishTranslation?.content_richtext || englishTranslation?.content)?.trim()
     const dbContent = rawDbContent
       ? hydrateBlogHtmlImageOrientations(rawDbContent, dbMedia)
       : rawDbContent
@@ -513,8 +578,11 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
 
     result.push({
       slug: post.slug,
-      title: tr.title,
-      excerpt: tr.excerpt ?? staticPost?.excerpt ?? "",
+      title: tr.title || englishTranslation?.title || staticPost?.title || post.slug,
+      excerpt: tr.excerpt ?? englishTranslation?.excerpt ?? staticPost?.excerpt ?? "",
+      seoTitle: tr.seo_title?.trim() || englishTranslation?.seo_title?.trim() || undefined,
+      seoDescription: tr.seo_description?.trim() || englishTranslation?.seo_description?.trim() || undefined,
+      imageAlt: tr.image_alt?.trim() || englishTranslation?.image_alt?.trim() || undefined,
       content,
       image: post.hero_image_path || staticPost?.image || "",
       images: inlineImages,
@@ -548,13 +616,13 @@ export async function getBlogCategories() {
   return data.map((c) => ({ id: c.slug as BlogCategory, label: c.label_en }))
 }
 
-export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
-  const posts = await getAllBlogPosts()
+export async function getBlogPostBySlug(slug: string, locale = "en"): Promise<BlogPost | null> {
+  const posts = await getAllBlogPosts(locale)
   return posts.find((p) => p.slug === slug) ?? null
 }
 
-export async function getRelatedBlogPosts(slug: string, limit = 3): Promise<BlogPost[]> {
-  const posts = await getAllBlogPosts()
+export async function getRelatedBlogPosts(slug: string, limit = 3, locale = "en"): Promise<BlogPost[]> {
+  const posts = await getAllBlogPosts(locale)
   const current = posts.find((p) => p.slug === slug)
   if (!current) return []
   return posts
@@ -562,8 +630,8 @@ export async function getRelatedBlogPosts(slug: string, limit = 3): Promise<Blog
     .slice(0, limit)
 }
 
-export async function getAllBeaches(): Promise<Beach[]> {
-  const details = await getAllBeachDetails()
+export async function getAllBeaches(locale = "en"): Promise<Beach[]> {
+  const details = await getAllBeachDetails(locale)
   if (details === STATIC_BEACH_DETAILS) return STATIC_ALL_BEACHES
   return Object.values(details).map((d) => ({
     name: d.name,
@@ -574,8 +642,8 @@ export async function getAllBeaches(): Promise<Beach[]> {
   }))
 }
 
-export async function getRegionsFromBeaches(): Promise<{ id: Region; label: string }[]> {
-  const beaches = await getAllBeaches()
+export async function getRegionsFromBeaches(locale = "en"): Promise<{ id: Region; label: string }[]> {
+  const beaches = await getAllBeaches(locale)
   if (beaches === STATIC_ALL_BEACHES) return STATIC_REGIONS
   const unique = [...new Set(beaches.map((b) => b.region))]
   return unique.map((id) => ({ id, label: id }))
@@ -585,8 +653,8 @@ export async function getTopBeaches(): Promise<TopBeach[]> {
   return STATIC_TOP_BEACHES
 }
 
-export async function getAllActivities(): Promise<Activity[]> {
-  const details = await getAllActivityDetails()
+export async function getAllActivities(locale = "en"): Promise<Activity[]> {
+  const details = await getAllActivityDetails(locale)
   if (details === STATIC_ACTIVITY_DETAILS) return STATIC_ACTIVITIES
   return Object.values(details).map((d) => ({
     slug: d.slug,
@@ -602,51 +670,51 @@ export function getActivityCategories() {
   return STATIC_ACTIVITY_CATEGORIES
 }
 
-export async function getActivitiesByCategory(category: ActivityCategory): Promise<Activity[]> {
-  const all = await getAllActivities()
+export async function getActivitiesByCategory(category: ActivityCategory, locale = "en"): Promise<Activity[]> {
+  const all = await getAllActivities(locale)
   if (category === "all") return all
   return all.filter((a) => a.categories.includes(category))
 }
 
-export async function getAllPlaces(): Promise<PlaceDetails[]> {
-  const details = await getAllPlaceDetails()
+export async function getAllPlaces(locale = "en"): Promise<PlaceDetails[]> {
+  const details = await getAllPlaceDetails(locale)
   if (details === STATIC_PLACE_DETAILS) return staticGetAllPlaces()
   return Object.values(details)
 }
 
-export async function getPlacesByCategory(category: PlaceCategory): Promise<PlaceDetails[]> {
-  const all = await getAllPlaces()
+export async function getPlacesByCategory(category: PlaceCategory, locale = "en"): Promise<PlaceDetails[]> {
+  const all = await getAllPlaces(locale)
   return all.filter((p) => p.categories.includes(category))
 }
 
-export async function getRelatedActivities(slug: string): Promise<ActivityDetails[]> {
-  const details = await getAllActivityDetails()
+export async function getRelatedActivities(slug: string, locale = "en"): Promise<ActivityDetails[]> {
+  const details = await getAllActivityDetails(locale)
   const activity = details[slug]
   if (!activity?.relatedActivities) return []
   return activity.relatedActivities.map((s) => details[s]).filter(Boolean)
 }
 
-export async function getBeachesByRegion(region: Region): Promise<BeachDetails[]> {
-  const details = await getAllBeachDetails()
+export async function getBeachesByRegion(region: Region, locale = "en"): Promise<BeachDetails[]> {
+  const details = await getAllBeachDetails(locale)
   return Object.values(details).filter((d) => d.region === region)
 }
 
 export async function getAllBeachSlugs(): Promise<string[]> {
-  const details = await getAllBeachDetails()
+  const details = await getAllBeachDetails("en")
   return Object.keys(details)
 }
 
 export async function getAllPlaceSlugs(): Promise<string[]> {
-  const details = await getAllPlaceDetails()
+  const details = await getAllPlaceDetails("en")
   return Object.keys(details)
 }
 
 export async function getAllActivitySlugs(): Promise<string[]> {
-  const details = await getAllActivityDetails()
+  const details = await getAllActivityDetails("en")
   return Object.keys(details)
 }
 
-export async function getAllVerandaHotels(): Promise<VerandaHotel[]> {
+export async function getAllVerandaHotels(locale = "en"): Promise<VerandaHotel[]> {
   if (!(await shouldUseDb())) return STATIC_VERANDA_HOTELS
 
   const slugs = await fetchAllPublishedSlugs("hotel")
@@ -659,7 +727,7 @@ export async function getAllVerandaHotels(): Promise<VerandaHotel[]> {
       [normalizeKey(hotel.shortName), hotel],
     ])
   )
-  const results = await Promise.all(slugs.map((slug) => fetchItemBySlug(slug, "hotel")))
+  const results = await Promise.all(slugs.map((slug) => fetchItemBySlug(slug, "hotel", locale)))
   const hotels = results
     .map((item, index) => {
       if (!item) return null
@@ -674,11 +742,11 @@ export async function getAllVerandaHotels(): Promise<VerandaHotel[]> {
   return hotels.length ? hotels : STATIC_VERANDA_HOTELS
 }
 
-export async function getVerandaHotelBySlugFromDb(slug: string): Promise<VerandaHotel | null> {
+export async function getVerandaHotelBySlugFromDb(slug: string, locale = "en"): Promise<VerandaHotel | null> {
   const fallbackBySlug = STATIC_VERANDA_HOTELS.find((hotel) => hotel.slug === slug)
   if (!(await shouldUseDb())) return fallbackBySlug ?? null
 
-  const item = await fetchItemBySlug(slug, "hotel")
+  const item = await fetchItemBySlug(slug, "hotel", locale)
   if (!item) return fallbackBySlug ?? null
 
   const fallbackByName = STATIC_VERANDA_HOTELS.find((hotel) => {
@@ -693,12 +761,12 @@ export async function getVerandaHotelBySlugFromDb(slug: string): Promise<Veranda
 }
 
 export async function getAllVerandaHotelSlugsFromDb(): Promise<string[]> {
-  const hotels = await getAllVerandaHotels()
+  const hotels = await getAllVerandaHotels("en")
   return hotels.map((hotel) => hotel.slug)
 }
 
-export async function getRelatedVerandaHotelsFromDb(slug: string, limit = 3): Promise<VerandaHotel[]> {
-  const hotels = await getAllVerandaHotels()
+export async function getRelatedVerandaHotelsFromDb(slug: string, limit = 3, locale = "en"): Promise<VerandaHotel[]> {
+  const hotels = await getAllVerandaHotels(locale)
   const currentHotel = hotels.find((hotel) => hotel.slug === slug)
   if (!currentHotel) return hotels.filter((hotel) => hotel.slug !== slug).slice(0, limit)
 
@@ -712,11 +780,11 @@ export async function getRelatedVerandaHotelsFromDb(slug: string, limit = 3): Pr
   return [...sameRegion, ...others].slice(0, limit)
 }
 
-export async function getVerandaHotelsListingData(): Promise<{
+export async function getVerandaHotelsListingData(locale = "en"): Promise<{
   allHotels: VerandaHotel[]
   hotelSlugsWithPages: string[]
 }> {
-  const allHotels = await getAllVerandaHotels()
+  const allHotels = await getAllVerandaHotels(locale)
   return {
     allHotels,
     hotelSlugsWithPages: allHotels.map((hotel) => hotel.slug),
@@ -724,13 +792,13 @@ export async function getVerandaHotelsListingData(): Promise<{
 }
 
 /** Single fetch for beaches listing page — avoids 3x duplicate fetches */
-export async function getBeachesListingData(): Promise<{
+export async function getBeachesListingData(locale = "en"): Promise<{
   allBeaches: Beach[]
   beachDetails: Record<string, BeachDetails>
   regions: { id: Region; label: string }[]
   topBeaches: TopBeach[]
 }> {
-  const beachDetails = await getAllBeachDetails()
+  const beachDetails = await getAllBeachDetails(locale)
   const allBeaches =
     beachDetails === STATIC_BEACH_DETAILS
       ? STATIC_ALL_BEACHES
@@ -749,11 +817,11 @@ export async function getBeachesListingData(): Promise<{
 }
 
 /** Single fetch for activities listing page — avoids 2x duplicate fetches */
-export async function getActivitiesListingData(): Promise<{
+export async function getActivitiesListingData(locale = "en"): Promise<{
   allActivities: Activity[]
   activitySlugsWithPages: string[]
 }> {
-  const details = await getAllActivityDetails()
+  const details = await getAllActivityDetails(locale)
   const allActivities =
     details === STATIC_ACTIVITY_DETAILS
       ? STATIC_ACTIVITIES
@@ -797,31 +865,31 @@ async function enrichAcrossItems<T extends ExploreItem>(
   return enriched
 }
 
-export async function getExploreSectionsEnriched(): Promise<{
+export async function getExploreSectionsEnriched(locale = "en"): Promise<{
   topActivities: ExploreItem[]
   topBeaches: ExploreItem[]
   topPlaces: ExploreItem[]
   hiddenGems: ExploreItem[]
 }> {
   const [activities, beaches, places, gems] = await Promise.all([
-    enrichExploreItems(STATIC_TOP_ACTIVITIES, (slug) => getActivityDetailsBySlugFromDb(slug).then((d) => d ?? null)),
-    enrichExploreItems(STATIC_TOP_BEACHES_EXPLORE, (slug) => getBeachDetailsBySlug(slug).then((d) => d ?? null)),
-    enrichExploreItems(STATIC_TOP_PLACES, (slug) => getPlaceDetailsBySlug(slug).then((d) => d ?? null)),
-    enrichExploreItems(STATIC_HIDDEN_GEMS, (slug) => getBeachDetailsBySlug(slug).then((d) => d ?? null)),
+    enrichExploreItems(STATIC_TOP_ACTIVITIES, (slug) => getActivityDetailsBySlugFromDb(slug, locale).then((d) => d ?? null)),
+    enrichExploreItems(STATIC_TOP_BEACHES_EXPLORE, (slug) => getBeachDetailsBySlug(slug, locale).then((d) => d ?? null)),
+    enrichExploreItems(STATIC_TOP_PLACES, (slug) => getPlaceDetailsBySlug(slug, locale).then((d) => d ?? null)),
+    enrichExploreItems(STATIC_HIDDEN_GEMS, (slug) => getBeachDetailsBySlug(slug, locale).then((d) => d ?? null)),
   ])
   return { topActivities: activities, topBeaches: beaches, topPlaces: places, hiddenGems: gems }
 }
-export async function getAcrossSectionsEnriched(): Promise<{
+export async function getAcrossSectionsEnriched(locale = "en"): Promise<{
   topActivities: ExploreItem[]
   topBeaches: ExploreItem[]
   topPlaces: ExploreItem[]
   hiddenGems: ExploreItem[]
 }> {
   const [activities, beaches, places, gems] = await Promise.all([
-    enrichAcrossItems(STATIC_TOP_ACTIVITIES, (slug) => getActivityDetailsBySlugFromDb(slug).then((d) => d ?? null)),
-    enrichAcrossItems(STATIC_TOP_BEACHES_EXPLORE, (slug) => getBeachDetailsBySlug(slug).then((d) => d ?? null)),
-    enrichAcrossItems(STATIC_TOP_PLACES, (slug) => getPlaceDetailsBySlug(slug).then((d) => d ?? null)),
-    enrichAcrossItems(STATIC_HIDDEN_GEMS, (slug) => getBeachDetailsBySlug(slug).then((d) => d ?? null)),
+    enrichAcrossItems(STATIC_TOP_ACTIVITIES, (slug) => getActivityDetailsBySlugFromDb(slug, locale).then((d) => d ?? null)),
+    enrichAcrossItems(STATIC_TOP_BEACHES_EXPLORE, (slug) => getBeachDetailsBySlug(slug, locale).then((d) => d ?? null)),
+    enrichAcrossItems(STATIC_TOP_PLACES, (slug) => getPlaceDetailsBySlug(slug, locale).then((d) => d ?? null)),
+    enrichAcrossItems(STATIC_HIDDEN_GEMS, (slug) => getBeachDetailsBySlug(slug, locale).then((d) => d ?? null)),
   ])
   return { topActivities: activities, topBeaches: beaches, topPlaces: places, hiddenGems: gems }
 }

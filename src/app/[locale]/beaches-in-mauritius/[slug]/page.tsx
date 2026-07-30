@@ -27,7 +27,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params;
   const labels = getDetailPageTranslations(locale);
-  const beach = await getBeachDetailsBySlug(slug);
+  const beach = await getBeachDetailsBySlug(slug, locale);
   if (!beach) {
     return { title: labels.beach.beachNotFound };
   }
@@ -60,13 +60,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function BeachPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params;
   const labels = getDetailPageTranslations(locale);
-  const beach = await getBeachDetailsBySlug(slug);
+  const beach = await getBeachDetailsBySlug(slug, locale);
 
   if (!beach) {
     notFound();
   }
 
-  const regionBeaches = await getBeachesByRegion(beach.region);
+  const regionBeaches = await getBeachesByRegion(beach.region, locale);
   const relatedBeaches = regionBeaches
     .filter((b) => b.slug !== beach.slug)
     .slice(0, 3);

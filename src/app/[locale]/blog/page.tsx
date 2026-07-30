@@ -9,6 +9,7 @@ import { getImageUrl } from "@/lib/image-url";
 import { DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/constants";
 import NewsletterForm from "@/components/NewsletterForm";
 import { getTranslations } from "next-intl/server";
+import { normalizeLocale } from "@/i18n/routing";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("BlogIndex.metadata");
@@ -60,10 +61,16 @@ function BlogListJsonLd({ posts, name, description }: { posts: BlogPost[]; name:
   );
 }
 
-export default async function BlogPage() {
+export default async function BlogPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const activeLocale = normalizeLocale(locale);
   const t = await getTranslations("BlogIndex");
   const [allPosts, blogCategories] = await Promise.all([
-    getAllBlogPosts(),
+    getAllBlogPosts(activeLocale),
     getBlogCategories(),
   ]);
   const selectedFeaturedPosts = ([1, 2, 3] as const)

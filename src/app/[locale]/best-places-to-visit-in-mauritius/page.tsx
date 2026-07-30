@@ -7,9 +7,10 @@ import { getTranslations } from "next-intl/server";
 
 export const revalidate = 3600;
 
-export default async function PlacesToVisitPage() {
+export default async function PlacesToVisitPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const t = await getTranslations("PlacesHub.schema");
-  const allPlaces = await getAllPlaces();
+  const allPlaces = await getAllPlaces(locale);
   return (
     <>
       <ItemListJsonLd

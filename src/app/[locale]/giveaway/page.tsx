@@ -12,6 +12,7 @@ import { getDetailPageTranslations } from "@/data/detail-page-translations";
 import {
   DEFAULT_GIVEAWAY_CAMPAIGN,
   fetchGiveawayCampaign,
+  localizeGiveawayCampaign,
   type GiveawayCampaignData,
 } from "@/lib/giveaway-campaign";
 import { submitGiveawayEntry } from "@/lib/actions";
@@ -58,9 +59,15 @@ export default function GiveawayPage() {
   useEffect(() => {
     const controller = new AbortController();
 
-    fetchGiveawayCampaign(controller.signal)
-      .then((data) => {
-        setCampaign({
+    async function loadCampaign() {
+      try {
+        const data = await fetchGiveawayCampaign(locale, controller.signal);
+
+        if (controller.signal.aborted) {
+          return;
+        }
+
+        setCampaign(localizeGiveawayCampaign({
           ...DEFAULT_GIVEAWAY_CAMPAIGN,
           ...data,
           slug: data.slug || DEFAULT_GIVEAWAY_CAMPAIGN.slug,
@@ -69,14 +76,19 @@ export default function GiveawayPage() {
           headline: data.headline || DEFAULT_GIVEAWAY_CAMPAIGN.headline,
           card_title: data.card_title || DEFAULT_GIVEAWAY_CAMPAIGN.card_title,
           card_text: data.card_text || DEFAULT_GIVEAWAY_CAMPAIGN.card_text,
-        });
-      })
-      .catch(() => {
+        }, locale));
+      } catch (error) {
+        if (controller.signal.aborted || (error instanceof DOMException && error.name === "AbortError")) {
+          return;
+        }
         // Keep the default campaign content if the API is unavailable.
-      });
+      }
+    }
+
+    void loadCampaign();
 
     return () => controller.abort();
-  }, []);
+  }, [locale]);
 
   const openFacebookShare = () => {
     const u = shareUrl || `${typeof window !== "undefined" ? window.location.origin : ""}/giveaway`;

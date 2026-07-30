@@ -73,6 +73,63 @@ const styleCards = [
   },
 ];
 
+const verandaPageHeadings = {
+  en: {
+    heroKicker: "Authentic Island Living Across Five Mauritian Hotels",
+    heroTitle: "Veranda Hotels in Mauritius",
+    hotelListTitle: "The five Veranda hotels",
+    mapTitle: "Where are the Veranda Hotels?",
+    whyKicker: "Why book a Veranda hotel",
+    whyTitle: "Made for a real island holiday",
+    matchTitle: "Which Veranda is right for you?",
+  },
+  fr: {
+    heroKicker: "Art de vivre insulaire authentique dans cinq hôtels mauriciens",
+    heroTitle: "Hôtels Veranda à Maurice",
+    hotelListTitle: "Les cinq hôtels Veranda",
+    mapTitle: "Où se trouvent les hôtels Veranda ?",
+    whyKicker: "Pourquoi réserver un hôtel Veranda",
+    whyTitle: "Pensé pour de vraies vacances sur l'île",
+    matchTitle: "Quel Veranda est fait pour vous ?",
+  },
+  de: {
+    heroKicker: "Authentisches Inselleben in fünf mauritischen Hotels",
+    heroTitle: "Veranda-Hotels auf Mauritius",
+    hotelListTitle: "Die fünf Veranda-Hotels",
+    mapTitle: "Wo liegen die Veranda-Hotels?",
+    whyKicker: "Warum ein Veranda-Hotel buchen",
+    whyTitle: "Gemacht für einen echten Inselurlaub",
+    matchTitle: "Welches Veranda passt zu Ihnen?",
+  },
+  it: {
+    heroKicker: "Vita autentica dell'isola in cinque hotel mauriziani",
+    heroTitle: "Hotel Veranda a Mauritius",
+    hotelListTitle: "I cinque hotel Veranda",
+    mapTitle: "Dove si trovano gli hotel Veranda?",
+    whyKicker: "Perché prenotare un hotel Veranda",
+    whyTitle: "Pensato per una vera vacanza sull'isola",
+    matchTitle: "Quale Veranda fa per te?",
+  },
+  es: {
+    heroKicker: "Vida isleña auténtica en cinco hoteles mauricianos",
+    heroTitle: "Hoteles Veranda en Mauricio",
+    hotelListTitle: "Los cinco hoteles Veranda",
+    mapTitle: "¿Dónde están los hoteles Veranda?",
+    whyKicker: "Por qué reservar un hotel Veranda",
+    whyTitle: "Hecho para unas auténticas vacaciones en la isla",
+    matchTitle: "¿Qué Veranda es para ti?",
+  },
+  ru: {
+    heroKicker: "Аутентичная островная жизнь в пяти маврикийских отелях",
+    heroTitle: "Отели Veranda на Маврикии",
+    hotelListTitle: "Пять отелей Veranda",
+    mapTitle: "Где находятся отели Veranda?",
+    whyKicker: "Почему стоит выбрать отель Veranda",
+    whyTitle: "Создано для настоящего островного отдыха",
+    matchTitle: "Какой Veranda подойдет вам?",
+  },
+} as const;
+
 function getVerandaHotelLinkByName(
   hotels: VerandaHotel[],
   name: string,
@@ -416,7 +473,8 @@ function ChoiceLink({
 
 export default async function VerandaCollectionPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const { allHotels } = await getVerandaHotelsListingData();
+  const headings = verandaPageHeadings[locale as keyof typeof verandaPageHeadings] ?? verandaPageHeadings.en;
+  const { allHotels } = await getVerandaHotelsListingData(locale);
   const hotelRegions = buildHotelRegions(allHotels);
   const chooseRows = getChooseRows(allHotels);
 
@@ -464,10 +522,10 @@ export default async function VerandaCollectionPage({ params }: { params: Promis
         <div className="relative mx-auto flex min-h-[70vh] max-w-6xl items-end pb-32 sm:min-h-[76vh] lg:min-h-[82vh]">
           <div className="max-w-3xl">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/95 [text-shadow:0_1px_10px_rgba(0,0,0,0.35)]">
-              Authentic Island Living Across Five Mauritian Hotels
+              {headings.heroKicker}
             </p>
             <h1 className="mt-4 font-sans text-4xl font-bold leading-[0.95] tracking-[-0.02em] text-white [text-shadow:0_10px_28px_rgba(0,0,0,0.34)] sm:text-5xl lg:text-[68px]">
-              Veranda Hotels in Mauritius
+              {headings.heroTitle}
             </h1>
             <p className="mt-4 max-w-2xl text-base leading-7 text-white/95 [text-shadow:0_2px_14px_rgba(0,0,0,0.32)] sm:text-lg sm:leading-8">
               Five relaxed, authentic and great-value island hotels, from
@@ -580,7 +638,7 @@ export default async function VerandaCollectionPage({ params }: { params: Promis
               Explore by region
             </p>
             <h2 className="mt-3 font-sans text-3xl font-semibold text-[#1c2a2e] sm:text-[34px]">
-              The five Veranda hotels
+              {headings.hotelListTitle}
             </h2>
             <p className="mt-3 text-base leading-7 text-[#5f7378]">
               Pick your coast and your mood, then open the hotel that feels
@@ -615,7 +673,7 @@ export default async function VerandaCollectionPage({ params }: { params: Promis
               Where to stay
             </p>
             <h2 className="mt-3 font-sans text-3xl font-semibold text-[#1c2a2e] sm:text-[34px]">
-              Where are the Veranda Hotels?
+              {headings.mapTitle}
             </h2>
             <p className="mt-3 text-base leading-7 text-[#5f7378]">
               Five relaxed, great-value island hotels, pick your coast and your
@@ -1083,10 +1141,10 @@ export default async function VerandaCollectionPage({ params }: { params: Promis
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto mb-8 max-w-2xl text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#12909c]">
-              Why book a Veranda hotel
+              {headings.whyKicker}
             </p>
             <h2 className="mt-3 font-sans text-3xl font-semibold text-[#1c2a2e] sm:text-[34px]">
-              Made for a real island holiday
+              {headings.whyTitle}
             </h2>
           </div>
 
@@ -1115,7 +1173,7 @@ export default async function VerandaCollectionPage({ params }: { params: Promis
               Find your match
             </p>
             <h2 className="mt-3 font-sans text-3xl font-semibold text-[#1c2a2e] sm:text-[34px]">
-              Which Veranda is right for you?
+              {headings.matchTitle}
             </h2>
           </div>
 

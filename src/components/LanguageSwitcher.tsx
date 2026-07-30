@@ -2,8 +2,8 @@
 
 import { useState, useRef, useEffect, useTransition } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { usePathname, useRouter } from "@/i18n/navigation";
-import type { AppLocale } from "@/i18n/routing";
+import { useRouter } from "next/navigation";
+import { routing, type AppLocale } from "@/i18n/routing";
 
 const LANGUAGES: { code: AppLocale; nameKey: string; flag: string }[] = [
   { code: "en", nameKey: "english", flag: "🇬🇧" },
@@ -13,6 +13,18 @@ const LANGUAGES: { code: AppLocale; nameKey: string; flag: string }[] = [
   { code: "es", nameKey: "spanish", flag: "🇪🇸" },
   { code: "ru", nameKey: "russian", flag: "🇷🇺" },
 ];
+
+function removeLocalePrefix(path: string) {
+  const parts = path.split("/");
+  const firstSegment = parts[1]?.toLowerCase();
+
+  if (routing.locales.includes(firstSegment as AppLocale)) {
+    const nextPath = `/${parts.slice(2).join("/")}`;
+    return nextPath === "/" ? "/" : nextPath;
+  }
+
+  return path || "/";
+}
 
 interface LanguageSwitcherProps {
   /** When true, use dark text (e.g. scrolled/solid header or mobile menu). */
@@ -31,7 +43,6 @@ export default function LanguageSwitcher({
   const t = useTranslations("LanguageSwitcher");
   const locale = useLocale() as AppLocale;
   const router = useRouter();
-  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -62,7 +73,14 @@ export default function LanguageSwitcher({
       return;
     }
     startTransition(() => {
-      router.replace(pathname, { locale: nextLocale });
+      const pathWithoutLocale = removeLocalePrefix(window.location.pathname);
+      const suffix = `${window.location.search}${window.location.hash}`;
+      const nextPath =
+        nextLocale === routing.defaultLocale
+          ? pathWithoutLocale
+          : `/${nextLocale}${pathWithoutLocale === "/" ? "" : pathWithoutLocale}`;
+
+      router.replace(`${nextPath}${suffix}`);
       setOpen(false);
       onSelect?.();
     });

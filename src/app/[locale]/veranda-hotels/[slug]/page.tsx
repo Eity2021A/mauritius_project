@@ -36,7 +36,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale, slug } = await params;
   const t = (text: string) => staticPageText(locale, text);
-  const hotel = await getVerandaHotelBySlugFromDb(slug);
+  const hotel = await getVerandaHotelBySlugFromDb(slug, locale);
 
   if (!hotel) {
     return { title: t("Not Found") };
@@ -169,13 +169,13 @@ export default async function VerandaHotelPage({
 }) {
   const { locale, slug } = await params;
   const t = (text: string) => staticPageText(locale, text);
-  const hotel = await getVerandaHotelBySlugFromDb(slug);
+  const hotel = await getVerandaHotelBySlugFromDb(slug, locale);
 
   if (!hotel) {
     notFound();
   }
 
-  const relatedHotels = await getRelatedVerandaHotelsFromDb(slug);
+  const relatedHotels = await getRelatedVerandaHotelsFromDb(slug, 3, locale);
   const hotelCategories = [hotel.region, hotel.style, ...hotel.tags].map(t);
 
   return (

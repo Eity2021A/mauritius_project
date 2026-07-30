@@ -22,21 +22,21 @@ import {
   localizePreDesignedItinerary,
 } from "@/data/localized-predesigned-itineraries";
 
-async function getStopPosition(stop: PreDesignedStop): Promise<[number, number]> {
+async function getStopPosition(stop: PreDesignedStop, locale: string): Promise<[number, number]> {
   if (stop.type === "place") {
-    const place = await getPlaceDetailsBySlug(stop.slug);
+    const place = await getPlaceDetailsBySlug(stop.slug, locale);
     if (place?.coordinates && (place.coordinates[0] !== 0 || place.coordinates[1] !== 0)) {
       return place.coordinates;
     }
   }
   if (stop.type === "beach") {
-    const details = await getBeachDetailsBySlug(stop.slug);
+    const details = await getBeachDetailsBySlug(stop.slug, locale);
     if (details?.coordinates && (details.coordinates[0] !== 0 || details.coordinates[1] !== 0)) {
       return details.coordinates;
     }
   }
   if (stop.type === "activity") {
-    const activity = await getActivityDetailsBySlugFromDb(stop.slug);
+    const activity = await getActivityDetailsBySlugFromDb(stop.slug, locale);
     if (activity?.coordinates && (activity.coordinates[0] !== 0 || activity.coordinates[1] !== 0)) {
       return activity.coordinates;
     }
@@ -44,21 +44,21 @@ async function getStopPosition(stop: PreDesignedStop): Promise<[number, number]>
   return stop.position;
 }
 
-async function getStopDescription(stop: PreDesignedStop): Promise<string | undefined> {
+async function getStopDescription(stop: PreDesignedStop, locale: string): Promise<string | undefined> {
   if (stop.type === "place") {
-    const place = await getPlaceDetailsBySlug(stop.slug);
+    const place = await getPlaceDetailsBySlug(stop.slug, locale);
     if (!place) return undefined;
     const paras = Array.isArray(place.description) ? place.description : [];
     return paras.length > 0 ? [place.tagline, ...paras.slice(0, 2)].filter(Boolean).join(" ") : place.tagline ?? "";
   }
   if (stop.type === "beach") {
-    const details = await getBeachDetailsBySlug(stop.slug);
+    const details = await getBeachDetailsBySlug(stop.slug, locale);
     if (!details) return undefined;
     const paras = Array.isArray(details.description) ? details.description : [];
     return paras.length > 0 ? [details.tagline, ...paras.slice(0, 2)].filter(Boolean).join(" ") : details.tagline ?? "";
   }
   if (stop.type === "activity") {
-    const activity = await getActivityDetailsBySlugFromDb(stop.slug);
+    const activity = await getActivityDetailsBySlugFromDb(stop.slug, locale);
     if (!activity) return undefined;
     const paras = Array.isArray(activity.description) ? activity.description : [];
     return paras.length > 0 ? [activity.tagline, ...paras.slice(0, 2)].filter(Boolean).join(" ") : activity.tagline ?? "";
@@ -66,17 +66,17 @@ async function getStopDescription(stop: PreDesignedStop): Promise<string | undef
   return undefined;
 }
 
-async function getStopImages(stop: PreDesignedStop): Promise<string[] | undefined> {
+async function getStopImages(stop: PreDesignedStop, locale: string): Promise<string[] | undefined> {
   if (stop.type === "place") {
-    const place = await getPlaceDetailsBySlug(stop.slug);
+    const place = await getPlaceDetailsBySlug(stop.slug, locale);
     return place?.images;
   }
   if (stop.type === "beach") {
-    const details = await getBeachDetailsBySlug(stop.slug);
+    const details = await getBeachDetailsBySlug(stop.slug, locale);
     return details?.images;
   }
   if (stop.type === "activity") {
-    const activity = await getActivityDetailsBySlugFromDb(stop.slug);
+    const activity = await getActivityDetailsBySlugFromDb(stop.slug, locale);
     return activity?.images;
   }
   return undefined;
@@ -155,9 +155,9 @@ export default async function ItineraryDetailPage({ params }: { params: Promise<
   const enrichedStops = await Promise.all(
     itinerary.stops.map(async (stop) => ({
       ...stop,
-      position: await getStopPosition(stop),
-      description: await getStopDescription(stop),
-      images: await getStopImages(stop),
+      position: await getStopPosition(stop, locale),
+      description: await getStopDescription(stop, locale),
+      images: await getStopImages(stop, locale),
     }))
   );
 

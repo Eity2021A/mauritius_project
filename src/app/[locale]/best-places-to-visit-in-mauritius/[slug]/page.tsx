@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale, slug } = await params;
   const labels = getDetailPageTranslations(locale);
   const canonical = `${DETAIL_BASE}/${slug}`;
-  const place = await getPlaceDetailsBySlug(slug);
+  const place = await getPlaceDetailsBySlug(slug, locale);
   if (!place) return { title: labels.place.notFound };
 
   const placeHeroImage = place.heroImage ?? place.images[0];
@@ -81,17 +81,17 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function PlaceDetailPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params;
   const labels = getDetailPageTranslations(locale);
-  const place = await getPlaceDetailsBySlug(slug);
+  const place = await getPlaceDetailsBySlug(slug, locale);
   if (!place) notFound();
 
   const placeCoordinates = place.coordinates;
   const primaryCategory = place.categories[0];
   const placeHeroImage = place.heroImage ?? place.images[0] ?? "";
-  const relatedByCategory = await getPlacesByCategory(primaryCategory);
+  const relatedByCategory = await getPlacesByCategory(primaryCategory, locale);
   const relatedPlaces = relatedByCategory
     .filter(p => p.slug !== place.slug)
     .slice(0, 3);
-  const linkedActivity = await getActivityDetailsBySlugFromDb(slug);
+  const linkedActivity = await getActivityDetailsBySlugFromDb(slug, locale);
   const placeCategories = [place.region, ...place.categories];
 
   return (

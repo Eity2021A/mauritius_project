@@ -7,9 +7,10 @@ import { getTranslations } from "next-intl/server";
 
 export const revalidate = 3600;
 
-export default async function MauritiusActivitiesPage() {
+export default async function MauritiusActivitiesPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const t = await getTranslations("ActivitiesHub.schema");
-  const { allActivities, activitySlugsWithPages } = await getActivitiesListingData();
+  const { allActivities, activitySlugsWithPages } = await getActivitiesListingData(locale);
 
   return (
     <>

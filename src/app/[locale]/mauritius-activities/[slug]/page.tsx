@@ -7,8 +7,9 @@ import { permanentRedirect } from "next/navigation";
 export default async function ActivitySlugRedirect({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { slug } = await params;
-  permanentRedirect(`/top-activities-mauritius/${slug}`);
+  const { locale, slug } = await params;
+  const prefix = locale === "en" ? "" : `/${locale}`;
+  permanentRedirect(`${prefix}/top-activities-mauritius/${slug}`);
 }

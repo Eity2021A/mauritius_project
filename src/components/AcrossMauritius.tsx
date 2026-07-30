@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import AcrossSectionCta from "@/components/AcrossSectionCta";
 import { getImageUrl } from "@/lib/image-url";
 import { Marquee } from "@/components/ui/marquee";
@@ -127,9 +127,10 @@ function MarqueeCard({
 }
 
 export default async function AcrossMauritius() {
+  const locale = await getLocale();
   const t = await getTranslations("Home.across");
   const { topActivities, topBeaches, topPlaces, hiddenGems } =
-    await getAcrossSectionsEnriched();
+    await getAcrossSectionsEnriched(locale);
   const acrossSectionsWithEnrichedImages: AcrossSectionConfig[] = [
     { ...acrossSections[0], title: t("sections.activities"), items: topActivities },
     { ...acrossSections[1], title: t("sections.beaches"), items: topBeaches },

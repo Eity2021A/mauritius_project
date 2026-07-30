@@ -7,9 +7,10 @@ import { getTranslations } from "next-intl/server";
 
 export const revalidate = 3600;
 
-export default async function BeachesInMauritiusPage() {
+export default async function BeachesInMauritiusPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const t = await getTranslations("BeachesHub.schema");
-  const { allBeaches, beachDetails, regions } = await getBeachesListingData();
+  const { allBeaches, beachDetails, regions } = await getBeachesListingData(locale);
 
   return (
     <>

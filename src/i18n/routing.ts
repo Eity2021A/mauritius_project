@@ -1,7 +1,9 @@
 import { defineRouting } from "next-intl/routing";
 
+export const SUPPORTED_LOCALES = ["en", "fr", "de", "it", "es", "ru"] as const;
+
 export const routing = defineRouting({
-  locales: ["en", "fr", "de", "it", "es", "ru"],
+  locales: SUPPORTED_LOCALES,
   defaultLocale: "en",
   // Keep English URLs unchanged: /beaches-in-mauritius
   // Other locales: /fr/beaches-in-mauritius
@@ -11,3 +13,8 @@ export const routing = defineRouting({
 });
 
 export type AppLocale = (typeof routing.locales)[number];
+
+export function normalizeLocale(value: string | null | undefined): AppLocale {
+  const locale = value?.toLowerCase();
+  return SUPPORTED_LOCALES.includes(locale as AppLocale) ? (locale as AppLocale) : routing.defaultLocale;
+}

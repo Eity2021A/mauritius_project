@@ -17,6 +17,9 @@ export interface BlogPost {
   slug: string;
   title: string;
   excerpt: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  imageAlt?: string;
   content: string[];
   image: string;
   images?: string[];

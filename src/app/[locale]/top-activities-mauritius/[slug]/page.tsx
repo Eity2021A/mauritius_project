@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       },
     };
   }
-  const activity = await getActivityDetailsBySlugFromDb(slug);
+  const activity = await getActivityDetailsBySlugFromDb(slug, locale);
   if (activity) {
     const activityHeroImage = activity.heroImage ?? activity.images[0];
     const activityImage = activityHeroImage
@@ -187,11 +187,11 @@ export default async function DetailPage({ params }: { params: Promise<{ locale:
   if (itinerary) {
     permanentRedirect(`/itineraries/${slug}`);
   }
-  const activity = await getActivityDetailsBySlugFromDb(slug);
+  const activity = await getActivityDetailsBySlugFromDb(slug, locale);
 
   if (activity) {
     const activityCoordinates = activity.coordinates;
-    const relatedActivities = await getRelatedActivities(slug);
+    const relatedActivities = await getRelatedActivities(slug, locale);
     const mainPrice = activity.pricing?.[0]?.price;
     const hasBooking = Boolean(activity.bookingUrl);
     const activityHeroImage = activity.heroImage ?? activity.images[0] ?? "";
@@ -455,7 +455,7 @@ export default async function DetailPage({ params }: { params: Promise<{ locale:
   }
 
   // If the slug belongs to a place, redirect to the new place URL
-  const place = await getPlaceDetailsBySlug(slug);
+  const place = await getPlaceDetailsBySlug(slug, locale);
   if (place) {
     permanentRedirect(`/best-places-to-visit-in-mauritius/${slug}`);
   }

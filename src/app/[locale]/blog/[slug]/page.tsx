@@ -20,6 +20,7 @@ import { trimMetaDescription } from "@/lib/seo";
 import { ArticleJsonLd } from "@/components/seo/JsonLd";
 import NewsletterForm from "@/components/NewsletterForm";
 import { formatLabel, getDetailPageTranslations } from "@/data/detail-page-translations";
+import { normalizeLocale } from "@/i18n/routing";
 
 const AUTHOR_PROFILE = {
   name: "Mauritius Explored",
@@ -103,8 +104,9 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const labels = getDetailPageTranslations(locale);
-  const post = await getBlogPostBySlug(slug);
+  const activeLocale = normalizeLocale(locale);
+  const labels = getDetailPageTranslations(activeLocale);
+  const post = await getBlogPostBySlug(slug, activeLocale);
 
   if (!post) {
     return {
@@ -118,22 +120,24 @@ export async function generateMetadata({
   };
   const ogImageFilename = ogImageOverrides[slug] ?? post.image;
   const blogImage = getImageUrl(ogImageFilename, { width: 1200, quality: 75 });
-  const metaDescription = trimMetaDescription(post.excerpt);
+  const metaTitle = post.seoTitle || post.title;
+  const metaDescription = trimMetaDescription(post.seoDescription || post.excerpt);
+  const imageAlt = post.imageAlt || post.title;
   return {
-    title: post.title,
+    title: metaTitle,
     description: metaDescription,
     authors: [{ name: post.author }],
     openGraph: {
-      title: post.title,
+      title: metaTitle,
       description: metaDescription,
       type: "article",
       publishedTime: post.publishedAt,
       authors: [post.author],
-      images: [{ url: blogImage, width: 1200, height: 630, alt: post.title }],
+      images: [{ url: blogImage, width: 1200, height: 630, alt: imageAlt }],
     },
     twitter: {
       card: "summary_large_image",
-      title: post.title,
+      title: metaTitle,
       description: metaDescription,
       images: [blogImage],
     },
@@ -215,7 +219,7 @@ function RelatedPostCard({ post }: { post: BlogPost }) {
       <div className="relative w-full aspect-[4/5] rounded-lg overflow-hidden mb-4">
         <Image
           src={getImageUrl(post.image, { width: 400, quality: 75 })}
-          alt={post.title}
+          alt={post.imageAlt || post.title}
           fill
           sizes="(max-width: 640px) 100vw, 50vw"
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
@@ -237,9 +241,10 @@ export default async function BlogPostPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  const labels = getDetailPageTranslations(locale);
+  const activeLocale = normalizeLocale(locale);
+  const labels = getDetailPageTranslations(activeLocale);
   const [post, blogCategories] = await Promise.all([
-    getBlogPostBySlug(slug),
+    getBlogPostBySlug(slug, activeLocale),
     getBlogCategories(),
   ]);
 
@@ -247,7 +252,7 @@ export default async function BlogPostPage({
     notFound();
   }
 
-  const relatedPosts = await getRelatedBlogPosts(slug, 3);
+  const relatedPosts = await getRelatedBlogPosts(slug, 3, activeLocale);
   const topicLinks = getTopicLinks(post);
   const displayTitle = getBlogDisplayTitle(post.title);
 
@@ -288,7 +293,7 @@ export default async function BlogPostPage({
       <section className="relative h-[34vh] md:h-[36vh] flex items-end justify-center">
         <Image
           src={getImageUrl(post.image, { width: 1200, quality: 75 })}
-          alt={post.title}
+          alt={post.imageAlt || post.title}
           fill
           priority
           sizes="100vw"
@@ -541,7 +546,7 @@ export default async function BlogPostPage({
                                 width: 400,
                                 quality: 75,
                               })}
-                              alt={relatedPost.title}
+                              alt={relatedPost.imageAlt || relatedPost.title}
                               fill
                               sizes="(max-width: 1024px) 100vw, 33vw"
                               className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
