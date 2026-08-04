@@ -209,7 +209,16 @@
       "tapToWatch": "Tap to watch on Instagram",
       "hoverToPreview": "Hover to preview",
       "tapAgain": "Tap again for Instagram",
-      "tapToPlay": "Tap to play"
+      "tapToPlay": "Tap to play",
+      "followInstagram": "Follow on Instagram",
+      "likeFacebook": "Like on Facebook",
+      "instagramAria": "Follow Mauritius Explored on Instagram",
+      "facebookAria": "Like Mauritius Explored on Facebook",
+      "cards": {
+        "welcome": "Welcome to Mauritius",
+        "leMorne": "Le Morne",
+        "relax": "Not a bad place to relax"
+      }
     },
     "itineraries": {
       "kicker": "Explore Itineraries",
@@ -826,6 +835,7 @@
   "VisaRequirements": {
     "hero": { "imageAlt": "Mauritius Visa Requirements", "title": "Visa Requirements", "subtitle": "Entry requirements for visiting Mauritius by nationality" },
     "lastUpdated": "Last updated: {date}",
+    "lastUpdatedDate": "27 July 2026",
     "filters": { "allCountries": "All Countries", "noVisaRequired": "No Visa Required", "visaOnArrival60": "Visa on Arrival (60 days)", "visaOnArrival14": "Visa on Arrival (14 days)", "visaRequired": "Visa Required" },
     "badges": { "noVisa": "No Visa", "sixtyDays": "60 days", "fourteenDays": "14 days", "visaRequired": "Visa required" },
     "types": {
@@ -983,12 +993,15 @@
     "bestPlaces": "Best Places to Visit",
     "activities": "Activities",
     "planYourTrip": "Plan Your Trip",
+    "beachFinder": "Beach Finder",
     "giveaway": "Giveaway",
     "about": "About",
     "aboutUs": "About Us",
     "welcome": "Welcome",
     "festivals": "Festivals",
     "events": "Events",
+    "esimInternet": "eSIM & Internet",
+    "mediaKit": "Media Kit",
     "faq": "FAQ",
     "privacyPolicy": "Privacy Policy",
     "connect": "Connect",
@@ -996,6 +1009,7 @@
     "contactUs": "Contact Us",
     "instagramAria": "Follow Mauritius Explored on Instagram",
     "facebookAria": "Like Mauritius Explored on Facebook",
+    "followFacebook": "Follow us on Facebook",
     "copyright": "Copyright © {year} All rights reserved | Mauritius Explored"
   }
 }

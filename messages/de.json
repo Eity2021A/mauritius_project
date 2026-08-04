@@ -183,12 +183,12 @@
     },
     "mosaic": {
       "kicker": "Für nachhaltigen Tourismus und Reisen auf Mauritius",
-      "title": "Das Beste von Mauritius 2026",
+      "title": "Das Beste Von Mauritius 2026",
       "subtitle": "Die Inspiration, die Sie brauchen, um Ihr nächstes Abenteuer zu planen"
     },
     "across": {
       "kicker": "Entdecken",
-      "title": "Top-Empfehlungen auf Mauritius entdecken",
+      "title": "Top-Empfehlungen Auf Mauritius Entdecken",
       "subtitle": "Von spannenden Aktivitäten bis zu traumhaften Stränden und Sehenswürdigkeiten - starten Sie hier",
       "sections": {
         "activities": "Aktivitäten",
@@ -203,13 +203,22 @@
       "readTime": "Min. Lesezeit"
     },
     "instagram": {
-      "title": "Folgen Sie unseren Abenteuern",
+      "title": "Folgen Sie Unseren Abenteuern",
       "subtitle": "Entdecken Sie traumhafte Orte in unserem Instagram-Feed",
       "loading": "Lädt...",
       "tapToWatch": "Tippen, um auf Instagram anzusehen",
       "hoverToPreview": "Zum Vorschauen bewegen",
       "tapAgain": "Nochmals tippen für Instagram",
-      "tapToPlay": "Zum Abspielen tippen"
+      "tapToPlay": "Zum Abspielen tippen",
+      "followInstagram": "Auf Instagram folgen",
+      "likeFacebook": "Auf Facebook liken",
+      "instagramAria": "Mauritius Explored auf Instagram folgen",
+      "facebookAria": "Mauritius Explored auf Facebook liken",
+      "cards": {
+        "welcome": "Willkommen auf Mauritius",
+        "leMorne": "Le Morne",
+        "relax": "Ein schöner Ort zum Entspannen"
+      }
     },
     "itineraries": {
       "kicker": "Itineraries entdecken",
@@ -222,7 +231,7 @@
     },
     "services": {
       "kicker": "Mauritius erleben",
-      "title": "Aktivitäten auf Mauritius",
+      "title": "Aktivitäten Auf Mauritius",
       "description": "Durchstöbern Sie die wichtigsten Aktivitätsideen auf Mauritius - von Stränden und Wassersport bis zu Wanderungen, Kultur, Essen und familienfreundlichen Ausflügen. Jede Sektion führt zu einem ausführlicheren Guide, damit Sie Optionen vergleichen können, bevor Sie buchen oder etwas zur Route hinzufügen.",
       "cards": {
         "beachEscapes": {
@@ -248,7 +257,7 @@
       }
     },
     "cta": {
-      "title": "Ihr Mauritius-Abenteuer wartet",
+      "title": "Ihr Mauritius-Abenteuer Wartet",
       "body": "Von unberührten Stränden bis zu grünen Bergen: Entdecken Sie alles, was dieses Inselparadies zu bieten hat. Wir helfen Ihnen, die perfekte Reise zu planen."
     },
     "stats": {
@@ -799,6 +808,7 @@
   "VisaRequirements": {
     "hero": { "imageAlt": "Visabestimmungen für Mauritius", "title": "Visabestimmungen", "subtitle": "Einreisebestimmungen für Mauritius nach Nationalität" },
     "lastUpdated": "Zuletzt aktualisiert: {date}",
+    "lastUpdatedDate": "27. Juli 2026",
     "filters": { "allCountries": "Alle Länder", "noVisaRequired": "Kein Visum erforderlich", "visaOnArrival60": "Visum bei Ankunft (60 Tage)", "visaOnArrival14": "Visum bei Ankunft (14 Tage)", "visaRequired": "Visum erforderlich" },
     "badges": { "noVisa": "Kein Visum", "sixtyDays": "60 Tage", "fourteenDays": "14 Tage", "visaRequired": "Visum nötig" },
     "types": {
@@ -812,7 +822,7 @@
     "popular": { "title": "Visa-Antworten für beliebte Nationalitäten", "subtitle": "Kurze Antworten auf häufige Suchanfragen. Prüfen Sie vor der Reise immer die vollständige Länderliste und die offizielle Quelle.", "cardTitle": "Mauritius-Visum für {country}", "cardAnswer": "Für touristische Reisen ist laut aktueller Länderliste kein Visum erforderlich, aber gültige Reisedokumente, Unterkunftsdaten und Rück- oder Weiterreisenachweis bleiben nötig." },
     "countryList": { "title": "Visabestimmungen nach Land", "searchLabel": "Land suchen", "searchPlaceholder": "Ihr Land suchen...", "showing": "{count} Länder angezeigt", "fullListTitle": "Vollständige Mauritius-Visaliste", "empty": "Keine Länder zu Ihrer Suche gefunden." },
     "requirementText": { "no-visa": "kein Visum erforderlich", "visa-on-arrival-60": "Visum bei Ankunft, 60 Tage", "visa-on-arrival-14": "Visum bei Ankunft, 14 Tage", "visa-required": "Visum vor Reise erforderlich" },
-    "faqTitle": "Mauritius Visa FAQ",
+    "faqTitle": "FAQ zum Mauritius-Visum",
     "faqs": [
       { "question": "Brauche ich ein Visum für Mauritius?", "answer": "Das hängt von Ihrer Nationalität ab. Viele Besucher können ohne Visum einreisen, einige erhalten ein Visum bei Ankunft und eine kleinere Gruppe muss vor der Reise beantragen. Prüfen Sie die Liste und die offizielle Quelle." },
       { "question": "Ist das Mauritius-Visum kostenlos?", "answer": "Visa und Aufenthaltsverlängerungen werden laut offizieller Information kostenlos ausgestellt." },
@@ -909,12 +919,15 @@
     "bestPlaces": "Sehenswürdigkeiten",
     "activities": "Aktivitäten",
     "planYourTrip": "Reise planen",
+    "beachFinder": "Strandfinder",
     "giveaway": "Gewinnspiel",
     "about": "Über uns",
     "aboutUs": "Über uns",
     "welcome": "Willkommen",
     "festivals": "Feste",
     "events": "Events",
+    "esimInternet": "eSIM & Internet",
+    "mediaKit": "Media Kit",
     "faq": "FAQ",
     "privacyPolicy": "Datenschutz",
     "connect": "Kontakt",
@@ -922,6 +935,7 @@
     "contactUs": "Kontakt",
     "instagramAria": "Mauritius Explored auf Instagram folgen",
     "facebookAria": "Mauritius Explored auf Facebook liken",
+    "followFacebook": "Folgen Sie uns auf Facebook",
     "copyright": "Copyright © {year} Alle Rechte vorbehalten | Mauritius Explored"
   }
 }

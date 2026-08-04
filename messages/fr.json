@@ -183,12 +183,12 @@
     },
     "mosaic": {
       "kicker": "Pour un tourisme durable et des voyages responsables à Maurice",
-      "title": "Le meilleur de l'île Maurice 2026",
+      "title": "Le Meilleur De L'île Maurice 2026",
       "subtitle": "Toute l'inspiration nécessaire pour commencer à planifier votre prochaine aventure"
     },
     "across": {
       "kicker": "Découvrir",
-      "title": "Explorer les meilleurs choix à Maurice",
+      "title": "Explorer Les Meilleurs Choix à Maurice",
       "subtitle": "Des activités passionnantes aux plages immaculées et aux sites incontournables — commencez ici",
       "sections": {
         "activities": "Activités",
@@ -198,22 +198,31 @@
     },
     "hiddenGems": {
       "kicker": "Articles en vedette",
-      "title": "Histoires de lieux secrets",
+      "title": "Histoires De Lieux Secrets",
       "subtitle": "Des articles de blog sélectionnés, présentés ici dans une mise en page compacte en quatre colonnes.",
       "readTime": "min de lecture"
     },
     "instagram": {
-      "title": "Suivez nos aventures",
+      "title": "Suivez Nos Aventures",
       "subtitle": "Découvrez des lieux magnifiques à travers notre fil Instagram",
       "loading": "Chargement...",
       "tapToWatch": "Touchez pour regarder sur Instagram",
       "hoverToPreview": "Survolez pour prévisualiser",
       "tapAgain": "Touchez encore pour Instagram",
-      "tapToPlay": "Touchez pour lire"
+      "tapToPlay": "Touchez pour lire",
+      "followInstagram": "Suivre sur Instagram",
+      "likeFacebook": "Aimer sur Facebook",
+      "instagramAria": "Suivre Mauritius Explored sur Instagram",
+      "facebookAria": "Aimer Mauritius Explored sur Facebook",
+      "cards": {
+        "welcome": "Bienvenue à Maurice",
+        "leMorne": "Le Morne",
+        "relax": "Un bel endroit pour se détendre"
+      }
     },
     "itineraries": {
       "kicker": "Explorer les itinéraires",
-      "title": "Itinéraires et road trips à Maurice",
+      "title": "Itinéraires et Road Trips à Maurice",
       "subtitle": "Un guide pour explorer Maurice | Les meilleurs lieux à visiter | Des idées pour partir à la découverte",
       "body": "Commencez avec des itinéraires prêts à l'emploi pour le nord, le sud, l'est et l'ouest, ou créez votre propre road trip autour des plages, cascades, marchés et points de vue. Ces routes sont pensées pour éviter les détours inutiles et rendre chaque journée plus simple à planifier.",
       "swipe": "Faites glisser pour explorer →",
@@ -222,7 +231,7 @@
     },
     "services": {
       "kicker": "Vivre Maurice",
-      "title": "Que faire à Maurice",
+      "title": "Que Faire à Maurice",
       "description": "Parcourez les principales idées d'activités à Maurice, des plages et sports nautiques aux randonnées, à la culture, à la cuisine et aux sorties en famille. Chaque section mène vers un guide plus complet pour comparer vos options avant de réserver ou d'ajouter une étape à votre itinéraire.",
       "cards": {
         "beachEscapes": {
@@ -248,7 +257,7 @@
       }
     },
     "cta": {
-      "title": "Votre aventure à Maurice vous attend",
+      "title": "Votre Aventure à Maurice Vous Attend",
       "body": "Des plages immaculées aux montagnes verdoyantes, découvrez tout ce que ce paradis insulaire a à offrir. Nous vous aidons à préparer l'escapade parfaite."
     },
     "stats": {
@@ -799,6 +808,7 @@
   "VisaRequirements": {
     "hero": { "imageAlt": "Conditions de visa pour Maurice", "title": "Conditions de visa", "subtitle": "Conditions d'entrée pour visiter Maurice selon la nationalité" },
     "lastUpdated": "Dernière mise à jour : {date}",
+    "lastUpdatedDate": "27 juillet 2026",
     "filters": { "allCountries": "Tous les pays", "noVisaRequired": "Aucun visa requis", "visaOnArrival60": "Visa à l'arrivée (60 jours)", "visaOnArrival14": "Visa à l'arrivée (14 jours)", "visaRequired": "Visa requis" },
     "badges": { "noVisa": "Sans visa", "sixtyDays": "60 jours", "fourteenDays": "14 jours", "visaRequired": "Visa requis" },
     "types": {
@@ -932,12 +942,15 @@
     "bestPlaces": "Meilleurs lieux à visiter",
     "activities": "Activités",
     "planYourTrip": "Planifiez votre voyage",
-    "giveaway": "Concours",
+    "beachFinder": "Trouver une plage",
+    "giveaway": "Jeu concours",
     "about": "À propos",
     "aboutUs": "À propos de nous",
     "welcome": "Bienvenue",
     "festivals": "Festivals",
     "events": "Événements",
+    "esimInternet": "eSIM et Internet",
+    "mediaKit": "Kit média",
     "faq": "FAQ",
     "privacyPolicy": "Politique de confidentialité",
     "connect": "Nous suivre",
@@ -945,6 +958,7 @@
     "contactUs": "Nous contacter",
     "instagramAria": "Suivre Mauritius Explored sur Instagram",
     "facebookAria": "Aimer Mauritius Explored sur Facebook",
+    "followFacebook": "Suivez-nous sur Facebook",
     "copyright": "Copyright © {year} Tous droits réservés | Mauritius Explored"
   }
 }

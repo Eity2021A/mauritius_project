@@ -1,10 +1,31 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Link } from "@/i18n/navigation";
+import PopularRoadTrips from "@/components/PopularRoadTrips";
 import { getExploringGuide } from "@/data/exploring-guide-translations";
+import PocketAdBanner from "@/components/PocketAdBanner";
+import CarRentalAdBannerInfo from "@/components/CarRentalAdBannerInfo";
 
 export const revalidate = 3600;
+
+const sectionLinks = [
+  [
+    "/best-places-to-visit-in-mauritius/mahebourg-village",
+    "/best-places-to-visit-in-mauritius/mahebourg-village",
+    "/best-places-to-visit-in-mauritius/naval-museum",
+    "/best-places-to-visit-in-mauritius/mahebourg-village",
+    "/best-places-to-visit-in-mauritius/biscuiterie-h-rault-mahebourg",
+  ],
+  [
+    "/best-places-to-visit-in-mauritius/blue-bay-marine-park",
+    "/top-activities-mauritius/ile-aux-aigrettes",
+    "/beaches-in-mauritius/pointe-desny",
+    undefined,
+    undefined,
+  ],
+] as const;
 
 export const legacyMetadata: Metadata = {
   title: "Exploring Mahebourg",
@@ -12,7 +33,16 @@ export const legacyMetadata: Metadata = {
     "Exploring Mahebourg, Mauritius — a historic south-east village of waterfront, Monday market and naval museum, and gateway to Blue Bay and the islands.",
   alternates: { canonical: "/exploring-mahebourg" },
 };
-
+const pocket = {
+  desktopSrc: "/images/quick-trips/Pocket-Guide-For-Mauritius.webp",
+  href: "/pocket-guide",
+  alt: "Rent Rental Mauritius",
+};
+const ad = {
+  desktopSrc: "/images/quick-trips/Car-Rental-Mauritius.webp",
+  href: "/car-rental-mauritius",
+  alt: "Rent Rental Mauritius",
+};
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = getExploringGuide(locale, "mahebourg");
@@ -26,7 +56,7 @@ export default async function ExploringMahebourgPage({ params }: { params: Promi
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
 
-      <article className="mx-auto w-full max-w-6xl px-4 pt-24 pb-20 sm:px-6 lg:pt-28 xl:px-0">
+      <article className="mx-auto w-full max-w-6xl px-4 pt-24 pb-10 sm:px-6 lg:pt-28 xl:px-0">
         <header>
           <h1 className="font-serif text-[clamp(2rem,6vw,3.2rem)] font-bold leading-tight tracking-tight text-[#151f2b]">
             {t.title}{" "}
@@ -66,15 +96,25 @@ export default async function ExploringMahebourgPage({ params }: { params: Promi
                 </p>
               </div>
               <div className="mt-2.5 space-y-1.5">
-                {t.sections[0].map(([name, text]) => (
-                  <p key={name} className="flex gap-2 text-xs leading-relaxed text-[#61707a] sm:text-sm">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#f16522]" />
-                    <span>
-                      <strong className="font-serif text-[#152738]">{name}</strong>
-                      <span> - {text}</span>
-                    </span>
-                  </p>
-                ))}
+                {t.sections[0].map(([name, text], index) => {
+                  const href = sectionLinks[0][index];
+                  return (
+                    <p key={name} className="flex gap-2 text-xs leading-relaxed text-[#61707a] sm:text-sm">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#f16522]" />
+                      <span>
+                        <Link
+                          href={href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-serif font-bold text-[#152738] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f16522]"
+                        >
+                          {name}
+                        </Link>
+                        <span> - {text}</span>
+                      </span>
+                    </p>
+                  );
+                })}
               </div>
             </section>
 
@@ -88,15 +128,29 @@ export default async function ExploringMahebourgPage({ params }: { params: Promi
                 </p>
               </div>
               <div className="mt-2.5 space-y-1.5">
-                {t.sections[1].map(([name, text]) => (
-                  <p key={name} className="flex gap-2 text-xs leading-relaxed text-[#61707a] sm:text-sm">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#2f8e48]" />
-                    <span>
-                      <strong className="font-serif text-[#152738]">{name}</strong>
-                      <span> - {text}</span>
-                    </span>
-                  </p>
-                ))}
+                {t.sections[1].map(([name, text], index) => {
+                  const href = sectionLinks[1][index];
+                  return (
+                    <p key={name} className="flex gap-2 text-xs leading-relaxed text-[#61707a] sm:text-sm">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#2f8e48]" />
+                      <span>
+                        {href ? (
+                          <Link
+                            href={href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-serif font-bold text-[#152738] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2f8e48]"
+                          >
+                            {name}
+                          </Link>
+                        ) : (
+                          <strong className="font-serif text-[#152738]">{name}</strong>
+                        )}
+                        <span> - {text}</span>
+                      </span>
+                    </p>
+                  );
+                })}
               </div>
             </section>
 
@@ -149,7 +203,9 @@ export default async function ExploringMahebourgPage({ params }: { params: Promi
           </div>
         </section>
       </article>
-
+      <PocketAdBanner />
+      <PopularRoadTrips locale={locale} />
+      <CarRentalAdBannerInfo />
       <Footer />
     </main>
   );

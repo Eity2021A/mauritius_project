@@ -12,26 +12,27 @@ const instagramPosts = [
     url: "https://www.instagram.com/mauritius/reel/DEr7Wv0BCHS/",
     video: "/videos/Welcome to Mauritius.mp4",
     poster: "ile-aux-cerfs-drone-shot.jpg",
-    caption: "Welcome to Mauritius"
+    captionKey: "cards.welcome"
   },
   { 
     id: "DT7bV0jE2PZ", 
     url: "https://www.instagram.com/mauritius_explored/reel/DT7bV0jE2PZ/",
     video: "/videos/Le Morne.mp4",
     poster: "beach-of-le-morne-in-the-morning.jpg",
-    caption: "Le Morne"
+    captionKey: "cards.leMorne"
   },
   { 
     id: "DThdVzukzIS", 
     url: "https://www.instagram.com/mauritius_explored/reel/DThdVzukzIS/",
     video: "/videos/Not a bad place to relax.mp4",
     poster: "belle-mare-beach-on-the-east-coast.jpg",
-    caption: "Not a bad place to relax"
+    captionKey: "cards.relax"
   },
 ];
 
 function VideoCard({ post }: { post: typeof instagramPosts[0] }) {
   const t = useTranslations("Home.instagram");
+  const caption = t(post.captionKey);
   const cardRef = useRef<HTMLAnchorElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const playPromiseRef = useRef<Promise<void> | null>(null);
@@ -122,7 +123,7 @@ function VideoCard({ post }: { post: typeof instagramPosts[0] }) {
       {/* Poster Image - shows immediately while video loads */}
       <Image
         src={getImageUrl(post.poster, { width: 480, quality: 72 })}
-        alt={post.caption}
+        alt={caption}
         fill
         sizes="(max-width: 768px) 200px, 288px"
         className="object-cover"
@@ -174,7 +175,7 @@ function VideoCard({ post }: { post: typeof instagramPosts[0] }) {
       {/* Caption */}
       <div className="absolute bottom-0 left-0 right-0 p-4 z-10">
         <p className="text-white font-medium text-sm md:text-base">
-          {post.caption}
+          {caption}
         </p>
         <p className="text-white/70 text-xs sm:text-sm mt-1 hidden sm:block">
           {isPlaying ? t("tapToWatch") : t("hoverToPreview")}

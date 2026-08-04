@@ -1,7 +1,12 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { localizeStaticPage } from "@/lib/static-page-localizer";
+import PopularRoadTrips from "@/components/PopularRoadTrips";
+import { normalizeLocale } from "@/i18n/routing";
+import {
+  localizeStaticPage,
+  staticPageText,
+} from "@/lib/static-page-localizer";
 import type { LucideIcon } from "lucide-react";
 import {
   CalendarDays,
@@ -14,15 +19,38 @@ import {
   TrendingUp,
   Umbrella,
 } from "lucide-react";
-
+import Image from "next/image";
+import CarRentalAdBannerInfo from "@/components/CarRentalAdBannerInfo";
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
+const metadataSource: Metadata = {
   title: "Conquer Le Morne",
   description:
     "Conquer Le Morne Brabant — a visual guide to Mauritius' iconic UNESCO summit hike and the 'underwater waterfall' view, with gate times, gear and tips.",
   alternates: { canonical: "/conquer-le-morne" },
 };
+const ad = {
+  desktopSrc: "/images/quick-trips/Hiking-Le-Morne-in-Mauritius.webp",
+  href: "/",
+  alt: "Hiking Le Morne in Mauritius",
+};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const activeLocale = normalizeLocale(locale);
+
+  return {
+    ...metadataSource,
+    title: staticPageText(activeLocale, String(metadataSource.title)),
+    description: staticPageText(
+      activeLocale,
+      String(metadataSource.description),
+    ),
+  };
+}
 
 const morneHighlights: {
   label: string;
@@ -68,20 +96,20 @@ const logistics: {
 }[] = [
   {
     heading: "Gate Times & Start",
-    label : "Gate Opens:",
-    label2 : "Last Entry:",
-    timeWithDate : "7:00 AM",  
-    timeWithDate2 : "2:30 PM",  
+    label: "Gate Opens:",
+    label2: "Last Entry:",
+    timeWithDate: "7:00 AM",
+    timeWithDate2: "2:30 PM",
     description:
       "Arrive at 7 AM to avoid intense heat, midday winds and crowds - the best light for photos.",
     icon: Compass,
   },
   {
     heading: "Best Season to Hike",
-    label : "Optimal Months: ",
-    label2 : "",
-    timeWithDate : "May to October",
-    timeWithDate2 : "",
+    label: "Optimal Months: ",
+    label2: "",
+    timeWithDate: "May to October",
+    timeWithDate2: "",
     description:
       "The 'winter' season offers cooler, crisp air and significantly less humidity for a more comfortable ascent.",
     icon: CalendarDays,
@@ -171,13 +199,18 @@ function MorneFeatureIcon({ icon }: { icon: "reward" | "freedom" }) {
   );
 }
 
-export default async function ConquerLeMornePage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function ConquerLeMornePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   const { locale } = await params;
-  return localizeStaticPage((
+  const activeLocale = normalizeLocale(locale);
+  return localizeStaticPage(
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
 
-      <article className="mx-auto w-full max-w-6xl px-4 pt-24 pb-20 sm:px-6 lg:pt-28">
+      <article className="mx-auto w-full max-w-7xl pt-24 pb-10 sm:px-6 lg:pt-28">
         <header className="text-center">
           <h1 className="font-serif text-[clamp(2rem,6vw,3.1rem)] font-bold leading-tight text-[#111d2a]">
             Conquer Le Morne Brabant
@@ -215,6 +248,30 @@ export default async function ConquerLeMornePage({ params }: { params: Promise<{
           </div>
         </section>
 
+        <section
+          className="bg-white py-3 md:py-5 dark:border-neutral-800 dark:bg-neutral-900"
+          aria-label="Sponsored highlights"
+        >
+          <div className="container mx-auto max-w-7xl">
+            <div className="relative overflow-hidden rounded-xl bg-[#052028] shadow-sm ring-1 ring-gray-200 dark:ring-neutral-700">
+              <a
+                href={ad.href}
+                className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
+              >
+                <span className="relative block aspect-[1200/157] w-full">
+                  <Image
+                    src={ad.desktopSrc}
+                    alt={ad.alt}
+                    fill
+                    sizes="(max-width: 1280px) 100vw, 1280px"
+                    className="rounded-xl object-cover"
+                    loading="lazy"
+                  />
+                </span>
+              </a>
+            </div>
+          </div>
+        </section>
         <section className="mt-12">
           <h2 className="text-center font-serif text-[clamp(2rem,5vw,2.25rem)] font-bold leading-tight text-[#f16522]">
             A Tale of Two Halves
@@ -290,48 +347,59 @@ export default async function ConquerLeMornePage({ params }: { params: Promise<{
             Essential Logistics (2026)
           </h2>
           <div className="mt-5 grid gap-5 md:grid-cols-2">
-            {logistics.map(({ heading, label,label2, timeWithDate,timeWithDate2,description, note, icon: Icon }) => (
-              <div
-                key={heading}
-                className="rounded-md border border-[#e5ddd4] bg-white px-5 py-5 shadow-[0_2px_8px_rgba(36,54,67,.045)]"
-              >
-                <div className="flex items-start gap-4">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full  text-[#2389c9]">
-                    <Icon className="h-7 w-7" strokeWidth={1.9} />
-                  </span>
-                  <div>
-                    <p className="font-serif text-xl font-bold text-[#111d2a]">
-                      {heading}
-                    </p>
-                  <div className="flex gap-1 mb-1">
-                      <p className="mt-1 text-[12px] font-normal tracking-wide text-[#000]">
-                      {label}
-                    </p>
-                    <p className="mt-1 text-[12px] font-bold tracking-wide text-[#f16522]">
-                      {timeWithDate}
-                    </p>
-                    </div>
-                   <div className="flex gap-1">
-                     <p className="mt-1 text-[12px] font-normal  tracking-wide text-[#000]">
-                      {label2}
-                    </p>
-                       <p className="mt-1 text-[12px] font-bold uppercase tracking-wide text-[#f16522]">
-                      {timeWithDate2}
-                    </p>
-                    </div>
-                    <p className="mt-2 font-serif text-sm leading-6 text-[#667584]">
-                      {description}
-                    </p>
-                 
-                    {note ? (
-                      <p className="mt-3 border-t border-[#eee6dd] pt-2 font-serif text-xs italic text-[#7b8791]">
-                        {note}
+            {logistics.map(
+              ({
+                heading,
+                label,
+                label2,
+                timeWithDate,
+                timeWithDate2,
+                description,
+                note,
+                icon: Icon,
+              }) => (
+                <div
+                  key={heading}
+                  className="rounded-md border border-[#e5ddd4] bg-white px-5 py-5 shadow-[0_2px_8px_rgba(36,54,67,.045)]"
+                >
+                  <div className="flex items-start gap-4">
+                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full  text-[#2389c9]">
+                      <Icon className="h-7 w-7" strokeWidth={1.9} />
+                    </span>
+                    <div>
+                      <p className="font-serif text-xl font-bold text-[#111d2a]">
+                        {heading}
                       </p>
-                    ) : null}
+                      <div className="flex gap-1 mb-1">
+                        <p className="mt-1 text-[12px] font-normal tracking-wide text-[#000]">
+                          {label}
+                        </p>
+                        <p className="mt-1 text-[12px] font-bold tracking-wide text-[#f16522]">
+                          {timeWithDate}
+                        </p>
+                      </div>
+                      <div className="flex gap-1">
+                        <p className="mt-1 text-[12px] font-normal  tracking-wide text-[#000]">
+                          {label2}
+                        </p>
+                        <p className="mt-1 text-[12px] font-bold uppercase tracking-wide text-[#f16522]">
+                          {timeWithDate2}
+                        </p>
+                      </div>
+                      <p className="mt-2 font-serif text-sm leading-6 text-[#667584]">
+                        {description}
+                      </p>
+
+                      {note ? (
+                        <p className="mt-3 border-t border-[#eee6dd] pt-2 font-serif text-xs italic text-[#7b8791]">
+                          {note}
+                        </p>
+                      ) : null}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ),
+            )}
           </div>
         </section>
 
@@ -377,8 +445,9 @@ export default async function ConquerLeMornePage({ params }: { params: Promise<{
               Sturdy Footwear
             </h3>
             <p className="mx-auto mt-2 max-w-sm font-serif text-sm leading-6 text-[#667584]">
-              Trail runners or hiking boots with <strong className="text-[#000]">aggressive grip</strong> are essential
-              for safety on the rock scramble.
+              Trail runners or hiking boots with{" "}
+              <strong className="text-[#000]">aggressive grip</strong> are
+              essential for safety on the rock scramble.
             </p>
           </div>
 
@@ -412,10 +481,12 @@ export default async function ConquerLeMornePage({ params }: { params: Promise<{
             </div>
           </div>
         </section>
-
       </article>
+      <CarRentalAdBannerInfo />
+      <PopularRoadTrips locale={locale} />
 
       <Footer />
-    </main>
-  ), locale);
+    </main>,
+    activeLocale,
+  );
 }

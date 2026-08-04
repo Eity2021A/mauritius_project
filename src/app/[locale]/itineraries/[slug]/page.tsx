@@ -115,7 +115,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const itineraryData = await getFeaturedItineraryBySlug(slug);
+  const itineraryData = await getFeaturedItineraryBySlug(slug, locale);
   const itinerary = itineraryData ? localizePreDesignedItinerary(itineraryData, locale) : null;
   if (!itinerary) return { title: "Not Found" };
 
@@ -148,7 +148,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function ItineraryDetailPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params;
-  const itineraryData = await getFeaturedItineraryBySlug(slug);
+  const itineraryData = await getFeaturedItineraryBySlug(slug, locale);
   if (!itineraryData) notFound();
   const itinerary = localizePreDesignedItinerary(itineraryData, locale);
 
@@ -162,7 +162,7 @@ export default async function ItineraryDetailPage({ params }: { params: Promise<
   );
 
   const otherItineraries = localizePreDesignedItineraries(
-    (await getFeaturedItineraries()).filter((other) => other.slug !== itinerary.slug),
+    (await getFeaturedItineraries(locale)).filter((other) => other.slug !== itinerary.slug),
     locale
   );
   const [initialRouteInfo, otherRouteEntries] = await Promise.all([

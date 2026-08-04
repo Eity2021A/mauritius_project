@@ -54,8 +54,8 @@ export default async function RoadTripMauritiusPage({
   const { locale = "en" } = params ? await params : {};
   const t = getItineraryTranslations(locale).roadtripPage;
   const [featuredItineraries, communityItineraries, featuredUpvotes] = await Promise.all([
-    getFeaturedItineraries(),
-    getPublicItineraries(),
+    getFeaturedItineraries(locale),
+    getPublicItineraries(locale),
     getFeaturedUpvotes(),
   ]);
   const itineraries = localizePreDesignedItineraries(featuredItineraries, locale);

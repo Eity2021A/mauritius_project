@@ -183,12 +183,12 @@
     },
     "mosaic": {
       "kicker": "Impulsando el turismo sostenible y los viajes responsables en Mauricio",
-      "title": "Lo mejor de la isla de Mauricio 2026",
+      "title": "Lo Mejor De La Isla De Mauricio 2026",
       "subtitle": "Toda la inspiración que necesitas para empezar a planificar tu próxima aventura"
     },
     "across": {
       "kicker": "Descubre",
-      "title": "Explora las mejores opciones de Mauricio",
+      "title": "Explora Las Mejores Opciones De Mauricio",
       "subtitle": "Desde actividades emocionantes hasta playas vírgenes y lugares imprescindibles — empieza aquí",
       "sections": {
         "activities": "Actividades",
@@ -198,22 +198,31 @@
     },
     "hiddenGems": {
       "kicker": "Historias destacadas",
-      "title": "Historias de joyas ocultas",
+      "title": "Historias De Joyas Ocultas",
       "subtitle": "Historias destacadas del blog, mostradas aquí en un diseño compacto de cuatro columnas.",
       "readTime": "min de lectura"
     },
     "instagram": {
-      "title": "Sigue nuestras aventuras",
+      "title": "Sigue Nuestras Aventuras",
       "subtitle": "Descubre destinos increíbles a través de nuestro feed de Instagram",
       "loading": "Cargando...",
       "tapToWatch": "Toca para ver en Instagram",
       "hoverToPreview": "Pasa el cursor para previsualizar",
       "tapAgain": "Toca de nuevo para Instagram",
-      "tapToPlay": "Toca para reproducir"
+      "tapToPlay": "Toca para reproducir",
+      "followInstagram": "Seguir en Instagram",
+      "likeFacebook": "Me gusta en Facebook",
+      "instagramAria": "Sigue a Mauritius Explored en Instagram",
+      "facebookAria": "Dale Me gusta a Mauritius Explored en Facebook",
+      "cards": {
+        "welcome": "Bienvenido a Mauricio",
+        "leMorne": "Le Morne",
+        "relax": "Un buen lugar para relajarse"
+      }
     },
     "itineraries": {
       "kicker": "Explora itinerarios",
-      "title": "Itinerarios y rutas por Mauricio",
+      "title": "Itinerarios y Rutas Por Mauricio",
       "subtitle": "Una guía para explorar Mauricio | Los mejores lugares para visitar | Inspírate para descubrir",
       "body": "Empieza con itinerarios listos para el norte, sur, este y oeste, o crea tu propia ruta en coche por playas, cascadas, mercados y miradores. Estas rutas están pensadas para reducir vueltas innecesarias y hacer cada día más fácil de planificar.",
       "swipe": "Desliza para explorar →",
@@ -222,7 +231,7 @@
     },
     "services": {
       "kicker": "Vive Mauricio",
-      "title": "Cosas que hacer en Mauricio",
+      "title": "Cosas Que Hacer En Mauricio",
       "description": "Explora las principales ideas de actividades en Mauricio, desde playas y deportes acuáticos hasta senderismo, cultura, comida y planes familiares. Cada sección enlaza con una guía más completa para comparar opciones antes de reservar o añadirlas a tu itinerario.",
       "cards": {
         "beachEscapes": {
@@ -248,7 +257,7 @@
       }
     },
     "cta": {
-      "title": "Tu aventura en Mauricio te espera",
+      "title": "Tu Aventura En Mauricio Te Espera",
       "body": "Desde playas vírgenes hasta montañas exuberantes, descubre todo lo que este paraíso isleño tiene para ofrecer. Te ayudamos a planificar la escapada perfecta."
     },
     "stats": {
@@ -743,6 +752,7 @@
   "VisaRequirements": {
     "hero": { "imageAlt": "Requisitos de visa para Mauricio", "title": "Requisitos de visa", "subtitle": "Requisitos de entrada para visitar Mauricio por nacionalidad" },
     "lastUpdated": "Última actualización: {date}",
+    "lastUpdatedDate": "27 de julio de 2026",
     "filters": { "allCountries": "Todos los países", "noVisaRequired": "No requiere visa", "visaOnArrival60": "Visa a la llegada (60 días)", "visaOnArrival14": "Visa a la llegada (14 días)", "visaRequired": "Visa requerida" },
     "badges": { "noVisa": "Sin visa", "sixtyDays": "60 días", "fourteenDays": "14 días", "visaRequired": "Visa requerida" },
     "types": {
@@ -909,12 +919,15 @@
     "bestPlaces": "Mejores lugares para visitar",
     "activities": "Actividades",
     "planYourTrip": "Planifica tu viaje",
+    "beachFinder": "Buscador de playas",
     "giveaway": "Sorteo",
     "about": "Acerca de",
     "aboutUs": "Sobre nosotros",
     "welcome": "Bienvenida",
     "festivals": "Festivales",
     "events": "Eventos",
+    "esimInternet": "eSIM e Internet",
+    "mediaKit": "Kit de medios",
     "faq": "FAQ",
     "privacyPolicy": "Política de privacidad",
     "connect": "Conectar",
@@ -922,6 +935,7 @@
     "contactUs": "Contáctanos",
     "instagramAria": "Sigue a Mauritius Explored en Instagram",
     "facebookAria": "Dale Me gusta a Mauritius Explored en Facebook",
+    "followFacebook": "Síguenos en Facebook",
     "copyright": "Copyright © {year} Todos los derechos reservados | Mauritius Explored"
   }
 }

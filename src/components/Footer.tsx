@@ -17,13 +17,17 @@ export default function Footer() {
     | "bestPlaces"
     | "activities"
     | "planYourTrip"
+    | "beachFinder"
     | "giveaway"
     | "aboutUs"
     | "welcome"
     | "festivals"
     | "events"
+    | "esimInternet"
+    | "mediaKit"
     | "faq"
-    | "privacyPolicy";
+    | "privacyPolicy"
+    | "followFacebook";
 
   type FooterLink = {
     href: string;
@@ -41,7 +45,7 @@ export default function Footer() {
     { nameKey: "bestPlaces" as const, href: "/best-places-to-visit-in-mauritius" },
     { nameKey: "activities" as const, href: "/mauritius-activities" },
     { nameKey: "planYourTrip" as const, href: "/roadtrip-mauritius", isPlanTrip: true },
-    { label: "Beach Finder", href: "/mauritius-beach-finder" },
+    { nameKey: "beachFinder" as const, href: "/mauritius-beach-finder" },
     { nameKey: "giveaway" as const, href: "/giveaway" },
   ];
 
@@ -50,8 +54,8 @@ export default function Footer() {
     { nameKey: "welcome" as const, href: "/mauritius-island" },
     { nameKey: "festivals" as const, href: "/festivals-in-mauritius" },
     { nameKey: "events" as const, href: "/events-in-mauritius" },
-    { label: "eSIM & Internet", href: "/mauritius-esim-and-internet" },
-    { label: "Media Kit", href: "/media-kit" },
+    { nameKey: "esimInternet" as const, href: "/mauritius-esim-and-internet" },
+    { nameKey: "mediaKit" as const, href: "/media-kit" },
     { nameKey: "faq" as const, href: "/faq-about-mauritius" },
     { nameKey: "privacyPolicy" as const, href: "/privacy-policy" },
   ];
@@ -177,7 +181,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="mt-4 inline-flex min-h-11 items-center justify-center rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white/85 transition-colors hover:border-orange-500 hover:text-orange-500"
             >
-              Follow us on Facebook
+              {t("followFacebook")}
             </a>
           </div>
         </div>

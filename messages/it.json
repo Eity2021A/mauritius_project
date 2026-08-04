@@ -183,12 +183,12 @@
     },
     "mosaic": {
       "kicker": "Per un turismo sostenibile e viaggi responsabili a Mauritius",
-      "title": "Il meglio dell'isola di Mauritius 2026",
+      "title": "Il Meglio Dell'isola Di Mauritius 2026",
       "subtitle": "Tutta l'ispirazione che ti serve per iniziare a pianificare la tua prossima avventura"
     },
     "across": {
       "kicker": "Scopri",
-      "title": "Esplora le migliori scelte a Mauritius",
+      "title": "Esplora Le Migliori Scelte a Mauritius",
       "subtitle": "Dalle attività emozionanti alle spiagge incontaminate e ai luoghi imperdibili — inizia da qui",
       "sections": {
         "activities": "Attività",
@@ -198,22 +198,31 @@
     },
     "hiddenGems": {
       "kicker": "Storie in evidenza",
-      "title": "Storie di luoghi nascosti",
+      "title": "Storie Di Luoghi Nascosti",
       "subtitle": "Storie selezionate dal blog, mostrate qui in un layout compatto a quattro colonne.",
       "readTime": "min di lettura"
     },
     "instagram": {
-      "title": "Segui le nostre avventure",
+      "title": "Segui Le Nostre Avventure",
       "subtitle": "Scopri destinazioni meravigliose attraverso il nostro feed Instagram",
       "loading": "Caricamento...",
       "tapToWatch": "Tocca per guardare su Instagram",
       "hoverToPreview": "Passa sopra per l'anteprima",
       "tapAgain": "Tocca di nuovo per Instagram",
-      "tapToPlay": "Tocca per riprodurre"
+      "tapToPlay": "Tocca per riprodurre",
+      "followInstagram": "Segui su Instagram",
+      "likeFacebook": "Metti Mi piace su Facebook",
+      "instagramAria": "Segui Mauritius Explored su Instagram",
+      "facebookAria": "Metti Mi piace a Mauritius Explored su Facebook",
+      "cards": {
+        "welcome": "Benvenuti a Mauritius",
+        "leMorne": "Le Morne",
+        "relax": "Un bel posto per rilassarsi"
+      }
     },
     "itineraries": {
       "kicker": "Esplora itinerari",
-      "title": "Itinerari e road trip a Mauritius",
+      "title": "Itinerari e Road Trip a Mauritius",
       "subtitle": "Una guida per esplorare Mauritius | I migliori luoghi da visitare | Lasciati ispirare",
       "body": "Inizia con itinerari già pronti per nord, sud, est e ovest, oppure crea il tuo road trip tra spiagge, cascate, mercati e punti panoramici. Questi percorsi sono pensati per ridurre gli spostamenti inutili e rendere ogni giornata più facile da organizzare.",
       "swipe": "Scorri per esplorare →",
@@ -222,7 +231,7 @@
     },
     "services": {
       "kicker": "Vivi Mauritius",
-      "title": "Cose da fare a Mauritius",
+      "title": "Cose Da Fare a Mauritius",
       "description": "Sfoglia le principali idee di attività a Mauritius, dalle spiagge e dagli sport acquatici alle escursioni, alla cultura, al cibo e alle giornate adatte alle famiglie. Ogni sezione porta a una guida più approfondita per confrontare le opzioni prima di prenotare o aggiungerle al tuo itinerario.",
       "cards": {
         "beachEscapes": {
@@ -248,7 +257,7 @@
       }
     },
     "cta": {
-      "title": "La tua avventura a Mauritius ti aspetta",
+      "title": "La Tua Avventura a Mauritius ti Aspetta",
       "body": "Dalle spiagge incontaminate alle montagne rigogliose, scopri tutto ciò che questo paradiso insulare ha da offrire. Ti aiutiamo a pianificare la fuga perfetta."
     },
     "stats": {
@@ -799,6 +808,7 @@
   "VisaRequirements": {
     "hero": { "imageAlt": "Requisiti per il visto Mauritius", "title": "Requisiti per il visto", "subtitle": "Requisiti di ingresso per visitare Mauritius in base alla nazionalità" },
     "lastUpdated": "Ultimo aggiornamento: {date}",
+    "lastUpdatedDate": "27 luglio 2026",
     "filters": { "allCountries": "Tutti i paesi", "noVisaRequired": "Nessun visto richiesto", "visaOnArrival60": "Visto all'arrivo (60 giorni)", "visaOnArrival14": "Visto all'arrivo (14 giorni)", "visaRequired": "Visto richiesto" },
     "badges": { "noVisa": "Senza visto", "sixtyDays": "60 giorni", "fourteenDays": "14 giorni", "visaRequired": "Visto richiesto" },
     "types": {
@@ -909,12 +919,15 @@
     "bestPlaces": "I migliori luoghi da visitare",
     "activities": "Attività",
     "planYourTrip": "Pianifica il viaggio",
-    "giveaway": "Giveaway",
+    "beachFinder": "Trova spiaggia",
+    "giveaway": "Concorso",
     "about": "Info",
     "aboutUs": "Chi siamo",
     "welcome": "Benvenuto",
     "festivals": "Festival",
     "events": "Eventi",
+    "esimInternet": "eSIM e Internet",
+    "mediaKit": "Media Kit",
     "faq": "FAQ",
     "privacyPolicy": "Informativa sulla privacy",
     "connect": "Contatti",
@@ -922,6 +935,7 @@
     "contactUs": "Contattaci",
     "instagramAria": "Segui Mauritius Explored su Instagram",
     "facebookAria": "Metti Mi piace a Mauritius Explored su Facebook",
+    "followFacebook": "Seguici su Facebook",
     "copyright": "Copyright © {year} Tutti i diritti riservati | Mauritius Explored"
   }
 }

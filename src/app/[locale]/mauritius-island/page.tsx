@@ -8,6 +8,7 @@ import { getImageUrl } from "@/lib/image-url";
 import WelcomeMapSection from "./WelcomeMapSection";
 import MauritiusClock from "@/components/MauritiusClock";
 import { localizeStaticPage } from "@/lib/static-page-localizer";
+import { normalizeLocale } from "@/i18n/routing";
 
 const placesToVisit = [
   { name: "Grand Bassin", region: "South", description: "Sacred Hindu temple by a crater lake", image: "grand-bassin-shiva-statue.jpg", href: "/best-places-to-visit-in-mauritius/grand-bassin" },
@@ -41,6 +42,7 @@ const stats = [
 
 export default async function WelcomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const activeLocale = normalizeLocale(locale);
   return localizeStaticPage((
     <main id="main-content" className="min-h-screen">
       <Navbar />
@@ -434,6 +436,6 @@ export default async function WelcomePage({ params }: { params: Promise<{ locale
 
       <Footer />
     </main>
-  ), locale);
+  ), activeLocale);
 }
 

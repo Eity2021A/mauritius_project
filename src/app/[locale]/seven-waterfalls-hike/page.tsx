@@ -1,7 +1,12 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { localizeStaticPage } from "@/lib/static-page-localizer";
+import PopularRoadTrips from "@/components/PopularRoadTrips";
+import {
+  localizeStaticPage,
+  staticPageText,
+} from "@/lib/static-page-localizer";
+import { normalizeLocale } from "@/i18n/routing";
 import type { LucideIcon } from "lucide-react";
 import {
   CalendarDays,
@@ -15,7 +20,9 @@ import {
   TriangleAlert,
   Waves,
 } from "lucide-react";
-
+import Image from "next/image";
+import PocketAdBanner from "@/components/PocketAdBanner";
+import CarRentalAdBannerInfo from "@/components/CarRentalAdBannerInfo";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -128,27 +135,39 @@ const preparedItems: {
     icon: Camera,
   },
 ];
-
-export default async function SevenWaterfallsHikePage({ params }: { params: Promise<{ locale: string }> }) {
+const ad = {
+  desktopSrc:
+    "/images/quick-trips/Seven-waterfall-hike-in-Mauritius-Best-Hike-best-Prices.webp",
+  href: "/",
+  alt: "Seven waterfall hike in Mauritius Best Hike best Prices",
+};
+export default async function SevenWaterfallsHikePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   const { locale } = await params;
-  return localizeStaticPage((
+  const activeLocale = normalizeLocale(locale);
+  const t = (text: string) => staticPageText(activeLocale, text);
+  return localizeStaticPage(
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
 
-      <article className="mx-auto w-full max-w-5xl px-4 pt-24 pb-20 sm:px-6 lg:pt-28">
+      <article className="mx-auto w-full max-w-7xl px-4 pt-24 pb-10 sm:px-6 lg:pt-28">
         <header className="text-center">
           <h1 className="font-serif text-[clamp(2rem,6vw,3.1rem)] font-bold leading-tight text-[#111d2a]">
-            Hike the Seven Waterfalls
+            {t("Hike the Seven Waterfalls")}
           </h1>
           <p className="mx-auto mt-4 max-w-2xl font-serif text-sm italic leading-7 text-[#687887] sm:text-base">
-            Your visual guide to Tamarind Falls - the 7 Cascades - a raw
-            jungle-and-gorge adventure in the central highlands.
+            {t(
+              "Your visual guide to Tamarind Falls - the 7 Cascades - a raw jungle-and-gorge adventure in the central highlands.",
+            )}
           </p>
         </header>
 
         <section className="mt-9">
           <h2 className="text-center font-serif text-lg font-bold text-[#f16522] sm:text-xl">
-            The Hike at a Glance
+            {t("The Hike at a Glance")}
           </h2>
           <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {hikeHighlights.map(({ label, value, detail, icon: Icon }) => (
@@ -160,22 +179,46 @@ export default async function SevenWaterfallsHikePage({ params }: { params: Prom
                   <Icon className="h-5 w-5" strokeWidth={1.9} />
                 </span>
                 <p className="mt-3 font-serif text-sm font-bold text-[#111d2a]">
-                  {label}
+                  {t(label)}
                 </p>
                 <p className="mt-2 font-serif text-xl font-bold text-[#f16522]">
-                  {value}
+                  {t(value)}
                 </p>
                 <p className="mt-1 font-serif text-xs italic text-[#7b8791]">
-                  {detail}
+                  {t(detail)}
                 </p>
               </div>
             ))}
           </div>
         </section>
 
+        <section
+          className="border-b border-gray-100 bg-white py-3 md:py-5 dark:border-neutral-800 dark:bg-neutral-900"
+          aria-label="Sponsored highlights"
+        >
+          <div className="container mx-auto max-w-7xl">
+            <div className="relative overflow-hidden rounded-xl bg-[#052028] shadow-sm ring-1 ring-gray-200 dark:ring-neutral-700">
+              <a
+                href={ad.href}
+                className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
+              >
+                <span className="relative block aspect-[1200/240] w-full">
+                  <Image
+                    src={ad.desktopSrc}
+                    alt={ad.alt}
+                    fill
+                    sizes="(max-width: 1280px) 100vw, 1280px"
+                    className="rounded-xl object-cover"
+                    loading="lazy"
+                  />
+                </span>
+              </a>
+            </div>
+          </div>
+        </section>
         <section className="mt-12">
           <h2 className="text-center font-serif text-[clamp(1.7rem,4vw,2.45rem)] font-bold leading-tight text-[#f16522]">
-            The Route in Two Parts
+            {t("The Route in Two Parts")}
           </h2>
 
           <style>
@@ -270,22 +313,23 @@ export default async function SevenWaterfallsHikePage({ params }: { params: Prom
             <article className="rounded-[12px] border border-[#dfd4c7] bg-white px-5 py-5 shadow-[0_4px_12px_rgba(80,55,28,.12)] sm:px-7">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <span className="inline-flex h-7 min-w-[104px] items-center justify-center rounded-full bg-[#e7f4e9] px-5 text-[10px] font-bold uppercase tracking-wide text-[#2f8e48]">
-                  Stage 1
+                  {t("Stage 1")}
                 </span>
                 <h3 className="font-serif text-xl font-bold leading-tight text-[#111d2a] sm:text-[1.45rem]">
-                  The Forest Descent
+                  {t("The Forest Descent")}
                 </h3>
               </div>
               <p className="mt-4 max-w-[430px] text-xs leading-relaxed text-[#1f2d3a] sm:text-sm">
-                Narrow paths, tree roots and muddy ground drop from the highland
-                villages down toward the gorge.
+                {t(
+                  "Narrow paths, tree roots and muddy ground drop from the highland villages down toward the gorge.",
+                )}
               </p>
               <div className="mt-7">
                 <div className="h-3 overflow-hidden rounded-full bg-[#e9e4dc]">
                   <div className="h-full w-[60%] rounded-full bg-[#2f8e48]" />
                 </div>
                 <p className="mt-2 text-right font-serif text-xs italic text-[#687887]">
-                  ~60% of the route
+                  {t("~60% of the route")}
                 </p>
               </div>
             </article>
@@ -297,42 +341,43 @@ export default async function SevenWaterfallsHikePage({ params }: { params: Prom
               <span className="seven-falls-route-dot seven-falls-route-dot-blue" />
               <div className="seven-falls-route-note">
                 <p className="font-serif text-base font-bold leading-tight text-[#2389c9] sm:text-lg">
-                  Into the Gorge
+                  {t("Into the Gorge")}
                 </p>
                 <p className="mt-1 text-xs text-[#7b8791] sm:text-sm">
-                  The terrain changes here.
+                  {t("The terrain changes here.")}
                 </p>
               </div>
             </div>
 
             <div className="seven-falls-route-mobile-note rounded-md border-l-4 border-[#2389c9] bg-[#f6fbff] px-4 py-3">
               <p className="font-serif text-base font-bold leading-tight text-[#2389c9] sm:text-lg">
-                Into the Gorge
+                {t("Into the Gorge")}
               </p>
               <p className="mt-1 text-xs text-[#7b8791] sm:text-sm">
-                The terrain changes here.
+                {t("The terrain changes here.")}
               </p>
             </div>
 
             <article className="seven-falls-route-card-second rounded-[12px] border border-[#dfd4c7] bg-white px-5 py-5 shadow-[0_4px_12px_rgba(80,55,28,.12)] sm:px-7">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <span className="inline-flex h-7 min-w-[104px] items-center justify-center rounded-full bg-[#fde4d9] px-5 text-[10px] font-bold uppercase tracking-wide text-[#f16522]">
-                  Stage 2
+                  {t("Stage 2")}
                 </span>
                 <h3 className="font-serif text-xl font-bold leading-tight text-[#111d2a] sm:text-[1.45rem]">
-                  The Gorge &amp; Falls
+                  {t("The Gorge & Falls")}
                 </h3>
               </div>
               <p className="mt-4 max-w-[430px] text-xs leading-relaxed text-[#1f2d3a] sm:text-sm">
-                River crossings, slippery rock and steep hand-hold descents
-                reveal pools and cascades one by one.
+                {t(
+                  "River crossings, slippery rock and steep hand-hold descents reveal pools and cascades one by one.",
+                )}
               </p>
               <div className="mt-7">
                 <div className="h-3 overflow-hidden rounded-full bg-[#e9e4dc]">
                   <div className="h-full w-[40%] rounded-full bg-[#f16522]" />
                 </div>
                 <p className="mt-2 text-right font-serif text-xs italic text-[#687887]">
-                  ~40% of the route
+                  {t("~40% of the route")}
                 </p>
               </div>
             </article>
@@ -359,19 +404,19 @@ export default async function SevenWaterfallsHikePage({ params }: { params: Prom
                       <Icon className="h-6 w-6" strokeWidth={1.9} />
                     </span>
                     <h2 className="font-serif text-xl font-bold leading-tight text-[#111d2a]">
-                      {heading}
+                      {t(heading)}
                     </h2>
                   </div>
                   <p className="mt-7 text-xs leading-relaxed text-[#1f2d3a] sm:text-sm">
-                    <span>{accentLabel} </span>
-                    <strong className="text-[#f16522]">{accentText}</strong>
+                    <span>{t(accentLabel)} </span>
+                    <strong className="text-[#f16522]">{t(accentText)}</strong>
                   </p>
                   <p className="mt-3 text-xs leading-relaxed text-[#1f2d3a] sm:text-sm">
-                    {description}
+                    {t(description)}
                   </p>
                   {note ? (
                     <p className="mt-5 font-serif text-xs italic leading-relaxed text-[#7b8791]">
-                      {note}
+                      {t(note)}
                     </p>
                   ) : null}
                 </article>
@@ -394,20 +439,20 @@ export default async function SevenWaterfallsHikePage({ params }: { params: Prom
                   className="rounded-[12px] border border-[#dfd4c7] bg-white px-7 py-8 text-center shadow-[0_5px_14px_rgba(80,55,28,.12)] sm:px-9"
                 >
                   <h2 className="font-serif text-xl font-bold leading-tight text-[#f16522]">
-                    {heading}
+                    {t(heading)}
                   </h2>
                   <div className="mt-4 flex justify-center text-[#2389c9]">
                     <Icon className="h-8 w-8" strokeWidth={1.9} />
                   </div>
                   <h3 className="mt-5 font-serif text-base font-bold leading-tight text-[#111d2a] sm:text-xl">
-                    {title}
+                    {t(title)}
                   </h3>
                   <p className="mx-auto mt-2 max-w-md text-xs leading-relaxed text-[#1f2d3a] sm:text-sm">
-                    {description}
+                    {t(description)}
                   </p>
                   <div className="mx-auto mt-6 max-w-md rounded-md bg-[#f5f3ef] px-5 py-4 text-xs leading-relaxed text-[#1f2d3a] sm:text-sm">
-                    <strong className="text-[#f16522]">{noteLabel}</strong>{" "}
-                    {note}
+                    <strong className="text-[#f16522]">{t(noteLabel)}</strong>{" "}
+                    {t(note)}
                   </div>
                 </article>
               ),
@@ -417,23 +462,24 @@ export default async function SevenWaterfallsHikePage({ params }: { params: Prom
           <div className="mt-10 grid gap-8 md:grid-cols-2">
             <article className="rounded-[12px] border border-[#dfd4c7] bg-white px-7 py-8 text-center shadow-[0_5px_14px_rgba(80,55,28,.12)] sm:px-9">
               <h2 className="font-serif text-xl font-bold leading-tight text-[#f16522]">
-                Mandatory Gear
+                {t("Mandatory Gear")}
               </h2>
               <div className="mt-4 flex justify-center text-[#2389c9]">
                 <Route className="h-8 w-8" strokeWidth={1.9} />
               </div>
               <h3 className="mt-4 font-serif text-base font-bold leading-tight text-[#111d2a]">
-                Grippy Footwear
+                {t("Grippy Footwear")}
               </h3>
               <p className="mx-auto mt-4 max-w-md text-xs leading-relaxed text-[#1f2d3a] sm:text-sm">
-                Hiking shoes or trail runners with strong grip - essential on
-                wet rock and mud.
+                {t(
+                  "Hiking shoes or trail runners with strong grip - essential on wet rock and mud.",
+                )}
               </p>
             </article>
 
             <article className="rounded-[12px] border border-[#dfd4c7] bg-white px-7 py-8 text-center shadow-[0_5px_14px_rgba(80,55,28,.12)] sm:px-9">
               <h2 className="font-serif text-2xl font-bold leading-tight text-[#f16522]">
-                Come Prepared
+                {t("Come Prepared")}
               </h2>
               <div className="mt-4 grid gap-8 sm:grid-cols-2">
                 {preparedItems.map(({ title, text, icon: Icon }) => (
@@ -442,10 +488,10 @@ export default async function SevenWaterfallsHikePage({ params }: { params: Prom
                       <Icon className="h-8 w-8" strokeWidth={1.9} />
                     </div>
                     <h3 className="mt-2 font-serif text-base font-bold leading-tight text-[#111d2a]">
-                      {title}
+                      {t(title)}
                     </h3>
                     <p className="mx-auto mt-2 max-w-[210px] text-xs leading-relaxed text-[#1f2d3a] sm:text-sm">
-                      {text}
+                      {t(text)}
                     </p>
                   </div>
                 ))}
@@ -455,7 +501,12 @@ export default async function SevenWaterfallsHikePage({ params }: { params: Prom
         </section>
       </article>
 
+      <PocketAdBanner />
+      <CarRentalAdBannerInfo />
+      <PopularRoadTrips locale={locale} />
+
       <Footer />
-    </main>
-  ), locale);
+    </main>,
+    activeLocale,
+  );
 }

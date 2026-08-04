@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import HiddenGems from "@/components/HiddenGems";
+import PopularRoadTrips from "@/components/PopularRoadTrips";
+import { Link } from "@/i18n/navigation";
 import {
   Church,
   Clock3,
@@ -17,6 +20,8 @@ import {
   Waves,
 } from "lucide-react";
 import { getRegionGuide } from "@/data/quick-guide-translations";
+import PocketAdBanner from "@/components/PocketAdBanner";
+import CarRentalAdBanner from "@/components/CarRentalAdBanner";
 
 export const revalidate = 3600;
 
@@ -31,6 +36,7 @@ const placesToGo = [
   {
     name: "Grand Baie",
     text: "The buzzing hub - dining, shopping, nightlife & boat trips.",
+    href: "/best-places-to-visit-in-mauritius/grand-baie",
     icon: ShoppingBag,
     color: "#ef6a2a",
     bg: "#fff0e7",
@@ -38,6 +44,7 @@ const placesToGo = [
   {
     name: "Trou aux Biches",
     text: "Calm, family-friendly lagoon with soft sand & sunsets.",
+    href: "/beaches-in-mauritius/trou-aux-biches",
     icon: TreePalm,
     color: "#3da8da",
     bg: "#eaf7ff",
@@ -45,6 +52,7 @@ const placesToGo = [
   {
     name: "Mont Choisy",
     text: "One of the longest northern beaches - made for walks.",
+    href: "/beaches-in-mauritius/mont-choisy",
     icon: Waves,
     color: "#2e9ed2",
     bg: "#e8f6fc",
@@ -52,6 +60,7 @@ const placesToGo = [
   {
     name: "Pereybere",
     text: "Compact beach with clear water, ideal for swimming.",
+    href: "/beaches-in-mauritius/pereybere-beach",
     icon: Sailboat,
     color: "#5aa8cb",
     bg: "#eaf7fb",
@@ -59,6 +68,7 @@ const placesToGo = [
   {
     name: "Cap Malheureux",
     text: "The iconic red-roof church beside the northern lagoon.",
+    href: "/beaches-in-mauritius/cap-malheureux",
     icon: Church,
     color: "#5cb56e",
     bg: "#edf8ef",
@@ -66,6 +76,7 @@ const placesToGo = [
   {
     name: "Pamplemousses Garden",
     text: "Giant water lilies & palm avenues in a peaceful garden.",
+    href: "/best-places-to-visit-in-mauritius/pamplemousses-botanical-garden",
     icon: Flower2,
     color: "#56ae64",
     bg: "#edf8ef",
@@ -80,6 +91,7 @@ const placesToGo = [
   {
     name: "Northern Islands",
     text: "Catamaran to Gabriel, Flat Island & Coin de Mire.",
+    href: "/top-activities-mauritius/ilot-gabriel",
     icon: ShipWheel,
     color: "#51a9d6",
     bg: "#eaf7ff",
@@ -92,6 +104,20 @@ const driveTimes = [
   ["Pamplemousses", "Grand Baie", "20-30 min"],
   ["Belle Mare", "Grand Baie", "1-1.5 h"],
 ];
+
+const northHiddenGemSlugs = [
+  "north-mauritius-travel-guide",
+  "best-restaurants-in-north-mauritius-2026-guide",
+  "a-day-in-port-louis-self-guided-tour",
+  "best-snorkelling-spots-in-mauritius",
+] as const;
+
+const gettingAroundLinks = [
+  "/car-rental-mauritius",
+  "/mauritius-transfer-airport-hotel",
+  "/mauritius-taxi",
+  "/top-activities-mauritius/le-morne-discovery-full-day-excursion-ile-aux-benitiers",
+] as const;
 
 export async function generateMetadata({
   params,
@@ -115,7 +141,7 @@ export default async function NorthMauritiusTravelGuidePage({
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
 
-      <article className="mx-auto w-full max-w-6xl pt-30 pb-20 px-4 xl:px-0">
+      <article className="mx-auto w-full max-w-6xl pt-30 pb-10 px-4 xl:px-0">
         <header>
           {/* <div className="flex flex-wrap items-center justify-between gap-3 text-[11px] font-semibold uppercase tracking-wide text-[#ec5f25]">
             <div className="flex items-center gap-2 normal-case tracking-normal">
@@ -147,9 +173,8 @@ export default async function NorthMauritiusTravelGuidePage({
             <div className="mt-4 space-y-4">
               {translatedPlaces.map((place) => {
                 const PlaceIcon = place.icon;
-
-                return (
-                  <div key={place.name} className="flex gap-4 mb-8">
+                const placeContent = (
+                  <>
                     <span
                       className="mt-0.5 grid h-12 w-12 shrink-0 place-items-center rounded-full"
                       style={{ backgroundColor: place.bg, color: place.color }}
@@ -164,6 +189,22 @@ export default async function NorthMauritiusTravelGuidePage({
                         {place.text}
                       </p>
                     </div>
+                  </>
+                );
+
+                return place.href ? (
+                  <Link
+                    key={place.name}
+                    href={place.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mb-8 flex gap-4 transition hover:-translate-y-0.5"
+                  >
+                    {placeContent}
+                  </Link>
+                ) : (
+                  <div key={place.name} className="mb-8 flex gap-4">
+                    {placeContent}
                   </div>
                 );
               })}
@@ -214,9 +255,28 @@ export default async function NorthMauritiusTravelGuidePage({
           <div className="md:border-r md:border-[#ded6cf] md:pr-7">
             <h2 className="font-serif text-xl font-bold text-[#f16522]">{t.gettingAroundTitle}</h2>
             <ul className="mt-3 space-y-1.5 text-xs leading-relaxed text-[#61707a] sm:text-sm">
-              {t.gettingAround.map(([label, text]) => (
-                <li key={label}><strong className="text-[#1d3144]">{label}</strong> - {text}</li>
-              ))}
+              {t.gettingAround.map(([label, text], index) => {
+                const href = gettingAroundLinks[index];
+                const displayLabel = index === 1 ? "Transfer" : label;
+
+                return (
+                  <li key={label}>
+                    {href ? (
+                      <Link
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-bold text-[#1d3144] transition hover:text-[#f16522]"
+                      >
+                        {displayLabel}
+                      </Link>
+                    ) : (
+                      <strong className="text-[#1d3144]">{displayLabel}</strong>
+                    )}{" "}
+                    - {text}
+                  </li>
+                );
+              })}
             </ul>
           </div>
           <div className="md:pl-3">
@@ -254,8 +314,11 @@ export default async function NorthMauritiusTravelGuidePage({
             })}
           </div>
         </section>
+        <HiddenGems featuredSlugs={northHiddenGemSlugs} />
       </article>
-
+<CarRentalAdBanner />
+      <PopularRoadTrips locale={locale} />
+      <PocketAdBanner />
       <Footer />
     </main>
   );

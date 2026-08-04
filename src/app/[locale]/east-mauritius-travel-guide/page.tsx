@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import HiddenGems from "@/components/HiddenGems";
+import PopularRoadTrips from "@/components/PopularRoadTrips";
+import { Link } from "@/i18n/navigation";
 import type { LucideIcon } from "lucide-react";
 import {
   Landmark,
@@ -16,6 +19,8 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { getRegionGuide } from "@/data/quick-guide-translations";
+import PocketAdBanner from "@/components/PocketAdBanner";
+import CarRentalAdBanner from "@/components/CarRentalAdBanner";
 
 export const revalidate = 3600;
 
@@ -29,6 +34,7 @@ export const legacyMetadata: Metadata = {
 const eastPlaces: {
   name: string;
   text: string;
+  href?: string;
   icon: LucideIcon;
   color: string;
   bg: string;
@@ -36,6 +42,7 @@ const eastPlaces: {
   {
     name: "Belle Mare",
     text: "10 km of white sand & luxury beach resorts.",
+    href: "/beaches-in-mauritius/belle-mare",
     icon: Sunrise,
     color: "#3da8da",
     bg: "#eaf7ff",
@@ -43,6 +50,7 @@ const eastPlaces: {
   {
     name: "Ile aux Cerfs",
     text: "Turquoise island of watersports & golf, by boat.",
+    href: "/best-places-to-visit-in-mauritius/ile-aux-cerfs",
     icon: Sailboat,
     color: "#51a9d6",
     bg: "#eaf7ff",
@@ -50,6 +58,7 @@ const eastPlaces: {
   {
     name: "Trou d'Eau Douce",
     text: "Lively village & launch point for island cruises.",
+    href: "/beaches-in-mauritius/trou-deau-douce",
     icon: MapPin,
     color: "#55ae69",
     bg: "#edf8ef",
@@ -57,6 +66,7 @@ const eastPlaces: {
   {
     name: "GRSE Waterfall",
     text: "Cruise up through mangroves to a coastal fall.",
+    href: "/best-places-to-visit-in-mauritius/grse-waterfall",
     icon: Landmark,
     color: "#4aa6d3",
     bg: "#eaf7ff",
@@ -64,6 +74,7 @@ const eastPlaces: {
   {
     name: "Palmar",
     text: "Quiet, design-led boutique beaches.",
+    href: "/beaches-in-mauritius/palmar-beach",
     icon: TreePalm,
     color: "#68b86d",
     bg: "#edf8ef",
@@ -78,6 +89,7 @@ const eastPlaces: {
   {
     name: "Bras d'Eau National Park",
     text: "Forest trails & birdwatching off the sand.",
+    href: "/beaches-in-mauritius/bras-deau",
     icon: Leaf,
     color: "#56ae64",
     bg: "#edf8ef",
@@ -130,24 +142,64 @@ const eastDaySteps: {
   },
 ];
 
+const eastHiddenGemSlugs = [
+  "east-mauritius-travel-guide",
+  "best-restaurants-in-east-mauritius-2026-guide",
+  "10-beaches-to-visit-in-mauritius",
+  "best-snorkelling-spots-in-mauritius",
+] as const;
 
+const eastHiddenGemHrefs = [
+  "https://www.mauritiusexplored.com/blog/east-mauritius-travel-guide",
+  "https://www.mauritiusexplored.com/blog/best-restaurants-in-east-mauritius-2026-guide",
+  "https://www.mauritiusexplored.com/blog/10-beaches-to-visit-in-mauritius",
+  "https://www.mauritiusexplored.com/blog/best-snorkelling-spots-in-mauritius",
+] as const;
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+const eastGettingAroundLinks = [
+  { label: "Car Rental", href: "/car-rental-mauritius" },
+  { label: "Transfer", href: "/mauritius-transfer-airport-hotel" },
+  {
+    label: "Boat Operators",
+    href: "/top-activities-mauritius/le-morne-discovery-full-day-excursion-ile-aux-benitiers",
+  },
+  { label: "Taxi", href: "/mauritius-taxi" },
+] as const;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
   const { locale } = await params;
   const t = getRegionGuide(locale, "east");
-  return { title: t.metadata.title, description: t.metadata.description, alternates: { canonical: "/east-mauritius-travel-guide" } };
+  return {
+    title: t.metadata.title,
+    description: t.metadata.description,
+    alternates: { canonical: "/east-mauritius-travel-guide" },
+  };
 }
 
-export default async function EastMauritiusTravelGuidePage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function EastMauritiusTravelGuidePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   const { locale } = await params;
   const t = getRegionGuide(locale, "east");
-  const translatedPlaces = eastPlaces.map((place, index) => ({ ...place, ...t.places[index] }));
-  const translatedSteps = eastDaySteps.map((step, index) => ({ ...step, ...t.steps[index] }));
+  const translatedPlaces = eastPlaces.map((place, index) => ({
+    ...place,
+    ...t.places[index],
+  }));
+  const translatedSteps = eastDaySteps.map((step, index) => ({
+    ...step,
+    ...t.steps[index],
+  }));
   return (
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
 
-      <article className="mx-auto w-full max-w-6xl px-4 pt-24 pb-20 sm:px-6 lg:pt-28 xl:px-0">
+      <article className="mx-auto w-full max-w-6xl px-4 pt-24 pb-10 sm:px-6 lg:pt-28 xl:px-0">
         <header>
           {/* <div className="flex flex-wrap items-center justify-between gap-3 text-[11px] font-semibold uppercase tracking-wide text-[#ec5f25]">
             <div className="flex items-center gap-2 normal-case tracking-normal">
@@ -194,7 +246,18 @@ export default async function EastMauritiusTravelGuidePage({ params }: { params:
                     </span>
                     <div className="pt-0.5">
                       <h3 className="font-serif text-lg font-bold leading-none text-[#1b2d3c]">
-                        {place.name}
+                        {place.href ? (
+                          <Link
+                            href={place.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="transition hover:text-[#f16522]"
+                          >
+                            {place.name}
+                          </Link>
+                        ) : (
+                          place.name
+                        )}
                       </h3>
                       <p className="mt-1 text-xs leading-relaxed text-[#65737d] sm:text-sm">
                         {place.text}
@@ -259,11 +322,27 @@ export default async function EastMauritiusTravelGuidePage({ params }: { params:
               {t.gettingAroundTitle}
             </h2>
             <ul className="mt-3 space-y-1.5 text-xs leading-relaxed text-[#61707a] sm:text-sm">
-              {t.gettingAround.map(([label, text]) => (
-                <li key={label}>
-                  <strong className="text-[#1d3144]">{label}</strong> - {text}
-                </li>
-              ))}
+              {t.gettingAround.map(([label, text], index) => {
+                const link = eastGettingAroundLinks[index];
+
+                return (
+                  <li key={label}>
+                    {link ? (
+                      <Link
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-bold text-[#1d3144] transition hover:text-[#f16522]"
+                      >
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <strong className="text-[#1d3144]">{label}</strong>
+                    )}{" "}
+                    - {text}
+                  </li>
+                );
+              })}
             </ul>
           </div>
           <div className="md:pl-3">
@@ -303,8 +382,14 @@ export default async function EastMauritiusTravelGuidePage({ params }: { params:
             })}
           </div>
         </section>
+        <HiddenGems
+          featuredSlugs={eastHiddenGemSlugs}
+          featuredHrefs={eastHiddenGemHrefs}
+        />
       </article>
-
+      <CarRentalAdBanner />
+      <PopularRoadTrips locale={locale} />
+      <PocketAdBanner />
       <Footer />
     </main>
   );

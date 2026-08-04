@@ -3,7 +3,9 @@
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useState, useRef, useEffect } from "react";
+import { useLocale } from "next-intl";
 import MapSkeleton from "@/components/ui/MapSkeleton";
+import { staticPageText } from "@/lib/static-page-localizer";
 import {
   ITINERARY_BEACHES,
   ITINERARY_ACTIVITIES,
@@ -24,6 +26,8 @@ const CARTO_POSITRON = {
 };
 
 export default function WelcomeMapSection() {
+  const locale = useLocale();
+  const t = (text: string) => staticPageText(locale, text);
   const [hoveredId, setHoveredId] = useState<ItineraryMarkerId | null>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const [listHeight, setListHeight] = useState<number | null>(null);
@@ -49,49 +53,49 @@ export default function WelcomeMapSection() {
   }, []);
 
   const mapHeight = isLg && listHeight != null && listHeight > 0 ? listHeight : 420;
+  const legendItems = [
+    {
+      label: "Beaches",
+      note: "popular & hidden gems",
+      icon: <BeachIcon className="w-4 h-4" />,
+      className: "bg-orange-500",
+    },
+    {
+      label: "Activities",
+      note: "tours & experiences",
+      icon: <ActivityIcon className="w-4 h-4" />,
+      className: "bg-blue-500",
+    },
+    {
+      label: "Nature & hiking",
+      note: "forests & trails",
+      icon: <NatureHikingIcon className="w-4 h-4" />,
+      className: "bg-green-500",
+    },
+  ];
 
   return (
     <section className="py-12 md:py-16 bg-white">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="mb-4">
-          <h2 className="text-lg font-bold text-gray-900 mb-3">Map legend</h2>
+          <h2 className="text-lg font-bold text-gray-900 mb-3">{t("Map legend")}</h2>
           <ul className="flex flex-wrap gap-x-6 gap-y-1 text-sm">
-            <li className="flex items-center gap-2">
-              <span
-                className="w-8 h-8 rounded-full flex-shrink-0 bg-orange-500 border-2 border-white shadow flex items-center justify-center text-white"
-                aria-hidden
-              >
-                <BeachIcon className="w-4 h-4" />
-              </span>
-              <span className="text-gray-700">
-                <strong>Beaches</strong> — popular & hidden gems
-              </span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span
-                className="w-8 h-8 rounded-full flex-shrink-0 bg-blue-500 border-2 border-white shadow flex items-center justify-center text-white"
-                aria-hidden
-              >
-                <ActivityIcon className="w-4 h-4" />
-              </span>
-              <span className="text-gray-700">
-                <strong>Activities</strong> — tours & experiences
-              </span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span
-                className="w-8 h-8 rounded-full flex-shrink-0 bg-green-500 border-2 border-white shadow flex items-center justify-center text-white"
-                aria-hidden
-              >
-                <NatureHikingIcon className="w-4 h-4" />
-              </span>
-              <span className="text-gray-700">
-                <strong>Nature & hiking</strong> — forests & trails
-              </span>
-            </li>
+            {legendItems.map((item) => (
+              <li key={item.label} className="flex items-center gap-2">
+                <span
+                  className={`w-8 h-8 rounded-full flex-shrink-0 ${item.className} border-2 border-white shadow flex items-center justify-center text-white`}
+                  aria-hidden
+                >
+                  {item.icon}
+                </span>
+                <span className="text-gray-700">
+                  <strong>{t(item.label)}</strong> — {t(item.note)}
+                </span>
+              </li>
+            ))}
           </ul>
           <p className="text-xs text-gray-500 mt-1.5">
-            Click a pin for details and links to full guides.
+            {t("Click a pin for details and links to full guides.")}
           </p>
         </div>
 
@@ -113,7 +117,7 @@ export default function WelcomeMapSection() {
             className="w-full lg:min-w-[240px] rounded-lg border border-gray-200 bg-gray-50/80 p-4"
           >
             <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-3">
-              On the map
+              {t("On the map")}
             </h3>
             <ul className="space-y-1 text-sm">
               {ITINERARY_BEACHES.map((beach) => (
@@ -129,10 +133,10 @@ export default function WelcomeMapSection() {
                       aria-hidden
                     />
                     <span className="text-gray-800 group-hover:text-orange-600 truncate">
-                      {beach.name}
+                      {t(beach.name)}
                     </span>
                     <span className="text-xs text-gray-500 flex-shrink-0">
-                      {beach.regionLabel}
+                      {t(beach.regionLabel)}
                     </span>
                   </Link>
                 </li>
@@ -141,9 +145,7 @@ export default function WelcomeMapSection() {
                 <li key={`activity-${activity.slug}`}>
                   <Link
                     href={`/top-activities-mauritius/${activity.slug}`}
-                    onMouseEnter={() =>
-                      setHoveredId(`activity-${activity.slug}`)
-                    }
+                    onMouseEnter={() => setHoveredId(`activity-${activity.slug}`)}
                     onMouseLeave={() => setHoveredId(null)}
                     className="flex items-center gap-2 py-1.5 rounded hover:bg-white transition-colors group"
                   >
@@ -152,7 +154,7 @@ export default function WelcomeMapSection() {
                       aria-hidden
                     />
                     <span className="text-gray-800 group-hover:text-blue-600 truncate">
-                      {activity.name}
+                      {t(activity.name)}
                     </span>
                   </Link>
                 </li>
@@ -170,7 +172,7 @@ export default function WelcomeMapSection() {
                       aria-hidden
                     />
                     <span className="text-gray-800 group-hover:text-green-600 truncate">
-                      {item.name}
+                      {t(item.name)}
                     </span>
                   </Link>
                 </li>

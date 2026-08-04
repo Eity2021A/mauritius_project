@@ -15,30 +15,30 @@ export const HOME_MOSAIC_TRANSLATIONS: Record<
   },
   fr: {
     kicker: "Pour un tourisme durable et des voyages responsables à Maurice",
-    title: "Le meilleur de l'île Maurice 2026",
+    title: "Le Meilleur De L'île Maurice 2026",
     subtitle:
       "Toute l'inspiration nécessaire pour commencer à planifier votre prochaine aventure",
   },
   de: {
     kicker: "Für nachhaltigen Tourismus und Reisen auf Mauritius",
-    title: "Das Beste von Mauritius 2026",
+    title: "Das Beste Von Mauritius 2026",
     subtitle: "Die Inspiration, die Sie brauchen, um Ihr nächstes Abenteuer zu planen",
   },
   it: {
     kicker: "Per un turismo sostenibile e viaggi responsabili a Mauritius",
-    title: "Il meglio dell'isola di Mauritius 2026",
+    title: "Il Meglio Dell'isola Di Mauritius 2026",
     subtitle:
       "Tutta l'ispirazione che ti serve per iniziare a pianificare la tua prossima avventura",
   },
   es: {
     kicker: "Impulsando el turismo sostenible y los viajes responsables en Mauricio",
-    title: "Lo mejor de la isla de Mauricio 2026",
+    title: "Lo Mejor De La Isla De Mauricio 2026",
     subtitle:
       "Toda la inspiración que necesitas para empezar a planificar tu próxima aventura",
   },
   ru: {
     kicker: "Развиваем устойчивый туризм и путешествия на Маврикии",
-    title: "Лучшее на острове Маврикий 2026",
+    title: "Лучшее на Oстрове Маврикий 2026",
     subtitle:
       "Все идеи и вдохновение, чтобы начать планировать следующее приключение",
   },

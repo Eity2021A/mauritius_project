@@ -2,6 +2,7 @@
 
 import AvatarGroup from "@/components/AvatarGroup";
 import CountUp from "@/components/ui/CountUp";
+import { useTranslations } from "next-intl";
 
 const InstagramIcon = () => (
   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -16,6 +17,8 @@ const FacebookIcon = () => (
 );
 
 export default function SocialFollowButtons({ className = "" }: { className?: string }) {
+  const t = useTranslations("Home.instagram");
+
   return (
     <div className={`flex flex-wrap justify-center items-start gap-4 sm:gap-6 ${className}`}>
       <div className="flex flex-col items-center gap-2">
@@ -24,10 +27,10 @@ export default function SocialFollowButtons({ className = "" }: { className?: st
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center gap-2 px-6 py-3 min-h-[48px] min-w-[200px] sm:min-w-[220px] bg-gradient-to-r from-[#8A3AB9] via-[#E1306C] to-[#E95950] text-white font-medium rounded-full hover:opacity-90 transition-opacity"
-          aria-label="Follow Mauritius Explored on Instagram"
+          aria-label={t("instagramAria")}
         >
           <InstagramIcon />
-          Follow on Instagram
+          {t("followInstagram")}
         </a>
         <p className="text-xl font-bold bg-gradient-to-r from-[#8A3AB9] via-[#E1306C] to-[#E95950] bg-clip-text text-transparent">
           <CountUp target={245000} />
@@ -39,10 +42,10 @@ export default function SocialFollowButtons({ className = "" }: { className?: st
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center gap-2 px-6 py-3 min-h-[48px] min-w-[200px] sm:min-w-[220px] bg-[#1877F2] text-white font-medium rounded-full hover:opacity-90 transition-opacity"
-          aria-label="Like Mauritius Explored on Facebook"
+          aria-label={t("facebookAria")}
         >
           <FacebookIcon />
-          Like on Facebook
+          {t("likeFacebook")}
         </a>
         <p className="text-xl font-bold text-[#1877F2]">
           <CountUp target={317000} />

@@ -469,6 +469,28 @@ const transportTranslations: Record<TransportLocale, TransportTranslations> = {
         { title: "Hôtel & location horaire", description: "À l'heure ou à la journée." },
       ],
       serviceList: ["Transferts aéroport", "Prises en charge hôtel et villa", "Tours privés de l'île", "Transferts restaurants et plages", "Excursions personnalisées à Maurice"],
+      faqs: [
+        {
+          question: "Combien coûte un taxi depuis l'aéroport de Maurice ?",
+          answer:
+            "Les tarifs indicatifs dépendent de la distance. L'aéroport vers Grand Baie commence à Rs 2,600, Flic en Flac à Rs 2,300 et Le Morne à Rs 3,000.",
+        },
+        {
+          question: "Puis-je réserver un taxi pour une journée complète à Maurice ?",
+          answer:
+            "Oui. Un taxi privé peut être utilisé pour les plages, les points de vue, les restaurants et les excursions avec un chauffeur local.",
+        },
+        {
+          question: "Un taxi est-il mieux que conduire soi-même à Maurice ?",
+          answer:
+            "Le taxi est plus simple si vous ne voulez pas gérer les routes étroites, le parking ou les longs trajets sur l'île. La location offre plus de liberté si vous êtes à l'aise avec la conduite à gauche.",
+        },
+        {
+          question: "Y a-t-il Uber à Maurice ?",
+          answer:
+            "Uber n'est pas le moyen habituel pour les visiteurs de se déplacer à Maurice. La plupart utilisent des taxis réservés à l'avance, des transferts d'hôtel, des chauffeurs privés ou des voitures de location.",
+        },
+      ],
     },
   }),
   de: makeTransportTranslations({
@@ -607,6 +629,28 @@ const transportTranslations: Record<TransportLocale, TransportTranslations> = {
         { title: "Hotel & stundenweise Buchung", description: "Stundenweise oder ganztägig verfügbar." },
       ],
       serviceList: ["Flughafentransfers", "Hotel- und Villa-Abholungen", "Private Inseltouren", "Restaurant- und Strandtransfers", "Individuelle Tagesausflüge auf Mauritius"],
+      faqs: [
+        {
+          question: "Wie viel kostet ein Taxi vom Flughafen Mauritius?",
+          answer:
+            "Die Richtpreise hängen von der Entfernung ab. Flughafen nach Grand Baie beginnt bei Rs 2,600, Flic en Flac bei Rs 2,300 und Le Morne bei Rs 3,000.",
+        },
+        {
+          question: "Kann ich auf Mauritius ein Taxi für einen ganzen Tag buchen?",
+          answer:
+            "Ja. Ein privates Taxi kann für Strandstopps, Aussichtspunkte, Restaurants und Tagesausflüge mit einem lokalen Fahrer genutzt werden.",
+        },
+        {
+          question: "Ist ein Taxi besser als Selbstfahren auf Mauritius?",
+          answer:
+            "Ein Taxi ist einfacher, wenn Sie enge Straßen, Parkplätze oder lange Inselrouten nicht selbst meistern möchten. Selbstfahren bietet mehr Freiheit, wenn Sie sicher im Linksverkehr sind.",
+        },
+        {
+          question: "Gibt es Uber auf Mauritius?",
+          answer:
+            "Uber ist nicht die übliche Art, wie Besucher auf Mauritius unterwegs sind. Die meisten Reisenden nutzen vorab gebuchte Taxis, Hoteltransfers, private Fahrer oder Mietwagen.",
+        },
+      ],
     },
   }),
   it: makeTransportTranslations({
@@ -710,6 +754,28 @@ const transportTranslations: Record<TransportLocale, TransportTranslations> = {
       roadTitle: "Road trip popolari",
       faqTitle: "FAQ taxi Mauritius",
       bottomNote: "Autisti autorizzati che parlano inglese - prezzi fissi - disponibili 24 / 7",
+      faqs: [
+        {
+          question: "Quanto costa un taxi dall'aeroporto di Mauritius?",
+          answer:
+            "Le tariffe indicative dipendono dalla distanza. Dall'aeroporto a Grand Baie si parte da Rs 2,600, per Flic en Flac da Rs 2,300 e per Le Morne da Rs 3,000.",
+        },
+        {
+          question: "Posso prenotare un taxi per un'intera giornata a Mauritius?",
+          answer:
+            "Sì. Un taxi privato può essere usato per spiagge, punti panoramici, ristoranti e gite giornaliere con un autista locale.",
+        },
+        {
+          question: "Un taxi è meglio del self-drive a Mauritius?",
+          answer:
+            "Il taxi è più semplice se non vuoi gestire strade strette, parcheggi o lunghi itinerari sull'isola. Il self-drive dà più libertà se sei sicuro nella guida a sinistra.",
+        },
+        {
+          question: "C'è Uber a Mauritius?",
+          answer:
+            "Uber non è il modo standard con cui i visitatori si spostano a Mauritius. La maggior parte usa taxi prenotati in anticipo, transfer degli hotel, autisti privati o auto a noleggio.",
+        },
+      ],
     },
   }),
   es: makeTransportTranslations({
@@ -813,6 +879,28 @@ const transportTranslations: Record<TransportLocale, TransportTranslations> = {
       roadTitle: "Road trips populares",
       faqTitle: "FAQ taxi Mauricio",
       bottomNote: "Conductores autorizados de habla inglesa - precios fijos - disponibles 24 / 7",
+      faqs: [
+        {
+          question: "¿Cuánto cuesta un taxi desde el aeropuerto de Mauricio?",
+          answer:
+            "Las tarifas orientativas dependen de la distancia. Del aeropuerto a Grand Baie empiezan desde Rs 2,600, a Flic en Flac desde Rs 2,300 y a Le Morne desde Rs 3,000.",
+        },
+        {
+          question: "¿Puedo reservar un taxi para un día completo en Mauricio?",
+          answer:
+            "Sí. Un taxi privado puede usarse para visitar playas, miradores, restaurantes y excursiones de un día con un conductor local.",
+        },
+        {
+          question: "¿Es mejor un taxi que conducir por mi cuenta en Mauricio?",
+          answer:
+            "Un taxi es más fácil si no quieres ocuparte de carreteras estrechas, aparcamiento o rutas largas por la isla. Conducir por tu cuenta da más libertad si te sientes cómodo conduciendo por la izquierda.",
+        },
+        {
+          question: "¿Hay Uber en Mauricio?",
+          answer:
+            "Uber no es la forma habitual en que los visitantes se mueven por Mauricio. La mayoría usa taxis reservados con antelación, traslados de hotel, conductores privados o coches de alquiler.",
+        },
+      ],
     },
   }),
   ru: makeTransportTranslations({
@@ -916,6 +1004,28 @@ const transportTranslations: Record<TransportLocale, TransportTranslations> = {
       roadTitle: "Популярные маршруты",
       faqTitle: "FAQ такси Маврикий",
       bottomNote: "Лицензированные англоговорящие водители - фиксированные цены - доступны 24 / 7",
+      faqs: [
+        {
+          question: "Сколько стоит такси из аэропорта Маврикия?",
+          answer:
+            "Ориентировочная цена зависит от расстояния. Из аэропорта до Grand Baie цена начинается от Rs 2,600, до Flic en Flac от Rs 2,300, до Le Morne от Rs 3,000.",
+        },
+        {
+          question: "Можно ли забронировать такси на целый день на Маврикии?",
+          answer:
+            "Да. Частное такси можно использовать для пляжей, смотровых площадок, ресторанов и дневных поездок с местным водителем.",
+        },
+        {
+          question: "Такси лучше, чем самостоятельное вождение на Маврикии?",
+          answer:
+            "Такси проще, если вы не хотите разбираться с узкими дорогами, парковкой или длинными маршрутами по острову. Аренда авто дает больше свободы, если вы уверенно ездите по левой стороне.",
+        },
+        {
+          question: "Есть ли Uber на Маврикии?",
+          answer:
+            "Uber не является стандартным способом передвижения для гостей Маврикия. Большинство путешественников используют заранее заказанные такси, трансферы отелей, частных водителей или арендованные автомобили.",
+        },
+      ],
     },
   }),
 };

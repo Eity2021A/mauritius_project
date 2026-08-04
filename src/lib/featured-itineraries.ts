@@ -7,9 +7,11 @@ import {
   type PreDesignedStop,
   type PreDesignedStopType,
 } from "@/data/predesigned-itineraries";
+import { normalizeLocale } from "@/i18n/routing";
 import { contentDb } from "@/lib/supabase";
 
 interface DbFeaturedItineraryStop {
+  id?: string | null;
   type?: string | null;
   item_type?: string | null;
   slug?: string | null;
@@ -43,6 +45,28 @@ interface DbFeaturedItineraryRow {
   itinerary_stops?: DbFeaturedItineraryStop[] | null;
 }
 
+interface DbItineraryTranslationRow {
+  itinerary_id?: string | null;
+  locale?: string | null;
+  title?: string | null;
+  subtitle?: string | null;
+  description?: string | null;
+  cover_image?: string | null;
+  listing_image?: string | null;
+  total_distance_km?: number | null;
+  total_duration_min?: number | null;
+  stops?: DbFeaturedItineraryStop[] | null;
+  intro_paragraphs?: string[] | null;
+  info_points?: string[] | null;
+}
+
+interface DbItineraryStopTranslationRow {
+  stop_id?: string | null;
+  locale?: string | null;
+  name?: string | null;
+  description?: string | null;
+}
+
 const STATIC_BY_SLUG = new Map(PREDESIGNED_ITINERARIES.map((itinerary) => [itinerary.slug, itinerary]));
 const STATIC_ORDER = new Map(PREDESIGNED_ITINERARIES.map((itinerary, index) => [itinerary.slug, index]));
 
@@ -64,9 +88,26 @@ function splitParagraphs(value: string | null | undefined): string[] {
     .filter(Boolean);
 }
 
+function nonEmptyString(value: string | null | undefined): string | undefined {
+  const trimmed = value?.trim();
+  return trimmed ? trimmed : undefined;
+}
+
+function pickRequestedTranslation<T extends { locale?: string | null }>(
+  rows: T[] | null | undefined,
+  locale: string,
+): T | undefined {
+  const translations = rows ?? [];
+  return (
+    translations.find((translation) => translation.locale === locale) ??
+    translations.find((translation) => translation.locale === "en")
+  );
+}
+
 function normalizeStop(
   rawStop: DbFeaturedItineraryStop,
-  fallbackStop?: PreDesignedStop
+  fallbackStop?: PreDesignedStop,
+  stopTranslation?: DbItineraryStopTranslationRow,
 ): PreDesignedStop | null {
   const slug = rawStop.slug ?? rawStop.item_slug ?? fallbackStop?.slug;
   if (!slug) return null;
@@ -82,59 +123,83 @@ function normalizeStop(
   return {
     type,
     slug,
-    name: rawStop.name ?? fallbackStop?.name ?? slug,
+    name: nonEmptyString(stopTranslation?.name) ?? rawStop.name ?? fallbackStop?.name ?? slug,
     position: hasCoords ? [lat, lng] : (fallbackStop?.position ?? [0, 0]),
     link: rawStop.link ?? fallbackStop?.link ?? stopLink(type, slug),
     image: rawStop.image ?? fallbackStop?.image ?? "",
     regionLabel: rawStop.regionLabel ?? rawStop.region_label ?? fallbackStop?.regionLabel,
-    description: rawStop.description ?? fallbackStop?.description,
+    description: nonEmptyString(stopTranslation?.description) ?? rawStop.description ?? fallbackStop?.description,
     images: rawStop.images ?? fallbackStop?.images,
   };
 }
 
-function mapFeaturedItinerary(row: DbFeaturedItineraryRow): PreDesignedItinerary | null {
+function mapFeaturedItinerary(
+  row: DbFeaturedItineraryRow,
+  itineraryTranslation?: DbItineraryTranslationRow,
+  stopTranslations = new Map<string, DbItineraryStopTranslationRow>(),
+): PreDesignedItinerary | null {
   const fallback = STATIC_BY_SLUG.get(row.slug);
   const rawStops =
-    Array.isArray(row.stops) && row.stops.length > 0
+    Array.isArray(itineraryTranslation?.stops) && itineraryTranslation.stops.length > 0
+      ? itineraryTranslation.stops
+      : Array.isArray(row.stops) && row.stops.length > 0
       ? row.stops
       : Array.isArray(row.itinerary_stops) && row.itinerary_stops.length > 0
         ? row.itinerary_stops
         : [];
 
   const normalizedStops = rawStops
-    .map((stop, index) => normalizeStop(stop, fallback?.stops[index]))
+    .map((stop, index) => normalizeStop(stop, fallback?.stops[index], stop.id ? stopTranslations.get(stop.id) : undefined))
     .filter((stop): stop is PreDesignedStop => Boolean(stop));
 
   const stops = normalizedStops.length > 0 ? normalizedStops : (fallback?.stops ?? []);
   if (stops.length === 0) return null;
+  const translatedDescription = nonEmptyString(itineraryTranslation?.description);
 
   const introParagraph =
-    Array.isArray(row.intro_paragraphs) && row.intro_paragraphs.length > 0
+    Array.isArray(itineraryTranslation?.intro_paragraphs) && itineraryTranslation.intro_paragraphs.length > 0
+      ? itineraryTranslation.intro_paragraphs.filter(Boolean)
+      : translatedDescription
+      ? splitParagraphs(translatedDescription)
+      : Array.isArray(row.intro_paragraphs) && row.intro_paragraphs.length > 0
       ? row.intro_paragraphs.filter(Boolean)
       : fallback?.introParagraph ?? splitParagraphs(row.description);
 
   const info =
-    Array.isArray(row.info_points) && row.info_points.length > 0
+    Array.isArray(itineraryTranslation?.info_points) && itineraryTranslation.info_points.length > 0
+      ? itineraryTranslation.info_points.filter(Boolean)
+      : Array.isArray(row.info_points) && row.info_points.length > 0
       ? row.info_points.filter(Boolean)
       : fallback?.info;
 
   const hasTotals =
-    typeof row.total_distance_km === "number" && Number.isFinite(row.total_distance_km) &&
-    typeof row.total_duration_min === "number" && Number.isFinite(row.total_duration_min);
+    typeof (itineraryTranslation?.total_distance_km ?? row.total_distance_km) === "number" &&
+    Number.isFinite(itineraryTranslation?.total_distance_km ?? row.total_distance_km) &&
+    typeof (itineraryTranslation?.total_duration_min ?? row.total_duration_min) === "number" &&
+    Number.isFinite(itineraryTranslation?.total_duration_min ?? row.total_duration_min);
   const routeTotals = hasTotals
     ? {
-        totalDistanceKm: row.total_distance_km as number,
-        totalDurationMin: row.total_duration_min as number,
+        totalDistanceKm: (itineraryTranslation?.total_distance_km ?? row.total_distance_km) as number,
+        totalDurationMin: (itineraryTranslation?.total_duration_min ?? row.total_duration_min) as number,
       }
     : fallback?.routeTotals;
 
   return {
     id: row.id,
     slug: row.slug,
-    title: row.title || fallback?.title || row.slug,
-    subtitle: row.subtitle ?? fallback?.subtitle,
-    image: row.cover_image ?? fallback?.image,
-    listingImage: row.listing_image ?? row.cover_image ?? fallback?.listingImage,
+    title: nonEmptyString(itineraryTranslation?.title) ?? (row.title || fallback?.title || row.slug),
+    subtitle:
+      nonEmptyString(itineraryTranslation?.subtitle) ??
+      translatedDescription ??
+      row.subtitle ??
+      fallback?.subtitle,
+    image: nonEmptyString(itineraryTranslation?.cover_image) ?? row.cover_image ?? fallback?.image,
+    listingImage:
+      nonEmptyString(itineraryTranslation?.listing_image) ??
+      nonEmptyString(itineraryTranslation?.cover_image) ??
+      row.listing_image ??
+      row.cover_image ??
+      fallback?.listingImage,
     imagePosition: fallback?.imagePosition,
     introParagraph,
     stops,
@@ -143,7 +208,64 @@ function mapFeaturedItinerary(row: DbFeaturedItineraryRow): PreDesignedItinerary
   };
 }
 
-export const getFeaturedItineraries = cache(async (): Promise<PreDesignedItinerary[]> => {
+async function fetchFeaturedTranslations(
+  itineraryIds: string[],
+  locale: string,
+): Promise<Map<string, DbItineraryTranslationRow>> {
+  const ids = [...new Set(itineraryIds)].filter(Boolean);
+  if (!contentDb || locale === "en" || ids.length === 0) return new Map();
+
+  const { data, error } = await contentDb
+    .from("user_itinerary_translations")
+    .select("itinerary_id, locale, title, subtitle, description, cover_image, listing_image, total_distance_km, total_duration_min, stops, intro_paragraphs, info_points")
+    .in("itinerary_id", ids)
+    .in("locale", [locale, "en"]);
+
+  if (error || !data) return new Map();
+
+  const grouped = new Map<string, DbItineraryTranslationRow[]>();
+  for (const row of data as DbItineraryTranslationRow[]) {
+    if (!row.itinerary_id) continue;
+    grouped.set(row.itinerary_id, [...(grouped.get(row.itinerary_id) ?? []), row]);
+  }
+
+  return new Map(
+    [...grouped.entries()]
+      .map(([id, rows]) => [id, pickRequestedTranslation(rows, locale)] as const)
+      .filter((entry): entry is [string, DbItineraryTranslationRow] => Boolean(entry[1])),
+  );
+}
+
+async function fetchFeaturedStopTranslations(
+  stopIds: string[],
+  locale: string,
+): Promise<Map<string, DbItineraryStopTranslationRow>> {
+  const ids = [...new Set(stopIds)].filter(Boolean);
+  if (!contentDb || locale === "en" || ids.length === 0) return new Map();
+
+  const { data, error } = await contentDb
+    .from("itinerary_stop_translations")
+    .select("stop_id, locale, name, description")
+    .in("stop_id", ids)
+    .in("locale", [locale, "en"]);
+
+  if (error || !data) return new Map();
+
+  const grouped = new Map<string, DbItineraryStopTranslationRow[]>();
+  for (const row of data as DbItineraryStopTranslationRow[]) {
+    if (!row.stop_id) continue;
+    grouped.set(row.stop_id, [...(grouped.get(row.stop_id) ?? []), row]);
+  }
+
+  return new Map(
+    [...grouped.entries()]
+      .map(([id, rows]) => [id, pickRequestedTranslation(rows, locale)] as const)
+      .filter((entry): entry is [string, DbItineraryStopTranslationRow] => Boolean(entry[1])),
+  );
+}
+
+export const getFeaturedItineraries = cache(async (locale = "en"): Promise<PreDesignedItinerary[]> => {
+  const activeLocale = normalizeLocale(locale);
   if (!contentDb) return PREDESIGNED_ITINERARIES;
 
   const { data, error } = await contentDb
@@ -162,6 +284,7 @@ export const getFeaturedItineraries = cache(async (): Promise<PreDesignedItinera
       total_duration_min,
       stops,
       itinerary_stops (
+        id,
         item_type,
         item_slug,
         name,
@@ -174,8 +297,25 @@ export const getFeaturedItineraries = cache(async (): Promise<PreDesignedItinera
 
   if (error || !data) return PREDESIGNED_ITINERARIES;
 
-  const mapped = (data as DbFeaturedItineraryRow[])
-    .map(mapFeaturedItinerary)
+  const rows = data as DbFeaturedItineraryRow[];
+  const [itineraryTranslations, stopTranslations] = await Promise.all([
+    fetchFeaturedTranslations(rows.map((row) => row.id), activeLocale),
+    fetchFeaturedStopTranslations(
+      rows.flatMap((row) => {
+        const stops =
+          Array.isArray(row.stops) && row.stops.length > 0
+            ? row.stops
+            : Array.isArray(row.itinerary_stops) && row.itinerary_stops.length > 0
+              ? row.itinerary_stops
+              : [];
+        return stops.map((stop) => stop.id).filter((id): id is string => Boolean(id));
+      }),
+      activeLocale,
+    ),
+  ]);
+
+  const mapped = rows
+    .map((row) => mapFeaturedItinerary(row, itineraryTranslations.get(row.id), stopTranslations))
     .filter((itinerary): itinerary is PreDesignedItinerary => Boolean(itinerary));
 
   if (mapped.length === 0) return PREDESIGNED_ITINERARIES;
@@ -187,8 +327,8 @@ export const getFeaturedItineraries = cache(async (): Promise<PreDesignedItinera
   });
 });
 
-export const getFeaturedItineraryBySlug = cache(async (slug: string): Promise<PreDesignedItinerary | null> => {
-  const itineraries = await getFeaturedItineraries();
+export const getFeaturedItineraryBySlug = cache(async (slug: string, locale = "en"): Promise<PreDesignedItinerary | null> => {
+  const itineraries = await getFeaturedItineraries(locale);
   return itineraries.find((itinerary) => itinerary.slug === slug) ?? null;
 });
 

@@ -1,8 +1,12 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PopularRoadTrips from "@/components/PopularRoadTrips";
 import Image from "next/image";
+import Link from "next/link";
 import { getPortLouisGuide } from "@/data/quick-guide-translations";
+import PocketAdBanner from "@/components/PocketAdBanner";
+import CarRentalAdBannerInfo from "@/components/CarRentalAdBannerInfo";
 export const revalidate = 3600;
 
 export const legacyMetadata: Metadata = {
@@ -14,7 +18,33 @@ export const legacyMetadata: Metadata = {
 
 type Place = { name: string; text: string };
 
-function PlaceList({ title, items, accentKey }: { title: string; items: Place[]; accentKey: "waterfront" | "markets" | "heritage" }) {
+const PORT_LOUIS_PLACE_LINKS: Record<string, string> = {
+  "Caudan Waterfront": "/best-places-to-visit-in-mauritius/caudan-waterfront",
+  "Blue Penny Museum": "/best-places-to-visit-in-mauritius/blue-penny-museum",
+  "Aapravasi Ghat": "/best-places-to-visit-in-mauritius/aapravasi-ghat",
+  "Place d'Armes": "/best-places-to-visit-in-mauritius/port-louis",
+  "Central Market": "/best-places-to-visit-in-mauritius/port-louis-market",
+  "Jummah Mosque":
+    "/best-places-to-visit-in-mauritius/jummah-mosque-one-of-the-most-beautiful-mosques-in-mauritius",
+  "Kwan Tee Pagoda":
+    "/best-places-to-visit-in-mauritius/chinese-pagoda-kwan-tee-pagoda",
+  Chinatown: "/best-places-to-visit-in-mauritius/chinatown",
+  "St Louis Cathedral":
+    "/best-places-to-visit-in-mauritius/st-louis-cathedral-the-historic-stone-church-of-mauritius",
+  "Fort Adelaide": "/best-places-to-visit-in-mauritius/citadel-fort",
+  "Champ de Mars": "/best-places-to-visit-in-mauritius/champ-de-mars",
+};
+
+
+function PlaceList({
+  title,
+  items,
+  accentKey,
+}: {
+  title: string;
+  items: Place[];
+  accentKey: "waterfront" | "markets" | "heritage";
+}) {
   const colorByTitle: Record<string, { heading: string; className: string }> = {
     waterfront: {
       heading: "#0876bd",
@@ -43,7 +73,16 @@ function PlaceList({ title, items, accentKey }: { title: string; items: Place[];
               className="mr-1.5  w-[6px] h-[6px] rounded-full "
               style={{ backgroundColor: accent.heading }}
             ></div>
-            <strong className="text-[15px]">{item.name}</strong>
+            {PORT_LOUIS_PLACE_LINKS[item.name] ? (
+              <Link
+                href={PORT_LOUIS_PLACE_LINKS[item.name]}
+                className="text-[15px] font-bold text-inherit hover:underline"
+              >
+                {item.name}
+              </Link>
+            ) : (
+              <strong className="text-[15px]">{item.name}</strong>
+            )}
             <span className="text-[#000] text-[13px]"> - {item.text}</span>
           </li>
         ))}
@@ -74,17 +113,26 @@ export default async function ADayInPortLouisPage({
   const { locale } = await params;
   const t = getPortLouisGuide(locale);
   const portSections = [
-    { title: t.waterfrontTitle, items: t.waterfront, accentKey: "waterfront" as const },
+    {
+      title: t.waterfrontTitle,
+      items: t.waterfront,
+      accentKey: "waterfront" as const,
+    },
     { title: t.marketsTitle, items: t.markets, accentKey: "markets" as const },
-    { title: t.heritageTitle, items: t.heritage, accentKey: "heritage" as const },
+    {
+      title: t.heritageTitle,
+      items: t.heritage,
+      accentKey: "heritage" as const,
+    },
   ];
   return (
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
-      <article className="max-w-6xl mx-auto pt-30 pb-20 px-4 xl:px-0">
+      <article className="max-w-7xl mx-auto pt-30 pb-20 px-4 xl:px-0">
         <header>
           <h1 className="font-serif text-[clamp(2rem,7vw,2.4rem)] font-bold leading-none tracking-tight text-[#172c40]">
-            {t.titlePrefix} <em className="font-normal text-[#e75a30]">{t.titleEmphasis}</em>
+            {t.titlePrefix}{" "}
+            <em className="font-normal text-[#e75a30]">{t.titleEmphasis}</em>
           </h1>
           <p className="mt-2 text-[12px] font-bold uppercase tracking-wide text-[#ea582f]">
             {t.subtitle}
@@ -103,13 +151,15 @@ export default async function ADayInPortLouisPage({
               {t.walkCity}
             </p>
             {portSections.map((section) => (
-              <PlaceList key={section.title} title={section.title} items={section.items} accentKey={section.accentKey} />
+              <PlaceList
+                key={section.title}
+                title={section.title}
+                items={section.items}
+                accentKey={section.accentKey}
+              />
             ))}
           </div>
-          <div
-            className="relative"
-            aria-label={t.mapLabel}
-          >
+          <div className="relative" aria-label={t.mapLabel}>
             {/* Change w-48 and h-48 to any size you want */}
             <div className=" relative h-80 md:h-70 lg:h-100  w-80 md:w-70 lg:w-100  overflow-hidden">
               <Image
@@ -144,28 +194,32 @@ export default async function ADayInPortLouisPage({
               "Street Food & Local",
               "Chinatown & Casual",
               "Caudan & Smart",
-            ].map((_group, index) => (
+            ].map((_group, index) =>
               (() => {
                 const group = t.restaurantGroups[index];
                 return (
-              <section key={group}>
-                <h3 className="border-b border-[#e4e0da] pb-2 font-serif text-[14px] font-bold text-[#c24735]">
-                  {group}
-                </h3>
-                <ul className="space-y-2 pt-3">
-                  {t.restaurants
-                    .slice(index * 3, index * 3 + 3)
-                    .map(([name, description]) => (
-                      <li key={name}>
-                        <strong className="block text-[16px]">{name}</strong>
-                        <span className="text-[#657077]">{description}</span>
-                      </li>
-                    ))}
-                </ul>
-              </section>
+                  <section key={group}>
+                    <h3 className="border-b border-[#e4e0da] pb-2 font-serif text-[14px] font-bold text-[#c24735]">
+                      {group}
+                    </h3>
+                    <ul className="space-y-2 pt-3">
+                      {t.restaurants
+                        .slice(index * 3, index * 3 + 3)
+                        .map(([name, description]) => (
+                          <li key={name}>
+                            <strong className="block text-[16px]">
+                              {name}
+                            </strong>
+                            <span className="text-[#657077]">
+                              {description}
+                            </span>
+                          </li>
+                        ))}
+                    </ul>
+                  </section>
                 );
-              })()
-            ))}
+              })(),
+            )}
           </div>
         </section>
 
@@ -173,9 +227,7 @@ export default async function ADayInPortLouisPage({
           <h2 className="font-serif text-[15px] font-bold text-[#ed6736]">
             {t.eatLocalTitle}
           </h2>
-          <p className="mt-1 text-[#56646e]">
-            {t.eatLocal}
-          </p>
+          <p className="mt-1 text-[#56646e]">{t.eatLocal}</p>
         </aside>
       </article>
       <style>{`
@@ -186,9 +238,12 @@ export default async function ADayInPortLouisPage({
         @media (min-width: 640px) { .port-section-title { font-size: 16px; } }
       `}</style>
 
-      <article className="max-w-6xl mx-auto pb-30 px-4 lg:px-0">
+       <PocketAdBanner />
+
+      <article className="max-w-7xl mx-auto pb-10 pt-20 px-4 lg:px-0">
         <h1 className="font-serif text-[clamp(2rem,7vw,2.4rem)] font-bold leading-none tracking-tight text-[#172c40] pb-10">
-          {t.secondTitlePrefix} <em className="font-normal text-[#e75a30]">Port-Louis</em>
+          {t.secondTitlePrefix}{" "}
+          <em className="font-normal text-[#e75a30]">Port-Louis</em>
         </h1>
         <div className="w-full">
           <Image
@@ -201,6 +256,8 @@ export default async function ADayInPortLouisPage({
           />
         </div>
       </article>
+<CarRentalAdBannerInfo />
+      <PopularRoadTrips locale={locale} />
       <Footer />
     </main>
   );

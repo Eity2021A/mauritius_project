@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import HiddenGems from "@/components/HiddenGems";
+import PopularRoadTrips from "@/components/PopularRoadTrips";
+import { Link } from "@/i18n/navigation";
 import type { LucideIcon } from "lucide-react";
 import {
   Landmark,
@@ -15,6 +18,8 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { getRegionGuide } from "@/data/quick-guide-translations";
+import CarRentalAdBanner from "@/components/CarRentalAdBanner";
+import PocketAdBanner from "@/components/PocketAdBanner";
 
 export const revalidate = 3600;
 
@@ -28,6 +33,7 @@ export const legacyMetadata: Metadata = {
 const westPlaces: {
   name: string;
   text: string;
+  href?: string;
   icon: LucideIcon;
   color: string;
   bg: string;
@@ -35,6 +41,7 @@ const westPlaces: {
   {
     name: "Flic en Flac",
     text: "The west's main base - long beach, calm lagoon & sunsets.",
+    href: "/beaches-in-mauritius/flic-en-flac",
     icon: TreePalm,
     color: "#3da8da",
     bg: "#eaf7ff",
@@ -42,6 +49,7 @@ const westPlaces: {
   {
     name: "Tamarin Bay",
     text: "Laid-back surf beach & the gateway to dolphin trips.",
+    href: "/beaches-in-mauritius/tamarin",
     icon: Waves,
     color: "#2e9ed2",
     bg: "#e8f6fc",
@@ -49,6 +57,7 @@ const westPlaces: {
   {
     name: "Black River",
     text: "Ocean hub for dolphin & whale watching and cruises.",
+    href: "/top-activities-mauritius/swim-with-dolphins-west-coast",
     icon: Sailboat,
     color: "#51a9d6",
     bg: "#eaf7ff",
@@ -56,6 +65,7 @@ const westPlaces: {
   {
     name: "Le Morne",
     text: "UNESCO mountain, lagoon & beach - kitesurf & hike.",
+    href: "/beaches-in-mauritius/le-morne",
     icon: Mountain,
     color: "#ef8a54",
     bg: "#fff0e7",
@@ -63,6 +73,7 @@ const westPlaces: {
   {
     name: "La Preneuse",
     text: "Quiet local beach with the historic Martello Tower.",
+    href: "/beaches-in-mauritius/la-preneuse",
     icon: MapPin,
     color: "#55ae69",
     bg: "#edf8ef",
@@ -70,6 +81,7 @@ const westPlaces: {
   {
     name: "Chamarel",
     text: "Waterfall, Seven Coloured Earth & rum up in the hills.",
+    href: "/best-places-to-visit-in-mauritius/chamarel-village",
     icon: Landmark,
     color: "#ef8a54",
     bg: "#fff0e7",
@@ -77,6 +89,7 @@ const westPlaces: {
   {
     name: "Black River Gorges",
     text: "Native forest, river birds & viewpoints for hikers.",
+    href: "/top-activities-mauritius/black-river-gorges",
     icon: Leaf,
     color: "#56ae64",
     bg: "#edf8ef",
@@ -84,6 +97,7 @@ const westPlaces: {
   {
     name: "Ilot Benitiers & Crystal Rock",
     text: "Catamaran to a sandy islet & turquoise Crystal Rock.",
+    href: "/top-activities-mauritius/le-morne-discovery-full-day-excursion-ile-aux-benitiers",
     icon: ShipWheel,
     color: "#51a9d6",
     bg: "#eaf7ff",
@@ -129,6 +143,30 @@ const westDaySteps: {
   },
 ];
 
+const westGettingAroundLinks = [
+  { label: "Car Rental", href: "/car-rental-mauritius" },
+  { label: "Transfer", href: "/mauritius-transfer-airport-hotel" },
+  { label: "Taxi", href: "/mauritius-taxi" },
+  {
+    label: "Boat Operators",
+    href: "/top-activities-mauritius/le-morne-discovery-full-day-excursion-ile-aux-benitiers",
+  },
+] as const;
+
+const westHiddenGemSlugs = [
+  "west-mauritius-travel-guide",
+  "best-restaurants-in-west-mauritius-2026-guide",
+  "best-snorkelling-spots-in-mauritius",
+  "exploring-chamarel-mauritius",
+] as const;
+
+const westHiddenGemHrefs = [
+  "https://www.mauritiusexplored.com/blog/west-mauritius-travel-guide",
+  "https://www.mauritiusexplored.com/blog/best-restaurants-in-west-mauritius-2026-guide",
+  "https://www.mauritiusexplored.com/blog/best-snorkelling-spots-in-mauritius",
+  "https://www.mauritiusexplored.com/blog/exploring-chamarel-mauritius",
+] as const;
+
 function WestCoastMap() {
   return (
     <figure className="mx-auto w-full max-w-[500px]">
@@ -139,8 +177,20 @@ function WestCoastMap() {
         className="h-auto w-full"
       >
         <defs>
-          <filter id="west-map-shadow" x="-15%" y="-15%" width="130%" height="130%">
-            <feDropShadow dx="0" dy="14" stdDeviation="11" floodColor="#000000" floodOpacity=".12" />
+          <filter
+            id="west-map-shadow"
+            x="-15%"
+            y="-15%"
+            width="130%"
+            height="130%"
+          >
+            <feDropShadow
+              dx="0"
+              dy="14"
+              stdDeviation="11"
+              floodColor="#000000"
+              floodOpacity=".12"
+            />
           </filter>
         </defs>
         <path
@@ -193,10 +243,21 @@ function WestCoastMap() {
             </text>
           </g>
         ))}
-        <g fill="#6d6d6d" fontFamily="Georgia, 'Times New Roman', serif" fontSize="10" fontStyle="italic">
-          <text x="208" y="96">Moka</text>
-          <text x="229" y="209">Grand Bassin</text>
-          <text x="226" y="290">Bel Ombre</text>
+        <g
+          fill="#6d6d6d"
+          fontFamily="Georgia, 'Times New Roman', serif"
+          fontSize="10"
+          fontStyle="italic"
+        >
+          <text x="208" y="96">
+            Moka
+          </text>
+          <text x="229" y="209">
+            Grand Bassin
+          </text>
+          <text x="226" y="290">
+            Bel Ombre
+          </text>
         </g>
       </svg>
       <figcaption className="-mt-5 text-center font-serif text-xs italic text-[#8a8f91]">
@@ -206,22 +267,40 @@ function WestCoastMap() {
   );
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
   const { locale } = await params;
   const t = getRegionGuide(locale, "west");
-  return { title: t.metadata.title, description: t.metadata.description, alternates: { canonical: "/west-mauritius-travel-guide" } };
+  return {
+    title: t.metadata.title,
+    description: t.metadata.description,
+    alternates: { canonical: "/west-mauritius-travel-guide" },
+  };
 }
 
-export default async function WestMauritiusTravelGuidePage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function WestMauritiusTravelGuidePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   const { locale } = await params;
   const t = getRegionGuide(locale, "west");
-  const translatedPlaces = westPlaces.map((place, index) => ({ ...place, ...t.places[index] }));
-  const translatedSteps = westDaySteps.map((step, index) => ({ ...step, ...t.steps[index] }));
+  const translatedPlaces = westPlaces.map((place, index) => ({
+    ...place,
+    ...t.places[index],
+  }));
+  const translatedSteps = westDaySteps.map((step, index) => ({
+    ...step,
+    ...t.steps[index],
+  }));
   return (
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
 
-      <article className="mx-auto w-full max-w-6xl px-4 pt-24 pb-20 sm:px-6 lg:pt-28 xl:px-0">
+      <article className="mx-auto w-full max-w-6xl px-4 pt-24 pb-10 sm:px-6 lg:pt-28 xl:px-0">
         <header>
           {/* <div className="flex flex-wrap items-center justify-between gap-3 text-[11px] font-semibold uppercase tracking-wide text-[#ec5f25]">
             <div className="flex items-center gap-2 normal-case tracking-normal">
@@ -240,7 +319,9 @@ export default async function WestMauritiusTravelGuidePage({ params }: { params:
           </p>
           <h1 className="mt-2 font-serif text-[clamp(2rem,5vw,3.4rem)] font-bold leading-tight tracking-tight text-[#151f2b]">
             {t.titlePrefix}{" "}
-            <span className="font-normal italic text-[#f16522]">{t.titleEmphasis}</span>
+            <span className="font-normal italic text-[#f16522]">
+              {t.titleEmphasis}
+            </span>
           </h1>
           <p className="mt-4 max-w-4xl font-serif text-sm italic leading-relaxed text-[#6f7e88] sm:text-base">
             {t.intro}
@@ -249,7 +330,9 @@ export default async function WestMauritiusTravelGuidePage({ params }: { params:
 
         <section className="mt-9 grid gap-7 lg:grid-cols-[1fr_.98fr] lg:items-start">
           <div>
-            <h2 className="font-serif text-2xl font-bold text-[#ef5e25]">{t.whereToGo}</h2>
+            <h2 className="font-serif text-2xl font-bold text-[#ef5e25]">
+              {t.whereToGo}
+            </h2>
             <div className="mt-4 space-y-4">
               {translatedPlaces.map((place) => {
                 const PlaceIcon = place.icon;
@@ -264,7 +347,18 @@ export default async function WestMauritiusTravelGuidePage({ params }: { params:
                     </span>
                     <div className="pt-0.5">
                       <h3 className="font-serif text-lg font-bold leading-none text-[#1b2d3c]">
-                        {place.name}
+                        {place.href ? (
+                          <Link
+                            href={place.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="transition hover:text-[#f16522]"
+                          >
+                            {place.name}
+                          </Link>
+                        ) : (
+                          place.name
+                        )}
                       </h3>
                       <p className="mt-1 text-xs leading-relaxed text-[#65737d] sm:text-sm">
                         {place.text}
@@ -277,7 +371,7 @@ export default async function WestMauritiusTravelGuidePage({ params }: { params:
           </div>
 
           <div className="grid gap-4">
-                  <figure className="mx-auto w-full max-w-[370px]">
+            <figure className="mx-auto w-full max-w-[370px]">
               <Image
                 src="/images/quick-trips/west-mauritius-map.png"
                 alt={t.mapAlt}
@@ -293,10 +387,15 @@ export default async function WestMauritiusTravelGuidePage({ params }: { params:
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
               <section className="rounded-md bg-[#f5f2ef] px-5 py-5">
-                <h2 className="font-serif text-xl font-bold text-[#f16522]">{t.driveTimesTitle}</h2>
+                <h2 className="font-serif text-xl font-bold text-[#f16522]">
+                  {t.driveTimesTitle}
+                </h2>
                 <div className="mt-3 space-y-2 text-xs leading-relaxed text-[#61707a] ">
                   {t.driveTimes.map(([from, to, time]) => (
-                    <p key={`${from}-${to}`} className="flex flex-wrap items-center gap-x-1">
+                    <p
+                      key={`${from}-${to}`}
+                      className="flex flex-wrap items-center gap-x-1"
+                    >
                       <span>{from}</span>
                       <span className="text-[#f16522]">-&gt;</span>
                       <span>{to}</span>
@@ -307,7 +406,9 @@ export default async function WestMauritiusTravelGuidePage({ params }: { params:
               </section>
 
               <section className="rounded-md bg-[#f5f2ef] px-5 py-5">
-                <h2 className="font-serif text-xl font-bold text-[#f16522]">{t.goodToKnowTitle}</h2>
+                <h2 className="font-serif text-xl font-bold text-[#f16522]">
+                  {t.goodToKnowTitle}
+                </h2>
                 <p className="mt-3 text-xs leading-relaxed text-[#61707a]">
                   {t.goodToKnow}
                 </p>
@@ -318,15 +419,37 @@ export default async function WestMauritiusTravelGuidePage({ params }: { params:
 
         <section className="mt-8 grid gap-4 rounded-md bg-[#f5f2ef] px-5 py-5 md:grid-cols-2 md:px-7">
           <div className="md:border-r md:border-[#ded6cf] md:pr-7">
-            <h2 className="font-serif text-xl font-bold text-[#f16522]">{t.gettingAroundTitle}</h2>
+            <h2 className="font-serif text-xl font-bold text-[#f16522]">
+              {t.gettingAroundTitle}
+            </h2>
             <ul className="mt-3 space-y-1.5 text-xs leading-relaxed text-[#61707a] sm:text-sm">
-              {t.gettingAround.map(([label, text]) => (
-                <li key={label}><strong className="text-[#1d3144]">{label}</strong> - {text}</li>
-              ))}
+              {t.gettingAround.map(([label, text], index) => {
+                const link = westGettingAroundLinks[index];
+
+                return (
+                  <li key={label}>
+                    {link ? (
+                      <Link
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-bold text-[#1d3144] transition hover:text-[#f16522]"
+                      >
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <strong className="text-[#1d3144]">{label}</strong>
+                    )}{" "}
+                    - {text}
+                  </li>
+                );
+              })}
             </ul>
           </div>
           <div className="md:pl-3">
-            <h2 className="font-serif text-xl font-bold text-[#f16522]">{t.bestForTitle}</h2>
+            <h2 className="font-serif text-xl font-bold text-[#f16522]">
+              {t.bestForTitle}
+            </h2>
             <p className="mt-3 text-xs leading-relaxed text-[#61707a] sm:text-sm">
               {t.bestFor}
             </p>
@@ -334,7 +457,9 @@ export default async function WestMauritiusTravelGuidePage({ params }: { params:
         </section>
 
         <section className="mt-8 rounded-md bg-[#fff0e7] px-5 py-5 sm:px-7">
-          <h2 className="font-serif text-xl font-bold text-[#f16522]">{t.perfectDayTitle}</h2>
+          <h2 className="font-serif text-xl font-bold text-[#f16522]">
+            {t.perfectDayTitle}
+          </h2>
           <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {translatedSteps.map((step) => {
               const StepIcon = step.icon;
@@ -343,19 +468,28 @@ export default async function WestMauritiusTravelGuidePage({ params }: { params:
                 <div key={step.number} className="flex items-start gap-3">
                   <span className="relative grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#f16522] font-serif text-sm font-bold text-white">
                     {step.number}
-                
                   </span>
                   <div>
-                    <h3 className="font-serif text-sm font-bold text-[#1d3144]">{step.title}</h3>
-                    <p className="text-[11px] leading-snug text-[#6b747b] sm:text-xs">{step.text}</p>
+                    <h3 className="font-serif text-sm font-bold text-[#1d3144]">
+                      {step.title}
+                    </h3>
+                    <p className="text-[11px] leading-snug text-[#6b747b] sm:text-xs">
+                      {step.text}
+                    </p>
                   </div>
                 </div>
               );
             })}
           </div>
         </section>
+        <HiddenGems
+          featuredSlugs={westHiddenGemSlugs}
+          featuredHrefs={westHiddenGemHrefs}
+        />
       </article>
-
+      <CarRentalAdBanner />
+      <PopularRoadTrips locale={locale} />
+      <PocketAdBanner />
       <Footer />
     </main>
   );

@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { localizeStaticPage } from "@/lib/static-page-localizer";
-import type { LucideIcon } from "lucide-react";
+import PopularRoadTrips from "@/components/PopularRoadTrips";
+import { Link } from "@/i18n/navigation";
 import {
-  Anchor,
-  Fish,
-  Shell,
-  ShieldCheck,
-  Turtle,
-  Waves,
-} from "lucide-react";
+  localizeStaticPage,
+  staticPageText,
+} from "@/lib/static-page-localizer";
+import { normalizeLocale } from "@/i18n/routing";
+import type { LucideIcon } from "lucide-react";
+import { Anchor, Fish, Shell, ShieldCheck, Turtle, Waves } from "lucide-react";
+import CarRentalAdBanner from "@/components/CarRentalAdBanner";
+import PocketAdBanner from "@/components/PocketAdBanner";
 
 export const revalidate = 3600;
 
@@ -32,6 +33,14 @@ const turtleStyles = {
   "West & South-West": "bg-[#fff0e6] text-[#f16522]",
   "East & South": "bg-[#eaf6ed] text-[#2f8e48]",
 };
+
+const turtleSpotLinks = [
+  "/beaches-in-mauritius/ilot-gabriel-ile-plate",
+  "/beaches-in-mauritius/le-morne",
+  "/beaches-in-mauritius/trou-aux-biches",
+  "/beaches-in-mauritius/blue-bay",
+  "/best-places-to-visit-in-mauritius/ile-aux-cerfs",
+] as const;
 
 const turtleSpots: {
   name: string;
@@ -102,9 +111,418 @@ const respectTips = [
   ["Reef-safe only", "Sunscreen that spares the coral."],
 ];
 
-export default async function SwimWithSeaTurtlesInMauritiusPage({ params }: { params: Promise<{ locale: string }> }) {
+type SupportedTurtleLocale = "fr" | "de" | "it" | "es" | "ru";
+
+const TURTLE_PAGE_COPY: Record<
+  SupportedTurtleLocale,
+  {
+    kicker: string;
+    titleMain: string;
+    titleAccent: string;
+    intro: string;
+    regions: Record<string, string>;
+    seeLabel: string;
+    goLabel: string;
+    spots: Record<
+      string,
+      { name: string; tag: string; region: string; see: string; go: string }
+    >;
+    extraTitle: string;
+    extraSpots: Record<string, { name: string; detail: string }>;
+    respectTitle: string;
+    respectTips: [string, string][];
+    finalNote: string;
+  }
+> = {
+  fr: {
+    kicker: "Recifs, lagons et vie marine",
+    titleMain: "Nager avec",
+    titleAccent: "les tortues marines",
+    intro:
+      "Ou partager l'eau avec des tortues vertes et imbriquees sauvages, des lagons faciles depuis la plage aux recifs isoles accessibles en bateau.",
+    regions: {
+      North: "Nord",
+      "West & South-West": "Ouest et sud-ouest",
+      "East & South": "Est et sud",
+    },
+    seeLabel: "Voir",
+    goLabel: "Y aller",
+    spots: {
+      "Ile Plate (Flat Island)": {
+        name: "Tortues de l'Île Plate",
+        tag: "Sortie bateau",
+        region: "Nord - au large",
+        see: "Île isolée, eau claire et récifs sains; les tortues s'approchent souvent.",
+        go: "Excursion en bateau - plus calme que la côte principale.",
+      },
+      "Le Morne Brabant": {
+        name: "Lagon du Morne",
+        tag: "Snorkeling depuis la plage",
+        region: "Sud-ouest",
+        see: "Lagon peu profond et calme avec zones récifales; observations fréquentes près du corail.",
+        go: "Nage depuis la plage - allez tôt pour une eau claire.",
+      },
+      "Trou aux Biches": {
+        name: "Récif de Trou aux Biches",
+        tag: "Lagon facile",
+        region: "Nord",
+        see: "Un lagon calme, adapté aux débutants, avec une courte nage vers le récif des tortues.",
+        go: "Entrée directe depuis la plage - meilleur le matin.",
+      },
+      "Blue Bay Marine Park": {
+        name: "Parc marin de Blue Bay",
+        tag: "Parc marin",
+        region: "Sud",
+        see: "Réserve protégée avec jardins coralliens, très belle clarté et tortues de passage.",
+        go: "Prenez une sortie guidée - crème solaire compatible récifs.",
+      },
+      "Ile aux Cerfs": {
+        name: "Récifs de l'Île aux Cerfs",
+        tag: "Journée sur une île",
+        region: "Est",
+        see: "Lagon clair avec zones récifales proches; tortues parmi les spots de snorkeling.",
+        go: "Inclus dans la plupart des sorties catamaran à la journée.",
+      },
+    },
+    extraTitle: "A voir aussi",
+    extraSpots: {
+      "Belle Mare": {
+        name: "Belle Mare",
+        detail: "Recif calme de la cote est",
+      },
+      "Flic en Flac": {
+        name: "Flic en Flac",
+        detail: "Tortues de recif quand la mer est calme",
+      },
+      "Mont Choisy": { name: "Mont Choisy", detail: "Snorkeling tot le matin" },
+    },
+    respectTitle: "Nager avec respect",
+    respectTips: [
+      ["Gardez vos distances", "Ne les touchez et ne les poursuivez jamais."],
+      ["Laissez-les respirer", "Ne bloquez pas leur remontee pour respirer."],
+      [
+        "Ne les nourrissez pas",
+        "Laissez les tortues se comporter naturellement.",
+      ],
+      [
+        "Recif-safe seulement",
+        "Utilisez une creme solaire qui epargne le corail.",
+      ],
+    ],
+    finalNote:
+      "Il n'y a jamais de garantie avec les animaux sauvages, et c'est justement ce qui rend une vraie rencontre si speciale.",
+  },
+  de: {
+    kicker: "Riffe, Lagunen und Meeresleben",
+    titleMain: "Schwimmen mit",
+    titleAccent: "Meeresschildkroten",
+    intro:
+      "Wo man das Wasser mit wilden grunen und Karettschildkroten teilt: von einfachen Strandlagunen bis zu abgelegenen Riffen per Boot.",
+    regions: {
+      North: "Norden",
+      "West & South-West": "Westen und Sudwesten",
+      "East & South": "Osten und Suden",
+    },
+    seeLabel: "Sehen",
+    goLabel: "Hin",
+    spots: {
+      "Ile Plate (Flat Island)": {
+        name: "Schildkröten bei Île Plate",
+        tag: "Bootsausflug",
+        region: "Norden - vor der Küste",
+        see: "Abgelegene Insel, klares Wasser und gesunde Riffe; Schildkröten kommen oft nahe.",
+        go: "Bootsausflug - ruhiger als das Festland.",
+      },
+      "Le Morne Brabant": {
+        name: "Lagune von Le Morne",
+        tag: "Schnorcheln vom Strand",
+        region: "Südwesten",
+        see: "Flache, ruhige Lagune mit Riffstellen; häufige Sichtungen am Korallensaum.",
+        go: "Vom Strand schwimmen - früh gehen für klares Wasser.",
+      },
+      "Trou aux Biches": {
+        name: "Schildkrötenriff Trou aux Biches",
+        tag: "Einfache Lagune",
+        region: "Norden",
+        see: "Ruhige, anfängerfreundliche Lagune mit kurzem Schwimmen zum Schildkrötenriff.",
+        go: "Direkter Strandeinstieg - morgens am besten.",
+      },
+      "Blue Bay Marine Park": {
+        name: "Meerespark Blue Bay",
+        tag: "Meerespark",
+        region: "Süden",
+        see: "Geschütztes Reservat mit Korallengärten, sehr klarer Sicht und vorbeiziehenden Schildkröten.",
+        go: "Geführte Tour nehmen - riffschonende Sonnencreme.",
+      },
+      "Ile aux Cerfs": {
+        name: "Riffe der Île aux Cerfs",
+        tag: "Inseltag",
+        region: "Osten",
+        see: "Klare Lagune mit nahen Riffbereichen; Schildkröten unter den Schnorchelspots.",
+        go: "Bei den meisten Katamaran-Tagesausflügen dabei.",
+      },
+    },
+    extraTitle: "Auch einen Blick wert",
+    extraSpots: {
+      "Belle Mare": { name: "Belle Mare", detail: "Ruhiges Ostkustenriff" },
+      "Flic en Flac": {
+        name: "Flic en Flac",
+        detail: "Riffschildkroten bei ruhiger See",
+      },
+      "Mont Choisy": {
+        name: "Mont Choisy",
+        detail: "Schnorcheln am fruhen Morgen",
+      },
+    },
+    respectTitle: "Mit Respekt schwimmen",
+    respectTips: [
+      ["Abstand halten", "Niemals berühren oder verfolgen."],
+      ["Luft lassen", "Den Weg nach oben zum Atmen nicht blockieren."],
+      ["Nicht füttern", "Schildkröten natürlich handeln lassen."],
+      ["Nur riffschonend", "Sonnencreme verwenden, die Korallen schont."],
+    ],
+    finalNote:
+      "Bei wilden Tieren gibt es keine Garantie - genau das macht eine echte Begegnung so besonders.",
+  },
+  it: {
+    kicker: "Reef, lagune e vita marina",
+    titleMain: "Nuotare con",
+    titleAccent: "le tartarughe marine",
+    intro:
+      "Dove condividere l'acqua con tartarughe verdi e embricate selvatiche, dalle lagune facili dalla spiaggia ai reef remoti raggiunti in barca.",
+    regions: {
+      North: "Nord",
+      "West & South-West": "Ovest e sud-ovest",
+      "East & South": "Est e sud",
+    },
+    seeLabel: "Vedi",
+    goLabel: "Vai",
+    spots: {
+      "Ile Plate (Flat Island)": {
+        name: "Tartarughe a Île Plate",
+        tag: "Gita in barca",
+        region: "Nord - al largo",
+        see: "Isola remota, acqua chiara e reef sani; le tartarughe spesso si avvicinano.",
+        go: "Escursione in barca - più tranquilla della costa principale.",
+      },
+      "Le Morne Brabant": {
+        name: "Laguna di Le Morne",
+        tag: "Snorkeling da riva",
+        region: "Sud-ovest",
+        see: "Laguna bassa e calma con zone di reef; avvistamenti frequenti vicino al corallo.",
+        go: "Nuota dalla riva - vai presto per acqua limpida.",
+      },
+      "Trou aux Biches": {
+        name: "Reef di Trou aux Biches",
+        tag: "Laguna facile",
+        region: "Nord",
+        see: "Laguna calma e adatta ai principianti con una breve nuotata verso il reef delle tartarughe.",
+        go: "Ingresso diretto dalla spiaggia - meglio al mattino.",
+      },
+      "Blue Bay Marine Park": {
+        name: "Parco marino Blue Bay",
+        tag: "Parco marino",
+        region: "Sud",
+        see: "Riserva protetta con giardini di corallo, grande visibilita e tartarughe di passaggio.",
+        go: "Fai un tour guidato - crema solare reef-safe.",
+      },
+      "Ile aux Cerfs": {
+        name: "Reef dell'Île aux Cerfs",
+        tag: "Gita sull'isola",
+        region: "Est",
+        see: "Laguna chiara con reef vicini; tartarughe tra gli spot di snorkeling.",
+        go: "Inclusa nella maggior parte delle gite in catamarano.",
+      },
+    },
+    extraTitle: "Da considerare anche",
+    extraSpots: {
+      "Belle Mare": {
+        name: "Belle Mare",
+        detail: "Reef tranquillo della costa est",
+      },
+      "Flic en Flac": {
+        name: "Flic en Flac",
+        detail: "Tartarughe del reef quando il mare e calmo",
+      },
+      "Mont Choisy": {
+        name: "Mont Choisy",
+        detail: "Snorkeling al mattino presto",
+      },
+    },
+    respectTitle: "Nuota con rispetto",
+    respectTips: [
+      ["Mantieni la distanza", "Non toccarle e non inseguirle mai."],
+      ["Lasciale respirare", "Non bloccare la risalita per respirare."],
+      ["Non nutrirle", "Lascia che le tartarughe si comportino naturalmente."],
+      ["Solo reef-safe", "Crema solare che rispetta il corallo."],
+    ],
+    finalNote:
+      "Con gli animali selvatici non ci sono garanzie, ed e proprio questo che rende speciale un vero incontro.",
+  },
+  es: {
+    kicker: "Arrecifes, lagunas y vida marina",
+    titleMain: "Nadar con",
+    titleAccent: "tortugas marinas",
+    intro:
+      "Donde compartir el agua con tortugas verdes y carey salvajes, desde lagunas faciles junto a la playa hasta arrecifes remotos accesibles en barco.",
+    regions: {
+      North: "Norte",
+      "West & South-West": "Oeste y suroeste",
+      "East & South": "Este y sur",
+    },
+    seeLabel: "Ver",
+    goLabel: "Ir",
+    spots: {
+      "Ile Plate (Flat Island)": {
+        name: "Tortugas en Île Plate",
+        tag: "Excursión en barco",
+        region: "Norte - mar adentro",
+        see: "Isla remota, agua clara y arrecifes sanos; las tortugas suelen acercarse.",
+        go: "Excursión en barco - más tranquila que la costa principal.",
+      },
+      "Le Morne Brabant": {
+        name: "Laguna de Le Morne",
+        tag: "Snorkel desde la orilla",
+        region: "Suroeste",
+        see: "Laguna poco profunda y tranquila con zonas de arrecife; avistamientos frecuentes junto al coral.",
+        go: "Nada desde la playa - ve temprano para agua clara.",
+      },
+      "Trou aux Biches": {
+        name: "Arrecife de Trou aux Biches",
+        tag: "Laguna fácil",
+        region: "Norte",
+        see: "Laguna tranquila y apta para principiantes, con un nado corto hasta el arrecife de tortugas.",
+        go: "Entrada directa desde la playa - mejor por la mañana.",
+      },
+      "Blue Bay Marine Park": {
+        name: "Parque marino Blue Bay",
+        tag: "Parque marino",
+        region: "Sur",
+        see: "Reserva protegida con jardines coralinos, gran claridad y tortugas de paso.",
+        go: "Toma un tour guiado - protector solar reef-safe.",
+      },
+      "Ile aux Cerfs": {
+        name: "Arrecifes de Île aux Cerfs",
+        tag: "Día de isla",
+        region: "Este",
+        see: "Laguna clara con zonas de arrecife cercanas; tortugas entre los puntos de snorkel.",
+        go: "Incluido en la mayoría de excursiones de catamarán.",
+      },
+    },
+    extraTitle: "Tambien merece una mirada",
+    extraSpots: {
+      "Belle Mare": {
+        name: "Belle Mare",
+        detail: "Arrecife tranquilo de la costa este",
+      },
+      "Flic en Flac": {
+        name: "Flic en Flac",
+        detail: "Tortugas de arrecife cuando el mar esta calmado",
+      },
+      "Mont Choisy": {
+        name: "Mont Choisy",
+        detail: "Snorkel temprano por la manana",
+      },
+    },
+    respectTitle: "Nada con respeto",
+    respectTips: [
+      ["Mantén la distancia", "Nunca las toques ni persigas."],
+      ["Dales aire", "No bloquees su camino para subir a respirar."],
+      ["No las alimentes", "Deja que las tortugas se comporten naturalmente."],
+      ["Solo reef-safe", "Protector solar que no dana el coral."],
+    ],
+    finalNote:
+      "No hay garantias con animales salvajes, y eso es exactamente lo que hace tan especial un encuentro real.",
+  },
+  ru: {
+    kicker: "Рифы, лагуны и морская жизнь",
+    titleMain: "Плавание с",
+    titleAccent: "морскими черепахами",
+    intro:
+      "Где разделить воду с дикими зелеными и биссовыми черепахами: от простых лагун у пляжа до удаленных рифов, доступных на лодке.",
+    regions: {
+      North: "Север",
+      "West & South-West": "Запад и юго-запад",
+      "East & South": "Восток и юг",
+    },
+    seeLabel: "Где смотреть",
+    goLabel: "Как ехать",
+    spots: {
+      "Ile Plate (Flat Island)": {
+        name: "Черепахи у Île Plate",
+        tag: "Лодочная экскурсия",
+        region: "Север - у берега",
+        see: "Удаленный остров, чистая вода и здоровые рифы; черепахи часто подплывают близко.",
+        go: "Экскурсия на лодке - спокойнее, чем у основного берега.",
+      },
+      "Le Morne Brabant": {
+        name: "Лагуна Ле-Морн",
+        tag: "Сноркелинг с берега",
+        region: "Юго-запад",
+        see: "Мелкая спокойная лагуна с участками рифа; частые встречи у кораллов.",
+        go: "Плывите с берега - приезжайте рано для прозрачной воды.",
+      },
+      "Trou aux Biches": {
+        name: "Черепаший риф Trou aux Biches",
+        tag: "Легкая лагуна",
+        region: "Север",
+        see: "Спокойная лагуна для начинающих с коротким заплывом к черепашьему рифу.",
+        go: "Прямой вход с пляжа - лучше утром.",
+      },
+      "Blue Bay Marine Park": {
+        name: "Морской парк Blue Bay",
+        tag: "Морской парк",
+        region: "Юг",
+        see: "Охраняемый заповедник: коралловые сады, отличная видимость и проходящие черепахи.",
+        go: "Возьмите тур с гидом - используйте reef-safe крем.",
+      },
+      "Ile aux Cerfs": {
+        name: "Рифы Île aux Cerfs",
+        tag: "День на острове",
+        region: "Восток",
+        see: "Чистая лагуна с близкими рифами; черепахи встречаются среди мест для сноркелинга.",
+        go: "Есть в большинстве дневных катамаран-туров.",
+      },
+    },
+    extraTitle: "Также стоит посмотреть",
+    extraSpots: {
+      "Belle Mare": {
+        name: "Belle Mare",
+        detail: "Тихий риф восточного побережья",
+      },
+      "Flic en Flac": {
+        name: "Flic en Flac",
+        detail: "Рифовые черепахи в спокойную погоду",
+      },
+      "Mont Choisy": { name: "Mont Choisy", detail: "Сноркелинг ранним утром" },
+    },
+    respectTitle: "Плавайте с уважением",
+    respectTips: [
+      ["Держите дистанцию", "Никогда не трогайте и не преследуйте их."],
+      ["Дайте им воздух", "Не перекрывайте путь наверх для дыхания."],
+      ["Не кормите", "Позвольте черепахам вести себя естественно."],
+      ["Только reef-safe", "Солнцезащитный крем, который бережет кораллы."],
+    ],
+    finalNote:
+      "С дикими животными нет гарантий - именно это делает настоящую встречу такой особенной.",
+  },
+};
+
+function getTurtlePageCopy(locale: string) {
+  const activeLocale = normalizeLocale(locale);
+  return TURTLE_PAGE_COPY[activeLocale as SupportedTurtleLocale];
+}
+
+export default async function SwimWithSeaTurtlesInMauritiusPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   const { locale } = await params;
-  return localizeStaticPage((
+  const activeLocale = normalizeLocale(locale);
+  const copy = getTurtlePageCopy(activeLocale);
+  const t = (text: string) => staticPageText(activeLocale, text);
+  return localizeStaticPage(
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
 
@@ -123,17 +541,17 @@ export default async function SwimWithSeaTurtlesInMauritiusPage({ params }: { pa
           </div> */}
 
           <p className="mt-8 text-[11px] font-bold uppercase tracking-wide text-[#f16522]">
-            Reefs, Lagoons & Marine Life
+            {copy?.kicker ?? "Reefs, Lagoons & Marine Life"}
           </p>
           <h1 className="mt-2 font-serif text-[clamp(2.4rem,6vw,4rem)] font-bold leading-tight text-[#111d2a]">
-            Swim with{" "}
+            {copy?.titleMain ?? "Swim with"}{" "}
             <span className="font-serif font-normal italic text-[#f16522]">
-              Sea Turtles
+              {copy?.titleAccent ?? "Sea Turtles"}
             </span>
           </h1>
           <p className="mt-4 max-w-4xl font-serif text-sm italic leading-7 text-[#687887] sm:text-base">
-            Where to share the water with wild green and hawksbill turtles -
-            from easy lagoons off the beach to remote reefs reached by boat.
+            {copy?.intro ??
+              "Where to share the water with wild green and hawksbill turtles - from easy lagoons off the beach to remote reefs reached by boat."}
           </p>
 
           <div className="mt-4 flex flex-wrap gap-x-8 gap-y-2 text-xs text-[#445465]">
@@ -143,7 +561,7 @@ export default async function SwimWithSeaTurtlesInMauritiusPage({ params }: { pa
                   className="h-3 w-3 rounded-full"
                   style={{ backgroundColor: color }}
                 />
-                {label}
+                {copy?.regions[label] ?? t(label)}
               </span>
             ))}
           </div>
@@ -151,43 +569,59 @@ export default async function SwimWithSeaTurtlesInMauritiusPage({ params }: { pa
 
         <section className="mt-6 space-y-3">
           {turtleSpots.map(
-            ({ name, tag, region, type, see, go, icon: Icon }) => (
-              <div
-                key={name}
-                className="flex gap-4 rounded-md border border-[#e7dfd6] bg-white px-4 py-4 shadow-[0_2px_7px_rgba(36,54,67,.035)] sm:gap-5 sm:px-5"
-              >
-                <span
-                  className={`mt-1 grid h-12 w-12 shrink-0 place-items-center rounded-full ${turtleStyles[type]}`}
+            ({ name, tag, region, type, see, go, icon: Icon }, index) => {
+              const translatedSpot = copy?.spots[name];
+              const href = turtleSpotLinks[index];
+              return (
+                <div
+                  key={name}
+                  className="flex gap-4 rounded-md border border-[#e7dfd6] bg-white px-4 py-4 shadow-[0_2px_7px_rgba(36,54,67,.035)] sm:gap-5 sm:px-5"
                 >
-                  <Icon className="h-6 w-6" strokeWidth={1.8} />
-                </span>
-                <div>
-                  <h2 className="font-serif text-xl font-bold leading-tight text-[#111d2a]">
-                    {name}
-                  </h2>
-                  <p className="mt-1 text-[10px] font-bold uppercase tracking-wide text-[#2389c9]">
-                    {tag}
-                    <span className="font-serif font-normal normal-case tracking-normal text-[#7c8791]">
-                      {" "}
-                      - {region}
-                    </span>
-                  </p>
-                  <p className="mt-2 font-serif text-sm leading-6 text-[#5b6975]">
-                    <span className="font-bold text-[#000]">See</span>{" "}
-                    {see}
-                  </p>
-                  <p className="mt-1 font-serif text-sm italic leading-6 text-[#6d7b85]">
-                    <span className="font-bold text-[#f16522]">Go</span> {go}
-                  </p>
+                  <span
+                    className={`mt-1 grid h-12 w-12 shrink-0 place-items-center rounded-full ${turtleStyles[type]}`}
+                  >
+                    <Icon className="h-6 w-6" strokeWidth={1.8} />
+                  </span>
+                  <div>
+                    <h2 className="font-serif text-xl font-bold leading-tight text-[#111d2a]">
+                      <Link
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition hover:text-[#f16522]"
+                      >
+                        {translatedSpot?.name ?? t(name)}
+                      </Link>
+                    </h2>
+                    <p className="mt-1 text-[10px] font-bold uppercase tracking-wide text-[#2389c9]">
+                      {translatedSpot?.tag ?? t(tag)}
+                      <span className="font-serif font-normal normal-case tracking-normal text-[#7c8791]">
+                        {" "}
+                        - {translatedSpot?.region ?? t(region)}
+                      </span>
+                    </p>
+                    <p className="mt-2 font-serif text-sm leading-6 text-[#5b6975]">
+                      <span className="font-bold text-[#000]">
+                        {copy?.seeLabel ?? t("See")}
+                      </span>{" "}
+                      {translatedSpot?.see ?? t(see)}
+                    </p>
+                    <p className="mt-1 font-serif text-sm italic leading-6 text-[#6d7b85]">
+                      <span className="font-bold text-[#f16522]">
+                        {copy?.goLabel ?? t("Go")}
+                      </span>{" "}
+                      {translatedSpot?.go ?? t(go)}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ),
+              );
+            },
           )}
         </section>
 
         <section className="mt-3 rounded-md border border-[#e7dfd6] bg-white px-4 py-3 sm:px-5">
           <p className="text-[10px] font-bold uppercase tracking-wide text-[#2f8e48]">
-            Also Worth a Look
+            {copy?.extraTitle ?? "Also Worth a Look"}
           </p>
           <div className="mt-3 grid gap-3 text-sm sm:grid-cols-3">
             {extraSpots.map(([name, detail, color]) => (
@@ -196,19 +630,21 @@ export default async function SwimWithSeaTurtlesInMauritiusPage({ params }: { pa
                   className="mr-2 inline-block h-2.5 w-2.5 rounded-full"
                   style={{ backgroundColor: color }}
                 />
-                <span className="font-bold text-[#111d2a]">{name}</span> -{" "}
-                {detail}
+                <span className="font-bold text-[#111d2a]">
+                  {copy?.extraSpots[name]?.name ?? t(name)}
+                </span>{" "}
+                - {copy?.extraSpots[name]?.detail ?? t(detail)}
               </p>
             ))}
           </div>
         </section>
-
+        <CarRentalAdBanner />
         <section className="mt-6 rounded-md bg-[#f5f3ef] px-5 py-5 sm:px-6">
           <h2 className="font-serif text-xl font-bold text-[#f16522]">
-            Swim with respect
+            {copy?.respectTitle ?? "Swim with respect"}
           </h2>
           <div className="mt-4 grid gap-x-10 gap-y-3 sm:grid-cols-2">
-            {respectTips.map(([title, text]) => (
+            {(copy?.respectTips ?? respectTips).map(([title, text]) => (
               <p
                 key={title}
                 className="font-serif text-sm leading-6 text-[#5b6975]"
@@ -220,13 +656,16 @@ export default async function SwimWithSeaTurtlesInMauritiusPage({ params }: { pa
             ))}
           </div>
           <p className="mt-4 font-serif text-sm italic leading-6 text-[#77848e]">
-            There are no guarantees with wild animals - and that&apos;s exactly
-            what makes a real encounter so special.
+            {copy?.finalNote ??
+              "There are no guarantees with wild animals - and that's exactly what makes a real encounter so special."}
           </p>
         </section>
       </article>
 
+      <PopularRoadTrips locale={locale} />
+      <PocketAdBanner />
       <Footer />
-    </main>
-  ), locale);
+    </main>,
+    activeLocale,
+  );
 }

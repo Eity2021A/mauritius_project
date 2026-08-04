@@ -62,7 +62,10 @@ const MENU_ITEMS: MenuItem[] = [
             nameKey: "familyHolidayGuide",
             href: "/family-holiday-guide-for-mauritius-island",
           },
-          { nameKey: "culturalPlacesOfMauritius", href: "/cultural-places-of-mauritius" },
+          {
+            nameKey: "culturalPlacesOfMauritius",
+            href: "/cultural-places-of-mauritius",
+          },
           { nameKey: "dayInPortLouis", href: "/a-day-in-port-louis" },
           { nameKey: "exploringGrandBaie", href: "/exploring-grandbaie" },
           { nameKey: "exploringChamarel", href: "/exploring-chamarel" },
@@ -105,11 +108,23 @@ const MENU_ITEMS: MenuItem[] = [
         nameKey: "bestof",
         href: "#",
         children: [
-          { nameKey: "bestBeachesOfMauritius", href: "/best-beaches-of-mauritius" },
-          { nameKey: "bestCatamaranCruises", href: "/best-catamaran-cruises-in-mauritius" },
+          {
+            nameKey: "bestBeachesOfMauritius",
+            href: "/best-beaches-of-mauritius",
+          },
+          {
+            nameKey: "bestCatamaranCruises",
+            href: "/best-catamaran-cruises-in-mauritius",
+          },
           { nameKey: "bestHikesInMauritius", href: "/best-hikes-in-mauritius" },
-          { nameKey: "bestMarketsOfMauritius", href: "/best-markets-of-mauritius" },
-          { nameKey: "bestWaterfallsOfMauritius", href: "/best-waterfalls-of-mauritius" },
+          {
+            nameKey: "bestMarketsOfMauritius",
+            href: "/best-markets-of-mauritius",
+          },
+          {
+            nameKey: "bestWaterfallsOfMauritius",
+            href: "/best-waterfalls-of-mauritius",
+          },
           {
             nameKey: "swimWithSeaTurtles",
             href: "/swim-with-sea-turtles-in-mauritius",
@@ -189,7 +204,8 @@ function DropdownMenu({
 }) {
   const [open, setOpen] = useState(false);
   const [activeGroup, setActiveGroup] = useState("");
-  const hasGroupedChildren = item.children?.some((child) => child.children) ?? false;
+  const hasGroupedChildren =
+    item.children?.some((child) => child.children) ?? false;
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleMouseEnter = () => {
@@ -234,7 +250,14 @@ function DropdownMenu({
               ? ""
               : "w-[280px] max-w-[calc(100vw-2rem)] rounded-md border border-gray-100 bg-white py-2 shadow-lg"
           }`}
-          style={hasGroupedChildren ? { width: activeGroup ? 650 : 190, maxWidth: "calc(100vw - 2rem)" } : undefined}
+          style={
+            hasGroupedChildren
+              ? {
+                  width: activeGroup ? 650 : 190,
+                  maxWidth: "calc(100vw - 2rem)",
+                }
+              : undefined
+          }
         >
           {hasGroupedChildren ? (
             <div className="flex items-start">
@@ -248,7 +271,7 @@ function DropdownMenu({
                     type="button"
                     onMouseEnter={() => setActiveGroup(group.nameKey)}
                     onFocus={() => setActiveGroup(group.nameKey)}
-                    className={`flex min-h-[44px] w-full items-center justify-between px-4 py-3 text-left text-sm font-semibold transition-colors ${
+                    className={`flex min-h-[44px] w-full items-center justify-between px-4 py-3 text-left text-sm font-medium tracking-normal transition-colors ${
                       activeGroup === group.nameKey
                         ? "bg-orange-50 text-orange-500"
                         : "text-gray-950 hover:bg-orange-50 hover:text-orange-500"
@@ -340,7 +363,9 @@ export default function Navbar() {
   const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [expandedMobile, setExpandedMobile] = useState<string | null>(null);
-  const [expandedMobileGroup, setExpandedMobileGroup] = useState<string | null>(null);
+  const [expandedMobileGroup, setExpandedMobileGroup] = useState<string | null>(
+    null,
+  );
 
   const labels = useMemo(() => {
     const map: Record<string, string> = {};
@@ -499,7 +524,8 @@ export default function Navbar() {
                           type="button"
                           onClick={() =>
                             setExpandedMobile((current) => {
-                              const next = current === item.nameKey ? null : item.nameKey;
+                              const next =
+                                current === item.nameKey ? null : item.nameKey;
                               setExpandedMobileGroup(null);
                               return next;
                             })
@@ -514,7 +540,8 @@ export default function Navbar() {
                         type="button"
                         onClick={() =>
                           setExpandedMobile((current) => {
-                            const next = current === item.nameKey ? null : item.nameKey;
+                            const next =
+                              current === item.nameKey ? null : item.nameKey;
                             setExpandedMobileGroup(null);
                             return next;
                           })
@@ -548,21 +575,30 @@ export default function Navbar() {
                       <div className="bg-gray-50">
                         {item.children.map((child) =>
                           child.children ? (
-                            <div key={child.nameKey} className="border-t border-gray-100 first:border-t-0">
+                            <div
+                              key={child.nameKey}
+                              className="border-t border-gray-100 first:border-t-0"
+                            >
                               <button
                                 type="button"
                                 onClick={() =>
                                   setExpandedMobileGroup(
-                                    expandedMobileGroup === child.nameKey ? null : child.nameKey,
+                                    expandedMobileGroup === child.nameKey
+                                      ? null
+                                      : child.nameKey,
                                   )
                                 }
-                                className="flex w-full items-center justify-between gap-3 px-8 py-3 text-left text-sm font-semibold text-orange-500 hover:bg-orange-50 min-h-[48px] transition-colors"
-                                aria-expanded={expandedMobileGroup === child.nameKey}
+                                className="flex w-full items-center justify-between gap-3 px-8 py-3 text-left text-xs font-bold uppercase tracking-[0.16em] text-orange-500 hover:bg-orange-50 min-h-[48px] transition-colors"
+                                aria-expanded={
+                                  expandedMobileGroup === child.nameKey
+                                }
                               >
                                 <span>{labels[child.nameKey]}</span>
                                 <svg
                                   className={`h-4 w-4 transition-transform ${
-                                    expandedMobileGroup === child.nameKey ? "rotate-180" : ""
+                                    expandedMobileGroup === child.nameKey
+                                      ? "rotate-180"
+                                      : ""
                                   }`}
                                   fill="none"
                                   stroke="currentColor"

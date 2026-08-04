@@ -2,8 +2,98 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
+import { normalizeLocale } from "@/i18n/routing";
 
 const OSRM_BASE = "https://router.project-osrm.org/route/v1/driving";
+
+type SupabaseServerClient = Awaited<ReturnType<typeof createClient>>;
+
+interface ItineraryTranslationRow {
+  locale?: string | null;
+  title?: string | null;
+  description?: string | null;
+}
+
+interface ItineraryStopTranslationRow {
+  stop_id?: string | null;
+  locale?: string | null;
+  name?: string | null;
+  notes?: string | null;
+}
+
+function nonEmptyString(value: string | null | undefined): string | undefined {
+  const trimmed = value?.trim();
+  return trimmed ? trimmed : undefined;
+}
+
+function pickRequestedTranslation<T extends { locale?: string | null }>(
+  rows: T[] | null | undefined,
+  locale: string,
+): T | undefined {
+  const translations = rows ?? [];
+  return (
+    translations.find((translation) => translation.locale === locale) ??
+    translations.find((translation) => translation.locale === "en")
+  );
+}
+
+async function fetchItineraryTranslations(
+  supabase: SupabaseServerClient,
+  itineraryIds: string[],
+  locale: string,
+): Promise<Map<string, ItineraryTranslationRow>> {
+  const ids = [...new Set(itineraryIds)].filter(Boolean);
+  if (locale === "en" || ids.length === 0) return new Map();
+
+  const { data, error } = await supabase
+    .from("user_itinerary_translations")
+    .select("itinerary_id, locale, title, description")
+    .in("itinerary_id", ids)
+    .in("locale", [locale, "en"]);
+
+  if (error || !data) return new Map();
+
+  const grouped = new Map<string, ItineraryTranslationRow[]>();
+  for (const row of data as (ItineraryTranslationRow & { itinerary_id?: string | null })[]) {
+    if (!row.itinerary_id) continue;
+    grouped.set(row.itinerary_id, [...(grouped.get(row.itinerary_id) ?? []), row]);
+  }
+
+  return new Map(
+    [...grouped.entries()]
+      .map(([id, rows]) => [id, pickRequestedTranslation(rows, locale)] as const)
+      .filter((entry): entry is [string, ItineraryTranslationRow] => Boolean(entry[1])),
+  );
+}
+
+async function fetchStopTranslations(
+  supabase: SupabaseServerClient,
+  stopIds: string[],
+  locale: string,
+): Promise<Map<string, ItineraryStopTranslationRow>> {
+  const ids = [...new Set(stopIds)].filter(Boolean);
+  if (locale === "en" || ids.length === 0) return new Map();
+
+  const { data, error } = await supabase
+    .from("itinerary_stop_translations")
+    .select("stop_id, locale, name, notes")
+    .in("stop_id", ids)
+    .in("locale", [locale, "en"]);
+
+  if (error || !data) return new Map();
+
+  const grouped = new Map<string, ItineraryStopTranslationRow[]>();
+  for (const row of data as ItineraryStopTranslationRow[]) {
+    if (!row.stop_id) continue;
+    grouped.set(row.stop_id, [...(grouped.get(row.stop_id) ?? []), row]);
+  }
+
+  return new Map(
+    [...grouped.entries()]
+      .map(([id, rows]) => [id, pickRequestedTranslation(rows, locale)] as const)
+      .filter((entry): entry is [string, ItineraryStopTranslationRow] => Boolean(entry[1])),
+  );
+}
 
 async function computeRouteTotals(
   stops: { lat: number; lng: number }[]
@@ -540,9 +630,11 @@ export async function toggleItineraryPublic(
 }
 
 export async function getPublicItinerary(
-  slug: string
+  slug: string,
+  locale = "en",
 ): Promise<(SavedItineraryWithStops & { upvote_count: number; author_name: string }) | null> {
   const supabase = await createClient();
+  const activeLocale = normalizeLocale(locale);
 
   const { data, error } = await supabase
     .from("user_itineraries")
@@ -559,6 +651,14 @@ export async function getPublicItinerary(
     .single();
 
   if (error || !data) return null;
+  const stops = ((data.itinerary_stops as SavedItineraryWithStops["stops"]) ?? []).sort(
+    (a, b) => a.day_number - b.day_number || a.stop_order - b.stop_order
+  );
+  const [itineraryTranslations, stopTranslations] = await Promise.all([
+    fetchItineraryTranslations(supabase, [data.id], activeLocale),
+    fetchStopTranslations(supabase, stops.map((stop) => stop.id), activeLocale),
+  ]);
+  const itineraryTranslation = itineraryTranslations.get(data.id);
 
   let authorName = "Community User";
   if (!data.is_anonymous) {
@@ -572,18 +672,26 @@ export async function getPublicItinerary(
 
   return {
     ...data,
+    title: nonEmptyString(itineraryTranslation?.title) ?? data.title,
     upvote_count: data.upvote_count ?? 0,
     author_name: authorName,
-    stops: ((data.itinerary_stops as SavedItineraryWithStops["stops"]) ?? []).sort(
-      (a, b) => a.day_number - b.day_number || a.stop_order - b.stop_order
-    ),
+    stops: stops.map((stop) => {
+      const translation = stopTranslations.get(stop.id);
+      return {
+        ...stop,
+        name: nonEmptyString(translation?.name) ?? stop.name,
+        notes: nonEmptyString(translation?.notes) ?? stop.notes,
+      };
+    }),
   };
 }
 
 export async function getSharedItinerary(
-  slug: string
+  slug: string,
+  locale = "en",
 ): Promise<(SavedItineraryWithStops & { upvote_count: number; author_name: string }) | null> {
   const supabase = await createClient();
+  const activeLocale = normalizeLocale(locale);
 
   const { data, error } = await supabase
     .from("user_itineraries")
@@ -599,6 +707,14 @@ export async function getSharedItinerary(
     .single();
 
   if (error || !data) return null;
+  const stops = ((data.itinerary_stops as SavedItineraryWithStops["stops"]) ?? []).sort(
+    (a, b) => a.day_number - b.day_number || a.stop_order - b.stop_order
+  );
+  const [itineraryTranslations, stopTranslations] = await Promise.all([
+    fetchItineraryTranslations(supabase, [data.id], activeLocale),
+    fetchStopTranslations(supabase, stops.map((stop) => stop.id), activeLocale),
+  ]);
+  const itineraryTranslation = itineraryTranslations.get(data.id);
 
   let authorName = "Community User";
   if (!data.is_anonymous) {
@@ -612,11 +728,17 @@ export async function getSharedItinerary(
 
   return {
     ...data,
+    title: nonEmptyString(itineraryTranslation?.title) ?? data.title,
     upvote_count: data.upvote_count ?? 0,
     author_name: authorName,
-    stops: ((data.itinerary_stops as SavedItineraryWithStops["stops"]) ?? []).sort(
-      (a, b) => a.day_number - b.day_number || a.stop_order - b.stop_order
-    ),
+    stops: stops.map((stop) => {
+      const translation = stopTranslations.get(stop.id);
+      return {
+        ...stop,
+        name: nonEmptyString(translation?.name) ?? stop.name,
+        notes: nonEmptyString(translation?.notes) ?? stop.notes,
+      };
+    }),
   };
 }
 
@@ -634,8 +756,9 @@ export interface PublicItinerarySummary {
   total_duration_min: number | null;
 }
 
-export async function getPublicItineraries(): Promise<PublicItinerarySummary[]> {
+export async function getPublicItineraries(locale = "en"): Promise<PublicItinerarySummary[]> {
   const supabase = await createClient();
+  const activeLocale = normalizeLocale(locale);
 
   const { data, error } = await supabase
     .from("user_itineraries")
@@ -658,10 +781,15 @@ export async function getPublicItineraries(): Promise<PublicItinerarySummary[]> 
   const profileMap = new Map(
     (profiles ?? []).map((p) => [p.id, p.display_name || "Explorer"])
   );
+  const translations = await fetchItineraryTranslations(
+    supabase,
+    data.map((item) => item.id),
+    activeLocale,
+  );
 
   return data.map((item) => ({
     id: item.id,
-    title: item.title,
+    title: nonEmptyString(translations.get(item.id)?.title) ?? item.title,
     slug: item.slug,
     stop_count: item.stop_count,
     cover_image: item.cover_image,

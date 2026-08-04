@@ -22,6 +22,7 @@ function HiddenGemCard({
   categories,
   image,
   slug,
+  href,
   publishedAt,
   readTime,
   readTimeLabel,
@@ -30,13 +31,19 @@ function HiddenGemCard({
   categories: string[];
   image: string;
   slug: string;
+  href?: string;
   publishedAt: string;
   readTime: number;
   readTimeLabel: string;
 }) {
   return (
     <article className="group h-full">
-      <Link href={`/blog/${slug}`} className="block h-full">
+      <Link
+        href={href ?? `/blog/${slug}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block h-full"
+      >
         <div className="relative w-full aspect-[4/4.6] overflow-hidden rounded-lg img-shimmer">
           <img
             src={getImageUrl(image, { width: 800, quality: 75 })}
@@ -76,16 +83,26 @@ function HiddenGemCard({
   );
 }
 
-export default async function HiddenGems() {
+export default async function HiddenGems({
+  featuredSlugs,
+  featuredHrefs,
+}: {
+  featuredSlugs?: readonly string[];
+  featuredHrefs?: readonly string[];
+} = {}) {
   const t = await getTranslations("Home.hiddenGems");
   const [allPosts, blogCategories] = await Promise.all([
     getAllBlogPosts(),
     getBlogCategories(),
   ]);
 
-  const selectedFeaturedPosts = ([1, 2, 3] as const)
-    .map((rank) => allPosts.find((post) => post.featuredRank === rank))
-    .filter(isBlogPost);
+  const selectedFeaturedPosts = featuredSlugs
+    ? featuredSlugs
+        .map((slug) => allPosts.find((post) => post.slug === slug))
+        .filter(isBlogPost)
+    : ([1, 2, 3] as const)
+        .map((rank) => allPosts.find((post) => post.featuredRank === rank))
+        .filter(isBlogPost);
   const fallbackFeaturedPosts = allPosts.filter(
     (post) => !selectedFeaturedPosts.some((featuredPost) => featuredPost?.slug === post.slug)
   );
@@ -94,10 +111,12 @@ export default async function HiddenGems() {
       ? [...selectedFeaturedPosts, ...fallbackFeaturedPosts]
       : allPosts
   ).slice(0, 4);
+  const featuredHrefBySlug = new Map(
+    (featuredSlugs ?? []).map((slug, index) => [slug, featuredHrefs?.[index]] as const)
+  );
 
   return (
-    <main id="main-content" className="bg-white">
-      <section className="py-12 md:py-16">
+    <section className="bg-white py-12 md:py-16">
         <div className="container mx-auto px-4">
           <div className="mb-8 text-center">
             <span className="text-sm font-medium uppercase tracking-wider text-orange-500">
@@ -121,6 +140,7 @@ export default async function HiddenGems() {
                 )}
                 image={post.image}
                 slug={post.slug}
+                href={featuredHrefBySlug.get(post.slug)}
                 publishedAt={post.publishedAt}
                 readTime={post.readTime}
                 readTimeLabel={t("readTime")}
@@ -128,7 +148,6 @@ export default async function HiddenGems() {
             ))}
           </div>
         </div>
-      </section>
-    </main>
+    </section>
   );
 }

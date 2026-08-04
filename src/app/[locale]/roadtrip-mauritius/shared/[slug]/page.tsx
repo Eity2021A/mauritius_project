@@ -52,7 +52,7 @@ const sharedMetadataText = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
-  const itinerary = await getSharedItinerary(slug);
+  const itinerary = await getSharedItinerary(slug, locale);
   const language = locale in sharedMetadataText ? locale as keyof typeof sharedMetadataText : "en";
   const t = sharedMetadataText[language];
   if (!itinerary) return { title: t.notFound };
@@ -81,8 +81,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function SharedItineraryPage({ params }: Props) {
-  const { slug } = await params;
-  const itinerary = await getSharedItinerary(slug);
+  const { locale, slug } = await params;
+  const itinerary = await getSharedItinerary(slug, locale);
 
   if (!itinerary) notFound();
 

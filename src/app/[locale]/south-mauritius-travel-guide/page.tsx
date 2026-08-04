@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import HiddenGems from "@/components/HiddenGems";
+import PopularRoadTrips from "@/components/PopularRoadTrips";
+import { Link } from "@/i18n/navigation";
 import type { LucideIcon } from "lucide-react";
 import {
   Landmark,
@@ -14,6 +17,8 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { getRegionGuide } from "@/data/quick-guide-translations";
+import CarRentalAdBanner from "@/components/CarRentalAdBanner";
+import PocketAdBanner from "@/components/PocketAdBanner";
 
 export const revalidate = 3600;
 
@@ -27,6 +32,8 @@ export const legacyMetadata: Metadata = {
 const southPlaces: {
   name: string;
   text: string;
+  href?: string;
+  nameLinks?: readonly { label: string; href: string }[];
   icon: LucideIcon;
   color: string;
   bg: string;
@@ -34,6 +41,7 @@ const southPlaces: {
   {
     name: "Gris Gris & La Roche",
     text: "Wild clifftops, black rocks & roaring surf - view only.",
+    href: "/beaches-in-mauritius/gris-gris",
     icon: Waves,
     color: "#3da8da",
     bg: "#eaf7ff",
@@ -41,6 +49,7 @@ const southPlaces: {
   {
     name: "Rochester Falls",
     text: "Water fans over blocky basalt cliffs into a pool.",
+    href: "/best-places-to-visit-in-mauritius/rochester-falls",
     icon: Landmark,
     color: "#4aa6d3",
     bg: "#eaf7ff",
@@ -48,6 +57,7 @@ const southPlaces: {
   {
     name: "Grand Bassin",
     text: "Sacred crater lake, temples & giant statues.",
+    href: "/best-places-to-visit-in-mauritius/grand-bassin",
     icon: Mountain,
     color: "#ef8a54",
     bg: "#fff0e7",
@@ -55,6 +65,7 @@ const southPlaces: {
   {
     name: "Bois Cheri Tea",
     text: "Tour a highland tea estate with tastings & views.",
+    href: "/best-places-to-visit-in-mauritius/bois-cheri-tea-factory",
     icon: Landmark,
     color: "#ef8a54",
     bg: "#fff0e7",
@@ -69,6 +80,7 @@ const southPlaces: {
   {
     name: "St Aubin & Rum Route",
     text: "Colonial-estate rum, vanilla & sugar heritage.",
+    href: "/best-places-to-visit-in-mauritius/domaine-saint-aubin",
     icon: Route,
     color: "#ef8a54",
     bg: "#fff0e7",
@@ -76,6 +88,7 @@ const southPlaces: {
   {
     name: "Bel Ombre",
     text: "Quiet luxury coast - resorts, wellness & golf.",
+    href: "/beaches-in-mauritius/bel-ombre",
     icon: Leaf,
     color: "#68b86d",
     bg: "#edf8ef",
@@ -83,6 +96,10 @@ const southPlaces: {
   {
     name: "Souillac & Maconde",
     text: "Gateway village & wild coastal viewpoints.",
+    nameLinks: [
+      { label: "Souillac", href: "/beaches-in-mauritius/souillac" },
+      { label: "Maconde", href: "/best-places-to-visit-in-mauritius/maconde" },
+    ],
     icon: Sailboat,
     color: "#51a9d6",
     bg: "#eaf7ff",
@@ -128,24 +145,58 @@ const southDaySteps: {
   },
 ];
 
+const southHiddenGemSlugs = [
+  "south-mauritius-road-trip-guide",
+  "best-restaurants-in-south-mauritius-2026-guide",
+  "exploring-mahebourg-mauritius",
+  "best-places-to-see-monkeys-in-mauritius",
+] as const;
 
+const southGettingAroundLinks = [
+  { label: "Car Rental", href: "/car-rental-mauritius" },
+  { label: "Transfer", href: "/mauritius-transfer-airport-hotel" },
+  {
+    label: "Boat Operators",
+    href: "/top-activities-mauritius/le-morne-discovery-full-day-excursion-ile-aux-benitiers",
+  },
+  { label: "Taxi", href: "/mauritius-taxi" },
+] as const;
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
   const { locale } = await params;
   const t = getRegionGuide(locale, "south");
-  return { title: t.metadata.title, description: t.metadata.description, alternates: { canonical: "/south-mauritius-travel-guide" } };
+  return {
+    title: t.metadata.title,
+    description: t.metadata.description,
+    alternates: { canonical: "/south-mauritius-travel-guide" },
+  };
 }
 
-export default async function SouthMauritiusTravelGuidePage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function SouthMauritiusTravelGuidePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   const { locale } = await params;
   const t = getRegionGuide(locale, "south");
-  const translatedPlaces = southPlaces.map((place, index) => ({ ...place, ...t.places[index] }));
-  const translatedSteps = southDaySteps.map((step, index) => ({ ...step, ...t.steps[index] }));
+  const translatedPlaces = southPlaces.map((place, index) => ({
+    ...place,
+    originalName: place.name,
+    ...t.places[index],
+  }));
+  const translatedSteps = southDaySteps.map((step, index) => ({
+    ...step,
+    ...t.steps[index],
+  }));
   return (
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
 
-      <article className="mx-auto w-full max-w-6xl px-4 pt-24 pb-20 sm:px-6 lg:pt-28 xl:px-0">
+      <article className="mx-auto w-full max-w-6xl px-4 pt-24 pb-10 sm:px-6 lg:pt-28 xl:px-0">
         <header>
           {/* <div className="flex flex-wrap items-center justify-between gap-3 text-[11px] font-semibold uppercase tracking-wide text-[#ec5f25]">
             <div className="flex items-center gap-2 normal-case tracking-normal">
@@ -164,7 +215,9 @@ export default async function SouthMauritiusTravelGuidePage({ params }: { params
           </p>
           <h1 className="mt-2 font-serif text-[clamp(2rem,5vw,3.4rem)] font-bold leading-tight tracking-tight text-[#151f2b]">
             {t.titlePrefix}{" "}
-            <span className="font-normal italic text-[#f16522]">{t.titleEmphasis}</span>
+            <span className="font-normal italic text-[#f16522]">
+              {t.titleEmphasis}
+            </span>
           </h1>
           <p className="mt-4 max-w-4xl font-serif text-sm italic leading-relaxed text-[#6f7e88] sm:text-base">
             {t.intro}
@@ -173,7 +226,9 @@ export default async function SouthMauritiusTravelGuidePage({ params }: { params
 
         <section className="mt-9 grid gap-7 lg:grid-cols-[1fr_.98fr] lg:items-start">
           <div>
-            <h2 className="font-serif text-2xl font-bold text-[#ef5e25]">{t.whereToGo}</h2>
+            <h2 className="font-serif text-2xl font-bold text-[#ef5e25]">
+              {t.whereToGo}
+            </h2>
             <div className="mt-4 space-y-4">
               {translatedPlaces.map((place) => {
                 const PlaceIcon = place.icon;
@@ -188,7 +243,34 @@ export default async function SouthMauritiusTravelGuidePage({ params }: { params
                     </span>
                     <div className="pt-0.5">
                       <h3 className="font-serif text-lg font-bold leading-none text-[#1b2d3c]">
-                        {place.name}
+                        {place.nameLinks ? (
+                          <>
+                            {place.nameLinks.map((link, index) => (
+                              <span key={link.label}>
+                                {index > 0 ? " & " : ""}
+                                <Link
+                                  href={link.href}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="transition hover:text-[#f16522]"
+                                >
+                                  {link.label}
+                                </Link>
+                              </span>
+                            ))}
+                          </>
+                        ) : place.href ? (
+                          <Link
+                            href={place.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="transition hover:text-[#f16522]"
+                          >
+                            {place.name}
+                          </Link>
+                        ) : (
+                          place.name
+                        )}
                       </h3>
                       <p className="mt-1 text-xs leading-relaxed text-[#65737d] sm:text-sm">
                         {place.text}
@@ -201,26 +283,31 @@ export default async function SouthMauritiusTravelGuidePage({ params }: { params
           </div>
 
           <div className="grid gap-4">
-              <figure className="mx-auto w-full max-w-[530px]">
-                      <Image
-                        src="/images/quick-trips/south-mauritious-map.png"
-                        alt={t.mapAlt}
-                        width={820}
-                        height={402}
-                        className="h-auto w-full"
-                        priority
-                      />
-                      <figcaption className="-mt-3 text-center font-serif text-xs italic text-[#8a8f91]">
-                        {t.mapCaption}
-                      </figcaption>
-                    </figure>
+            <figure className="mx-auto w-full max-w-[530px]">
+              <Image
+                src="/images/quick-trips/south-mauritious-map.png"
+                alt={t.mapAlt}
+                width={820}
+                height={402}
+                className="h-auto w-full"
+                priority
+              />
+              <figcaption className="-mt-3 text-center font-serif text-xs italic text-[#8a8f91]">
+                {t.mapCaption}
+              </figcaption>
+            </figure>
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
               <section className="rounded-md bg-[#f5f2ef] px-5 py-5">
-                <h2 className="font-serif text-xl font-bold text-[#f16522]">{t.driveTimesTitle}</h2>
+                <h2 className="font-serif text-xl font-bold text-[#f16522]">
+                  {t.driveTimesTitle}
+                </h2>
                 <div className="mt-3 space-y-2 text-[11px] leading-relaxed text-[#61707a]">
                   {t.driveTimes.map(([from, to, time]) => (
-                    <p key={`${from}-${to}`} className="flex flex-wrap items-center gap-x-1">
+                    <p
+                      key={`${from}-${to}`}
+                      className="flex flex-wrap items-center gap-x-1"
+                    >
                       <span>{from}</span>
                       <span className="text-[#f16522]">-&gt;</span>
                       <span>{to}</span>
@@ -231,7 +318,9 @@ export default async function SouthMauritiusTravelGuidePage({ params }: { params
               </section>
 
               <section className="rounded-md bg-[#f5f2ef] px-5 py-5">
-                <h2 className="font-serif text-xl font-bold text-[#f16522]">{t.goodToKnowTitle}</h2>
+                <h2 className="font-serif text-xl font-bold text-[#f16522]">
+                  {t.goodToKnowTitle}
+                </h2>
                 <p className="mt-3 text-[11px] leading-relaxed text-[#61707a]">
                   {t.goodToKnow}
                 </p>
@@ -242,15 +331,37 @@ export default async function SouthMauritiusTravelGuidePage({ params }: { params
 
         <section className="mt-4 grid gap-4 rounded-md bg-[#f5f2ef] px-5 py-5 md:grid-cols-2 md:px-7">
           <div className="md:border-r md:border-[#ded6cf] md:pr-7">
-            <h2 className="font-serif text-xl font-bold text-[#f16522]">{t.gettingAroundTitle}</h2>
+            <h2 className="font-serif text-xl font-bold text-[#f16522]">
+              {t.gettingAroundTitle}
+            </h2>
             <ul className="mt-3 space-y-1.5 text-xs leading-relaxed text-[#61707a] sm:text-sm">
-              {t.gettingAround.map(([label, text]) => (
-                <li key={label}><strong className="text-[#1d3144]">{label}</strong> - {text}</li>
-              ))}
+              {t.gettingAround.map(([label, text], index) => {
+                const link = southGettingAroundLinks[index];
+
+                return (
+                  <li key={label}>
+                    {link ? (
+                      <Link
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-bold text-[#1d3144] transition hover:text-[#f16522]"
+                      >
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <strong className="text-[#1d3144]">{label}</strong>
+                    )}{" "}
+                    - {text}
+                  </li>
+                );
+              })}
             </ul>
           </div>
           <div className="md:pl-3">
-            <h2 className="font-serif text-xl font-bold text-[#f16522]">{t.bestForTitle}</h2>
+            <h2 className="font-serif text-xl font-bold text-[#f16522]">
+              {t.bestForTitle}
+            </h2>
             <p className="mt-3 text-xs leading-relaxed text-[#61707a] sm:text-sm">
               {t.bestFor}
             </p>
@@ -258,7 +369,9 @@ export default async function SouthMauritiusTravelGuidePage({ params }: { params
         </section>
 
         <section className="mt-8 rounded-md bg-[#fff0e7] px-5 py-5 sm:px-7">
-          <h2 className="font-serif text-xl font-bold text-[#f16522]">{t.perfectDayTitle}</h2>
+          <h2 className="font-serif text-xl font-bold text-[#f16522]">
+            {t.perfectDayTitle}
+          </h2>
           <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {translatedSteps.map((step) => {
               const StepIcon = step.icon;
@@ -270,16 +383,23 @@ export default async function SouthMauritiusTravelGuidePage({ params }: { params
                     <StepIcon className="absolute -right-1 -bottom-1 h-3 w-3 rounded-full bg-white p-0.5 text-[#f16522]" />
                   </span>
                   <div>
-                    <h3 className="font-serif text-sm font-bold text-[#1d3144]">{step.title}</h3>
-                    <p className="text-[11px] leading-snug text-[#6b747b] sm:text-xs">{step.text}</p>
+                    <h3 className="font-serif text-sm font-bold text-[#1d3144]">
+                      {step.title}
+                    </h3>
+                    <p className="text-[11px] leading-snug text-[#6b747b] sm:text-xs">
+                      {step.text}
+                    </p>
                   </div>
                 </div>
               );
             })}
           </div>
         </section>
+        <HiddenGems featuredSlugs={southHiddenGemSlugs} />
       </article>
-
+      <CarRentalAdBanner />
+      <PopularRoadTrips locale={locale} />
+      <PocketAdBanner />
       <Footer />
     </main>
   );

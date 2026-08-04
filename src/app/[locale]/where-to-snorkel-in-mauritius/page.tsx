@@ -1,18 +1,22 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PopularRoadTrips from "@/components/PopularRoadTrips";
+import { Link } from "@/i18n/navigation";
 import { localizeStaticPage } from "@/lib/static-page-localizer";
 import type { LucideIcon } from "lucide-react";
+import Image from "next/image";
 import {
   Anchor,
   Compass,
   Fish,
   MapPin,
   Sailboat,
-  ShieldCheck,       
+  ShieldCheck,
   Shell,
   Waves,
 } from "lucide-react";
+import CarRentalAdBannerInfo from "@/components/CarRentalAdBannerInfo";
 
 export const revalidate = 3600;
 
@@ -21,6 +25,11 @@ export const metadata: Metadata = {
   description:
     "Where to snorkel in Mauritius — the island's clearest lagoons and coral reefs, from Blue Bay to Trou aux Biches. The best spots, marine life and top tips.",
   alternates: { canonical: "/where-to-snorkel-in-mauritius" },
+};
+const ad = {
+  desktopSrc: "/images/quick-trips/Snorkelling-in-Mauritius.webp",
+  href: "/blog/best-snorkelling-spots-in-mauritius",
+  alt: "Snorkelling in Mauritius",
 };
 
 type SnorkelRegion = "North" | "West & South-West" | "East & South";
@@ -132,6 +141,18 @@ const snorkelSpots: {
   },
 ];
 
+const snorkelSpotLinks: Record<string, string> = {
+  "Blue Bay Marine Park":
+    "/best-places-to-visit-in-mauritius/blue-bay-marine-park",
+  "Ile aux Cerfs": "/best-places-to-visit-in-mauritius/ile-aux-cerfs",
+  "Le Morne Brabant": "/beaches-in-mauritius/le-morne",
+  "Flic en Flac": "/beaches-in-mauritius/flic-en-flac",
+  "Belle Mare": "/beaches-in-mauritius/belle-mare",
+  "Bel Ombre": "/beaches-in-mauritius/bel-ombre",
+  "Balaclava Marine Park": "/beaches-in-mauritius/balaclava",
+  "Ile Plate (Flat Island)": "/beaches-in-mauritius/ilot-gabriel-ile-plate",
+};
+
 const snorkelTips: {
   title: string;
   text: string;
@@ -154,17 +175,19 @@ const snorkelTips: {
   },
 ];
 
-export default async function WhereToSnorkelnMauritiusPage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function WhereToSnorkelnMauritiusPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   const { locale } = await params;
-  return localizeStaticPage((
+  return localizeStaticPage(
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
-      <article className="mx-auto w-full max-w-6xl pt-24 pb-20 sm:px-6 lg:pt-28">
+      <article className="mx-auto w-full max-w-6xl pt-24 pb-10 sm:px-6 lg:pt-28">
         <header>
           <div className="flex flex-wrap items-center justify-between gap-3 text-[11px] font-semibold uppercase tracking-wide text-[#ec5f25]">
-            <div>
-             
-            </div>
+            <div></div>
             <p>Snorkel - Reefs</p>
           </div>
 
@@ -200,12 +223,11 @@ export default async function WhereToSnorkelnMauritiusPage({ params }: { params:
           {snorkelSpots.map((spot) => {
             const SpotIcon = spot.icon;
             const style = snorkelRegionStyles[spot.type];
-
-            return (
-              <section
-                key={spot.name}
-                className="flex gap-4 rounded-md border border-[#e7dfd6] bg-white px-4 py-4 shadow-[0_2px_7px_rgba(36,54,67,.035)] sm:gap-5 sm:px-5"
-              >
+            const href = snorkelSpotLinks[spot.name];
+            const cardClassName =
+              "flex gap-4 rounded-md border border-[#e7dfd6] bg-white px-4 py-4 shadow-[0_2px_7px_rgba(36,54,67,.035)] transition hover:-translate-y-0.5 hover:shadow-[0_8px_18px_rgba(36,54,67,.08)] sm:gap-5 sm:px-5";
+            const cardContent = (
+              <>
                 <span
                   className="mt-1 grid h-12 w-12 shrink-0 place-items-center rounded-full"
                   style={{ backgroundColor: style.bg, color: style.color }}
@@ -233,11 +255,51 @@ export default async function WhereToSnorkelnMauritiusPage({ params }: { params:
                     {spot.tip}
                   </p>
                 </div>
+              </>
+            );
+
+            return href ? (
+              <Link
+                key={spot.name}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cardClassName}
+              >
+                {cardContent}
+              </Link>
+            ) : (
+              <section key={spot.name} className={cardClassName}>
+                {cardContent}
               </section>
             );
           })}
         </section>
 
+        <section
+          className="bg-white py-3 md:py-5 dark:border-neutral-800 dark:bg-neutral-900"
+          aria-label="Sponsored highlights"
+        >
+          <div className="container mx-auto max-w-7xl">
+            <div className="relative overflow-hidden rounded-xl bg-[#052028] shadow-sm ring-1 ring-gray-200 dark:ring-neutral-700">
+              <a
+                href={ad.href}
+                className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
+              >
+                <span className="relative block aspect-[1200/260] w-full">
+                  <Image
+                    src={ad.desktopSrc}
+                    alt={ad.alt}
+                    fill
+                    sizes="(max-width: 1280px) 100vw, 1280px"
+                    className="rounded-xl object-cover"
+                    loading="lazy"
+                  />
+                </span>
+              </a>
+            </div>
+          </div>
+        </section>
         <section className="mt-8 rounded-md bg-[#f5f2ef] px-5 py-6 sm:px-7">
           <h2 className="font-serif text-xl font-bold text-[#f16522]">
             Snorkel smart
@@ -248,15 +310,14 @@ export default async function WhereToSnorkelnMauritiusPage({ params }: { params:
                 <span className="mt-1 grid h-7 w-7 shrink-0 place-items-center rounded-full  text-[#2389c9]">
                   <Icon className="h-6 w-6" strokeWidth={1.9} />
                 </span>
-               <div>
-                 <p className="text-sm leading-relaxed text-[#61707a] ">
-                  <strong className="font-serif text-[#1d3144]">
-                    {title}
-                  </strong>
-          
-                </p>
-                <p className="text-xs">{text}</p>
-               </div>
+                <div>
+                  <p className="text-sm leading-relaxed text-[#61707a] ">
+                    <strong className="font-serif text-[#1d3144]">
+                      {title}
+                    </strong>
+                  </p>
+                  <p className="text-xs">{text}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -264,11 +325,13 @@ export default async function WhereToSnorkelnMauritiusPage({ params }: { params:
             Look for parrotfish, angelfish and clownfish - and, if you&apos;re
             lucky, a passing sea turtle.
           </p>
-         
         </section>
       </article>
+      <CarRentalAdBannerInfo />
+      <PopularRoadTrips locale={locale} />
 
       <Footer />
-    </main>
-  ), locale);
+    </main>,
+    locale,
+  );
 }
