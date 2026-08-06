@@ -37,6 +37,7 @@ type DetailPageTranslations = {
     reservationsPartner: string;
     highlights: string;
     included: string;
+    notIncluded: string;
     whatToBring: string;
     pricing: string;
     duration: string;
@@ -152,10 +153,11 @@ const translations: Record<Locale, DetailPageTranslations> = {
       notFound: "Not Found",
       activitiesInMauritius: "Activities in Mauritius",
       commissionNote: "Some booking links may earn us a commission at no extra cost to you.",
-      transfer: "Transfer",
+      transfer: "Hoteltransfer",
       reservationsPartner: "Reservations are completed on partner sites.",
       highlights: "Highlights",
       included: "What's Included",
+      notIncluded: "Not Included",
       whatToBring: "What to Bring",
       pricing: "Pricing",
       duration: "Duration",
@@ -273,6 +275,7 @@ const translations: Record<Locale, DetailPageTranslations> = {
       reservationsPartner: "Les réservations se terminent sur les sites partenaires.",
       highlights: "Temps forts",
       included: "Ce qui est inclus",
+      notIncluded: "Non inclus",
       whatToBring: "À apporter",
       pricing: "Tarifs",
       duration: "Durée",
@@ -386,10 +389,11 @@ const translations: Record<Locale, DetailPageTranslations> = {
       notFound: "Nicht gefunden",
       activitiesInMauritius: "Aktivitäten auf Mauritius",
       commissionNote: "Einige Buchungslinks können uns eine Provision einbringen, ohne Mehrkosten für Sie.",
-      transfer: "Transfer",
+      transfer: "Trasferimento",
       reservationsPartner: "Reservierungen werden auf Partnerseiten abgeschlossen.",
       highlights: "Highlights",
       included: "Inklusive",
+      notIncluded: "Nicht inklusive",
       whatToBring: "Was mitbringen",
       pricing: "Preise",
       duration: "Dauer",
@@ -507,6 +511,7 @@ const translations: Record<Locale, DetailPageTranslations> = {
       reservationsPartner: "Le prenotazioni si completano sui siti partner.",
       highlights: "Punti salienti",
       included: "Cosa è incluso",
+      notIncluded: "Non incluso",
       whatToBring: "Cosa portare",
       pricing: "Prezzi",
       duration: "Durata",
@@ -624,6 +629,7 @@ const translations: Record<Locale, DetailPageTranslations> = {
       reservationsPartner: "Las reservas se completan en sitios asociados.",
       highlights: "Destacados",
       included: "Qué incluye",
+      notIncluded: "No incluido",
       whatToBring: "Qué llevar",
       pricing: "Precios",
       duration: "Duración",
@@ -741,6 +747,7 @@ const translations: Record<Locale, DetailPageTranslations> = {
       reservationsPartner: "Бронирование завершается на сайтах партнеров.",
       highlights: "Главное",
       included: "Что включено",
+      notIncluded: "Что не включено",
       whatToBring: "Что взять с собой",
       pricing: "Цены",
       duration: "Длительность",

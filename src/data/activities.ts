@@ -526,7 +526,7 @@ export interface ActivityDetails {
   duration?: string;
   location?: string;
   bestTime?: string;
-  difficulty?: "Easy" | "Moderate" | "Challenging" | "Easy to Moderate" | "Easy to Challenging" | "Moderate to Challenging";
+  difficulty?: string;
   included?: string[];
   notIncluded?: string[];
   whatToBring?: string[];

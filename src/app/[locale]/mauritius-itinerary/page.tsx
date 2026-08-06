@@ -439,6 +439,24 @@ export default async function MauritiusItineraryPage({
     ...region,
     ...t.stayRegions[index],
   }));
+  const driveStops = {
+    three: THREE_DAY_DRIVE_STOPS.map((stop, index) => ({
+      ...stop,
+      ...t.driveStops.three[index],
+    })),
+    five: FIVE_DAYS_DRIVE_STOPS.map((stop, index) => ({
+      ...stop,
+      ...t.driveStops.five[index],
+    })),
+    seven: SEVEN_DAYS_DRIVE_STOPS.map((stop, index) => ({
+      ...stop,
+      ...t.driveStops.seven[index],
+    })),
+    ten: TEN_DAYS_DRIVE_STOPS.map((stop, index) => ({
+      ...stop,
+      ...t.driveStops.ten[index],
+    })),
+  };
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -515,7 +533,7 @@ export default async function MauritiusItineraryPage({
       <section className="relative h-[44vh] min-h-[280px]">
         <Image
           src={getImageUrl(HERO_IMAGE_PATH, { width: 1600, quality: 72 })}
-          alt="Aerial view of Le Morne, Mauritius — itinerary planning hub"
+          alt={t.hero.imageAlt}
           fill
           priority
           className="object-cover"
@@ -795,7 +813,7 @@ export default async function MauritiusItineraryPage({
               {t.routeSection.kicker}
             </p>
             <h2 className="mt-2 text-[2.15rem] font-extrabold leading-none tracking-[-0.03em] text-[#1c2432] md:text-[2.35rem]">
-              3-Day{" "}
+              {t.routeSection.dayTitle.replace("{days}", "3")}{" "}
               <span className="font-medium italic text-[#f26522]">
                 {t.routeSection.driveRoute}
               </span>
@@ -809,7 +827,7 @@ export default async function MauritiusItineraryPage({
                 className="absolute bottom-5 left-[21px] top-5 w-px bg-[#eddccf]"
                 aria-hidden="true"
               />
-              {THREE_DAY_DRIVE_STOPS.map((item) => (
+              {driveStops.three.map((item) => (
                 <div
                   key={item.step}
                   className="relative grid grid-cols-[auto_1fr_auto] items-start gap-x-6 gap-y-2 md:gap-x-7 mb-20"
@@ -866,7 +884,7 @@ export default async function MauritiusItineraryPage({
               {t.routeSection.kicker}
             </p>
             <h2 className="mt-2 text-[2.15rem] font-extrabold leading-none tracking-[-0.03em] text-[#1c2432] md:text-[2.35rem]">
-              5-Day{" "}
+              {t.routeSection.dayTitle.replace("{days}", "5")}{" "}
               <span className="font-medium italic text-[#f26522]">
                 {t.routeSection.driveRoute}
               </span>
@@ -880,7 +898,7 @@ export default async function MauritiusItineraryPage({
                 className="absolute bottom-5 left-[21px] top-5 w-px bg-[#eddccf]"
                 aria-hidden="true"
               />
-              {FIVE_DAYS_DRIVE_STOPS.map((item) => (
+              {driveStops.five.map((item) => (
                 <div
                   key={item.step}
                   className="relative grid grid-cols-[auto_1fr_auto] items-start gap-x-6 gap-y-2 md:gap-x-7 mb-20"
@@ -938,7 +956,7 @@ export default async function MauritiusItineraryPage({
               {t.routeSection.kicker}
             </p>
             <h2 className="mt-2 text-[2.15rem] font-extrabold leading-none tracking-[-0.03em] text-[#1c2432] md:text-[2.35rem]">
-              7-Day{" "}
+              {t.routeSection.dayTitle.replace("{days}", "7")}{" "}
               <span className="font-medium italic text-[#f26522]">
                 {t.routeSection.driveRoute}
               </span>
@@ -952,7 +970,7 @@ export default async function MauritiusItineraryPage({
                 className="absolute bottom-5 left-[21px] top-5 w-px bg-[#eddccf]"
                 aria-hidden="true"
               />
-              {SEVEN_DAYS_DRIVE_STOPS.map((item) => (
+              {driveStops.seven.map((item) => (
                 <div
                   key={item.step}
                   className="relative grid grid-cols-[auto_1fr_auto] items-start gap-x-6 gap-y-2 md:gap-x-7 mb-10"
@@ -990,7 +1008,7 @@ export default async function MauritiusItineraryPage({
               {t.routeSection.kicker}
             </p>
             <h2 className="mt-2 text-[2.15rem] font-extrabold leading-none tracking-[-0.03em] text-[#1c2432] md:text-[2.35rem]">
-              10-Day{" "}
+              {t.routeSection.dayTitle.replace("{days}", "10")}{" "}
               <span className="font-medium italic text-[#f26522]">
                 {t.routeSection.driveRoute}
               </span>
@@ -1004,7 +1022,7 @@ export default async function MauritiusItineraryPage({
                 className="absolute bottom-5 left-[21px] top-5 w-px bg-[#eddccf]"
                 aria-hidden="true"
               />
-              {TEN_DAYS_DRIVE_STOPS.map((item) => (
+              {driveStops.ten.map((item) => (
                 <div
                   key={item.step}
                   className="relative grid grid-cols-[auto_1fr_auto] items-start gap-x-6 gap-y-2 md:gap-x-7 mb-8"

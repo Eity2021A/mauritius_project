@@ -20,6 +20,7 @@ import {
 } from "@/lib/content";
 import { trimMetaDescription } from "@/lib/seo";
 import { staticPageText } from "@/lib/static-page-localizer";
+import { normalizeLocale } from "@/i18n/routing";
 
 const DETAIL_BASE = "/veranda-hotels";
 export const revalidate = 3600;
@@ -31,12 +32,16 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string; slug: string }>;
+  searchParams?: Promise<{ lang?: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const t = (text: string) => staticPageText(locale, text);
-  const hotel = await getVerandaHotelBySlugFromDb(slug, locale);
+  const query = await searchParams;
+  const activeLocale = normalizeLocale(query?.lang ?? locale);
+  const t = (text: string) => staticPageText(activeLocale, text);
+  const hotel = await getVerandaHotelBySlugFromDb(slug, activeLocale);
 
   if (!hotel) {
     return { title: t("Not Found") };
@@ -164,18 +169,22 @@ function HotelBookingCta({
 
 export default async function VerandaHotelPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string; slug: string }>;
+  searchParams?: Promise<{ lang?: string }>;
 }) {
   const { locale, slug } = await params;
-  const t = (text: string) => staticPageText(locale, text);
-  const hotel = await getVerandaHotelBySlugFromDb(slug, locale);
+  const query = await searchParams;
+  const activeLocale = normalizeLocale(query?.lang ?? locale);
+  const t = (text: string) => staticPageText(activeLocale, text);
+  const hotel = await getVerandaHotelBySlugFromDb(slug, activeLocale);
 
   if (!hotel) {
     notFound();
   }
 
-  const relatedHotels = await getRelatedVerandaHotelsFromDb(slug, 3, locale);
+  const relatedHotels = await getRelatedVerandaHotelsFromDb(slug, 3, activeLocale);
   const hotelCategories = [hotel.region, hotel.style, ...hotel.tags].map(t);
 
   return (

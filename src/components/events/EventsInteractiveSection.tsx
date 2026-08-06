@@ -22,6 +22,8 @@ const SECTION_TITLE =
   "text-xl font-bold text-gray-900 sm:text-2xl tracking-tight";
 
 const calendarLocales = { en: enUS, fr, de, it, es, ru };
+type EventsInfo = ReturnType<typeof getEventsInfo>;
+type EventDetailText = EventsInfo["eventDetails"][keyof EventsInfo["eventDetails"]];
 
 function earliestEventMonth(dates: Date[]): Date {
   if (dates.length === 0) return new Date();
@@ -55,16 +57,24 @@ function EventCalendarDayButton(props: ComponentProps<typeof CalendarDayButton>)
 function EventDetailCard({
   event,
   labels,
+  eventText,
 }: {
   event: MauritiusEvent;
   labels: ReturnType<typeof getEventsInfo>["interactive"];
+  eventText?: EventDetailText;
 }) {
+  const title = eventText?.title ?? event.title;
+  const displayDate = eventText?.displayDate ?? event.displayDate;
+  const description = eventText?.description ?? event.description;
+  const holdersNote = eventText?.holdersNote ?? event.ticketing.holdersNote;
+  const admissionNote = eventText?.admissionNote ?? event.admissionNote;
+
   return (
     <article className="flex min-w-0 flex-col items-center gap-6 md:gap-8">
       <div className="mx-auto w-full max-w-md sm:max-w-lg lg:max-w-xl">
         <Image
           src={getImageUrl(event.posterImage, { width: 1200, quality: 78 })}
-          alt={`${labels.posterAltPrefix} ${event.title}`}
+          alt={`${labels.posterAltPrefix} ${title}`}
           width={800}
           height={1200}
           className="h-auto w-full max-h-[min(85vh,920px)] rounded-lg bg-gray-100 object-contain shadow-xl"
@@ -75,10 +85,10 @@ function EventDetailCard({
 
       <div className="mx-auto w-full min-w-0 max-w-2xl space-y-4 break-words text-center">
         <p className="text-sm font-semibold uppercase tracking-wide text-orange-500">
-          {event.displayDate}
+          {displayDate}
         </p>
-        <h3 className="text-2xl md:text-3xl font-bold text-gray-900">{event.title}</h3>
-        <p className="text-gray-700 leading-relaxed text-base md:text-lg">{event.description}</p>
+        <h3 className="text-2xl md:text-3xl font-bold text-gray-900">{title}</h3>
+        <p className="text-gray-700 leading-relaxed text-base md:text-lg">{description}</p>
         <div className="rounded-lg bg-white border border-gray-100 px-4 py-3 text-gray-800 shadow-sm">
           <span className="font-semibold text-gray-900">{labels.venue}</span> {event.venue}
         </div>
@@ -97,7 +107,7 @@ function EventDetailCard({
           <p className="font-semibold text-gray-900">{labels.ticketsTitle}</p>
           {event.ticketing.exclusive && (
             <p className="text-sm">
-              {labels.exclusive} - {event.ticketing.holdersNote ?? labels.partnerFallback}
+              {labels.exclusive} - {holdersNote ?? labels.partnerFallback}
             </p>
           )}
           <div className="flex w-full flex-col items-center gap-3 text-center text-sm">
@@ -118,8 +128,8 @@ function EventDetailCard({
               </a>
             )}
           </div>
-          {event.admissionNote && (
-            <p className="text-xs text-gray-600 pt-1 border-t border-orange-100 mt-2">{event.admissionNote}</p>
+          {admissionNote && (
+            <p className="text-xs text-gray-600 pt-1 border-t border-orange-100 mt-2">{admissionNote}</p>
           )}
         </div>
       </div>
@@ -130,7 +140,8 @@ function EventDetailCard({
 export default function EventsInteractiveSection() {
   const params = useParams<{ locale?: string }>();
   const locale = (params.locale ?? "en") as InfoLocale;
-  const labels = getEventsInfo(locale).interactive;
+  const info = getEventsInfo(locale);
+  const labels = info.interactive;
   const calendarLocale = calendarLocales[locale] ?? enUS;
   const eventDateStrings = getAllEventDateStrings();
   const eventDates = useMemo(() => eventDateStrings.map(isoDateToLocalDate), [eventDateStrings]);
@@ -144,6 +155,9 @@ export default function EventsInteractiveSection() {
     if (!selected) return undefined;
     return findEventByIsoDate(localDateToIso(selected));
   }, [selected]);
+  const selectedEventText = selectedEvent
+    ? info.eventDetails[selectedEvent.id as keyof typeof info.eventDetails]
+    : undefined;
 
   const handleSelect = useCallback((d: Date | undefined) => {
     setSelected(d);
@@ -155,7 +169,13 @@ export default function EventsInteractiveSection() {
         <div className="order-1 min-w-0 overflow-x-hidden">
           <h2 className={cn(SECTION_TITLE, "mb-6 text-center")}>{labels.detailsTitle}</h2>
           <div className="min-h-[200px] min-w-0">
-            {selected && selectedEvent && <EventDetailCard event={selectedEvent} labels={labels} />}
+            {selected && selectedEvent && (
+              <EventDetailCard
+                event={selectedEvent}
+                labels={labels}
+                eventText={selectedEventText}
+              />
+            )}
             {selected && !selectedEvent && (
               <div
                 className="flex flex-col items-center justify-center rounded-xl border border-dashed border-gray-300 bg-white px-6 py-14 text-center shadow-sm"

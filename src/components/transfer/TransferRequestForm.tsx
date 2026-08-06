@@ -151,10 +151,7 @@ export default function TransferRequestForm() {
       form.reset();
       setFormInstanceKey((current) => current + 1);
       setSubmitState("success");
-      setMessage(
-        result.message ||
-          form.success
-      );
+      setMessage(form.success);
     } catch (error) {
       setSubmitState("error");
       setMessage(

@@ -22,6 +22,8 @@ import {
   localizePreDesignedItinerary,
 } from "@/data/localized-predesigned-itineraries";
 
+export const revalidate = 0;
+
 async function getStopPosition(stop: PreDesignedStop, locale: string): Promise<[number, number]> {
   if (stop.type === "place") {
     const place = await getPlaceDetailsBySlug(stop.slug, locale);
@@ -156,8 +158,8 @@ export default async function ItineraryDetailPage({ params }: { params: Promise<
     itinerary.stops.map(async (stop) => ({
       ...stop,
       position: await getStopPosition(stop, locale),
-      description: await getStopDescription(stop, locale),
-      images: await getStopImages(stop, locale),
+      description: stop.description ?? (await getStopDescription(stop, locale)),
+      images: stop.images ?? (await getStopImages(stop, locale)),
     }))
   );
 

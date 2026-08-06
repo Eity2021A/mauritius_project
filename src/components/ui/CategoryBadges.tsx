@@ -189,7 +189,9 @@ function getCategoryLabel(category: string, locale?: string): string {
 }
 
 export default function CategoryBadges({ categories, className = "", locale }: CategoryBadgesProps) {
-  const visibleCategories = categories.filter((cat) => cat !== "all");
+  const visibleCategories = categories
+    .map((category) => String(category).trim())
+    .filter((category) => category && category !== "all");
 
   if (visibleCategories.length === 0) return null;
 

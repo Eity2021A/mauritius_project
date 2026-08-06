@@ -219,7 +219,7 @@ export default async function TaxiPage({
         name={taxi.h1}
         description={taxi.serviceDescription}
         url={`${SITE_URL}/mauritius-taxi`}
-        serviceType="TaxiService"
+        serviceType={taxi.serviceType}
         telephone={TAXI_WHATSAPP_NUMBER_DISPLAY}
         openingHours="Mo-Su 00:00-23:59"
         offers={indicativeTaxiFares.map((item) => ({

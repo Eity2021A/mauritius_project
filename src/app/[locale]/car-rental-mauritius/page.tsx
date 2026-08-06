@@ -197,10 +197,10 @@ export default async function CarRentalPage({
         name={car.h1}
         description={car.serviceDescription}
         url={`${SITE_URL}/car-rental-mauritius`}
-        serviceType="Car rental"
+        serviceType={car.serviceType}
         offers={[
           ...vehicleCategories.map((category) => ({
-            name: `${category.name} - ${category.models}`,
+            name: `${car.vehicleCategoryNames[vehicleCategories.indexOf(category)] ?? category.name} - ${car.vehicleCategoryModels[vehicleCategories.indexOf(category)] ?? category.models}`,
             description:
               car.vehicleBadges[vehicleCategories.indexOf(category)] ?? category.badge,
           })),
@@ -208,7 +208,7 @@ export default async function CarRentalPage({
             name: car.addOns[travelAddOns.indexOf(addOn)] ?? addOn.name,
             price: addOn.price.replace(/[^\d]/g, ""),
             priceCurrency: "MUR",
-            description: `${addOn.price} ${addOn.unit}`,
+            description: `${addOn.price} ${car.addOnUnit}`,
           })),
         ]}
       />
@@ -218,9 +218,9 @@ export default async function CarRentalPage({
         itemType="Service"
         items={vehicleCategories.map((category, index) => ({
           position: index + 1,
-          name: category.name,
+          name: car.vehicleCategoryNames[index] ?? category.name,
           url: `${SITE_URL}/car-rental-mauritius`,
-          description: `${category.models} - ${car.vehicleBadges[index] ?? category.badge}`,
+          description: `${car.vehicleCategoryModels[index] ?? category.models} - ${car.vehicleBadges[index] ?? category.badge}`,
         }))}
       />
       <Navbar />
@@ -319,7 +319,7 @@ export default async function CarRentalPage({
                         <div>
                           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                             <h3 className="text-lg font-bold text-gray-900">
-                              {category.name}
+                              {car.vehicleCategoryNames[index] ?? category.name}
                             </h3>
                             <span className="text-sm font-semibold uppercase tracking-wide text-orange-500">
                               {category.rateCode}
@@ -327,7 +327,7 @@ export default async function CarRentalPage({
                           </div>
 
                           <p className="mt-0 text-[12px] leading-6 text-gray-500">
-                            {category.models}
+                            {car.vehicleCategoryModels[index] ?? category.models}
                           </p>
                           <div className=" mt-2 inline-flex items-center justify-center self-start rounded-full bg-orange-50 px-5 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-orange-500 sm:self-center">
                             {car.vehicleBadges[index] ?? category.badge}
@@ -389,7 +389,7 @@ export default async function CarRentalPage({
                             {item.price}
                           </span>
                           <span className="text-sm font-medium text-gray-400">
-                            {item.unit}
+                            {car.addOnUnit}
                           </span>
                         </p>
                       </div>

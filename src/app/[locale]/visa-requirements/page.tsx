@@ -699,7 +699,7 @@ export default function VisaRequirementsPage() {
               <ul className="space-y-3 text-sm text-gray-700">
                 {(t.raw("important.items") as string[]).map((item) => (
                   <li key={item} className="flex gap-2">
-                    <span className="text-orange-500 font-semibold">•</span>
+                    <span className="text-orange-500 font-semibold">&bull;</span>
                     {item}
                   </li>
                 ))}

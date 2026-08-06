@@ -40,6 +40,11 @@ const stats = [
   { number: "1968", suffix: "", label: "year of independence" },
 ];
 
+const getXeWidgetUrl = (from: string) =>
+  `https://www.xe.com/currencyconverter/fx-widget?amount=1&from=${from}&to=MUR`;
+
+const converterNoteClass = "mt-3 text-center text-xs leading-relaxed text-gray-500";
+
 export default async function WelcomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const activeLocale = normalizeLocale(locale);
@@ -368,9 +373,12 @@ export default async function WelcomePage({ params }: { params: Promise<{ locale
                     height={410}
                     width={340}
                     title="USD to MUR currency converter"
-                    src="https://www.xe.com/currencyconverter/fx-widget?amount=1&from=USD&to=MUR"
+                    src={getXeWidgetUrl("USD")}
                     className="border-0 rounded-lg overflow-hidden"
                   />
+                  <p className={converterNoteClass}>
+                    Rates are indicative and supplied by XE.
+                  </p>
                 </div>
                 <div className="text-center">
                   <p className="text-gray-700 font-medium text-sm mb-2">EUR → MUR</p>
@@ -378,9 +386,12 @@ export default async function WelcomePage({ params }: { params: Promise<{ locale
                     height={410}
                     width={340}
                     title="EUR to MUR currency converter"
-                    src="https://www.xe.com/currencyconverter/fx-widget?amount=1&from=EUR&to=MUR"
+                    src={getXeWidgetUrl("EUR")}
                     className="border-0 rounded-lg overflow-hidden"
                   />
+                  <p className={converterNoteClass}>
+                    Rates are indicative and supplied by XE.
+                  </p>
                 </div>
                 <div className="text-center">
                   <p className="text-gray-700 font-medium text-sm mb-2">CNY → MUR</p>
@@ -388,9 +399,12 @@ export default async function WelcomePage({ params }: { params: Promise<{ locale
                     height={410}
                     width={340}
                     title="CNY to MUR currency converter"
-                    src="https://www.xe.com/currencyconverter/fx-widget?amount=1&from=CNY&to=MUR"
+                    src={getXeWidgetUrl("CNY")}
                     className="border-0 rounded-lg overflow-hidden"
                   />
+                  <p className={converterNoteClass}>
+                    Rates are indicative and supplied by XE.
+                  </p>
                 </div>
                 <div className="text-center">
                   <p className="text-gray-700 font-medium text-sm mb-2">INR → MUR</p>
@@ -398,9 +412,12 @@ export default async function WelcomePage({ params }: { params: Promise<{ locale
                     height={410}
                     width={340}
                     title="INR to MUR currency converter"
-                    src="https://www.xe.com/currencyconverter/fx-widget?amount=1&from=INR&to=MUR"
+                    src={getXeWidgetUrl("INR")}
                     className="border-0 rounded-lg overflow-hidden"
                   />
+                  <p className={converterNoteClass}>
+                    Rates are indicative and supplied by XE.
+                  </p>
                 </div>
               </div>
             </div>

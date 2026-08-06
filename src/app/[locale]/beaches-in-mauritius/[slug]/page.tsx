@@ -18,16 +18,41 @@ import AddToItineraryButton from "@/components/AddToItineraryButton";
 import ButtonLabel from "@/components/ButtonLabel";
 import { trimMetaDescription } from "@/lib/seo";
 import { formatLabel, getDetailPageTranslations } from "@/data/detail-page-translations";
+import { normalizeLocale } from "@/i18n/routing";
+
+function CheckIcon() {
+  return (
+    <svg className="w-4 h-4 text-green-500 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+    </svg>
+  );
+}
+
+function XIcon() {
+  return (
+    <svg className="w-4 h-4 text-red-500 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  );
+}
 
 export async function generateStaticParams() {
   const slugs = await getAllBeachSlugs();
   return slugs.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+export async function generateMetadata({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+  searchParams?: Promise<{ lang?: string }>;
+}) {
   const { locale, slug } = await params;
-  const labels = getDetailPageTranslations(locale);
-  const beach = await getBeachDetailsBySlug(slug, locale);
+  const query = await searchParams;
+  const activeLocale = normalizeLocale(query?.lang ?? locale);
+  const labels = getDetailPageTranslations(activeLocale);
+  const beach = await getBeachDetailsBySlug(slug, activeLocale);
   if (!beach) {
     return { title: labels.beach.beachNotFound };
   }
@@ -57,16 +82,24 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default async function BeachPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+export default async function BeachPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+  searchParams?: Promise<{ lang?: string }>;
+}) {
   const { locale, slug } = await params;
-  const labels = getDetailPageTranslations(locale);
-  const beach = await getBeachDetailsBySlug(slug, locale);
+  const query = await searchParams;
+  const activeLocale = normalizeLocale(query?.lang ?? locale);
+  const labels = getDetailPageTranslations(activeLocale);
+  const beach = await getBeachDetailsBySlug(slug, activeLocale);
 
   if (!beach) {
     notFound();
   }
 
-  const regionBeaches = await getBeachesByRegion(beach.region, locale);
+  const regionBeaches = await getBeachesByRegion(beach.region, activeLocale);
   const relatedBeaches = regionBeaches
     .filter((b) => b.slug !== beach.slug)
     .slice(0, 3);
@@ -129,7 +162,7 @@ export default async function BeachPage({ params }: { params: Promise<{ locale: 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3">
               {beach.name}
             </h1>
-            <CategoryBadges categories={beachCategories} locale={locale} />
+            <CategoryBadges categories={beachCategories} locale={activeLocale} />
           </div>
         </div>
       </section>
@@ -157,6 +190,47 @@ export default async function BeachPage({ params }: { params: Promise<{ locale: 
                 <div>
                   <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">{labels.common.photoGallery}</h2>
                   <PhotoGalleryWrapper images={beach.images} beachName={beach.name} />
+                </div>
+              )}
+
+              {beach.included && beach.included.length > 0 && (
+                <div>
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">{labels.activity.included}</h2>
+                  <ul className="grid md:grid-cols-2 gap-3">
+                    {beach.included.map((item, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <CheckIcon />
+                        <span className="text-gray-700">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {beach.notIncluded && beach.notIncluded.length > 0 && (
+                <div>
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">{labels.activity.notIncluded}</h2>
+                  <ul className="grid md:grid-cols-2 gap-3">
+                    {beach.notIncluded.map((item, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <XIcon />
+                        <span className="text-gray-700">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {beach.whatToBring && beach.whatToBring.length > 0 && (
+                <div>
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">{labels.activity.whatToBring}</h2>
+                  <div className="flex flex-wrap gap-2">
+                    {beach.whatToBring.map((item, index) => (
+                      <span key={index} className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               )}
 

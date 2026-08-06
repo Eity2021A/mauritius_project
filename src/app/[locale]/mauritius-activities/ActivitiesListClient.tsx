@@ -9,8 +9,9 @@ import { type ActivityCategory, type Region, REGION_BADGE_COLORS } from "@/types
 import { getImageUrl } from "@/lib/image-url";
 import { useState, useMemo, useRef, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import MobileFilterSheet from "@/components/ui/MobileFilterSheet";
+import { routing, type AppLocale } from "@/i18n/routing";
 
 interface ActivitiesListClientProps {
   allActivities: Activity[];
@@ -26,8 +27,16 @@ function getCategoryFromParam(param: string | null): ActivityCategory {
   return "all";
 }
 
+function localizedHref(locale: string, href: string) {
+  const activeLocale = routing.locales.includes(locale as AppLocale)
+    ? (locale as AppLocale)
+    : routing.defaultLocale;
 
-function ActivityCard({ activity, priority = false, slugsWithPages, categoryLabels, regionLabels }: { activity: Activity; priority?: boolean; slugsWithPages: Set<string>; categoryLabels: Record<ActivityCategory, string>; regionLabels: Record<Region, string> }) {
+  if (activeLocale === routing.defaultLocale) return href;
+  return `/${activeLocale}${href}`;
+}
+
+function ActivityCard({ activity, priority = false, slugsWithPages, categoryLabels, regionLabels, locale }: { activity: Activity; priority?: boolean; slugsWithPages: Set<string>; categoryLabels: Record<ActivityCategory, string>; regionLabels: Record<Region, string>; locale: string }) {
   const hasDetailPage = slugsWithPages.has(activity.slug);
   const region = activity.region;
   const regionColor = region ? (REGION_BADGE_COLORS[region] ?? "bg-slate-500") : "bg-slate-500";
@@ -72,7 +81,7 @@ function ActivityCard({ activity, priority = false, slugsWithPages, categoryLabe
   if (hasDetailPage) {
     return (
       <Link
-        href={`/top-activities-mauritius/${activity.slug}`}
+        href={localizedHref(locale, `/top-activities-mauritius/${activity.slug}`)}
         className="group relative aspect-[2/3.3] rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 img-shimmer block"
       >
         {cardContent}
@@ -107,6 +116,7 @@ function ActivitiesListClientContent({
   categoryParam,
 }: ActivitiesListClientProps & { categoryParam: string | null }) {
   const t = useTranslations("ActivitiesHub");
+  const locale = useLocale();
   const categoryLabels: Record<ActivityCategory, string> = {
     all: t("filters.all"),
     "best-seller": t("categories.bestSeller"),
@@ -451,6 +461,7 @@ function ActivitiesListClientContent({
                       slugsWithPages={slugsWithPages}
                       categoryLabels={categoryLabels}
                       regionLabels={regionLabels}
+                      locale={locale}
                     />
                   ))}
                 </div>
@@ -548,7 +559,7 @@ function ActivitiesListClientContent({
             {t("cta.body")}
           </p>
           <Link
-            href="/contact"
+            href={localizedHref(locale, "/contact")}
             className="inline-flex items-center justify-center min-h-[48px] bg-white text-orange-500 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300"
           >
             {t("cta.button")}

@@ -9,13 +9,13 @@ const NO_STORE_HEADERS = {
 const fields = "slug, is_active, draw_date, draw_date_label, subtitle, headline, card_title, card_text, card_icon"
 const translatedFields = [
   fields,
-  "translations",
   "draw_date_label_fr, subtitle_fr, headline_fr, card_title_fr, card_text_fr",
   "draw_date_label_de, subtitle_de, headline_de, card_title_de, card_text_de",
   "draw_date_label_it, subtitle_it, headline_it, card_title_it, card_text_it",
   "draw_date_label_es, subtitle_es, headline_es, card_title_es, card_text_es",
   "draw_date_label_ru, subtitle_ru, headline_ru, card_title_ru, card_text_ru",
 ].join(", ")
+const translatedJsonFields = [fields, "translations"].join(", ")
 
 type CampaignRow = Record<string, unknown> & {
   translations?: Record<string, Partial<Record<string, string | null>>> | null
@@ -65,6 +65,10 @@ export async function GET(request: Request) {
     }
 
     let { data, error } = await getActiveCampaign(translatedFields)
+
+    if (error) {
+      ;({ data, error } = await getActiveCampaign(translatedJsonFields))
+    }
 
     if (error) {
       ;({ data, error } = await getActiveCampaign(fields))

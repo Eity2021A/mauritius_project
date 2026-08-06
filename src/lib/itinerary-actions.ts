@@ -764,7 +764,7 @@ export async function getPublicItineraries(locale = "en"): Promise<PublicItinera
     .from("user_itineraries")
     .select("id, user_id, title, slug, stop_count, cover_image, upvote_count, view_count, is_anonymous, created_at, total_distance_km, total_duration_min")
     .eq("is_public", true)
-    .gte("stop_count", 2)
+    .eq("is_featured", false)
     .order("upvote_count", { ascending: false })
     .order("created_at", { ascending: false })
     .limit(50);

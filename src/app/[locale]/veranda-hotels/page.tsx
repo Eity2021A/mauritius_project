@@ -491,6 +491,66 @@ const verandaText: Record<Exclude<AppLocale, "en">, Record<string, string>> = {
   },
 };
 
+Object.assign(verandaText.fr, {
+  "Which is right for me?": "Quel hôtel est fait pour moi ?",
+  "Comfort tiers": "Catégories de confort",
+  "Eco-certified": "Certification ecologique",
+  "Authentic island style": "Style insulaire authentique",
+  "Genuine, honest value": "Bon rapport qualité-prix",
+  "Green Key certified": "Certifié Green Key",
+  "Green Key": "Clef Verte",
+  "Travelling as a family but still want adult time?": "Vous voyagez en famille mais voulez aussi du temps entre adultes ?",
+  "After a stunning east-coast beach and great value?": "Vous cherchez une superbe plage de la côte est et un bon prix ?",
+});
+
+Object.assign(verandaText.de, {
+  "Which is right for me?": "Welches Hotel passt zu mir?",
+  "Comfort tiers": "Komfortklassen",
+  "Eco-certified": "Öko-zertifiziert",
+  "Authentic island style": "Authentischer Inselstil",
+  "Genuine, honest value": "Ehrliches Preis-Leistungs-Verhältnis",
+  "Green Key certified": "Green-Key-zertifiziert",
+  "Green Key": "Grüner Schlüssel",
+  "Travelling as a family but still want adult time?": "Reisen Sie als Familie, möchten aber auch Zeit nur für Erwachsene?",
+  "After a stunning east-coast beach and great value?": "Suchen Sie einen schönen Ostküstenstrand mit gutem Preis-Leistungs-Verhältnis?",
+});
+
+Object.assign(verandaText.it, {
+  "Which is right for me?": "Quale hotel fa per me?",
+  "Comfort tiers": "Livelli di comfort",
+  "Eco-certified": "Certificazione ecologica",
+  "Authentic island style": "Stile autentico dell'isola",
+  "Genuine, honest value": "Valore autentico e corretto",
+  "Green Key certified": "Certificato Green Key",
+  "Green Key": "Chiave Verde",
+  "Travelling as a family but still want adult time?": "Viaggi in famiglia ma vuoi anche momenti solo adulti?",
+  "After a stunning east-coast beach and great value?": "Cerchi una splendida spiaggia della costa est e un ottimo rapporto qualità-prezzo?",
+});
+
+Object.assign(verandaText.es, {
+  "Which is right for me?": "¿Qué hotel es para mí?",
+  "Comfort tiers": "Niveles de confort",
+  "Eco-certified": "Certificación ecológica",
+  "Authentic island style": "Estilo isleño auténtico",
+  "Genuine, honest value": "Buena relación calidad-precio",
+  "Green Key certified": "Certificado Green Key",
+  "Green Key": "Llave Verde",
+  "Travelling as a family but still want adult time?": "¿Viajas en familia pero también quieres momentos solo para adultos?",
+  "After a stunning east-coast beach and great value?": "¿Buscas una playa espectacular en la costa este y buen precio?",
+});
+
+Object.assign(verandaText.ru, {
+  "Which is right for me?": "Какой отель мне подойдет?",
+  "Comfort tiers": "Уровни комфорта",
+  "Eco-certified": "Эко-сертификация",
+  "Authentic island style": "Аутентичный островной стиль",
+  "Genuine, honest value": "Честное соотношение цены и качества",
+  "Green Key certified": "Сертификат Green Key",
+  "Green Key": "Зеленый ключ",
+  "Travelling as a family but still want adult time?": "Путешествуете семьей, но хотите время только для взрослых?",
+  "After a stunning east-coast beach and great value?": "Ищете красивый пляж восточного побережья и хорошую цену?",
+});
+
 function verandaTranslate(locale: AppLocale) {
   return (text: string): string => {
     if (locale === "en") return text;
@@ -969,7 +1029,7 @@ export default async function VerandaCollectionPage({ params }: { params: Promis
             ].map((fact) => (
               <div key={fact.label}>
                 <div className="font-sans text-3xl font-semibold text-[#12909c]">
-                  {fact.value}
+                  {t(fact.value)}
                 </div>
                 <div className="mt-1 text-[12.5px] uppercase tracking-[0.07em] text-[#5f7378]">
                   {t(fact.label)}
@@ -1523,10 +1583,10 @@ export default async function VerandaCollectionPage({ params }: { params: Promis
                   <VerandaIcon name={item.icon} className="h-6 w-6" />
                 </div>
                 <h3 className="font-sans text-base font-semibold text-[#1c2a2e]">
-                  {item.title}
+                  {t(item.title)}
                 </h3>
                 <p className="mt-2 text-sm leading-6 text-[#5f7378]">
-                  {item.description}
+                  {t(item.description)}
                 </p>
               </article>
             ))}

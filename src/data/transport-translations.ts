@@ -19,6 +19,7 @@ const enTransportTranslations = {
       "Rent a car in Mauritius with Mauritius Explored. Compare prices and book your ideal vehicle for your stay.",
     serviceDescription:
       "Mauritius car rental service with vehicle categories, airport or hotel collection options and travel add-ons.",
+    serviceType: "Car rental",
     itemListName: "Mauritius Car Rental Vehicle Categories",
     itemListDescription:
       "Vehicle categories and car rental add-ons available for Mauritius visitors.",
@@ -47,7 +48,26 @@ const enTransportTranslations = {
     faqTitle: "Car Rental Mauritius FAQ",
     roadKicker: "Getting Around - Car Rental",
     roadTitle: "Popular Road Trips",
+    addOnUnit: "/rental",
     addOns: ["Wi-Fi Dongle", "Booster Seat", "Child Seat"],
+    vehicleCategoryNames: [
+      "Category C",
+      "Category E",
+      "Category F",
+      "Category G",
+      "Category H",
+      "Category I",
+      "Category X",
+    ],
+    vehicleCategoryModels: [
+      "Suzuki Celerio - Suzuki S-Presso",
+      "Hyundai Grand i10 - Suzuki Swift - Suzuki Dzire",
+      "Suzuki Ciaz",
+      "Suzuki Fronx - Suzuki Brezza - Hyundai Venue",
+      "Suzuki XL6 (6-seater)",
+      "Suzuki Ertiga (7-seater) - Toyota Sienta (7-seater)",
+      "Any available vehicle from our fleet, subject to availability.",
+    ],
     vehicleBadges: [
       "Economy",
       "Compact",
@@ -231,6 +251,7 @@ const enTransportTranslations = {
       "Find an independent taxi service in Mauritius for airport transfers, hotel pick-ups, beach rides and private day tours.",
     serviceDescription:
       "Independent Mauritius taxi and private-driver listing for airport transfers, hotel pick-ups and island day tours.",
+    serviceType: "Taxi service",
     h1: "Taxi Service in Mauritius",
     kicker: "Getting Around / Taxi Listing",
     servicesTitle: "Services Available",
@@ -1029,6 +1050,388 @@ const transportTranslations: Record<TransportLocale, TransportTranslations> = {
     },
   }),
 };
+
+Object.assign(transportTranslations.fr.car, {
+  serviceType: "Location de voiture",
+  offerMain: "15 % DE REDUCTION",
+  addOnUnit: "/location",
+  vehicleCategoryNames: ["Categorie C", "Categorie E", "Categorie F", "Categorie G", "Categorie H", "Categorie I", "Categorie X"],
+  vehicleCategoryModels: [
+    "Suzuki Celerio - Suzuki S-Presso",
+    "Hyundai Grand i10 - Suzuki Swift - Suzuki Dzire",
+    "Suzuki Ciaz",
+    "Suzuki Fronx - Suzuki Brezza - Hyundai Venue",
+    "Suzuki XL6 (6 places)",
+    "Suzuki Ertiga (7 places) - Toyota Sienta (7 places)",
+    "Tout vehicule disponible dans notre flotte, selon disponibilite.",
+  ],
+  vehicleBadges: ["Economique", "Compacte", "Berline", "SUV compact", "Monospace 6 places", "7 places", "Au choix"],
+});
+
+Object.assign(transportTranslations.de.car, {
+  serviceType: "Mietwagen",
+  offerMain: "15 % RABATT",
+  addOnUnit: "/Miete",
+  vehicleCategoryNames: ["Kategorie C", "Kategorie E", "Kategorie F", "Kategorie G", "Kategorie H", "Kategorie I", "Kategorie X"],
+  vehicleCategoryModels: [
+    "Suzuki Celerio - Suzuki S-Presso",
+    "Hyundai Grand i10 - Suzuki Swift - Suzuki Dzire",
+    "Suzuki Ciaz",
+    "Suzuki Fronx - Suzuki Brezza - Hyundai Venue",
+    "Suzuki XL6 (6-Sitzer)",
+    "Suzuki Ertiga (7-Sitzer) - Toyota Sienta (7-Sitzer)",
+    "Ein verfuegbares Fahrzeug aus unserer Flotte, je nach Verfuegbarkeit.",
+  ],
+  vehicleBadges: ["Sparklasse", "Kompakt", "Limousine", "Kompakt-SUV", "6-Sitzer Van", "7-Sitzer", "Flexibel"],
+});
+
+Object.assign(transportTranslations.it.car, {
+  serviceDescription: "Servizio di noleggio auto a Mauritius con categorie di veicoli, ritiro in aeroporto o hotel ed extra di viaggio.",
+  serviceType: "Noleggio auto",
+  itemListName: "Categorie di noleggio auto a Mauritius",
+  itemListDescription: "Categorie di veicoli ed extra disponibili per i visitatori a Mauritius.",
+  offerMain: "15% DI SCONTO",
+  addOnUnit: "/noleggio",
+  vehicleCategoryNames: ["Categoria C", "Categoria E", "Categoria F", "Categoria G", "Categoria H", "Categoria I", "Categoria X"],
+  vehicleCategoryModels: [
+    "Suzuki Celerio - Suzuki S-Presso",
+    "Hyundai Grand i10 - Suzuki Swift - Suzuki Dzire",
+    "Suzuki Ciaz",
+    "Suzuki Fronx - Suzuki Brezza - Hyundai Venue",
+    "Suzuki XL6 (6 posti)",
+    "Suzuki Ertiga (7 posti) - Toyota Sienta (7 posti)",
+    "Qualsiasi veicolo disponibile nella flotta, secondo disponibilita.",
+  ],
+  vehicleBadges: ["Economica", "Compatta", "Berlina", "SUV compatto", "Monovolume 6 posti", "7 posti", "Flessibile"],
+  drivingTips: [
+    { title: "Patente", text: "Porta la patente valida e il passaporto. La patente internazionale e utile se la tua patente non e in inglese o francese." },
+    { title: "Guida a sinistra", text: "A Mauritius si guida a sinistra. Rotatorie, strade di villaggio e curve di montagna richiedono piu prudenza." },
+    { title: "Carburante", text: "Le stazioni sono comuni vicino a citta e strade principali, ma fai il pieno prima dei percorsi lunghi verso sud, est o montagna." },
+    { title: "Parcheggio e velocita", text: "Usa parcheggi segnalati e rispetta i limiti. Zone spiaggia e mercati possono essere affollati nei weekend." },
+  ],
+  faqs: [
+    { question: "Serve un'auto a Mauritius?", answer: "Un'auto a noleggio e utile se vuoi raggiungere spiagge, punti panoramici e ristoranti al tuo ritmo. Se non vuoi guidare, usa taxi o transfer privati." },
+    { question: "Da che lato si guida a Mauritius?", answer: "A Mauritius si guida a sinistra. Alcune strade di villaggio e montagna sono strette, quindi calcola piu tempo." },
+    { question: "Posso prenotare l'auto prima dell'arrivo?", answer: "Si. Prenotare prima dell'arrivo e consigliato nei mesi di punta per assicurare categoria e dettagli di ritiro." },
+    { question: "Serve una patente internazionale?", answer: "Porta sempre la tua patente valida. Una patente internazionale puo aiutare se la patente non e in inglese o francese." },
+  ],
+});
+
+Object.assign(transportTranslations.es.car, {
+  serviceDescription: "Servicio de alquiler de coches en Mauricio con categorias de vehiculos, recogida en aeropuerto u hotel y extras de viaje.",
+  serviceType: "Alquiler de coches",
+  itemListName: "Categorias de coches de alquiler en Mauricio",
+  itemListDescription: "Categorias de vehiculos y extras disponibles para visitantes en Mauricio.",
+  offerMain: "15% DE DESCUENTO",
+  addOnUnit: "/alquiler",
+  vehicleCategoryNames: ["Categoria C", "Categoria E", "Categoria F", "Categoria G", "Categoria H", "Categoria I", "Categoria X"],
+  vehicleCategoryModels: [
+    "Suzuki Celerio - Suzuki S-Presso",
+    "Hyundai Grand i10 - Suzuki Swift - Suzuki Dzire",
+    "Suzuki Ciaz",
+    "Suzuki Fronx - Suzuki Brezza - Hyundai Venue",
+    "Suzuki XL6 (6 plazas)",
+    "Suzuki Ertiga (7 plazas) - Toyota Sienta (7 plazas)",
+    "Cualquier vehiculo disponible de la flota, sujeto a disponibilidad.",
+  ],
+  vehicleBadges: ["Economico", "Compacto", "Sedan", "SUV compacto", "Monovolumen 6 plazas", "7 plazas", "Flexible"],
+  drivingTips: [
+    { title: "Licencia", text: "Lleva tu licencia de conducir valida y pasaporte. El permiso internacional ayuda si tu licencia no esta en ingles o frances." },
+    { title: "Conducir por la izquierda", text: "En Mauricio se conduce por la izquierda. Rotondas, pueblos y curvas de montana requieren mas cuidado." },
+    { title: "Combustible", text: "Hay gasolineras cerca de pueblos y carreteras principales, pero llena el deposito antes de rutas largas al sur, este o montana." },
+    { title: "Aparcamiento y velocidad", text: "Usa aparcamientos senalizados y respeta los limites. Playas y mercados pueden estar llenos los fines de semana." },
+  ],
+  faqs: [
+    { question: "Necesito coche en Mauricio?", answer: "Un coche de alquiler es util si quieres visitar playas, miradores y restaurantes a tu ritmo. Si prefieres no conducir, usa taxis o traslados privados." },
+    { question: "Por que lado se conduce en Mauricio?", answer: "En Mauricio se conduce por la izquierda. Algunas carreteras de pueblos y montana son estrechas, asi que calcula mas tiempo." },
+    { question: "Puedo reservar un coche antes de llegar?", answer: "Si. Reservar antes de la llegada es recomendable en temporada alta para asegurar categoria y detalles de recogida." },
+    { question: "Necesito licencia internacional en Mauricio?", answer: "Los visitantes deben llevar su licencia valida. Un permiso internacional ayuda si la licencia no esta en ingles o frances." },
+  ],
+});
+
+Object.assign(transportTranslations.ru.car, {
+  serviceDescription: "Сервис аренды авто на Маврикии с категориями машин, получением в аэропорту или отеле и дорожными дополнениями.",
+  serviceType: "Аренда авто",
+  itemListName: "Категории авто для аренды на Маврикии",
+  itemListDescription: "Категории автомобилей и дополнительные опции для гостей Маврикия.",
+  offerMain: "СКИДКА 15%",
+  addOnUnit: "/аренда",
+  vehicleCategoryNames: ["Категория C", "Категория E", "Категория F", "Категория G", "Категория H", "Категория I", "Категория X"],
+  vehicleCategoryModels: [
+    "Suzuki Celerio - Suzuki S-Presso",
+    "Hyundai Grand i10 - Suzuki Swift - Suzuki Dzire",
+    "Suzuki Ciaz",
+    "Suzuki Fronx - Suzuki Brezza - Hyundai Venue",
+    "Suzuki XL6 (6 мест)",
+    "Suzuki Ertiga (7 мест) - Toyota Sienta (7 мест)",
+    "Любой доступный автомобиль из нашего парка, при наличии.",
+  ],
+  vehicleBadges: ["Эконом", "Компакт", "Седан", "Компактный SUV", "Минивэн 6 мест", "7 мест", "Гибкий"],
+  drivingTips: [
+    { title: "Водительские права", text: "Возьмите действующие права и паспорт. Международное водительское удостоверение полезно, если права не на английском или французском." },
+    { title: "Левостороннее движение", text: "На Маврикии движение левостороннее. Круговые развязки, деревенские дороги и горные повороты требуют осторожности." },
+    { title: "Топливо", text: "Заправки часто встречаются в городах и у главных дорог, но перед длинными поездками на юг, восток или в горы лучше заправиться заранее." },
+    { title: "Парковка и скорость", text: "Пользуйтесь обозначенными парковками и соблюдайте ограничения скорости. У пляжей и рынков по выходным бывает тесно." },
+  ],
+  faqs: [
+    { question: "Нужна ли машина на Маврикии?", answer: "Арендованная машина удобна, если вы хотите посещать пляжи, смотровые площадки и рестораны в своем темпе. Если не хотите водить, выбирайте такси или частные трансферы." },
+    { question: "По какой стороне дороги ездят на Маврикии?", answer: "На Маврикии ездят слева. Деревенские и горные дороги могут быть узкими, поэтому закладывайте больше времени." },
+    { question: "Можно ли забронировать авто до прилета?", answer: "Да. В высокий сезон лучше бронировать заранее, чтобы закрепить нужную категорию автомобиля и детали получения." },
+    { question: "Нужны ли международные права на Маврикии?", answer: "Гостям нужно иметь действующие национальные права. Международное удостоверение помогает, если права не на английском или французском." },
+  ],
+});
+
+Object.assign(transportTranslations.fr.transfer, {
+  h1: "Transferts a Maurice",
+  kicker: "Se deplacer / Transferts prives",
+  subtitle: "Simplifiez vos trajets sur l'ile avec des transferts prives pour l'aeroport, les hotels, les villas, les restaurants, les plages, les activites et les excursions.",
+  coveredText: "Que vous ayez besoin d'un simple transfert aeroport, d'un trajet vers une activite ou d'un transport pour une journee complete, Mauritius Explored vous met en relation avec des operateurs locaux selectionnes.",
+  importantText: "Tous les services de transfert sont assures par des prestataires locaux independants. Mauritius Explored facilite la demande, mais n'exploite pas les vehicules et n'est pas responsable des reservations, paiements, retards, annulations, accidents, qualite du service ou autre probleme lie au transfert.",
+  faresText: "Ces prix de depart donnent une indication pour planifier. Votre prix confirme depend de l'itineraire, du vehicule, des bagages et de l'heure du trajet.",
+  faqs: [
+    { question: "Combien coute un transfert aeroport a Maurice ?", answer: "Les tarifs indicatifs des transferts prives commencent a Rs 2,300 pour Flic en Flac, Rs 2,400 pour Belle Mare, Rs 2,600 pour Grand Baie et Rs 3,000 pour Le Morne." },
+    { question: "Puis-je reserver un transfert prive de l'aeroport a mon hotel ?", answer: "Oui. Vous pouvez demander une prise en charge privee pour les arrivees a l'aeroport, les hotels, les villas, les plages et les activites." },
+    { question: "Les transferts a Maurice conviennent-ils aux familles ?", answer: "Les transferts prives sont souvent le choix le plus simple pour les familles, car les horaires, l'espace bagages et la depose directe a l'hotel peuvent etre organises a l'avance." },
+    { question: "Combien coute un transfert vers Grand Baie ?", answer: "Un transfert prive indicatif de l'aeroport de Maurice a Grand Baie commence a Rs 2,600, selon le vehicule, les bagages et le temps de trajet." },
+    { question: "Combien de temps dure le trajet de l'aeroport a Grand Baie ?", answer: "Le trajet entre l'aeroport de Maurice et Grand Baie dure generalement environ 1 h 10, selon la circulation et l'adresse exacte de votre hotel." },
+  ],
+});
+
+Object.assign(transportTranslations.de.transfer, {
+  h1: "Transfers auf Mauritius",
+  kicker: "Unterwegs / Private Transfers",
+  subtitle: "Machen Sie Ihre Fahrten ueber die Insel einfacher mit privaten Transfers fuer Flughafenankuenfte, Hotelabholungen, Villen, Restaurants, Straende, Aktivitaeten und Tagesausfluege.",
+  coveredText: "Ob einfacher Flughafentransfer, Fahrt zu einer Aktivitaet oder ein ganzer Inseltag: Mauritius Explored verbindet Sie mit ausgewaehlten lokalen Transferanbietern.",
+  importantText: "Alle Transferleistungen werden von unabhaengigen lokalen Anbietern durchgefuehrt. Mauritius Explored vermittelt nur die Anfrage, betreibt keine Fahrzeuge und uebernimmt keine Verantwortung fuer Buchungen, Zahlungen, Verspaetungen, Stornierungen, Unfaelle, Servicequalitaet oder andere Probleme im Zusammenhang mit dem Transfer.",
+  faresText: "Diese Einstiegspreise dienen als Planungshilfe. Der bestaetigte Preis haengt von Route, Fahrzeug, Gepaeck und Fahrtzeit ab.",
+  faqs: [
+    { question: "Wie viel kostet ein Flughafentransfer auf Mauritius?", answer: "Private Richtpreise beginnen bei Rs 2,300 nach Flic en Flac, Rs 2,400 nach Belle Mare, Rs 2,600 nach Grand Baie und Rs 3,000 nach Le Morne." },
+    { question: "Kann ich einen privaten Transfer vom Flughafen zu meinem Hotel buchen?", answer: "Ja. Sie koennen private Abholung fuer Flughafenankuenfte, Hotels, Villen, Straende und Aktivitaeten anfragen." },
+    { question: "Sind Mauritius Transfers fuer Familien geeignet?", answer: "Private Transfers sind fuer Familien oft am einfachsten, weil Abholzeiten, Gepaeckplatz und direkte Hotelabgabe im Voraus organisiert werden koennen." },
+    { question: "Wie viel kostet ein Transfer nach Grand Baie?", answer: "Ein privater Richtpreis vom Flughafen Mauritius nach Grand Baie beginnt bei Rs 2,600, je nach Fahrzeug, Gepaeck und Fahrzeit." },
+    { question: "Wie lange dauert die Fahrt vom Flughafen nach Grand Baie?", answer: "Die Fahrt vom Flughafen Mauritius nach Grand Baie dauert normalerweise etwa 1 Stunde 10 Minuten, je nach Verkehr und genauer Hotellage." },
+  ],
+});
+
+Object.assign(transportTranslations.it.transfer, {
+  metaTitle: "Transfer aeroporto Mauritius - autisti privati e prezzi fissi",
+  metaDescription: "Organizza transfer privati a Mauritius per arrivi in aeroporto, hotel, ville, spiagge, attivita ed escursioni.",
+  h1: "Transfer a Mauritius",
+  kicker: "Muoversi / Transfer privati",
+  subtitle: "Rendi piu semplici gli spostamenti sull'isola con transfer privati per arrivi in aeroporto, hotel, ville, ristoranti, spiagge, attivita ed escursioni.",
+  howTitle: "Come funziona",
+  coveredTitle: "Transfer disponibili",
+  coveredText: "Che ti serva un semplice transfer dall'aeroporto, un passaggio verso un'attivita o un transfer per un'intera giornata, Mauritius Explored ti collega con operatori locali selezionati.",
+  importantTitle: "Informazioni importanti",
+  importantText: "Tutti i servizi di transfer sono gestiti da fornitori locali indipendenti. Mauritius Explored facilita la richiesta, ma non gestisce i veicoli e non si assume responsabilita per prenotazioni, pagamenti, ritardi, cancellazioni, incidenti, qualita del servizio o altri problemi legati al transfer.",
+  faresTitle: "Prezzi indicativi dei transfer",
+  faresText: "Questi prezzi di partenza aiutano a pianificare. Il prezzo confermato dipende da percorso, veicolo, bagagli e orario di viaggio.",
+  faqTitle: "FAQ transfer aeroporto Mauritius",
+  schemaName: "Come prenotare un transfer aeroporto a Mauritius",
+  schemaDescription: "Un semplice processo in tre passaggi per richiedere un transfer privato a Mauritius.",
+  types: ["Aeroporto", "Hotel e villa", "Ristoranti e spiagge", "Attivita", "Escursioni"],
+  fares: [
+    { route: "Aeroporto a Grand Baie", time: "1 h 10 min", fare: "da Rs 2,600" },
+    { route: "Aeroporto a Flic en Flac", time: "55 min", fare: "da Rs 2,300" },
+    { route: "Aeroporto a Belle Mare", time: "55 min", fare: "da Rs 2,400" },
+    { route: "Aeroporto a Le Morne", time: "1 h 20 min", fare: "da Rs 3,000" },
+  ],
+  faqs: [
+    { question: "Quanto costa un transfer aeroporto a Mauritius?", answer: "Le tariffe indicative dei transfer privati partono da Rs 2,300 per Flic en Flac, Rs 2,400 per Belle Mare, Rs 2,600 per Grand Baie e Rs 3,000 per Le Morne." },
+    { question: "Posso prenotare un transfer privato dall'aeroporto all'hotel?", answer: "Si. Puoi richiedere un pick-up privato per arrivi in aeroporto, hotel, ville, spiagge e transfer verso attivita." },
+    { question: "I transfer a Mauritius sono adatti alle famiglie?", answer: "I transfer privati sono spesso la scelta piu semplice per le famiglie, perche orari, spazio bagagli e arrivo diretto in hotel si organizzano in anticipo." },
+    { question: "Quanto costa un transfer per Grand Baie?", answer: "Un transfer privato indicativo dall'aeroporto di Mauritius a Grand Baie parte da Rs 2,600, secondo veicolo, bagagli e tempo di viaggio." },
+    { question: "Quanto dura il tragitto dall'aeroporto a Grand Baie?", answer: "Il tragitto dall'aeroporto di Mauritius a Grand Baie dura di solito circa 1 h 10 min, secondo traffico e posizione esatta dell'hotel." },
+  ],
+});
+
+Object.assign(transportTranslations.es.transfer, {
+  metaTitle: "Traslados aeropuerto Mauricio - conductores privados y precios fijos",
+  metaDescription: "Organiza traslados privados en Mauricio para llegadas al aeropuerto, hoteles, villas, playas, actividades y excursiones.",
+  h1: "Traslados en Mauricio",
+  kicker: "Moverse / Traslados privados",
+  subtitle: "Haz mas faciles tus desplazamientos por la isla con traslados privados para llegadas al aeropuerto, hoteles, villas, restaurantes, playas, actividades y excursiones.",
+  howTitle: "Como funciona",
+  coveredTitle: "Traslados cubiertos",
+  coveredText: "Ya necesites un traslado simple desde el aeropuerto, transporte hacia una actividad o un traslado de dia completo por la isla, Mauritius Explored te conecta con operadores locales seleccionados.",
+  importantTitle: "Informacion importante",
+  importantText: "Todos los servicios de traslado son operados por proveedores locales independientes. Mauritius Explored facilita la solicitud, pero no opera vehiculos ni asume responsabilidad por reservas, pagos, retrasos, cancelaciones, accidentes, calidad del servicio o cualquier problema relacionado con el traslado.",
+  faresTitle: "Precios indicativos de traslados",
+  faresText: "Estos precios iniciales sirven para planificar. El precio confirmado depende de la ruta, vehiculo, equipaje y hora del viaje.",
+  faqTitle: "FAQ traslado aeropuerto Mauricio",
+  schemaName: "Como reservar un traslado de aeropuerto en Mauricio",
+  schemaDescription: "Un proceso sencillo en tres pasos para solicitar un traslado privado en Mauricio.",
+  types: ["Aeropuerto", "Hotel y villa", "Restaurantes y playas", "Actividades", "Excursiones"],
+  fares: [
+    { route: "Aeropuerto a Grand Baie", time: "1 h 10 min", fare: "desde Rs 2,600" },
+    { route: "Aeropuerto a Flic en Flac", time: "55 min", fare: "desde Rs 2,300" },
+    { route: "Aeropuerto a Belle Mare", time: "55 min", fare: "desde Rs 2,400" },
+    { route: "Aeropuerto a Le Morne", time: "1 h 20 min", fare: "desde Rs 3,000" },
+  ],
+  faqs: [
+    { question: "Cuanto cuesta un traslado de aeropuerto en Mauricio?", answer: "Las tarifas privadas indicativas empiezan desde Rs 2,300 a Flic en Flac, Rs 2,400 a Belle Mare, Rs 2,600 a Grand Baie y Rs 3,000 a Le Morne." },
+    { question: "Puedo reservar un traslado privado del aeropuerto a mi hotel?", answer: "Si. Puedes solicitar recogida privada para llegadas al aeropuerto, hoteles, villas, playas y traslados a actividades." },
+    { question: "Los traslados en Mauricio son adecuados para familias?", answer: "Los traslados privados suelen ser la opcion mas facil para familias porque horarios, espacio para equipaje y llegada directa al hotel se organizan con antelacion." },
+    { question: "Cuanto cuesta un traslado a Grand Baie?", answer: "Un traslado privado indicativo desde el aeropuerto de Mauricio a Grand Baie empieza desde Rs 2,600, segun vehiculo, equipaje y tiempo de viaje." },
+    { question: "Cuanto dura el trayecto del aeropuerto a Grand Baie?", answer: "El trayecto del aeropuerto de Mauricio a Grand Baie suele durar alrededor de 1 h 10 min, segun trafico y ubicacion exacta del hotel." },
+  ],
+});
+
+Object.assign(transportTranslations.ru.transfer, {
+  metaTitle: "Трансферы из аэропорта Маврикия - частные водители и фиксированные цены",
+  metaDescription: "Организуйте частные трансферы на Маврикии для прилета в аэропорт, отелей, вилл, пляжей, активностей и экскурсий.",
+  h1: "Трансферы на Маврикии",
+  kicker: "Передвижение / Частные трансферы",
+  subtitle: "Сделайте поездки по острову проще с частными трансферами для аэропорта, отелей, вилл, ресторанов, пляжей, активностей и экскурсий.",
+  howTitle: "Как это работает",
+  coveredTitle: "Доступные трансферы",
+  coveredText: "Нужен ли вам простой трансфер из аэропорта, поездка к активности или транспорт на целый день, Mauritius Explored связывает вас с выбранными местными операторами.",
+  importantTitle: "Важная информация",
+  importantText: "Все трансферы выполняются независимыми местными поставщиками. Mauritius Explored помогает передать запрос, но не управляет автомобилями и не отвечает за бронирования, платежи, задержки, отмены, несчастные случаи, качество сервиса или любые вопросы, связанные с трансфером.",
+  faresTitle: "Ориентировочные цены трансферов",
+  faresText: "Эти стартовые цены помогают планировать. Подтвержденная цена зависит от маршрута, автомобиля, багажа и времени поездки.",
+  faqTitle: "FAQ трансфер из аэропорта Маврикия",
+  schemaName: "Как забронировать трансфер из аэропорта на Маврикии",
+  schemaDescription: "Простой процесс из трех шагов для запроса частного трансфера на Маврикии.",
+  steps: [
+    { number: "1", title: "Отправьте запрос", description: "Укажите маршрут, даты и детали." },
+    { number: "2", title: "Мы свяжем вас", description: "Мы отправим запрос выбранному местному оператору." },
+    { number: "3", title: "Подтвердите по email", description: "Вы получите наличие и цену для подтверждения." },
+  ],
+  types: ["Аэропорт", "Отель и вилла", "Рестораны и пляжи", "Активности", "Экскурсии"],
+  fares: [
+    { route: "Аэропорт - Grand Baie", time: "1 ч 10 мин", fare: "от Rs 2,600" },
+    { route: "Аэропорт - Flic en Flac", time: "55 мин", fare: "от Rs 2,300" },
+    { route: "Аэропорт - Belle Mare", time: "55 мин", fare: "от Rs 2,400" },
+    { route: "Аэропорт - Le Morne", time: "1 ч 20 мин", fare: "от Rs 3,000" },
+  ],
+  faqs: [
+    { question: "Сколько стоит трансфер из аэропорта на Маврикии?", answer: "Ориентировочные тарифы частного трансфера начинаются от Rs 2,300 до Flic en Flac, Rs 2,400 до Belle Mare, Rs 2,600 до Grand Baie и Rs 3,000 до Le Morne." },
+    { question: "Можно ли заказать частный трансфер из аэропорта в отель?", answer: "Да. Вы можете запросить частную встречу для прилета в аэропорт, отелей, вилл, пляжей и трансферов к активностям." },
+    { question: "Подходят ли трансферы на Маврикии для семей?", answer: "Частные трансферы часто самый простой вариант для семей: время встречи, место для багажа и прямая доставка в отель согласуются заранее." },
+    { question: "Сколько стоит трансфер до Grand Baie?", answer: "Ориентировочный частный трансфер из аэропорта Маврикия до Grand Baie начинается от Rs 2,600, в зависимости от автомобиля, багажа и времени поездки." },
+    { question: "Сколько ехать из аэропорта до Grand Baie?", answer: "Поездка из аэропорта Маврикия до Grand Baie обычно занимает около 1 часа 10 минут, в зависимости от трафика и точного расположения отеля." },
+  ],
+});
+
+Object.assign(transportTranslations.fr.taxi, {
+  serviceType: "Service de taxi",
+  serviceDescription: "Fiche de taxi et chauffeur prive independant a Maurice pour transferts aeroport, hotels et tours de l'ile.",
+  intro1: "Besoin d'un taxi fiable pendant votre sejour a Maurice ? Ce service local independant peut aider avec les transferts aeroport, les prises en charge hotel, les excursions, les restaurants et les visites de l'ile.",
+  intro2: "Que vous arriviez de l'aeroport, exploriez la cote, visitiez des attractions ou planifiiez une journee complete, contactez directement le chauffeur pour discuter de votre trajet, de la disponibilite et du prix.",
+  importantText: "Mauritius Explored propose cette fiche uniquement pour aider les visiteurs. Le service de taxi est independant et n'est pas gere par Mauritius Explored. Toutes les reservations, prix, paiements, annulations, retards, assurances, securite, qualite du service et autres arrangements se font directement entre le client et le chauffeur.",
+  faresText: "Le tarif final est confirme avant la reservation et peut varier selon l'heure de prise en charge, les bagages et l'itineraire.",
+  bottomNote: "Chauffeurs agrees anglophones - prix fixes - disponible 24 / 7",
+  fares: [
+    { route: "Aeroport vers Grand Baie", time: "1 h 10 min", fare: "des Rs 2,600" },
+    { route: "Aeroport vers Flic en Flac", time: "55 min", fare: "des Rs 2,300" },
+    { route: "Aeroport vers Le Morne", time: "1 h 20 min", fare: "des Rs 3,000" },
+    { route: "Grand Baie vers Chamarel", time: "1 h 35 min", fare: "des Rs 3,400" },
+  ],
+});
+
+Object.assign(transportTranslations.de.taxi, {
+  serviceType: "Taxi-Service",
+  serviceDescription: "Unabhaengiger Taxi- und Privatfahrer-Eintrag auf Mauritius fuer Flughafentransfers, Hotelabholungen und Inseltouren.",
+  intro1: "Brauchen Sie waehrend Ihres Aufenthalts auf Mauritius ein zuverlaessiges Taxi? Dieser unabhaengige lokale Taxi-Service hilft bei Flughafentransfers, Hotelabholungen, Tagesausfluegen, Restaurantfahrten und Inselbesichtigungen.",
+  intro2: "Ob Sie vom Flughafen kommen, die Kueste erkunden, Sehenswuerdigkeiten besuchen oder eine Ganztagestour planen: Kontaktieren Sie den Fahrer direkt, um Route, Verfuegbarkeit und Preis zu besprechen.",
+  importantText: "Mauritius Explored stellt diesen Eintrag nur zur Besucherinformation bereit. Der Taxi-Service ist unabhaengig und wird nicht von Mauritius Explored verwaltet. Alle Buchungen, Preise, Zahlungen, Stornierungen, Verspaetungen, Versicherung, Sicherheit, Servicequalitaet und sonstige Absprachen erfolgen direkt zwischen Kunde und Taxifahrer.",
+  faresText: "Der Endpreis wird vor der Buchung bestaetigt und kann sich je nach Abholzeit, Gepaeck und Route aendern.",
+  bottomNote: "Lizenzierte englischsprachige Fahrer - Festpreise - 24 / 7 verfuegbar",
+  fares: [
+    { route: "Flughafen nach Grand Baie", time: "1 Std. 10 Min.", fare: "ab Rs 2,600" },
+    { route: "Flughafen nach Flic en Flac", time: "55 Min.", fare: "ab Rs 2,300" },
+    { route: "Flughafen nach Le Morne", time: "1 Std. 20 Min.", fare: "ab Rs 3,000" },
+    { route: "Grand Baie nach Chamarel", time: "1 Std. 35 Min.", fare: "ab Rs 3,400" },
+  ],
+});
+
+Object.assign(transportTranslations.it.taxi, {
+  serviceType: "Servizio taxi",
+  serviceDescription: "Scheda taxi e autista privato indipendente a Mauritius per transfer aeroporto, pick-up in hotel e tour dell'isola.",
+  intro1: "Hai bisogno di un taxi affidabile durante il soggiorno a Mauritius? Questo servizio locale indipendente puo aiutare con transfer aeroporto, pick-up in hotel, gite giornaliere, transfer ristorante e visite dell'isola.",
+  intro2: "Che tu arrivi dall'aeroporto, esplori la costa, visiti attrazioni o pianifichi un tour di un'intera giornata, puoi contattare direttamente l'autista per discutere percorso, disponibilita e prezzo.",
+  importantText: "Mauritius Explored fornisce questa scheda solo per comodita dei visitatori. Il servizio taxi e indipendente e non e gestito da Mauritius Explored. Tutte le prenotazioni, prezzi, pagamenti, cancellazioni, ritardi, assicurazione, sicurezza, qualita del servizio e altri accordi sono gestiti direttamente tra cliente e tassista.",
+  faresText: "La tariffa finale viene confermata prima della prenotazione e puo cambiare in base a orario di pick-up, bagagli e percorso.",
+  bottomNote: "Autisti autorizzati che parlano inglese - prezzi fissi - disponibili 24 / 7",
+  comfort: [
+    { title: "Non guidare", description: "Gestiamo strade, rotatorie e parcheggi." },
+    { title: "Non ti perdi", description: "Il tuo autista conosce strade e scorciatoie." },
+    { title: "Goditi il panorama", description: "Occhi sul paesaggio, non sul GPS." },
+    { title: "Ai tuoi tempi", description: "Fermati quando vuoi - porta a porta." },
+  ],
+  help: [
+    { title: "Transfer aeroporto", description: "Pick-up e drop-off fluidi per qualsiasi volo." },
+    { title: "Tour dell'isola intera", description: "Nord, sud o ovest - vedi tutto con comfort." },
+    { title: "Itinerari su misura", description: "Dicci cosa vuoi vedere; pianifichiamo il percorso." },
+    { title: "Hotel e noleggio orario", description: "A ore o a giornata, a tua disposizione." },
+  ],
+  serviceList: ["Transfer aeroporto", "Pick-up hotel e villa", "Tour privati dell'isola", "Transfer ristoranti e spiagge", "Gite personalizzate a Mauritius"],
+  fares: [
+    { route: "Aeroporto a Grand Baie", time: "1 h 10 min", fare: "da Rs 2,600" },
+    { route: "Aeroporto a Flic en Flac", time: "55 min", fare: "da Rs 2,300" },
+    { route: "Aeroporto a Le Morne", time: "1 h 20 min", fare: "da Rs 3,000" },
+    { route: "Grand Baie a Chamarel", time: "1 h 35 min", fare: "da Rs 3,400" },
+  ],
+});
+
+Object.assign(transportTranslations.es.taxi, {
+  serviceType: "Servicio de taxi",
+  serviceDescription: "Ficha de taxi y conductor privado independiente en Mauricio para traslados de aeropuerto, recogidas en hotel y tours por la isla.",
+  intro1: "Necesitas un taxi fiable durante tu estancia en Mauricio? Este servicio local independiente puede ayudar con traslados de aeropuerto, recogidas en hotel, excursiones, traslados a restaurantes y visitas por la isla.",
+  intro2: "Ya viajes desde el aeropuerto, explores la costa, visites atracciones o planees un tour de dia completo, puedes contactar directamente con el conductor para hablar de ruta, disponibilidad y precio.",
+  importantText: "Mauritius Explored ofrece esta ficha solo para comodidad del visitante. El servicio de taxi es independiente y no esta gestionado por Mauritius Explored. Todas las reservas, precios, pagos, cancelaciones, retrasos, seguros, seguridad, calidad del servicio y otros acuerdos se hacen directamente entre el cliente y el taxista.",
+  faresText: "La tarifa final se confirma antes de reservar y puede cambiar segun hora de recogida, equipaje y ruta.",
+  bottomNote: "Conductores autorizados de habla inglesa - precios fijos - disponibles 24 / 7",
+  comfort: [
+    { title: "No conduzcas", description: "Nos ocupamos de carreteras, rotondas y aparcamiento." },
+    { title: "No te pierdas", description: "Tu conductor conoce cada carretera y atajo." },
+    { title: "Disfruta la vista", description: "Mira el paisaje, no el GPS." },
+    { title: "A tu ritmo", description: "Para cuando quieras - puerta a puerta." },
+  ],
+  help: [
+    { title: "Traslados aeropuerto", description: "Recogida y regreso sin complicaciones para cualquier vuelo." },
+    { title: "Tours de isla completa", description: "Norte, sur u oeste - velo todo con comodidad." },
+    { title: "Itinerarios a medida", description: "Dinos tus imprescindibles; planificamos la ruta." },
+    { title: "Hotel y alquiler por horas", description: "Por hora o por dia, a tu servicio." },
+  ],
+  serviceList: ["Traslados aeropuerto", "Recogidas en hotel y villa", "Tours privados por la isla", "Traslados a restaurantes y playas", "Excursiones personalizadas por Mauricio"],
+  fares: [
+    { route: "Aeropuerto a Grand Baie", time: "1 h 10 min", fare: "desde Rs 2,600" },
+    { route: "Aeropuerto a Flic en Flac", time: "55 min", fare: "desde Rs 2,300" },
+    { route: "Aeropuerto a Le Morne", time: "1 h 20 min", fare: "desde Rs 3,000" },
+    { route: "Grand Baie a Chamarel", time: "1 h 35 min", fare: "desde Rs 3,400" },
+  ],
+});
+
+Object.assign(transportTranslations.ru.taxi, {
+  serviceType: "Такси",
+  serviceDescription: "Независимый сервис такси и частного водителя на Маврикии для трансферов из аэропорта, встреч в отеле и туров по острову.",
+  intro1: "Нужно надежное такси во время отдыха на Маврикии? Этот независимый местный сервис поможет с трансферами из аэропорта, встречами в отеле, дневными поездками, трансферами в рестораны и обзором острова.",
+  intro2: "Если вы едете из аэропорта, исследуете побережье, посещаете достопримечательности или планируете тур на весь день, свяжитесь с водителем напрямую, чтобы обсудить маршрут, наличие и цену.",
+  importantText: "Mauritius Explored размещает эту информацию только для удобства посетителей. Сервис такси работает независимо и не управляется Mauritius Explored. Все бронирования, цены, платежи, отмены, задержки, страховка, безопасность, качество сервиса и другие условия согласуются напрямую между клиентом и водителем такси.",
+  faresText: "Итоговая цена подтверждается до бронирования и может зависеть от времени подачи, багажа и маршрута.",
+  bottomNote: "Лицензированные англоговорящие водители - фиксированные цены - доступны 24 / 7",
+  comfort: [
+    { title: "Не водите сами", description: "Мы берем на себя дороги, круговые развязки и парковку." },
+    { title: "Не заблудитесь", description: "Ваш водитель знает дороги и короткие пути." },
+    { title: "Наслаждайтесь видом", description: "Смотрите на пейзажи, а не на GPS." },
+    { title: "В вашем темпе", description: "Останавливайтесь когда хотите - от двери до двери." },
+  ],
+  help: [
+    { title: "Трансферы из аэропорта", description: "Удобная встреча и высадка для любого рейса." },
+    { title: "Туры по острову на весь день", description: "Север, юг или запад - смотрите все с комфортом." },
+    { title: "Индивидуальные маршруты", description: "Скажите, что хотите увидеть; мы спланируем путь." },
+    { title: "Отель и почасовая аренда", description: "На час или на день, как вам удобно." },
+  ],
+  serviceList: ["Трансферы из аэропорта", "Встречи в отеле и вилле", "Частные туры по острову", "Трансферы в рестораны и на пляжи", "Индивидуальные дневные поездки по Маврикию"],
+  fares: [
+    { route: "Аэропорт - Grand Baie", time: "1 ч 10 мин", fare: "от Rs 2,600" },
+    { route: "Аэропорт - Flic en Flac", time: "55 мин", fare: "от Rs 2,300" },
+    { route: "Аэропорт - Le Morne", time: "1 ч 20 мин", fare: "от Rs 3,000" },
+    { route: "Grand Baie - Chamarel", time: "1 ч 35 мин", fare: "от Rs 3,400" },
+  ],
+});
 
 export function getTransportTranslations(locale: string) {
   return transportTranslations[locale as TransportLocale] ?? transportTranslations.en;

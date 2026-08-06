@@ -13,7 +13,11 @@ export interface PlaceDetails {
   categories: PlaceCategory[];
   tagline: string;
   description: string[];
+  highlights?: string[];
   tips: string[];
+  included?: string[];
+  notIncluded?: string[];
+  whatToBring?: string[];
   images: string[];
   heroImage?: string;
   info: {

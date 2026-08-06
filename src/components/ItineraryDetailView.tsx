@@ -76,9 +76,7 @@ export default function ItineraryDetailView({
   const t = getItineraryTranslations(locale).detailUi;
   const [focusStopIndex, setFocusStopIndex] = useState<number | null>(null);
   const [mobileView, setMobileView] = useState<"list" | "map">("list");
-  const [isLg, setIsLg] = useState(() =>
-    typeof window !== "undefined" ? window.matchMedia("(min-width: 1024px)").matches : false
-  );
+  const [isLg, setIsLg] = useState(false);
   const [routeInfo, setRouteInfo] = useState<RouteInfo | null>(initialRouteInfo);
   const [otherRouteTotals, setOtherRouteTotals] = useState<Record<string, RouteInfo | null>>(
     initialOtherRouteTotals
@@ -91,6 +89,7 @@ export default function ItineraryDetailView({
   useEffect(() => {
     const m = window.matchMedia("(min-width: 1024px)");
     const listener = () => setIsLg(m.matches);
+    listener();
     m.addEventListener("change", listener);
     return () => m.removeEventListener("change", listener);
   }, []);

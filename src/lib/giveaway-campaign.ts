@@ -1,3 +1,6 @@
+export type GiveawayLocale = "en" | "fr" | "de" | "it" | "es" | "ru"
+type GiveawayCampaignField = "draw_date_label" | "subtitle" | "headline" | "card_title" | "card_text"
+
 export type GiveawayCampaignData = {
   id?: string
   slug: string
@@ -9,9 +12,8 @@ export type GiveawayCampaignData = {
   card_title: string
   card_text: string
   card_icon?: string | null
-}
-
-export type GiveawayLocale = "en" | "fr" | "de" | "it" | "es" | "ru"
+  translations?: Partial<Record<GiveawayLocale, Partial<Record<GiveawayCampaignField, string | null>>>> | null
+} & Partial<Record<`${GiveawayCampaignField}_${GiveawayLocale}`, string | null>>
 
 export const DEFAULT_GIVEAWAY_CAMPAIGN: GiveawayCampaignData = {
   slug: "weekend-experiences-2026",
@@ -40,13 +42,13 @@ function addLangParam(url: string, locale: string | undefined) {
 
 const giveawayText: Record<
   GiveawayLocale,
-  Partial<Record<"draw_date_label" | "subtitle" | "headline" | "card_title" | "card_text", string>>
+  Partial<Record<GiveawayCampaignField, string>>
 > = {
   en: {},
   fr: {
     draw_date_label: "26 juillet 2026 à 12 h",
     subtitle:
-      "Saisissez simplement vos informations ci-dessous, repartagez sur Facebook ou Instagram, et vous pourriez gagner une sortie en quad pour deux (Sensation 2 h) à la découverte du Sud sauvage.",
+      "Il vous suffit de saisir vos coordonnées ci-dessous, de repartager la publication sur Facebook ou Instagram, et vous pourriez être l’heureux gagnant d’une excursion en quad (Sensation, 2 h). Explorez le Sud sauvage.",
     headline: "Le concours de cette semaine (pour 2 personnes)",
     card_title: "26 juillet 2026",
     card_text: "Aventure en quad pour 2",
@@ -54,7 +56,7 @@ const giveawayText: Record<
   de: {
     draw_date_label: "26. Juli 2026 um 12:00 Uhr",
     subtitle:
-      "Geben Sie unten einfach Ihre Daten ein, teilen Sie den Beitrag erneut auf Facebook oder Instagram, und Sie könnten eine Quad-Tour für zwei Personen gewinnen (Sensation 2 Std.) durch den wilden Süden.",
+      "Geben Sie einfach unten Ihre Daten ein, teilen Sie den Beitrag erneut auf Facebook oder Instagram, und Sie könnten der glückliche Gewinner einer Quad-Tour (Sensation, 2 Std.) sein. Entdecken Sie den wilden Süden.",
     headline: "Das Gewinnspiel dieser Woche (für 2 Personen)",
     card_title: "26. Juli 2026",
     card_text: "Quad-Abenteuer für 2",
@@ -62,7 +64,7 @@ const giveawayText: Record<
   it: {
     draw_date_label: "26 luglio 2026 alle 12:00",
     subtitle:
-      "Inserisci i tuoi dati qui sotto, ricondividi su Facebook o Instagram e potresti vincere un tour in quad per due (Sensation 2 ore) alla scoperta del selvaggio sud.",
+      "Ti basta inserire i tuoi dati qui sotto, ricondividere il post su Facebook o Instagram, e potresti essere il fortunato vincitore di un tour in quad (Sensation, 2 ore). Esplora il selvaggio Sud.",
     headline: "Il giveaway di questa settimana (per 2 persone)",
     card_title: "26 luglio 2026",
     card_text: "Avventura in quad per 2",
@@ -70,7 +72,7 @@ const giveawayText: Record<
   es: {
     draw_date_label: "26 de julio de 2026 a las 12:00",
     subtitle:
-      "Introduce tus datos abajo, vuelve a compartir en Facebook o Instagram y podrías ganar una excursión en quad para dos (Sensation 2 h) por el sur salvaje.",
+      "Solo tienes que introducir tus datos abajo, volver a compartir la publicación en Facebook o Instagram, y podrías ser el afortunado ganador de una excursión en quad (Sensation, 2 h). Explora el sur salvaje.",
     headline: "El sorteo de esta semana (para 2 personas)",
     card_title: "26 de julio de 2026",
     card_text: "Aventura en quad para 2",
@@ -78,7 +80,7 @@ const giveawayText: Record<
   ru: {
     draw_date_label: "26 июля 2026 г. в 12:00",
     subtitle:
-      "Просто введите свои данные ниже, поделитесь публикацией в Facebook или Instagram, и вы можете выиграть квадро-тур для двоих (Sensation, 2 часа) по дикому югу.",
+      "Просто введите свои данные ниже, повторно поделитесь публикацией в Facebook или Instagram, и вы можете стать счастливым победителем квадро-тура (Sensation, 2 часа). Откройте для себя дикий юг.",
     headline: "Розыгрыш этой недели (для 2 человек)",
     card_title: "26 июля 2026 г.",
     card_text: "Квадро-приключение для 2",
@@ -96,7 +98,9 @@ const knownEnglishCampaignText: Record<string, string[]> = {
   card_text: [DEFAULT_GIVEAWAY_CAMPAIGN.card_text, "Quad Bike Adventure for 2"],
 }
 
-function shouldUseFallbackTranslation(field: keyof typeof giveawayText.en, value: string | null | undefined) {
+const localizableFields: GiveawayCampaignField[] = ["draw_date_label", "subtitle", "headline", "card_title", "card_text"]
+
+function isKnownEnglishCampaignText(field: GiveawayCampaignField, value: string | null | undefined) {
   if (!value?.trim()) return true
   const normalizedValue = value.trim().replace(/\s+/g, " ")
   return knownEnglishCampaignText[field]?.some((text) => text.trim().replace(/\s+/g, " ") === normalizedValue) ?? false
@@ -106,13 +110,33 @@ export function localizeGiveawayCampaign(campaign: GiveawayCampaignData, locale:
   const language = normalizeGiveawayLocale(locale)
   if (language === "en") return campaign
   const localized = { ...campaign }
+  let appliedBackendTranslation = false
 
-  Object.entries(giveawayText[language]).forEach(([field, value]) => {
-    const key = field as keyof typeof giveawayText.en
-    if (value && shouldUseFallbackTranslation(key, localized[key])) {
-      localized[key] = value
+  for (const field of localizableFields) {
+    const columnValue = campaign[`${field}_${language}`]
+    const jsonValue = campaign.translations?.[language]?.[field]
+    const backendValue = typeof columnValue === "string" && columnValue.trim() ? columnValue : jsonValue
+
+    if (typeof backendValue === "string" && backendValue.trim()) {
+      localized[field] = backendValue
+      appliedBackendTranslation = true
     }
-  })
+  }
+
+  if (!appliedBackendTranslation) {
+    Object.entries(giveawayText[language]).forEach(([field, value]) => {
+      if (value) {
+        localized[field as GiveawayCampaignField] = value
+      }
+    })
+  } else {
+    Object.entries(giveawayText[language]).forEach(([field, value]) => {
+      const key = field as GiveawayCampaignField
+      if (value && isKnownEnglishCampaignText(key, localized[key])) {
+        localized[key] = value
+      }
+    })
+  }
 
   return localized
 }

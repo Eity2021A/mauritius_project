@@ -20,8 +20,13 @@ type FestivalCopy = {
   imageAlt: string;
 };
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("Festivals.metadata");
+type PageProps = {
+  params: Promise<{ locale: string }>;
+};
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Festivals.metadata" });
 
   return {
     title: t("title"),
@@ -49,8 +54,9 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function FestivalsPage() {
-  const t = await getTranslations("Festivals");
+export default async function FestivalsPage({ params }: PageProps) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Festivals" });
   const festivalCopies = t.raw("items") as FestivalCopy[];
 
   return (

@@ -19,8 +19,73 @@ import { DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/constants";
 import { getFeaturedItineraryBySlug, getFeaturedItinerarySlugs } from "@/lib/featured-itineraries";
 import { trimMetaDescription } from "@/lib/seo";
 import { getDetailPageTranslations, formatLabel } from "@/data/detail-page-translations";
+import { normalizeLocale, routing, type AppLocale } from "@/i18n/routing";
 
 const DETAIL_BASE = "/top-activities-mauritius";
+
+function localizedHref(locale: string, href: string) {
+  const activeLocale = routing.locales.includes(locale as AppLocale)
+    ? (locale as AppLocale)
+    : routing.defaultLocale;
+
+  if (activeLocale === routing.defaultLocale) return href;
+  return `/${activeLocale}${href}`;
+}
+
+function localizeDifficulty(value: string, locale: string) {
+  const labels: Record<string, Record<string, string>> = {
+    en: {
+      Easy: "Easy",
+      Moderate: "Moderate",
+      Challenging: "Challenging",
+      "Easy to Moderate": "Easy to Moderate",
+      "Easy to Challenging": "Easy to Challenging",
+      "Moderate to Challenging": "Moderate to Challenging",
+    },
+    fr: {
+      Easy: "Facile",
+      Moderate: "Modéré",
+      Challenging: "Difficile",
+      "Easy to Moderate": "Facile à modéré",
+      "Easy to Challenging": "Facile à difficile",
+      "Moderate to Challenging": "Modéré à difficile",
+    },
+    de: {
+      Easy: "Leicht",
+      Moderate: "Mittel",
+      Challenging: "Anspruchsvoll",
+      "Easy to Moderate": "Leicht bis mittel",
+      "Easy to Challenging": "Leicht bis anspruchsvoll",
+      "Moderate to Challenging": "Mittel bis anspruchsvoll",
+    },
+    it: {
+      Easy: "Facile",
+      Moderate: "Intermedio",
+      Challenging: "Impegnativo",
+      "Easy to Moderate": "Facile a intermedio",
+      "Easy to Challenging": "Facile a impegnativo",
+      "Moderate to Challenging": "Intermedio a impegnativo",
+    },
+    es: {
+      Easy: "Fácil",
+      Moderate: "Moderado",
+      Challenging: "Exigente",
+      "Easy to Moderate": "Fácil a moderado",
+      "Easy to Challenging": "Fácil a exigente",
+      "Moderate to Challenging": "Moderado a exigente",
+    },
+    ru: {
+      Easy: "Легко",
+      Moderate: "Средне",
+      Challenging: "Сложно",
+      "Easy to Moderate": "Легко-средне",
+      "Easy to Challenging": "От легкого до сложного",
+      "Moderate to Challenging": "Средне-сложно",
+    },
+  };
+
+  return labels[locale]?.[value] ?? value;
+}
 
 export async function generateStaticParams() {
   const activitySlugs = await getAllActivitySlugs();
@@ -30,9 +95,17 @@ export async function generateStaticParams() {
 }
 
 // Generate metadata for SEO (itinerary, place, or activity)
-export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+  searchParams?: Promise<{ lang?: string }>;
+}): Promise<Metadata> {
   const { locale, slug } = await params;
-  const labels = getDetailPageTranslations(locale);
+  const query = await searchParams;
+  const activeLocale = normalizeLocale(query?.lang ?? locale);
+  const labels = getDetailPageTranslations(activeLocale);
   const canonical = `/top-activities-mauritius/${slug}`;
   const itinerary = await getFeaturedItineraryBySlug(slug);
   if (itinerary) {
@@ -61,7 +134,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       },
     };
   }
-  const activity = await getActivityDetailsBySlugFromDb(slug, locale);
+  const activity = await getActivityDetailsBySlugFromDb(slug, activeLocale);
   if (activity) {
     const activityHeroImage = activity.heroImage ?? activity.images[0];
     const activityImage = activityHeroImage
@@ -125,15 +198,24 @@ function CheckIcon() {
     </svg>
   );
 }
+function XIcon() {
+  return (
+    <svg className="w-4 h-4 text-red-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  );
+}
 
 function BookingCta({
   bookingUrl,
   whatsappUrl,
   labels,
+  locale,
 }: {
   bookingUrl?: string;
   whatsappUrl: string;
   labels: ReturnType<typeof getDetailPageTranslations>;
+  locale: string;
 }) {
   return (
     <div className="space-y-2">
@@ -168,7 +250,7 @@ function BookingCta({
         WhatsApp
       </Link>
       <Link
-        href="/transfer"
+        href={localizedHref(locale, "/transfer")}
         className="inline-flex items-center justify-center min-h-[48px] w-full rounded-lg border border-blue-200 bg-blue-50 text-blue-700 text-center py-3 font-semibold hover:bg-blue-100 transition-colors"
       >
         {labels.activity.transfer}
@@ -180,18 +262,26 @@ function BookingCta({
   );
 }
 
-export default async function DetailPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+export default async function DetailPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+  searchParams?: Promise<{ lang?: string }>;
+}) {
   const { locale, slug } = await params;
-  const labels = getDetailPageTranslations(locale);
+  const query = await searchParams;
+  const activeLocale = normalizeLocale(query?.lang ?? locale);
+  const labels = getDetailPageTranslations(activeLocale);
   const itinerary = await getFeaturedItineraryBySlug(slug);
   if (itinerary) {
-    permanentRedirect(`/itineraries/${slug}`);
+    permanentRedirect(localizedHref(activeLocale, `/itineraries/${slug}`));
   }
-  const activity = await getActivityDetailsBySlugFromDb(slug, locale);
+  const activity = await getActivityDetailsBySlugFromDb(slug, activeLocale);
 
   if (activity) {
     const activityCoordinates = activity.coordinates;
-    const relatedActivities = await getRelatedActivities(slug, locale);
+    const relatedActivities = await getRelatedActivities(slug, activeLocale);
     const mainPrice = activity.pricing?.[0]?.price;
     const hasBooking = Boolean(activity.bookingUrl);
     const activityHeroImage = activity.heroImage ?? activity.images[0] ?? "";
@@ -245,7 +335,7 @@ export default async function DetailPage({ params }: { params: Promise<{ locale:
           <div className="relative z-10 w-full pb-8 md:pb-12 px-4 pt-[calc(env(safe-area-inset-top)+4.5rem)]">
             <div className="container mx-auto max-w-6xl">
               <Link
-                href="/mauritius-activities"
+                href={localizedHref(activeLocale, "/mauritius-activities")}
                 className="inline-flex items-center gap-1.5 text-sm text-white/80 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full transition-colors mb-4"
               >
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -254,7 +344,7 @@ export default async function DetailPage({ params }: { params: Promise<{ locale:
                 <ButtonLabel name="backToActivities" />
               </Link>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3">{activity.name}</h1>
-              <CategoryBadges categories={activityCategories} locale={locale} />
+              <CategoryBadges categories={activityCategories} locale={activeLocale} />
             </div>
           </div>
         </section>
@@ -307,6 +397,21 @@ export default async function DetailPage({ params }: { params: Promise<{ locale:
                     </ul>
                   </div>
                 )}
+
+                {/* Not Included */}
+                {activity.notIncluded && activity.notIncluded.length > 0 && (
+                  <div>
+                    <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">{labels.activity.notIncluded}</h2>
+                    <ul className="grid md:grid-cols-2 gap-3">
+                      {activity.notIncluded.map((item, index) => (
+                        <li key={index} className="flex items-start gap-3">
+                          <XIcon />
+                          <span className="text-gray-700">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
                 
                 {/* What to Bring */}
                 {activity.whatToBring && activity.whatToBring.length > 0 && (
@@ -342,7 +447,7 @@ export default async function DetailPage({ params }: { params: Promise<{ locale:
                 <div className="lg:sticky lg:top-24 space-y-6">
                   {hasBooking && (
                     <div className="hidden lg:block">
-                      <BookingCta bookingUrl={activity.bookingUrl} whatsappUrl={whatsappUrl} labels={labels} />
+                      <BookingCta bookingUrl={activity.bookingUrl} whatsappUrl={whatsappUrl} labels={labels} locale={activeLocale} />
                     </div>
                   )}
 
@@ -395,11 +500,11 @@ export default async function DetailPage({ params }: { params: Promise<{ locale:
                       {activity.location && <InfoItem icon={<LocationIcon />} label={labels.common.location} value={activity.location} bordered />}
                       {activity.duration && <InfoItem icon={<DurationIcon />} label={labels.activity.duration} value={activity.duration} bordered />}
                       {activity.bestTime && <InfoItem icon={<CalendarIcon />} label={labels.activity.bestTime} value={activity.bestTime} bordered />}
-                      {activity.difficulty && <InfoItem icon={<DifficultyIcon />} label={labels.activity.difficulty} value={activity.difficulty} bordered />}
+                      {activity.difficulty && <InfoItem icon={<DifficultyIcon />} label={labels.activity.difficulty} value={localizeDifficulty(activity.difficulty, activeLocale)} bordered />}
                     </div>
                   </div>
                   <div className="text-center">
-                    <Link href="/mauritius-activities#explore" className="inline-flex items-center justify-center min-h-[48px] gap-2 w-full bg-white border border-gray-300 text-gray-900 hover:bg-gray-50 font-semibold py-3 px-6 rounded-lg transition-colors">
+                    <Link href={localizedHref(activeLocale, "/mauritius-activities#explore")} className="inline-flex items-center justify-center min-h-[48px] gap-2 w-full bg-white border border-gray-300 text-gray-900 hover:bg-gray-50 font-semibold py-3 px-6 rounded-lg transition-colors">
                       {labels.activity.exploreMoreActivities}
                       <ArrowRightIcon className="w-4 h-4" />
                     </Link>
@@ -418,7 +523,7 @@ export default async function DetailPage({ params }: { params: Promise<{ locale:
                 {relatedActivities.slice(0, 3).map((related) => (
                   <Link
                     key={related.slug}
-                    href={`${DETAIL_BASE}/${related.slug}`}
+                    href={localizedHref(activeLocale, `${DETAIL_BASE}/${related.slug}`)}
                     className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
                   >
                     <div className="relative h-48 overflow-hidden img-shimmer">
@@ -455,9 +560,9 @@ export default async function DetailPage({ params }: { params: Promise<{ locale:
   }
 
   // If the slug belongs to a place, redirect to the new place URL
-  const place = await getPlaceDetailsBySlug(slug, locale);
+  const place = await getPlaceDetailsBySlug(slug, activeLocale);
   if (place) {
-    permanentRedirect(`/best-places-to-visit-in-mauritius/${slug}`);
+    permanentRedirect(localizedHref(activeLocale, `/best-places-to-visit-in-mauritius/${slug}`));
   }
 
   notFound();

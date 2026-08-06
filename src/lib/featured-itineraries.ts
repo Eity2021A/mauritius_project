@@ -17,10 +17,10 @@ interface DbFeaturedItineraryStop {
   slug?: string | null;
   item_slug?: string | null;
   name?: string | null;
-  latitude?: number | null;
-  longitude?: number | null;
-  lat?: number | null;
-  lng?: number | null;
+  latitude?: number | string | null;
+  longitude?: number | string | null;
+  lat?: number | string | null;
+  lng?: number | string | null;
   image?: string | null;
   link?: string | null;
   regionLabel?: string | null;
@@ -70,8 +70,19 @@ interface DbItineraryStopTranslationRow {
 const STATIC_BY_SLUG = new Map(PREDESIGNED_ITINERARIES.map((itinerary) => [itinerary.slug, itinerary]));
 const STATIC_ORDER = new Map(PREDESIGNED_ITINERARIES.map((itinerary, index) => [itinerary.slug, index]));
 
-function isStopType(value: string | null | undefined): value is PreDesignedStopType {
-  return value === "place" || value === "beach" || value === "activity";
+function normalizeStopType(value: string | null | undefined): PreDesignedStopType | undefined {
+  const normalized = value?.trim().toLowerCase();
+  if (normalized === "place" || normalized === "places") return "place";
+  if (normalized === "beach" || normalized === "beaches") return "beach";
+  if (normalized === "activity" || normalized === "activities") return "activity";
+  return undefined;
+}
+
+function parseCoordinate(value: number | string | null | undefined): number | undefined {
+  if (typeof value === "number" && Number.isFinite(value)) return value;
+  if (typeof value !== "string") return undefined;
+  const parsed = Number(value.trim());
+  return Number.isFinite(parsed) ? parsed : undefined;
 }
 
 function stopLink(type: PreDesignedStopType, slug: string): string {
@@ -113,11 +124,11 @@ function normalizeStop(
   if (!slug) return null;
 
   const rawType = rawStop.type ?? rawStop.item_type;
-  const type = isStopType(rawType) ? rawType : fallbackStop?.type;
+  const type = normalizeStopType(rawType) ?? fallbackStop?.type;
   if (!type) return null;
 
-  const lat = rawStop.latitude ?? rawStop.lat;
-  const lng = rawStop.longitude ?? rawStop.lng;
+  const lat = parseCoordinate(rawStop.latitude ?? rawStop.lat);
+  const lng = parseCoordinate(rawStop.longitude ?? rawStop.lng);
   const hasCoords = typeof lat === "number" && typeof lng === "number";
 
   return {
@@ -153,7 +164,6 @@ function mapFeaturedItinerary(
     .filter((stop): stop is PreDesignedStop => Boolean(stop));
 
   const stops = normalizedStops.length > 0 ? normalizedStops : (fallback?.stops ?? []);
-  if (stops.length === 0) return null;
   const translatedDescription = nonEmptyString(itineraryTranslation?.description);
 
   const introParagraph =
@@ -213,7 +223,7 @@ async function fetchFeaturedTranslations(
   locale: string,
 ): Promise<Map<string, DbItineraryTranslationRow>> {
   const ids = [...new Set(itineraryIds)].filter(Boolean);
-  if (!contentDb || locale === "en" || ids.length === 0) return new Map();
+  if (!contentDb || ids.length === 0) return new Map();
 
   const { data, error } = await contentDb
     .from("user_itinerary_translations")
@@ -241,7 +251,7 @@ async function fetchFeaturedStopTranslations(
   locale: string,
 ): Promise<Map<string, DbItineraryStopTranslationRow>> {
   const ids = [...new Set(stopIds)].filter(Boolean);
-  if (!contentDb || locale === "en" || ids.length === 0) return new Map();
+  if (!contentDb || ids.length === 0) return new Map();
 
   const { data, error } = await contentDb
     .from("itinerary_stop_translations")
@@ -321,8 +331,11 @@ export const getFeaturedItineraries = cache(async (locale = "en"): Promise<PreDe
   if (mapped.length === 0) return PREDESIGNED_ITINERARIES;
 
   return mapped.sort((a, b) => {
-    const aIndex = STATIC_ORDER.get(a.slug) ?? Number.MAX_SAFE_INTEGER;
-    const bIndex = STATIC_ORDER.get(b.slug) ?? Number.MAX_SAFE_INTEGER;
+    const aIndex = STATIC_ORDER.get(a.slug);
+    const bIndex = STATIC_ORDER.get(b.slug);
+    if (aIndex === undefined && bIndex === undefined) return a.title.localeCompare(b.title);
+    if (aIndex === undefined) return -1;
+    if (bIndex === undefined) return 1;
     return aIndex - bIndex || a.title.localeCompare(b.title);
   });
 });

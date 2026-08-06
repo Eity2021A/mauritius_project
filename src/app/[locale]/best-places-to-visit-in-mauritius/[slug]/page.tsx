@@ -18,6 +18,7 @@ import { getImageSrcSet, getImageUrl } from "@/lib/image-url";
 import { DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/constants";
 import { trimMetaDescription } from "@/lib/seo";
 import { formatLabel, getDetailPageTranslations } from "@/data/detail-page-translations";
+import { normalizeLocale } from "@/i18n/routing";
 
 const DETAIL_BASE = "/best-places-to-visit-in-mauritius";
 
@@ -42,17 +43,39 @@ function AdmissionIcon() {
     </svg>
   );
 }
+function CheckIcon() {
+  return (
+    <svg className="w-4 h-4 text-green-500 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+    </svg>
+  );
+}
+function XIcon() {
+  return (
+    <svg className="w-4 h-4 text-red-500 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  );
+}
 
 export async function generateStaticParams() {
   const placeSlugs = await getAllPlaceSlugs();
   return placeSlugs.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+  searchParams?: Promise<{ lang?: string }>;
+}): Promise<Metadata> {
   const { locale, slug } = await params;
-  const labels = getDetailPageTranslations(locale);
+  const query = await searchParams;
+  const activeLocale = normalizeLocale(query?.lang ?? locale);
+  const labels = getDetailPageTranslations(activeLocale);
   const canonical = `${DETAIL_BASE}/${slug}`;
-  const place = await getPlaceDetailsBySlug(slug, locale);
+  const place = await getPlaceDetailsBySlug(slug, activeLocale);
   if (!place) return { title: labels.place.notFound };
 
   const placeHeroImage = place.heroImage ?? place.images[0];
@@ -78,20 +101,28 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default async function PlaceDetailPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+export default async function PlaceDetailPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+  searchParams?: Promise<{ lang?: string }>;
+}) {
   const { locale, slug } = await params;
-  const labels = getDetailPageTranslations(locale);
-  const place = await getPlaceDetailsBySlug(slug, locale);
+  const query = await searchParams;
+  const activeLocale = normalizeLocale(query?.lang ?? locale);
+  const labels = getDetailPageTranslations(activeLocale);
+  const place = await getPlaceDetailsBySlug(slug, activeLocale);
   if (!place) notFound();
 
   const placeCoordinates = place.coordinates;
   const primaryCategory = place.categories[0];
   const placeHeroImage = place.heroImage ?? place.images[0] ?? "";
-  const relatedByCategory = await getPlacesByCategory(primaryCategory, locale);
+  const relatedByCategory = await getPlacesByCategory(primaryCategory, activeLocale);
   const relatedPlaces = relatedByCategory
     .filter(p => p.slug !== place.slug)
     .slice(0, 3);
-  const linkedActivity = await getActivityDetailsBySlugFromDb(slug, locale);
+  const linkedActivity = await getActivityDetailsBySlugFromDb(slug, activeLocale);
   const placeCategories = [place.region, ...place.categories];
 
   return (
@@ -148,7 +179,7 @@ export default async function PlaceDetailPage({ params }: { params: Promise<{ lo
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3">
               {place.name}
             </h1>
-            <CategoryBadges categories={placeCategories} locale={locale} />
+            <CategoryBadges categories={placeCategories} locale={activeLocale} />
           </div>
         </div>
       </section>
@@ -167,10 +198,67 @@ export default async function PlaceDetailPage({ params }: { params: Promise<{ lo
                 ))}
               </div>
 
+              {place.highlights && place.highlights.length > 0 && (
+                <div>
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">{labels.activity.highlights}</h2>
+                  <ul className="grid sm:grid-cols-2 gap-3">
+                    {place.highlights.map((highlight, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <svg className="w-4 h-4 text-green-500 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span className="text-gray-700">{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
               {place.images.length > 0 && (
                 <div>
                   <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">{labels.common.photoGallery}</h2>
                   <PhotoGalleryWrapper images={place.images} beachName={place.name} />
+                </div>
+              )}
+
+              {place.included && place.included.length > 0 && (
+                <div>
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">{labels.activity.included}</h2>
+                  <ul className="grid md:grid-cols-2 gap-3">
+                    {place.included.map((item, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <CheckIcon />
+                        <span className="text-gray-700">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {place.notIncluded && place.notIncluded.length > 0 && (
+                <div>
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">{labels.activity.notIncluded}</h2>
+                  <ul className="grid md:grid-cols-2 gap-3">
+                    {place.notIncluded.map((item, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <XIcon />
+                        <span className="text-gray-700">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {place.whatToBring && place.whatToBring.length > 0 && (
+                <div>
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">{labels.activity.whatToBring}</h2>
+                  <div className="flex flex-wrap gap-2">
+                    {place.whatToBring.map((item, index) => (
+                      <span key={index} className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               )}
 
