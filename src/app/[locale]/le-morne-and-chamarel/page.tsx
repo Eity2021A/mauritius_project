@@ -7,6 +7,8 @@ import PopularRoadTrips from "@/components/PopularRoadTrips";
 import { getExploringGuide } from "@/data/exploring-guide-translations";
 import PocketAdBanner from "@/components/PocketAdBanner";
 import CarRentalAdBannerInfo from "@/components/CarRentalAdBannerInfo";
+import { localizeStaticPage } from "@/lib/static-page-localizer";
+import { normalizeLocale } from "@/i18n/routing";
 
 export const revalidate = 3600;
 
@@ -42,7 +44,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = getExploringGuide(locale, "morneChamarel");
+  const activeLocale = normalizeLocale(locale);
+  const t = getExploringGuide(activeLocale, "morneChamarel");
   return {
     title: t.metadata.title,
     description: t.metadata.description,
@@ -56,8 +59,9 @@ export default async function LeMorneAndChamarelPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = getExploringGuide(locale, "morneChamarel");
-  return (
+  const activeLocale = normalizeLocale(locale);
+  const t = getExploringGuide(activeLocale, "morneChamarel");
+  return localizeStaticPage((
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
 
@@ -266,10 +270,10 @@ export default async function LeMorneAndChamarelPage({
         </section>
       </article>
       <PocketAdBanner />
-      <PopularRoadTrips locale={locale} />
+      <PopularRoadTrips locale={activeLocale} />
       <CarRentalAdBannerInfo />
 
       <Footer />
     </main>
-  );
+  ), activeLocale);
 }

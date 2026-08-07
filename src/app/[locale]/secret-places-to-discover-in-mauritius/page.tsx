@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import PocketAdBanner from "@/components/PocketAdBanner";
 import CarRentalAdBanner from "@/components/CarRentalAdBanner";
+import { localizeStaticPage } from "@/lib/static-page-localizer";
 
 export const revalidate = 3600;
 
@@ -167,7 +168,7 @@ const SECRET_COPY: Record<Locale, SecretCopy> = {
         type: "coast",
       },
       {
-        name: "Sophie Nature Walk",
+        name: "Passeggiata naturalistica Sophie",
         tag: "Forest Trail",
         region: "South-West",
         description: "A lesser-known trail winding deep through native forest.",
@@ -550,7 +551,7 @@ const SECRET_COPY: Record<Locale, SecretCopy> = {
         type: "coast",
       },
       {
-        name: "Sophie Nature Walk",
+        name: "Passeggiata naturalistica Sophie",
         tag: "Sentiero forestale",
         region: "Sud-Ovest",
         description:
@@ -561,7 +562,7 @@ const SECRET_COPY: Record<Locale, SecretCopy> = {
       {
         name: "Petite Rivière Noire",
         tag: "Vetta più alta",
-        region: "Black River - SO",
+        region: "Rivière Noire - Sud-Ovest",
         description: "La cima più alta dell'isola, con panorami ampi.",
         tip: "Parti presto per aria fresca e viste limpide.",
         type: "nature",
@@ -679,7 +680,7 @@ const SECRET_COPY: Record<Locale, SecretCopy> = {
         type: "coast",
       },
       {
-        name: "Sophie Nature Walk",
+        name: "Paseo natural Sophie",
         tag: "Sendero forestal",
         region: "Suroeste",
         description:
@@ -690,7 +691,7 @@ const SECRET_COPY: Record<Locale, SecretCopy> = {
       {
         name: "Petite Rivière Noire",
         tag: "Cumbre más alta",
-        region: "Black River - SO",
+        region: "Río Negro - Suroeste",
         description: "La cima más alta de la isla, con grandes panorámicas.",
         tip: "Camina temprano para aire fresco y vistas claras.",
         type: "nature",
@@ -743,7 +744,7 @@ const SECRET_COPY: Record<Locale, SecretCopy> = {
     },
     kicker: "За пределами путеводителя",
     titleMain: "Секретные места",
-    titleAccent: "для открытия",
+    titleAccent: "которые стоит открыть",
     intro:
       "Десять более тихих уголков острова: скрытые пещеры, дороги под кронами деревьев, природные резерваты и горные тропы вдали от обычных туристических маршрутов.",
     typeLabels: {
@@ -751,7 +752,7 @@ const SECRET_COPY: Record<Locale, SecretCopy> = {
       coast: "Побережье и вода",
       taste: "Вкус и культура",
     },
-    goLabel: "Как идти",
+    goLabel: "Как добраться",
     places: makeSecretPlaces([
       {
         name: "Пещера пляжа Гри-Гри",
@@ -771,7 +772,7 @@ const SECRET_COPY: Record<Locale, SecretCopy> = {
         type: "nature",
       },
       {
-        name: "Чайная фабрика Bois Chéri",
+        name: "Чайная фабрика Буа-Шери",
         tag: "Чайная плантация",
         region: "Южное нагорье",
         description:
@@ -780,7 +781,7 @@ const SECRET_COPY: Record<Locale, SecretCopy> = {
         type: "taste",
       },
       {
-        name: "Водопад Eau Bleue",
+        name: "Водопад О-Блё",
         tag: "Бирюзовые бассейны",
         region: "Юг",
         description:
@@ -789,16 +790,16 @@ const SECRET_COPY: Record<Locale, SecretCopy> = {
         type: "coast",
       },
       {
-        name: "Île aux Aigrettes",
+        name: "Иль-о-Эгрет",
         tag: "Природный резерват",
-        region: "у побережья Маэбурга - ЮВ",
+        region: "у побережья Маэбурга - юго-восток",
         description:
           "Восстановленный остров с гигантскими черепахами и редкими розовыми голубями.",
         tip: "Только экскурсии с гидом на лодке: бронируйте заранее.",
         type: "nature",
       },
       {
-        name: "Мангры Île d'Ambre",
+        name: "Мангры Иль-д'Амбр",
         tag: "Каяк-маршруты",
         region: "Северо-восток",
         description:
@@ -807,7 +808,7 @@ const SECRET_COPY: Record<Locale, SecretCopy> = {
         type: "coast",
       },
       {
-        name: "Прогулка Sophie Nature",
+        name: "Природная прогулка Софи",
         tag: "Лесная тропа",
         region: "Юго-запад",
         description: "Малоизвестная тропа, уходящая глубоко в местный лес.",
@@ -815,9 +816,9 @@ const SECRET_COPY: Record<Locale, SecretCopy> = {
         type: "nature",
       },
       {
-        name: "Petite Rivière Noire",
+        name: "Пти-Ривьер-Нуар",
         tag: "Высшая вершина",
-        region: "Black River - ЮЗ",
+        region: "Блэк-Ривер - юго-запад",
         description: "Самая высокая вершина острова с широкими панорамами.",
         tip: "Начинайте рано ради прохлады и чистых видов.",
         type: "nature",
@@ -831,12 +832,12 @@ const SECRET_COPY: Record<Locale, SecretCopy> = {
         type: "coast",
       },
       {
-        name: "Biscuiterie Rault",
+        name: "Бисквитерия Ро",
         tag: "Печенье из маниока",
         region: "Маэбург",
         description:
           "Семейная фабрика, где печенье из маниока делают старым способом.",
-        tip: "Сходите на дегустацию и совместите с Blue Bay.",
+        tip: "Сходите на дегустацию и совместите с Блю-Бей.",
         type: "taste",
       },
     ]),
@@ -871,7 +872,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  return getCopy(locale).metadata;
+  const activeLocale = normalizeLocale(locale);
+  return getCopy(activeLocale).metadata;
 }
 
 export default async function SecretPlacesToDiscoverInMauritiusPage({
@@ -880,9 +882,10 @@ export default async function SecretPlacesToDiscoverInMauritiusPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const copy = getCopy(locale);
+  const activeLocale = normalizeLocale(locale);
+  const copy = getCopy(activeLocale);
 
-  return (
+  return localizeStaticPage((
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
 
@@ -1008,8 +1011,8 @@ export default async function SecretPlacesToDiscoverInMauritiusPage({
       </article>
       <PocketAdBanner />
       <CarRentalAdBanner />
-      <PopularRoadTrips locale={locale} />
+      <PopularRoadTrips locale={activeLocale} />
       <Footer />
     </main>
-  );
+  ), activeLocale);
 }

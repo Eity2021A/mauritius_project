@@ -8,6 +8,7 @@ import type { LucideIcon } from "lucide-react";
 import { Gem, Shirt, ShoppingBag, Store, Utensils } from "lucide-react";
 import CarRentalAdBanner from "@/components/CarRentalAdBanner";
 import PocketAdBanner from "@/components/PocketAdBanner";
+import { localizeStaticPage } from "@/lib/static-page-localizer";
 
 export const revalidate = 3600;
 
@@ -550,7 +551,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  return getCopy(locale).metadata;
+  const activeLocale = normalizeLocale(locale);
+  return getCopy(activeLocale).metadata;
 }
 
 export default async function BestMarketsInMauritiusPage({
@@ -559,9 +561,10 @@ export default async function BestMarketsInMauritiusPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const copy = getCopy(locale);
+  const activeLocale = normalizeLocale(locale);
+  const copy = getCopy(activeLocale);
 
-  return (
+  return localizeStaticPage((
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
 
@@ -659,9 +662,9 @@ export default async function BestMarketsInMauritiusPage({
         </section>
       </article>
 
-      <PopularRoadTrips locale={locale} />
+      <PopularRoadTrips locale={activeLocale} />
       <PocketAdBanner />
       <Footer />
     </main>
-  );
+  ), activeLocale);
 }

@@ -78,6 +78,186 @@ function regionLabelToType(label: string | undefined | null): Region {
   return map[label.toLowerCase().replace(/\s+/g, "-")] ?? "Various"
 }
 
+type ExploreLocale = "en" | "fr" | "de" | "it" | "es" | "ru"
+type ExploreItemPatch = Partial<Pick<ExploreItem, "name" | "region" | "category">>
+
+const EXPLORE_REGION_TRANSLATIONS: Record<Exclude<ExploreLocale, "en">, Record<string, string>> = {
+  fr: {
+    North: "Nord",
+    South: "Sud",
+    East: "Est",
+    West: "Ouest",
+    "North West": "Nord-Ouest",
+    "South West": "Sud-Ouest",
+    "South East": "Sud-Est",
+    Various: "Plusieurs regions",
+  },
+  de: {
+    North: "Norden",
+    South: "Suden",
+    East: "Osten",
+    West: "Westen",
+    "North West": "Nordwesten",
+    "South West": "Sudwesten",
+    "South East": "Sudosten",
+    Various: "Verschiedene Regionen",
+  },
+  it: {
+    North: "Nord",
+    South: "Sud",
+    East: "Est",
+    West: "Ovest",
+    "North West": "Nord-Ovest",
+    "South West": "Sud-Ovest",
+    "South East": "Sud-Est",
+    Various: "Varie zone",
+  },
+  es: {
+    North: "Norte",
+    South: "Sur",
+    East: "Este",
+    West: "Oeste",
+    "North West": "Noroeste",
+    "South West": "Suroeste",
+    "South East": "Sureste",
+    Various: "Varias zonas",
+  },
+  ru: {
+    North: "Север",
+    South: "Юг",
+    East: "Восток",
+    West: "Запад",
+    "North West": "Северо-запад",
+    "South West": "Юго-запад",
+    "South East": "Юго-восток",
+    Various: "Разные районы",
+  },
+}
+
+const EXPLORE_ITEM_TRANSLATIONS: Record<Exclude<ExploreLocale, "en">, Record<string, ExploreItemPatch>> = {
+  fr: {
+    "swim-with-dolphins": { name: "Nager avec les dauphins" },
+    "catamaran-cruises": { name: "Croisieres en catamaran" },
+    "helicopter-tour": { name: "Tour en helicoptere" },
+    "hiking-le-morne": { name: "Randonnee au Morne" },
+    "quad-biking": { name: "Quad" },
+    "whale-watching": { name: "Observation des baleines" },
+    "le-morne": { name: "Le Morne" },
+    "trou-aux-biches": { name: "Trou aux Biches" },
+    "belle-mare": { name: "Belle Mare" },
+    "flic-en-flac": { name: "Flic en Flac" },
+    "blue-bay": { name: "Blue Bay" },
+    pereybere: { name: "Pereybere" },
+    "chamarel-waterfall": { name: "Cascade de Chamarel" },
+    "7-coloured-earth": { name: "Terre des Sept Couleurs" },
+    "pamplemousses-botanical-garden": { name: "Jardin de Pamplemousses" },
+    "black-river-gorges": { name: "Gorges de Riviere Noire" },
+    "grand-bassin": { name: "Grand Bassin" },
+    "cap-malheureux": { name: "Cap Malheureux" },
+    "baie-de-jacotet": { category: "Plage cachee" },
+    "butte-a-lherbe": { category: "Plage cachee" },
+    "pointe-desny": { category: "Plage cachee" },
+    riambel: { category: "Plage cachee" },
+    "la-cambuse": { category: "Plage cachee" },
+    albion: { category: "Plage cachee" },
+  },
+  de: {
+    "swim-with-dolphins": { name: "Mit Delfinen schwimmen" },
+    "catamaran-cruises": { name: "Katamaranfahrten" },
+    "helicopter-tour": { name: "Hubschrauberrundflug" },
+    "hiking-le-morne": { name: "Wanderung am Le Morne" },
+    "quad-biking": { name: "Quadfahren" },
+    "whale-watching": { name: "Walbeobachtung" },
+    "chamarel-waterfall": { name: "Chamarel-Wasserfall" },
+    "7-coloured-earth": { name: "Siebenfarbige Erde" },
+    "pamplemousses-botanical-garden": { name: "Botanischer Garten Pamplemousses" },
+    "black-river-gorges": { name: "Black-River-Schluchten" },
+    "grand-bassin": { name: "Grand Bassin" },
+    "baie-de-jacotet": { category: "Versteckter Strand" },
+    "butte-a-lherbe": { category: "Versteckter Strand" },
+    "pointe-desny": { category: "Versteckter Strand" },
+    riambel: { category: "Versteckter Strand" },
+    "la-cambuse": { category: "Versteckter Strand" },
+    albion: { category: "Versteckter Strand" },
+  },
+  it: {
+    "swim-with-dolphins": { name: "Nuotare con i delfini" },
+    "catamaran-cruises": { name: "Crociere in catamarano" },
+    "helicopter-tour": { name: "Tour in elicottero" },
+    "hiking-le-morne": { name: "Escursione a Le Morne" },
+    "quad-biking": { name: "Quad" },
+    "whale-watching": { name: "Avvistamento balene" },
+    "chamarel-waterfall": { name: "Cascata di Chamarel" },
+    "7-coloured-earth": { name: "Terra dei Sette Colori" },
+    "pamplemousses-botanical-garden": { name: "Giardino di Pamplemousses" },
+    "black-river-gorges": { name: "Gole di Black River" },
+    "grand-bassin": { name: "Grand Bassin" },
+    "baie-de-jacotet": { category: "Spiaggia nascosta" },
+    "butte-a-lherbe": { category: "Spiaggia nascosta" },
+    "pointe-desny": { category: "Spiaggia nascosta" },
+    riambel: { category: "Spiaggia nascosta" },
+    "la-cambuse": { category: "Spiaggia nascosta" },
+    albion: { category: "Spiaggia nascosta" },
+  },
+  es: {
+    "swim-with-dolphins": { name: "Nadar con delfines" },
+    "catamaran-cruises": { name: "Cruceros en catamaran" },
+    "helicopter-tour": { name: "Tour en helicoptero" },
+    "hiking-le-morne": { name: "Senderismo en Le Morne" },
+    "quad-biking": { name: "Quad" },
+    "whale-watching": { name: "Avistamiento de ballenas" },
+    "chamarel-waterfall": { name: "Cascada de Chamarel" },
+    "7-coloured-earth": { name: "Tierra de Siete Colores" },
+    "pamplemousses-botanical-garden": { name: "Jardin de Pamplemousses" },
+    "black-river-gorges": { name: "Gargantas de Black River" },
+    "grand-bassin": { name: "Grand Bassin" },
+    "baie-de-jacotet": { category: "Playa escondida" },
+    "butte-a-lherbe": { category: "Playa escondida" },
+    "pointe-desny": { category: "Playa escondida" },
+    riambel: { category: "Playa escondida" },
+    "la-cambuse": { category: "Playa escondida" },
+    albion: { category: "Playa escondida" },
+  },
+  ru: {
+    "swim-with-dolphins": { name: "Плавание с дельфинами" },
+    "catamaran-cruises": { name: "Круизы на катамаране" },
+    "helicopter-tour": { name: "Вертолетный тур" },
+    "hiking-le-morne": { name: "Поход на Ле-Морн" },
+    "quad-biking": { name: "Квадроциклы" },
+    "whale-watching": { name: "Наблюдение за китами" },
+    "le-morne": { name: "Ле-Морн" },
+    "trou-aux-biches": { name: "Тру-о-Биш" },
+    "belle-mare": { name: "Бель-Мар" },
+    "flic-en-flac": { name: "Флик-ан-Флак" },
+    "blue-bay": { name: "Блю-Бэй" },
+    pereybere: { name: "Перейбер" },
+    "chamarel-waterfall": { name: "Водопад Шамарель" },
+    "7-coloured-earth": { name: "Семицветная земля" },
+    "pamplemousses-botanical-garden": { name: "Сад Памплемус" },
+    "black-river-gorges": { name: "Ущелья Блэк-Ривер" },
+    "grand-bassin": { name: "Гран-Бассен" },
+    "cap-malheureux": { name: "Кап-Малёрё" },
+    "baie-de-jacotet": { category: "Скрытый пляж" },
+    "butte-a-lherbe": { category: "Скрытый пляж" },
+    "pointe-desny": { category: "Скрытый пляж" },
+    riambel: { category: "Скрытый пляж" },
+    "la-cambuse": { category: "Скрытый пляж" },
+    albion: { category: "Скрытый пляж" },
+  },
+}
+
+function localizeExploreItemFallback<T extends ExploreItem>(item: T, locale: string): T {
+  const activeLocale = normalizeLocale(locale) as ExploreLocale
+  if (activeLocale === "en") return item
+  const itemPatch = EXPLORE_ITEM_TRANSLATIONS[activeLocale][item.slug] ?? {}
+  const translatedRegion = EXPLORE_REGION_TRANSLATIONS[activeLocale][item.region]
+  return {
+    ...item,
+    ...itemPatch,
+    region: translatedRegion ?? itemPatch.region ?? item.region,
+  }
+}
+
 function toCoords(lat: number | null, lng: number | null): Coordinates {
   return [lat ?? 0, lng ?? 0]
 }
@@ -1115,13 +1295,24 @@ export async function getActivitiesListingData(locale = "en"): Promise<{
 /** Enrich explore section items with main image from API so cards match detail pages after admin updates */
 async function enrichExploreItems<T extends ExploreItem>(
   items: T[],
-  fetchDetail: (slug: string) => Promise<{ images: string[] } | null>
+  fetchDetail: (slug: string) => Promise<{ images: string[]; name?: string; region?: string } | null>,
+  locale = "en"
 ): Promise<T[]> {
   const enriched = await Promise.all(
     items.map(async (item) => {
+      const localizedItem = localizeExploreItemFallback(item, locale)
       const detail = await fetchDetail(item.slug)
       const image = detail?.images?.[0]
-      return image ? { ...item, image } : item
+      const translatedName = detail?.name && detail.name !== item.name ? detail.name : localizedItem.name
+      const translatedRegion = detail?.region && detail.region !== item.region
+        ? localizeExploreItemFallback({ ...item, region: detail.region }, locale).region
+        : localizedItem.region
+      return {
+        ...localizedItem,
+        name: translatedName,
+        region: translatedRegion,
+        image: image ?? localizedItem.image,
+      }
     })
   )
   return enriched
@@ -1129,13 +1320,24 @@ async function enrichExploreItems<T extends ExploreItem>(
 /** Enrich explore section items with main image from API so cards match detail pages after admin updates */
 async function enrichAcrossItems<T extends ExploreItem>(
   items: T[],
-  fetchDetail: (slug: string) => Promise<{ images: string[] } | null>
+  fetchDetail: (slug: string) => Promise<{ images: string[]; name?: string; region?: string } | null>,
+  locale = "en"
 ): Promise<T[]> {
   const enriched = await Promise.all(
     items.map(async (item) => {
+      const localizedItem = localizeExploreItemFallback(item, locale)
       const detail = await fetchDetail(item.slug)
       const image = detail?.images?.[0]
-      return image ? { ...item, image } : item
+      const translatedName = detail?.name && detail.name !== item.name ? detail.name : localizedItem.name
+      const translatedRegion = detail?.region && detail.region !== item.region
+        ? localizeExploreItemFallback({ ...item, region: detail.region }, locale).region
+        : localizedItem.region
+      return {
+        ...localizedItem,
+        name: translatedName,
+        region: translatedRegion,
+        image: image ?? localizedItem.image,
+      }
     })
   )
   return enriched
@@ -1148,10 +1350,10 @@ export async function getExploreSectionsEnriched(locale = "en"): Promise<{
   hiddenGems: ExploreItem[]
 }> {
   const [activities, beaches, places, gems] = await Promise.all([
-    enrichExploreItems(STATIC_TOP_ACTIVITIES, (slug) => getActivityDetailsBySlugFromDb(slug, locale).then((d) => d ?? null)),
-    enrichExploreItems(STATIC_TOP_BEACHES_EXPLORE, (slug) => getBeachDetailsBySlug(slug, locale).then((d) => d ?? null)),
-    enrichExploreItems(STATIC_TOP_PLACES, (slug) => getPlaceDetailsBySlug(slug, locale).then((d) => d ?? null)),
-    enrichExploreItems(STATIC_HIDDEN_GEMS, (slug) => getBeachDetailsBySlug(slug, locale).then((d) => d ?? null)),
+    enrichExploreItems(STATIC_TOP_ACTIVITIES, (slug) => getActivityDetailsBySlugFromDb(slug, locale).then((d) => d ?? null), locale),
+    enrichExploreItems(STATIC_TOP_BEACHES_EXPLORE, (slug) => getBeachDetailsBySlug(slug, locale).then((d) => d ?? null), locale),
+    enrichExploreItems(STATIC_TOP_PLACES, (slug) => getPlaceDetailsBySlug(slug, locale).then((d) => d ?? null), locale),
+    enrichExploreItems(STATIC_HIDDEN_GEMS, (slug) => getBeachDetailsBySlug(slug, locale).then((d) => d ?? null), locale),
   ])
   return { topActivities: activities, topBeaches: beaches, topPlaces: places, hiddenGems: gems }
 }
@@ -1162,10 +1364,10 @@ export async function getAcrossSectionsEnriched(locale = "en"): Promise<{
   hiddenGems: ExploreItem[]
 }> {
   const [activities, beaches, places, gems] = await Promise.all([
-    enrichAcrossItems(STATIC_TOP_ACTIVITIES, (slug) => getActivityDetailsBySlugFromDb(slug, locale).then((d) => d ?? null)),
-    enrichAcrossItems(STATIC_TOP_BEACHES_EXPLORE, (slug) => getBeachDetailsBySlug(slug, locale).then((d) => d ?? null)),
-    enrichAcrossItems(STATIC_TOP_PLACES, (slug) => getPlaceDetailsBySlug(slug, locale).then((d) => d ?? null)),
-    enrichAcrossItems(STATIC_HIDDEN_GEMS, (slug) => getBeachDetailsBySlug(slug, locale).then((d) => d ?? null)),
+    enrichAcrossItems(STATIC_TOP_ACTIVITIES, (slug) => getActivityDetailsBySlugFromDb(slug, locale).then((d) => d ?? null), locale),
+    enrichAcrossItems(STATIC_TOP_BEACHES_EXPLORE, (slug) => getBeachDetailsBySlug(slug, locale).then((d) => d ?? null), locale),
+    enrichAcrossItems(STATIC_TOP_PLACES, (slug) => getPlaceDetailsBySlug(slug, locale).then((d) => d ?? null), locale),
+    enrichAcrossItems(STATIC_HIDDEN_GEMS, (slug) => getBeachDetailsBySlug(slug, locale).then((d) => d ?? null), locale),
   ])
   return { topActivities: activities, topBeaches: beaches, topPlaces: places, hiddenGems: gems }
 }

@@ -8,6 +8,8 @@ import { getImageUrl } from "@/lib/image-url";
 import { DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/constants";
 import { FAQJsonLd, ItemListJsonLd, ServiceJsonLd } from "@/components/seo/JsonLd";
 import { getTransportTranslations } from "@/data/transport-translations";
+import { localizeStaticPage } from "@/lib/static-page-localizer";
+import { normalizeLocale } from "@/i18n/routing";
 
 export const legacyCarRentalMetadata: Metadata = {
   title: "Car Rental Mauritius - Hertz Vehicles, 15% Off",
@@ -35,7 +37,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const { car } = getTransportTranslations(locale);
+  const activeLocale = normalizeLocale(locale);
+  const { car } = getTransportTranslations(activeLocale);
 
   return {
     title: car.metaTitle,
@@ -187,10 +190,11 @@ export default async function CarRentalPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const { car, common } = getTransportTranslations(locale);
+  const activeLocale = normalizeLocale(locale);
+  const { car, common } = getTransportTranslations(activeLocale);
   const carRentalFaqs = car.faqs;
 
-  return (
+  return localizeStaticPage((
     <main id="main-content" className="min-h-screen bg-white">
       <FAQJsonLd items={carRentalFaqs} />
       <ServiceJsonLd
@@ -481,5 +485,5 @@ export default async function CarRentalPage({
 
       <Footer />
     </main>
-  );
+  ), activeLocale);
 }

@@ -12,15 +12,34 @@ import type { LucideIcon } from "lucide-react";
 import { Fish, MapPin, ShipWheel, Waves } from "lucide-react";
 import CarRentalAdBannerInfo from "@/components/CarRentalAdBannerInfo";
 import PocketAdBanner from "@/components/PocketAdBanner";
+import { normalizeLocale } from "@/i18n/routing";
 
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
+const metadataSource: Metadata = {
   title: "Where to See Whales and Dolphins in Mauritius",
   description:
     "Whales and dolphins in Mauritius — swim with wild spinner dolphins and watch for whales off the west coast at Tamarin and Black River. When and how to go.",
   alternates: { canonical: "/whales-and-dolphins-in-mauritius" },
 };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const activeLocale = normalizeLocale(locale);
+
+  return {
+    ...metadataSource,
+    title: staticPageText(activeLocale, String(metadataSource.title)),
+    description: staticPageText(
+      activeLocale,
+      String(metadataSource.description),
+    ),
+  };
+}
 
 const ad = {
   desktopSrc:"/images/quick-trips/Swim-with-dolphins-in-Mauritius-Best-Prices.webp",
@@ -106,18 +125,18 @@ const WHALE_PAGE_COPY: Record<
     titleWhales: "Baleines",
     titleDolphins: "& dauphins",
     intro:
-      "A l'aube sur la cote ouest, nagez pres des dauphins sauvages et observez les baleines dans les eaux profondes au large de Tamarin et Black River.",
+      "A l'aube sur la cote ouest, nagez pres des dauphins sauvages et observez les baleines dans les eaux profondes au large de Tamarin et Riviere Noire.",
     mapAlt:
       "Carte indiquant les zones de dauphins et de baleines sur la cote ouest",
-    mapCaption: "Cote ouest - Black River, Tamarin et Le Morne",
+    mapCaption: "Cote ouest - Riviere Noire, Tamarin et Le Morne",
     encounters: [
       {
         title: "Nager avec les dauphins",
         label: "Dauphins a long bec et grands dauphins - cote ouest",
         rows: [
-          ["Ou", "Black River - Tamarin - Le Morne"],
+          ["Ou", "Riviere Noire - Tamarin - Le Morne"],
           ["Quand", "Depart vers 6 h - toute l'annee - mer calme"],
-          ["Sortie", "2 a 3 h en speedboat prive depuis La Balise Marina"],
+          ["Sortie", "2 a 3 h en bateau rapide prive depuis La Balise Marina"],
           [
             "Nage",
             "Entrez dans l'eau seulement quand l'equipage dit que c'est sur",
@@ -132,7 +151,7 @@ const WHALE_PAGE_COPY: Record<
             "Baleines",
             "Cachalots toute l'annee - baleines a bosse juil.-sept.",
           ],
-          ["Ou", "Eaux profondes au large de Tamarin et Black River"],
+          ["Ou", "Eaux profondes au large de Tamarin et Riviere Noire"],
           ["Quand", "Tot le matin, quand l'ocean est le plus calme"],
           [
             "Note",
@@ -180,7 +199,7 @@ const WHALE_PAGE_COPY: Record<
         rows: [
           ["Wo", "Black River - Tamarin - Le Morne"],
           ["Wann", "Start ca. 6 Uhr - ganzjahrig - ruhige See"],
-          ["Tour", "2-3 Std. privates Speedboat ab La Balise Marina"],
+          ["Tour", "2-3 Std. privates Schnellboot ab La Balise Marina"],
           ["Schwimmen", "Nur ins Wasser gehen, wenn die Crew es erlaubt"],
         ],
       },
@@ -231,7 +250,7 @@ const WHALE_PAGE_COPY: Record<
         rows: [
           ["Dove", "Black River - Tamarin - Le Morne"],
           ["Quando", "Partenza verso le 6 - tutto l'anno - mare calmo"],
-          ["Tour", "2-3 ore in motoscafo privato da La Balise Marina"],
+          ["Tour", "2-3 ore in motoscafo privato dalla marina La Balise"],
           [
             "Nuoto",
             "Entra in acqua solo quando l'equipaggio dice che e sicuro",
@@ -285,7 +304,7 @@ const WHALE_PAGE_COPY: Record<
         rows: [
           ["Donde", "Black River - Tamarin - Le Morne"],
           ["Cuando", "Salida sobre las 6 - todo el ano - mar tranquilo"],
-          ["Excursion", "2-3 h en lancha privada desde La Balise Marina"],
+          ["Excursion", "2-3 h en lancha privada desde la marina La Balise"],
           ["Nado", "Entra al agua solo cuando la tripulacion lo indique"],
         ],
       },
@@ -323,17 +342,17 @@ const WHALE_PAGE_COPY: Record<
     titleWhales: "Киты",
     titleDolphins: "& дельфины",
     intro:
-      "На рассвете у западного побережья можно плыть рядом с дикими дельфинами и наблюдать китов в глубоких водах у Tamarin и Black River.",
+      "На рассвете у западного побережья можно плыть рядом с дикими дельфинами и наблюдать китов в глубоких водах у Тамарина и Блэк-Ривер.",
     mapAlt: "Карта зон дельфинов и китов на западном побережье",
-    mapCaption: "Западное побережье - Black River, Tamarin и Le Morne",
+    mapCaption: "Западное побережье - Блэк-Ривер, Тамарин и Ле-Морн",
     encounters: [
       {
         title: "Плавание с дельфинами",
         label: "Дельфины-спиннеры и афалины - западное побережье",
         rows: [
-          ["Где", "Black River - Tamarin - Le Morne"],
+          ["Где", "Блэк-Ривер - Тамарин - Ле-Морн"],
           ["Когда", "Старт около 6:00 - круглый год - спокойное море"],
-          ["Тур", "2-3 часа на частном спидботе от La Balise Marina"],
+          ["Тур", "2-3 часа на частном скоростном катере от марины Ла-Бализ"],
           [
             "Плавание",
             "Входите в воду только когда экипаж скажет, что безопасно",
@@ -345,7 +364,7 @@ const WHALE_PAGE_COPY: Record<
         label: "Кашалоты и горбатые киты - глубокая вода",
         rows: [
           ["Киты", "Кашалоты круглый год - горбатые киты июль-сент."],
-          ["Где", "Глубокая вода у Tamarin и Black River"],
+          ["Где", "Глубокая вода у Тамарина и Блэк-Ривер"],
           ["Когда", "Рано утром, когда океан самый спокойный"],
           ["Важно", "Только наблюдение - плавать с китами запрещено"],
         ],
@@ -384,8 +403,9 @@ export default async function WhalesAndDolphinsInMauritiusPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const pageCopy = getWhalePageCopy(locale);
-  const t = (text: string) => staticPageText(locale, text);
+  const activeLocale = normalizeLocale(locale);
+  const pageCopy = getWhalePageCopy(activeLocale);
+  const t = (text: string) => staticPageText(activeLocale, text);
   const translatedEncounters =
     pageCopy?.encounters ??
     encounters.map((item) => ({
@@ -552,10 +572,10 @@ export default async function WhalesAndDolphinsInMauritiusPage({
       </article>
       <PocketAdBanner />
       <CarRentalAdBannerInfo />
-      <PopularRoadTrips locale={locale} />
+      <PopularRoadTrips locale={activeLocale} />
 
       <Footer />
     </main>,
-    locale,
+    activeLocale,
   );
 }

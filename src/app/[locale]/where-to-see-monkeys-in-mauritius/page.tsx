@@ -18,14 +18,33 @@ import {
 import Image from "next/image";
 import CarRentalAdBannerInfo from "@/components/CarRentalAdBannerInfo";
 import PocketAdBanner from "@/components/PocketAdBanner";
+import { normalizeLocale } from "@/i18n/routing";
 
 export const revalidate = 3600;
-export const metadata: Metadata = {
+const metadataSource: Metadata = {
   title: "Where to See Monkeys in Mauritius",
   description:
     "Where to see monkeys in Mauritius — spot wild macaques in the south-west highlands, Black River Gorges and beyond. Best places, tips and what to expect.",
   alternates: { canonical: "/where-to-see-monkeys-in-mauritius" },
 };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const activeLocale = normalizeLocale(locale);
+
+  return {
+    ...metadataSource,
+    title: staticPageText(activeLocale, String(metadataSource.title)),
+    description: staticPageText(
+      activeLocale,
+      String(metadataSource.description),
+    ),
+  };
+}
 
 const ad = {
   desktopSrc:
@@ -136,12 +155,12 @@ const MONKEY_PAGE_COPY: Record<SupportedMonkeyLocale, {
     spots: {
       "Black River Gorges Viewpoint": { name: "Point de vue des gorges de Riviere Noire", tag: "Point de vue - parc national", region: "Hauts plateaux du sud-ouest", see: "Les groupes se rassemblent pres du parking, des barrieres et des arbres en bord de route; ils sont souvent curieux et rapides a s'approcher.", tip: "Gardez la nourriture cachee - prevoyez 20 a 40 min." },
       "Chamarel Viewpoint": { name: "Point de vue de Chamarel", tag: "Routes forestieres", region: "Chamarel - Sud-Ouest", see: "On les voit le long des routes plus fraiches et verdoyantes des hauts plateaux, pres des zones de vue boisees.", tip: "Roulez lentement - les singes peuvent traverser brusquement." },
-      "Alexandra Falls Viewpoint": { name: "Point de vue d'Alexandra Falls", tag: "Point de vue cascade", region: "Plaine Champagne", see: "La foret tout autour en fait un excellent spot : singes pres du parking, des arbres et des sentiers.", tip: "Ne tenez pas de nourriture en main pendant les photos." },
+      "Alexandra Falls Viewpoint": { name: "Point de vue des chutes Alexandra", tag: "Point de vue cascade", region: "Plaine Champagne", see: "La foret tout autour en fait un excellent spot : singes pres du parking, des arbres et des sentiers.", tip: "Ne tenez pas de nourriture en main pendant les photos." },
       "Grand Bassin - Ganga Talao": { name: "Grand Bassin - Ganga Talao", tag: "Lac sacre", region: "Hauts plateaux du centre", see: "Les groupes se deplacent dans les arbres autour des temples, du lac et des parkings.", tip: "Habillez-vous modestement - restez discret - allez tot." },
       "Black River Gorges National Park": { name: "Parc national des gorges de Riviere Noire", tag: "Parc national", region: "Sud-ouest de Maurice", see: "La plus grande foret de l'ile : observez-les au bord des routes, lisieres, aires de pique-nique et points de vue.", tip: "Apportez de l'eau et de bonnes chaussures - la meteo change vite." },
     },
     loopTitle: "Faire une boucle dans les hauts plateaux",
-    loopText: "Commencez a Grand Bassin, puis Alexandra Falls, Black River Gorges Viewpoint et Chamarel : meilleures observations et paysages en une seule route.",
+    loopText: "Commencez a Grand Bassin, puis les chutes Alexandra, le point de vue des gorges de Riviere Noire et Chamarel : meilleures observations et paysages en une seule route.",
     rulesTitle: "Regarder, ne pas toucher",
     rules: [
       ["Ne jamais les nourrir", "Gardez toute nourriture et snacks caches et fermes."],
@@ -159,14 +178,14 @@ const MONKEY_PAGE_COPY: Record<SupportedMonkeyLocale, {
     seeLabel: "Sehen",
     tipLabel: "Tipp",
     spots: {
-      "Black River Gorges Viewpoint": { name: "Black River Gorges Aussichtspunkt", tag: "Aussichtspunkt - Nationalpark", region: "Sudwestliches Hochland", see: "Gruppen sammeln sich am Parkplatz, an Geländern und Strassenbaumen; oft neugierig und schnell nah.", tip: "Essen versteckt halten - 20 bis 40 Min. einplanen." },
-      "Chamarel Viewpoint": { name: "Chamarel Aussichtspunkt", tag: "Waldstrassen", region: "Chamarel - Sudwesten", see: "Entlang kuhlerer, gruner Hochlandstrassen und nahe bewaldeter Aussichtspunkte zu sehen.", tip: "Langsam fahren - Affen konnen plotzlich kreuzen." },
-      "Alexandra Falls Viewpoint": { name: "Alexandra Falls Aussichtspunkt", tag: "Wasserfall-Aussichtspunkt", region: "Plaine Champagne", see: "Wald rundherum macht dies zu einem Top-Spot: Affen nahe Parkplatz, Baumen und Wegen.", tip: "Beim Fotografieren kein Essen in der Hand halten." },
+      "Black River Gorges Viewpoint": { name: "Aussichtspunkt der Black-River-Schluchten", tag: "Aussichtspunkt - Nationalpark", region: "Sudwestliches Hochland", see: "Gruppen sammeln sich am Parkplatz, an Gelandern und Strassenbaumen; oft neugierig und schnell nah.", tip: "Essen versteckt halten - 20 bis 40 Min. einplanen." },
+      "Chamarel Viewpoint": { name: "Aussichtspunkt Chamarel", tag: "Waldstrassen", region: "Chamarel - Sudwesten", see: "Entlang kuhlerer, gruner Hochlandstrassen und nahe bewaldeter Aussichtspunkte zu sehen.", tip: "Langsam fahren - Affen konnen plotzlich kreuzen." },
+      "Alexandra Falls Viewpoint": { name: "Aussichtspunkt der Alexandra-Falle", tag: "Wasserfall-Aussichtspunkt", region: "Plaine Champagne", see: "Wald rundherum macht dies zu einem Top-Spot: Affen nahe Parkplatz, Baumen und Wegen.", tip: "Beim Fotografieren kein Essen in der Hand halten." },
       "Grand Bassin - Ganga Talao": { name: "Grand Bassin - Ganga Talao", tag: "Heiliger See", region: "Zentrales Hochland", see: "Gruppen bewegen sich in den Baumen rund um Tempel, See und Parkplatze.", tip: "Dezent kleiden - leise bleiben - fruh gehen." },
-      "Black River Gorges National Park": { name: "Black River Gorges Nationalpark", tag: "Nationalpark", region: "Sudwest-Mauritius", see: "Der grosste Wald der Insel: an Strassenrandern, Waldrandern, Picknickplatzen und Aussichtspunkten.", tip: "Wasser und gute Schuhe mitbringen - das Wetter wechselt schnell." },
+      "Black River Gorges National Park": { name: "Nationalpark Black River Gorges", tag: "Nationalpark", region: "Sudwest-Mauritius", see: "Der grosste Wald der Insel: an Strassenrandern, Waldrandern, Picknickplatzen und Aussichtspunkten.", tip: "Wasser und gute Schuhe mitbringen - das Wetter wechselt schnell." },
     },
     loopTitle: "Eine Hochlandrunde fahren",
-    loopText: "Starten Sie bei Grand Bassin, dann Alexandra Falls, Black River Gorges Viewpoint und Chamarel: beste Sichtungen und Landschaft in einer Fahrt.",
+    loopText: "Starten Sie bei Grand Bassin, dann bei den Alexandra-Fallen, dem Aussichtspunkt der Black-River-Schluchten und Chamarel: beste Sichtungen und Landschaft in einer Fahrt.",
     rulesTitle: "Beobachten, nicht anfassen",
     rules: [
       ["Nie futtern", "Alle Lebensmittel und Snacks versteckt und verschlossen halten."],
@@ -184,14 +203,14 @@ const MONKEY_PAGE_COPY: Record<SupportedMonkeyLocale, {
     seeLabel: "Vedi",
     tipLabel: "Consiglio",
     spots: {
-      "Black River Gorges Viewpoint": { name: "Belvedere Black River Gorges", tag: "Belvedere - parco nazionale", region: "Altopiani sud-occidentali", see: "I gruppi si radunano vicino al parcheggio, alle ringhiere e agli alberi lungo la strada, spesso curiosi e veloci ad avvicinarsi.", tip: "Tieni il cibo nascosto - prevedi 20-40 min." },
+      "Black River Gorges Viewpoint": { name: "Belvedere delle gole di Black River", tag: "Belvedere - parco nazionale", region: "Altopiani sud-occidentali", see: "I gruppi si radunano vicino al parcheggio, alle ringhiere e agli alberi lungo la strada, spesso curiosi e veloci ad avvicinarsi.", tip: "Tieni il cibo nascosto - prevedi 20-40 min." },
       "Chamarel Viewpoint": { name: "Belvedere di Chamarel", tag: "Strade forestali", region: "Chamarel - Sud-Ovest", see: "Si vedono lungo le strade piu fresche e verdi degli altopiani e vicino alle aree panoramiche nel bosco.", tip: "Guida piano - le scimmie possono attraversare all'improvviso." },
-      "Alexandra Falls Viewpoint": { name: "Belvedere Alexandra Falls", tag: "Belvedere cascata", region: "Plaine Champagne", see: "La foresta intorno rende questo un punto ideale: scimmie vicino al parcheggio, agli alberi e ai sentieri.", tip: "Non tenere cibo in mano mentre fai foto." },
+      "Alexandra Falls Viewpoint": { name: "Belvedere delle cascate Alexandra", tag: "Belvedere cascata", region: "Plaine Champagne", see: "La foresta intorno rende questo un punto ideale: scimmie vicino al parcheggio, agli alberi e ai sentieri.", tip: "Non tenere cibo in mano mentre fai foto." },
       "Grand Bassin - Ganga Talao": { name: "Grand Bassin - Ganga Talao", tag: "Lago sacro", region: "Altopiani centrali", see: "I gruppi si muovono tra gli alberi intorno ai templi, al lago e ai parcheggi.", tip: "Vestiti con discrezione - tieni basso il rumore - vai presto." },
       "Black River Gorges National Park": { name: "Parco nazionale Black River Gorges", tag: "Parco nazionale", region: "Mauritius sud-occidentale", see: "La foresta piu grande dell'isola: cercale lungo le strade, ai margini del bosco, nelle aree picnic e ai belvedere.", tip: "Porta acqua e buone scarpe - il meteo cambia rapidamente." },
     },
     loopTitle: "Fai un anello negli altopiani",
-    loopText: "Inizia da Grand Bassin, poi Alexandra Falls, Black River Gorges Viewpoint e Chamarel: migliori avvistamenti e paesaggi in un solo giro.",
+    loopText: "Inizia da Grand Bassin, poi dalle cascate Alexandra, dal belvedere delle gole di Black River e da Chamarel: migliori avvistamenti e paesaggi in un solo giro.",
     rulesTitle: "Guarda, non toccare",
     rules: [
       ["Non dar loro da mangiare", "Tieni cibo e snack nascosti e chiusi."],
@@ -209,14 +228,14 @@ const MONKEY_PAGE_COPY: Record<SupportedMonkeyLocale, {
     seeLabel: "Ver",
     tipLabel: "Consejo",
     spots: {
-      "Black River Gorges Viewpoint": { name: "Mirador Black River Gorges", tag: "Mirador - parque nacional", region: "Tierras altas del suroeste", see: "Los grupos se reunen junto al aparcamiento, barandillas y arboles de carretera; suelen ser curiosos y acercarse rapido.", tip: "Mantén la comida oculta - calcula 20-40 min." },
+      "Black River Gorges Viewpoint": { name: "Mirador de las gargantas de Black River", tag: "Mirador - parque nacional", region: "Tierras altas del suroeste", see: "Los grupos se reunen junto al aparcamiento, barandillas y arboles de carretera; suelen ser curiosos y acercarse rapido.", tip: "Mantén la comida oculta - calcula 20-40 min." },
       "Chamarel Viewpoint": { name: "Mirador de Chamarel", tag: "Carreteras forestales", region: "Chamarel - Suroeste", see: "Se ven en las carreteras mas frescas y verdes de las tierras altas y cerca de zonas de mirador con bosque.", tip: "Conduce despacio - los monos pueden cruzar de repente." },
-      "Alexandra Falls Viewpoint": { name: "Mirador Alexandra Falls", tag: "Mirador de cascada", region: "Plaine Champagne", see: "El bosque alrededor hace de este un punto ideal: monos cerca del aparcamiento, arboles y senderos.", tip: "No tengas comida en la mano mientras haces fotos." },
+      "Alexandra Falls Viewpoint": { name: "Mirador de las cascadas Alexandra", tag: "Mirador de cascada", region: "Plaine Champagne", see: "El bosque alrededor hace de este un punto ideal: monos cerca del aparcamiento, arboles y senderos.", tip: "No tengas comida en la mano mientras haces fotos." },
       "Grand Bassin - Ganga Talao": { name: "Grand Bassin - Ganga Talao", tag: "Lago sagrado", region: "Tierras altas centrales", see: "Los grupos se mueven por los arboles alrededor de templos, lago y aparcamientos.", tip: "Viste con modestia - mantén poco ruido - ve temprano." },
       "Black River Gorges National Park": { name: "Parque nacional Black River Gorges", tag: "Parque nacional", region: "Suroeste de Mauricio", see: "El bosque mas grande de la isla: buscalos en bordes de carretera, limites del bosque, areas de picnic y miradores.", tip: "Lleva agua y buen calzado - el tiempo cambia rapido." },
     },
     loopTitle: "Haz un circuito por las tierras altas",
-    loopText: "Empieza en Grand Bassin, luego Alexandra Falls, Black River Gorges Viewpoint y Chamarel: mejores avistamientos y paisajes en una ruta.",
+    loopText: "Empieza en Grand Bassin, luego por las cascadas Alexandra, el mirador de las gargantas de Black River y Chamarel: mejores avistamientos y paisajes en una ruta.",
     rulesTitle: "Mira, no toques",
     rules: [
       ["Nunca los alimentes", "Mantén comida y snacks ocultos y cerrados."],
@@ -234,14 +253,14 @@ const MONKEY_PAGE_COPY: Record<SupportedMonkeyLocale, {
     seeLabel: "Где смотреть",
     tipLabel: "Совет",
     spots: {
-      "Black River Gorges Viewpoint": { name: "Смотровая Black River Gorges", tag: "Смотровая - национальный парк", region: "Юго-западное нагорье", see: "Группы собираются у парковки, перил и деревьев у дороги; часто любопытны и быстро подходят.", tip: "Держите еду спрятанной - заложите 20-40 мин." },
-      "Chamarel Viewpoint": { name: "Смотровая Chamarel", tag: "Лесные дороги", region: "Chamarel - юго-запад", see: "Их видят вдоль более прохладных зеленых дорог нагорья и рядом с лесными смотровыми площадками.", tip: "Езжайте медленно - обезьяны могут внезапно перейти дорогу." },
-      "Alexandra Falls Viewpoint": { name: "Смотровая Alexandra Falls", tag: "Смотровая у водопада", region: "Plaine Champagne", see: "Лес вокруг делает это место отличным: обезьяны рядом с парковкой, деревьями и тропами.", tip: "Не держите еду в руках, когда фотографируете." },
-      "Grand Bassin - Ganga Talao": { name: "Grand Bassin - Ganga Talao", tag: "Священное озеро", region: "Центральное нагорье", see: "Группы перемещаются по деревьям вокруг храмов, озера и парковок.", tip: "Одевайтесь скромно - не шумите - приезжайте рано." },
-      "Black River Gorges National Park": { name: "Национальный парк Black River Gorges", tag: "Национальный парк", region: "Юго-запад Маврикия", see: "Самый большой лес острова: ищите их у дорог, на опушках, в пикниковых зонах и на смотровых.", tip: "Возьмите воду и хорошую обувь - погода быстро меняется." },
+      "Black River Gorges Viewpoint": { name: "Смотровая площадка ущелий Блэк-Ривер", tag: "Смотровая - национальный парк", region: "Юго-западное нагорье", see: "Группы собираются у парковки, перил и деревьев у дороги; часто любопытны и быстро подходят.", tip: "Держите еду спрятанной - заложите 20-40 мин." },
+      "Chamarel Viewpoint": { name: "Смотровая площадка Шамарель", tag: "Лесные дороги", region: "Шамарель - юго-запад", see: "Их видят вдоль более прохладных зеленых дорог нагорья и рядом с лесными смотровыми площадками.", tip: "Езжайте медленно - обезьяны могут внезапно перейти дорогу." },
+      "Alexandra Falls Viewpoint": { name: "Смотровая площадка у водопада Александра", tag: "Смотровая у водопада", region: "Плен-Шампань", see: "Лес вокруг делает это место отличным: обезьяны рядом с парковкой, деревьями и тропами.", tip: "Не держите еду в руках, когда фотографируете." },
+      "Grand Bassin - Ganga Talao": { name: "Гран-Бассен - Ганга-Талао", tag: "Священное озеро", region: "Центральное нагорье", see: "Группы перемещаются по деревьям вокруг храмов, озера и парковок.", tip: "Одевайтесь скромно - не шумите - приезжайте рано." },
+      "Black River Gorges National Park": { name: "Национальный парк ущелий Блэк-Ривер", tag: "Национальный парк", region: "Юго-запад Маврикия", see: "Самый большой лес острова: ищите их у дорог, на опушках, в пикниковых зонах и на смотровых.", tip: "Возьмите воду и хорошую обувь - погода быстро меняется." },
     },
     loopTitle: "Сделайте кольцо по нагорью",
-    loopText: "Начните с Grand Bassin, затем Alexandra Falls, Black River Gorges Viewpoint и Chamarel: лучшие встречи и пейзажи за одну поездку.",
+    loopText: "Начните с Гран-Бассена, затем посетите водопад Александра, смотровую площадку ущелий Блэк-Ривер и Шамарель: лучшие встречи и пейзажи за одну поездку.",
     rulesTitle: "Смотрите, не трогайте",
     rules: [
       ["Никогда не кормите", "Держите всю еду и снеки спрятанными и закрытыми."],
@@ -259,16 +278,15 @@ function getMonkeyPageCopy(locale: string) {
 
 export default async function WhereToSeeMonkeysInMauritiusPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const copy = getMonkeyPageCopy(locale);
-  const t = (text: string) => staticPageText(locale, text);
+  const activeLocale = normalizeLocale(locale);
+  const copy = getMonkeyPageCopy(activeLocale);
+  const t = (text: string) => staticPageText(activeLocale, text);
   return localizeStaticPage((
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
 
       <article className="mx-auto w-full max-w-7xl px-4 pt-24 pb-10 sm:px-6 lg:pt-28">
         <header>
-       
-
           <p className="mt-8 text-[11px] font-bold uppercase tracking-wide text-[#f16522]">
             {copy?.kicker ?? "Wildlife - South-West Highlands"}
           </p>
@@ -385,10 +403,9 @@ export default async function WhereToSeeMonkeysInMauritiusPage({ params }: { par
       </article>
 <PocketAdBanner />
 <CarRentalAdBannerInfo />
-      <PopularRoadTrips locale={locale} />
+      <PopularRoadTrips locale={activeLocale} />
 
       <Footer />
     </main>
-  ), locale);
+  ), activeLocale);
 }
-

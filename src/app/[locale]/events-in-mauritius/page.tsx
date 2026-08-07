@@ -8,6 +8,8 @@ import ButtonLabel from "@/components/ButtonLabel";
 import EventsInteractiveSection from "@/components/events/EventsInteractiveSection";
 import { getImageUrl } from "@/lib/image-url";
 import { getEventsInfo } from "@/data/main-info-translations";
+import { localizeStaticPage } from "@/lib/static-page-localizer";
+import { normalizeLocale } from "@/i18n/routing";
 
 const HERO_BANNER = "/images/banners/mauritius-east-coast-aerial-panorama.webp";
 const OG_IMAGE = "custom-nightlife-events.jpg";
@@ -23,7 +25,8 @@ export const legacyMetadata: Metadata = {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  const t = getEventsInfo(locale);
+  const activeLocale = normalizeLocale(locale);
+  const t = getEventsInfo(activeLocale);
   return {
     title: t.metadata.title,
     description: t.metadata.description,
@@ -45,9 +48,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function EventsInMauritiusPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const t = getEventsInfo(locale);
+  const activeLocale = normalizeLocale(locale);
+  const t = getEventsInfo(activeLocale);
 
-  return (
+  return localizeStaticPage((
     <main id="main-content" className="min-h-screen bg-white">
       <Navbar />
 
@@ -114,5 +118,5 @@ export default async function EventsInMauritiusPage({ params }: { params: Promis
 
       <Footer />
     </main>
-  );
+  ), activeLocale);
 }

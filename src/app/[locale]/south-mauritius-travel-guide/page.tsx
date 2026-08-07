@@ -19,6 +19,8 @@ import Image from "next/image";
 import { getRegionGuide } from "@/data/quick-guide-translations";
 import CarRentalAdBanner from "@/components/CarRentalAdBanner";
 import PocketAdBanner from "@/components/PocketAdBanner";
+import { localizeStaticPage } from "@/lib/static-page-localizer";
+import { normalizeLocale } from "@/i18n/routing";
 
 export const revalidate = 3600;
 
@@ -168,7 +170,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = getRegionGuide(locale, "south");
+  const activeLocale = normalizeLocale(locale);
+  const t = getRegionGuide(activeLocale, "south");
   return {
     title: t.metadata.title,
     description: t.metadata.description,
@@ -182,7 +185,8 @@ export default async function SouthMauritiusTravelGuidePage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = getRegionGuide(locale, "south");
+  const activeLocale = normalizeLocale(locale);
+  const t = getRegionGuide(activeLocale, "south");
   const translatedPlaces = southPlaces.map((place, index) => ({
     ...place,
     originalName: place.name,
@@ -192,7 +196,7 @@ export default async function SouthMauritiusTravelGuidePage({
     ...step,
     ...t.steps[index],
   }));
-  return (
+  return localizeStaticPage((
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
 
@@ -398,9 +402,9 @@ export default async function SouthMauritiusTravelGuidePage({
         <HiddenGems featuredSlugs={southHiddenGemSlugs} />
       </article>
       <CarRentalAdBanner />
-      <PopularRoadTrips locale={locale} />
+      <PopularRoadTrips locale={activeLocale} />
       <PocketAdBanner />
       <Footer />
     </main>
-  );
+  ), activeLocale);
 }

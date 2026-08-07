@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import PopularRoadTrips from "@/components/PopularRoadTrips";
 import Image from "next/image";
 import { normalizeLocale } from "@/i18n/routing";
+import { localizeStaticPage } from "@/lib/static-page-localizer";
 
 export const revalidate = 3600;
 
@@ -486,14 +487,16 @@ function getBeachPageCopy(locale: string) {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  return getBeachPageCopy(locale).metadata;
+  const activeLocale = normalizeLocale(locale);
+  return getBeachPageCopy(activeLocale).metadata;
 }
 
 export default async function BestBeachesOfMauritiusPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const copy = getBeachPageCopy(locale);
+  const activeLocale = normalizeLocale(locale);
+  const copy = getBeachPageCopy(activeLocale);
 
-  return (
+  return localizeStaticPage((
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
 
@@ -605,8 +608,8 @@ export default async function BestBeachesOfMauritiusPage({ params }: { params: P
         </section>
       </article>
 
-      <PopularRoadTrips locale={locale} />
+      <PopularRoadTrips locale={activeLocale} />
       <Footer />
     </main>
-  );
+  ), activeLocale);
 }

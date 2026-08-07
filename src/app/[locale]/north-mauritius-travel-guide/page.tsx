@@ -22,6 +22,8 @@ import {
 import { getRegionGuide } from "@/data/quick-guide-translations";
 import PocketAdBanner from "@/components/PocketAdBanner";
 import CarRentalAdBanner from "@/components/CarRentalAdBanner";
+import { localizeStaticPage } from "@/lib/static-page-localizer";
+import { normalizeLocale } from "@/i18n/routing";
 
 export const revalidate = 3600;
 
@@ -125,7 +127,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = getRegionGuide(locale, "north");
+  const activeLocale = normalizeLocale(locale);
+  const t = getRegionGuide(activeLocale, "north");
   return { title: t.metadata.title, description: t.metadata.description, alternates: { canonical: "/north-mauritius-travel-guide" } };
 }
 
@@ -135,9 +138,10 @@ export default async function NorthMauritiusTravelGuidePage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = getRegionGuide(locale, "north");
+  const activeLocale = normalizeLocale(locale);
+  const t = getRegionGuide(activeLocale, "north");
   const translatedPlaces = placesToGo.map((place, index) => ({ ...place, ...t.places[index] }));
-  return (
+  return localizeStaticPage((
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
 
@@ -314,12 +318,12 @@ export default async function NorthMauritiusTravelGuidePage({
             })}
           </div>
         </section>
-        <HiddenGems featuredSlugs={northHiddenGemSlugs} />
+        <HiddenGems featuredSlugs={northHiddenGemSlugs} locale={activeLocale} />
       </article>
 <CarRentalAdBanner />
-      <PopularRoadTrips locale={locale} />
+      <PopularRoadTrips locale={activeLocale} />
       <PocketAdBanner />
       <Footer />
     </main>
-  );
+  ), activeLocale);
 }

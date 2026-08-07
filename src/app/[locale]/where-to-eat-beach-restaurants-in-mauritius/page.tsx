@@ -6,18 +6,32 @@ import {
   localizeStaticPage,
   staticPageText,
 } from "@/lib/static-page-localizer";
+import { normalizeLocale } from "@/i18n/routing";
 import type { LucideIcon } from "lucide-react";
 import { Banknote, CalendarCheck, MapPin, Utensils } from "lucide-react";
 import Image from "next/image";
 import CarRentalAdBannerInfo from "@/components/CarRentalAdBannerInfo";
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
-  title: "Where to Eat Beach Restaurants in Mauritius",
-  description:
-    "Where to eat by the sea in Mauritius — the best beach restaurants for fresh seafood, sunset dining and local flavour, coast by coast around the island.",
-  alternates: { canonical: "/where-to-eat-beach-restaurants-in-mauritius" },
-};
+const pageTitle = "Where to Eat Beach Restaurants in Mauritius";
+const pageDescription =
+  "Where to eat by the sea in Mauritius — the best beach restaurants for fresh seafood, sunset dining and local flavour, coast by coast around the island.";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const activeLocale = normalizeLocale(locale);
+
+  return {
+    title: staticPageText(activeLocale, pageTitle),
+    description: staticPageText(activeLocale, pageDescription),
+    alternates: { canonical: "/where-to-eat-beach-restaurants-in-mauritius" },
+  };
+}
+
 const ad = {
   desktopSrc:
     "/images/quick-trips/Seven-waterfall-hike-in-Mauritius-Best-Hike-best-Prices.webp",
@@ -43,6 +57,32 @@ const coastColors: Record<Coast, string> = {
   North: "#2389c9",
   "West & South-West": "#f16522",
   "East & Wild South": "#2f8e48",
+};
+
+const restaurantPageUiCopy: Record<
+  SupportedRestaurantsLocale,
+  { sponsoredLabel: string; adAlt: string }
+> = {
+  fr: {
+    sponsoredLabel: "Sélection sponsorisée",
+    adAlt: "Randonnée aux Sept Cascades à Maurice, meilleurs prix",
+  },
+  de: {
+    sponsoredLabel: "Gesponserte Highlights",
+    adAlt: "Seven-Waterfalls-Wanderung auf Mauritius, beste Preise",
+  },
+  it: {
+    sponsoredLabel: "Highlights sponsorizzati",
+    adAlt: "Escursione alle Sette Cascate a Mauritius, migliori prezzi",
+  },
+  es: {
+    sponsoredLabel: "Destacados patrocinados",
+    adAlt: "Senderismo en las Siete Cascadas de Mauricio, mejores precios",
+  },
+  ru: {
+    sponsoredLabel: "Рекламные предложения",
+    adAlt: "Поход к Семи водопадам на Маврикии, лучшие цены",
+  },
 };
 
 const leftRestaurantGroups: RestaurantGroup[] = [
@@ -821,7 +861,11 @@ export default async function WhereToEatBeachRestaurantsInMauritiusPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const copy = getRestaurantPageCopy(locale);
+  const activeLocale = normalizeLocale(locale);
+  const copy = getRestaurantPageCopy(activeLocale);
+  const uiCopy =
+    restaurantPageUiCopy[activeLocale as SupportedRestaurantsLocale];
+
   return localizeStaticPage(
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
@@ -849,7 +893,7 @@ export default async function WhereToEatBeachRestaurantsInMauritiusPage({
                   className="h-3 w-3 rounded-full"
                   style={{ backgroundColor: color }}
                 />
-                {copy?.coasts[label] ?? staticPageText(locale, label)}
+                {copy?.coasts[label] ?? staticPageText(activeLocale, label)}
               </span>
             ))}
           </div>
@@ -869,7 +913,7 @@ export default async function WhereToEatBeachRestaurantsInMauritiusPage({
         </section>
         <section
           className="bg-white py-3 md:py-5 dark:border-neutral-800 dark:bg-neutral-900"
-          aria-label="Sponsored highlights"
+          aria-label={uiCopy?.sponsoredLabel ?? "Sponsored highlights"}
         >
           <div className="container mx-auto max-w-7xl">
             <div className="relative overflow-hidden rounded-xl bg-[#052028] shadow-sm ring-1 ring-gray-200 dark:ring-neutral-700">
@@ -880,7 +924,7 @@ export default async function WhereToEatBeachRestaurantsInMauritiusPage({
                 <span className="relative block aspect-[1200/240] w-full">
                   <Image
                     src={ad.desktopSrc}
-                    alt={ad.alt}
+                    alt={uiCopy?.adAlt ?? ad.alt}
                     fill
                     sizes="(max-width: 1280px) 100vw, 1280px"
                     className="rounded-xl object-cover"
@@ -906,11 +950,12 @@ export default async function WhereToEatBeachRestaurantsInMauritiusPage({
                   <p className="text-xs leading-relaxed text-[#61707a] sm:text-sm">
                     <strong className="font-serif text-[#1d3144]">
                       {copy?.tips[title]?.title ??
-                        staticPageText(locale, title)}
+                        staticPageText(activeLocale, title)}
                     </strong>
                   </p>
                   <p className="text-xs">
-                    {copy?.tips[title]?.text ?? staticPageText(locale, text)}
+                    {copy?.tips[title]?.text ??
+                      staticPageText(activeLocale, text)}
                   </p>
                 </div>
               </div>
@@ -925,10 +970,10 @@ export default async function WhereToEatBeachRestaurantsInMauritiusPage({
         </section>
       </article>
 
-      <PopularRoadTrips locale={locale} />
+      <PopularRoadTrips locale={activeLocale} />
 
       <Footer />
     </main>,
-    locale,
+    activeLocale,
   );
 }

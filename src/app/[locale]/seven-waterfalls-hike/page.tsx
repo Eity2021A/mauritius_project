@@ -503,7 +503,7 @@ export default async function SevenWaterfallsHikePage({
 
       <PocketAdBanner />
       <CarRentalAdBannerInfo />
-      <PopularRoadTrips locale={locale} />
+      <PopularRoadTrips locale={activeLocale} />
 
       <Footer />
     </main>,

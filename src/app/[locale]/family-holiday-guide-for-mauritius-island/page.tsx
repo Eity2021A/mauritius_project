@@ -24,19 +24,11 @@ import CarRentalAdBannerInfo from "@/components/CarRentalAdBannerInfo";
 const swim = {
   desktopSrc: "/images/quick-trips/Swim-with-dolphins-in-Mauritius-Best-Prices.webp",
   href: "/",
-  alt: "Swim with dolphins in Mauritius Best Prices",
-};
-
-const ad = {
-  desktopSrc: "/images/quick-trips/Car-Rental-Mauritius.webp",
-  href: "/car-rental-mauritius",
-  alt: "Rent Rental Mauritius",
 };
 
 const pocket = {
   desktopSrc: "/images/quick-trips/Pocket-Guide-For-Mauritius.webp",
   href: "/pocket-guide",
-  alt: "Rent Rental Mauritius",
 };
 
 const familyHiddenGemSlugs = [
@@ -176,19 +168,18 @@ export default async function FamilyHolidayGuideForMauritiusIslandPage({
               href={bestTimeHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-md bg-[#e9f6ec] px-5 pt-4 pb-8 text-center transition-colors hover:bg-[#ddf2e3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d91c9] [&_p:last-child]:hidden"
+              className="rounded-md bg-[#e9f6ec] px-5 pt-4 pb-8 text-center transition-colors hover:bg-[#ddf2e3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d91c9]"
             >
               <h3 className="font-serif font-bold text-[#273b4a]">{seasons[2].title}</h3>
               <p className="mt-1 font-serif text-lg font-bold text-[#228343] pb-2">{seasons[2].period}</p>
               <p className="mt-1 text-xs text-[#677e6d]">{seasons[2].description}</p>
-              <p className="mt-1 text-xs text-[#677e6d]">Still beautiful, but the peak cyclone period — flexibility in your plans is key.</p>
             </Link>
           </div>
         </section>
 
         <section
           className="border-b border-gray-100 bg-white py-3 md:py-5 dark:border-neutral-800 dark:bg-neutral-900"
-          aria-label="Sponsored highlights"
+          aria-label={t("sponsoredLabel")}
         >
           <div className="container mx-auto max-w-7xl">
             <div className="relative overflow-hidden rounded-xl bg-[#052028] shadow-sm ring-1 ring-gray-200 dark:ring-neutral-700">
@@ -201,7 +192,7 @@ export default async function FamilyHolidayGuideForMauritiusIslandPage({
                 <span className="relative block aspect-[1200/240] w-full">
                   <Image
                     src={swim.desktopSrc}
-                    alt={swim.alt}
+                    alt={t("ads.swimAlt")}
                     fill
                     sizes="(max-width: 1280px) 100vw, 1280px"
                     className="rounded-xl object-cover"
@@ -236,7 +227,7 @@ export default async function FamilyHolidayGuideForMauritiusIslandPage({
         </section>
  
         <CarRentalAdBannerInfo />
-        <HiddenGems featuredSlugs={familyHiddenGemSlugs} />
+        <HiddenGems featuredSlugs={familyHiddenGemSlugs} locale={locale} />
 
         <section className="mt-10">
           <h2 className="family-section-title">{t("adventures.title")}</h2>
@@ -307,7 +298,7 @@ export default async function FamilyHolidayGuideForMauritiusIslandPage({
       <PopularRoadTrips locale={locale} />
       <section
         className="border-b border-gray-100 bg-white py-3 md:py-5 dark:border-neutral-800 dark:bg-neutral-900"
-        aria-label="Sponsored highlights"
+        aria-label={t("sponsoredLabel")}
       >
         <div className="container mx-auto max-w-7xl ">
           <div className="relative overflow-hidden rounded-xl bg-[#052028] shadow-sm ring-1 ring-gray-200 dark:ring-neutral-700">
@@ -320,7 +311,7 @@ export default async function FamilyHolidayGuideForMauritiusIslandPage({
               <span className="relative block aspect-[1200/450] w-full">
                 <Image
                   src={pocket.desktopSrc}
-                  alt={pocket.alt}
+                  alt={t("ads.pocketAlt")}
                   fill
                   sizes="(max-width: 1280px) 100vw, 1280px"
                   className="rounded-xl object-cover"

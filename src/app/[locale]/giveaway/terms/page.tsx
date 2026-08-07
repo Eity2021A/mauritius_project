@@ -4,6 +4,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
 import { getImageUrl } from "@/lib/image-url";
+import { localizeStaticPage } from "@/lib/static-page-localizer";
+import { normalizeLocale } from "@/i18n/routing";
 
 export const metadata: Metadata = {
   title: "Giveaway Terms & Conditions",
@@ -264,9 +266,10 @@ function getTermsCopy(locale: string) {
 
 export default async function GiveawayTermsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const copy = getTermsCopy(locale);
+  const activeLocale = normalizeLocale(locale);
+  const copy = getTermsCopy(activeLocale);
 
-  return (
+  return localizeStaticPage((
     <main id="main-content" className="min-h-screen bg-gray-50">
       <Navbar />
 
@@ -349,5 +352,5 @@ export default async function GiveawayTermsPage({ params }: { params: Promise<{ 
 
       <Footer />
     </main>
-  );
+  ), activeLocale);
 }

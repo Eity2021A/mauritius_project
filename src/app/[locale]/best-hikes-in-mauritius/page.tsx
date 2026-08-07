@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import PocketAdBanner from "@/components/PocketAdBanner";
 import CarRentalAdBanner from "@/components/CarRentalAdBanner";
+import { localizeStaticPage } from "@/lib/static-page-localizer";
 
 export const revalidate = 3600;
 
@@ -889,7 +890,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  return getCopy(locale).metadata;
+  const activeLocale = normalizeLocale(locale);
+  return getCopy(activeLocale).metadata;
 }
 
 export default async function BestHikesInMauritiusPage({
@@ -898,9 +900,10 @@ export default async function BestHikesInMauritiusPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const copy = getCopy(locale);
+  const activeLocale = normalizeLocale(locale);
+  const copy = getCopy(activeLocale);
 
-  return (
+  return localizeStaticPage((
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
 
@@ -1010,9 +1013,9 @@ export default async function BestHikesInMauritiusPage({
         </section>
       </article>
 
-      <PopularRoadTrips locale={locale} />
+      <PopularRoadTrips locale={activeLocale} />
       <PocketAdBanner />
       <Footer />
     </main>
-  );
+  ), activeLocale);
 }

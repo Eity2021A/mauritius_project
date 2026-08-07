@@ -7,6 +7,8 @@ import PopularRoadTrips from "@/components/PopularRoadTrips";
 import { getExploringGuide } from "@/data/exploring-guide-translations";
 import PocketAdBanner from "@/components/PocketAdBanner";
 import CarRentalAdBannerInfo from "@/components/CarRentalAdBannerInfo";
+import { localizeStaticPage } from "@/lib/static-page-localizer";
+import { normalizeLocale } from "@/i18n/routing";
 
 export const revalidate = 3600;
 
@@ -45,14 +47,16 @@ const ad = {
 };
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  const t = getExploringGuide(locale, "mahebourg");
+  const activeLocale = normalizeLocale(locale);
+  const t = getExploringGuide(activeLocale, "mahebourg");
   return { title: t.metadata.title, description: t.metadata.description, alternates: { canonical: "/exploring-mahebourg" } };
 }
 
 export default async function ExploringMahebourgPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const t = getExploringGuide(locale, "mahebourg");
-  return (
+  const activeLocale = normalizeLocale(locale);
+  const t = getExploringGuide(activeLocale, "mahebourg");
+  return localizeStaticPage((
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
 
@@ -204,9 +208,9 @@ export default async function ExploringMahebourgPage({ params }: { params: Promi
         </section>
       </article>
       <PocketAdBanner />
-      <PopularRoadTrips locale={locale} />
+      <PopularRoadTrips locale={activeLocale} />
       <CarRentalAdBannerInfo />
       <Footer />
     </main>
-  );
-} 
+  ), activeLocale);
+}

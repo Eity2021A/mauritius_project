@@ -19,6 +19,7 @@ import {
 import CarRentalAdBannerInfo from "@/components/CarRentalAdBannerInfo";
 import PocketAdBanner from "@/components/PocketAdBanner";
 import CarRentalAdBanner from "@/components/CarRentalAdBanner";
+import { localizeStaticPage } from "@/lib/static-page-localizer";
 export const revalidate = 3600;
 
 type Locale = "en" | "fr" | "de" | "it" | "es" | "ru";
@@ -262,14 +263,14 @@ const NATURE_COPY: Record<Locale, NatureCopy> = {
         type: "wildlife",
       },
       {
-        name: "Ebony Forest",
+        name: "Forêt d'Ebony",
         tag: "Réserve forestière",
         region: "Chamarel",
         description: "Forêt d'ébène restaurée et espèces endémiques.",
         type: "forest",
       },
       {
-        name: "La Vanille Nature Park",
+        name: "Parc naturel La Vanille",
         tag: "Parc animalier",
         region: "Sud",
         description:
@@ -285,7 +286,7 @@ const NATURE_COPY: Record<Locale, NatureCopy> = {
         type: "forest",
       },
       {
-        name: "Casela Nature Parks",
+        name: "Parcs naturels de Casela",
         tag: "Parc d'aventure",
         region: "Ouest",
         description:
@@ -344,7 +345,7 @@ const NATURE_COPY: Record<Locale, NatureCopy> = {
       {
         icon: BookOpenCheck,
         title: "Guide et réservation",
-        text: "Certaines réserves, comme Aigrettes et Le Morne, nécessitent un guide.",
+        text: "Certaines réserves, comme l'Île aux Aigrettes et Le Morne, nécessitent un guide.",
       },
     ],
     note: "Passez un jour ou deux loin de la plage - les forêts, îles et jardins sont là où survit la vraie Maurice.",
@@ -392,14 +393,14 @@ const NATURE_COPY: Record<Locale, NatureCopy> = {
         type: "wildlife",
       },
       {
-        name: "Ebony Forest",
+        name: "Ebony-Wald",
         tag: "Waldreservat",
         region: "Chamarel",
         description: "Restaurierter Ebenholzwald und endemische Arten.",
         type: "forest",
       },
       {
-        name: "La Vanille Nature Park",
+        name: "Naturpark La Vanille",
         tag: "Wildtierpark",
         region: "Süden",
         description: "Riesenschildkröten, Krokodile und einfache Familienwege.",
@@ -414,7 +415,7 @@ const NATURE_COPY: Record<Locale, NatureCopy> = {
         type: "forest",
       },
       {
-        name: "Casela Nature Parks",
+        name: "Naturparks Casela",
         tag: "Abenteuerpark",
         region: "Westen",
         description:
@@ -473,7 +474,7 @@ const NATURE_COPY: Record<Locale, NatureCopy> = {
       {
         icon: BookOpenCheck,
         title: "Guide und Buchung",
-        text: "Einige Reservate, etwa Aigrettes und Le Morne, brauchen einen Guide.",
+        text: "Einige Reservate, etwa Île aux Aigrettes und Le Morne, brauchen einen Guide.",
       },
     ],
     note: "Verbringe ein oder zwei Tage abseits des Strandes - in Wäldern, Inseln und Gärten überlebt das echte Mauritius.",
@@ -521,14 +522,14 @@ const NATURE_COPY: Record<Locale, NatureCopy> = {
         type: "wildlife",
       },
       {
-        name: "Ebony Forest",
+        name: "Foresta Ebony",
         tag: "Riserva forestale",
         region: "Chamarel",
         description: "Foresta di ebano restaurata e specie endemiche.",
         type: "forest",
       },
       {
-        name: "La Vanille Nature Park",
+        name: "Parco naturale La Vanille",
         tag: "Parco faunistico",
         region: "Sud",
         description:
@@ -544,7 +545,7 @@ const NATURE_COPY: Record<Locale, NatureCopy> = {
         type: "forest",
       },
       {
-        name: "Casela Nature Parks",
+        name: "Parchi naturali Casela",
         tag: "Parco avventura",
         region: "Ovest",
         description:
@@ -603,7 +604,7 @@ const NATURE_COPY: Record<Locale, NatureCopy> = {
       {
         icon: BookOpenCheck,
         title: "Guida e prenotazione",
-        text: "Alcune riserve, come Aigrettes e Le Morne, richiedono una guida.",
+        text: "Alcune riserve, come Île aux Aigrettes e Le Morne, richiedono una guida.",
       },
     ],
     note: "Passa un giorno o due lontano dalla spiaggia - foreste, isole e giardini sono dove sopravvive la vera Mauritius.",
@@ -652,14 +653,14 @@ const NATURE_COPY: Record<Locale, NatureCopy> = {
         type: "wildlife",
       },
       {
-        name: "Ebony Forest",
+        name: "Bosque de Ebony",
         tag: "Reserva forestal",
         region: "Chamarel",
         description: "Bosque de ébano restaurado y especies endémicas.",
         type: "forest",
       },
       {
-        name: "La Vanille Nature Park",
+        name: "Parque natural La Vanille",
         tag: "Parque de fauna",
         region: "Sur",
         description:
@@ -674,7 +675,7 @@ const NATURE_COPY: Record<Locale, NatureCopy> = {
         type: "forest",
       },
       {
-        name: "Casela Nature Parks",
+        name: "Parques naturales Casela",
         tag: "Parque de aventura",
         region: "Oeste",
         description:
@@ -733,7 +734,7 @@ const NATURE_COPY: Record<Locale, NatureCopy> = {
       {
         icon: BookOpenCheck,
         title: "Guía y reserva",
-        text: "Algunas reservas, como Aigrettes y Le Morne, necesitan guía.",
+        text: "Algunas reservas, como Île aux Aigrettes y Le Morne, necesitan guía.",
       },
     ],
     note: "Pasa uno o dos días lejos de la playa - bosques, islas y jardines muestran el Mauricio más auténtico.",
@@ -780,14 +781,14 @@ const NATURE_COPY: Record<Locale, NatureCopy> = {
         type: "wildlife",
       },
       {
-        name: "Ebony Forest",
+        name: "Лес Эбони",
         tag: "Лесной заповедник",
         region: "Шамарель",
         description: "Восстановленный эбеновый лес и эндемичные виды.",
         type: "forest",
       },
       {
-        name: "La Vanille Nature Park",
+        name: "Природный парк Ла-Ваниль",
         tag: "Парк дикой природы",
         region: "Юг",
         description: "Гигантские черепахи, крокодилы и легкие семейные тропы.",
@@ -801,7 +802,7 @@ const NATURE_COPY: Record<Locale, NatureCopy> = {
         type: "forest",
       },
       {
-        name: "Casela Nature Parks",
+        name: "Природные парки Касела",
         tag: "Парк приключений",
         region: "Запад",
         description: "Встречи с животными, активности и смотровые для семей.",
@@ -859,7 +860,7 @@ const NATURE_COPY: Record<Locale, NatureCopy> = {
       {
         icon: BookOpenCheck,
         title: "Гид и бронирование",
-        text: "Некоторые резервы, например Aigrettes и Le Morne, требуют гида.",
+        text: "Некоторые заповедники, например Иль-о-Эгрет и Ле-Морн, требуют гида.",
       },
     ],
     note: "Проведите день или два вдали от пляжа - леса, острова и сады показывают настоящий Маврикий.",
@@ -876,7 +877,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  return getCopy(locale).metadata;
+  const activeLocale = normalizeLocale(locale);
+  return getCopy(activeLocale).metadata;
 }
 
 export default async function NatureReservesAndParksInMauritiusPage({
@@ -885,17 +887,16 @@ export default async function NatureReservesAndParksInMauritiusPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const copy = getCopy(locale);
+  const activeLocale = normalizeLocale(locale);
+  const copy = getCopy(activeLocale);
 
-  return (
+  return localizeStaticPage((
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
 
       <article className="mx-auto w-full max-w-7xl px-4 pt-24 pb-10 sm:px-6 lg:pt-28 xl:px-0">
         <header>
-          <div className="flex flex-wrap items-center justify-between gap-3 text-[11px] font-semibold uppercase tracking-wide text-[#ec5f25]">
-            <p>{copy.topKicker}</p>
-          </div>
+
           <p className="mt-7 text-xs font-bold uppercase tracking-wide text-[#f16522]">
             {copy.kicker}
           </p>
@@ -1010,9 +1011,9 @@ export default async function NatureReservesAndParksInMauritiusPage({
       </article>
       <PocketAdBanner />
       <CarRentalAdBanner />
-      <PopularRoadTrips locale={locale} />
+      <PopularRoadTrips locale={activeLocale} />
       <CarRentalAdBannerInfo />
       <Footer />
     </main>
-  );
+  ), activeLocale);
 }

@@ -7,6 +7,8 @@ import { getImageUrl } from "@/lib/image-url";
 import { SITE_URL } from "@/lib/constants";
 import type { Metadata } from "next";
 import { getItineraryTranslations } from "@/data/itinerary-translations";
+import { localizeStaticPage } from "@/lib/static-page-localizer";
+import { normalizeLocale } from "@/i18n/routing";
 
 const HERO_IMAGE_PATH = "/images/banners/le-morne-aerial-view-mauritius.webp";
 const OG_IMAGE_URL =
@@ -389,7 +391,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = getItineraryTranslations(locale);
+  const activeLocale = normalizeLocale(locale);
+  const t = getItineraryTranslations(activeLocale);
 
   return {
     title: t.metadata.title,
@@ -426,7 +429,8 @@ export default async function MauritiusItineraryPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = getItineraryTranslations(locale);
+  const activeLocale = normalizeLocale(locale);
+  const t = getItineraryTranslations(activeLocale);
   const itineraryGuides = ITINERARY_GUIDES.map((guide, index) => ({
     ...guide,
     ...t.guides[index],
@@ -503,7 +507,7 @@ export default async function MauritiusItineraryPage({
     ],
   };
 
-  return (
+  return localizeStaticPage((
     <main id="main-content" className="min-h-screen bg-white">
       <FAQJsonLd items={t.faqs} />
       <ItemListJsonLd
@@ -1219,5 +1223,5 @@ export default async function MauritiusItineraryPage({
 
       <Footer />
     </main>
-  );
+  ), activeLocale);
 }

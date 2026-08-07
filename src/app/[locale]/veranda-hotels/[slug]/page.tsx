@@ -19,7 +19,7 @@ import {
   getVerandaHotelBySlugFromDb,
 } from "@/lib/content";
 import { trimMetaDescription } from "@/lib/seo";
-import { staticPageText } from "@/lib/static-page-localizer";
+import { localizeStaticPage, staticPageText } from "@/lib/static-page-localizer";
 import { normalizeLocale } from "@/i18n/routing";
 
 const DETAIL_BASE = "/veranda-hotels";
@@ -187,7 +187,7 @@ export default async function VerandaHotelPage({
   const relatedHotels = await getRelatedVerandaHotelsFromDb(slug, 3, activeLocale);
   const hotelCategories = [hotel.region, hotel.style, ...hotel.tags].map(t);
 
-  return (
+  return localizeStaticPage((
     <main id="main-content" className="min-h-screen bg-white">
       <BreadcrumbJsonLd
         items={[
@@ -430,5 +430,5 @@ export default async function VerandaHotelPage({
       />
       <Footer />
     </main>
-  );
+  ), activeLocale);
 }

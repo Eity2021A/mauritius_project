@@ -866,10 +866,15 @@
       "edition": "Edición 2026",
       "subtitle": "Planifica la escapada tropical perfecta al parque isleño más seguro de África para familias."
     },
+    "sponsoredLabel": "Destacados patrocinados para viajes en familia",
+    "ads": {
+      "swimAlt": "Nadar con delfines en Mauricio al mejor precio",
+      "pocketAlt": "Guía de bolsillo para Mauricio"
+    },
     "paradise": {
       "title": "Por qué Mauricio es un paraíso familiar",
       "items": [
-        { "title": "Muy seguro", "description": "Considerado una de las destinaciones familiares más seguras de África: tranquilo y fácil de explorar.", "color": "#1689c3" },
+        { "title": "Muy seguro", "description": "Considerado uno de los destinos familiares más seguros de África: tranquilo y fácil de explorar.", "color": "#1689c3" },
         { "title": "Saludable y sin preocupaciones", "description": "Un entorno sin malaria, con atención médica fiable y hospitalidad cálida.", "color": "#76acc2" },
         { "title": "Poco jet lag", "description": "La diferencia horaria de 3-4 horas ayuda a que toda la familia se mantenga fresca.", "color": "#1689c3" },
         { "title": "Rica mezcla cultural", "description": "Una clase viva de influencias criollas, indias y francesas.", "color": "#76acc2" }

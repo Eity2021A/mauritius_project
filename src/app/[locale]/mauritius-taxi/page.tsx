@@ -9,6 +9,8 @@ import { HOME_ITINERARIES } from "@/data/home";
 import { getImageUrl } from "@/lib/image-url";
 import { FAQJsonLd, ServiceJsonLd } from "@/components/seo/JsonLd";
 import { getTransportTranslations } from "@/data/transport-translations";
+import { localizeStaticPage } from "@/lib/static-page-localizer";
+import { normalizeLocale } from "@/i18n/routing";
 
 const TAXI_WHATSAPP_NUMBER_DISPLAY = "+230 5712 1810";
 const TAXI_WHATSAPP_URL = "https://wa.me/23057121810";
@@ -35,7 +37,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const { taxi } = getTransportTranslations(locale);
+  const activeLocale = normalizeLocale(locale);
+  const { taxi } = getTransportTranslations(activeLocale);
 
   return {
     title: taxi.metaTitle,
@@ -208,11 +211,12 @@ export default async function TaxiPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const { taxi, common } = getTransportTranslations(locale);
+  const activeLocale = normalizeLocale(locale);
+  const { taxi, common } = getTransportTranslations(activeLocale);
   const taxiFaqs = taxi.faqs;
   const indicativeTaxiFares = taxi.fares;
 
-  return (
+  return localizeStaticPage((
     <main id="main-content" className="min-h-screen ">
       <FAQJsonLd items={taxiFaqs} />
       <ServiceJsonLd
@@ -652,5 +656,5 @@ export default async function TaxiPage({
 
       <Footer />
     </main>
-  );
+  ), activeLocale);
 }

@@ -6,6 +6,8 @@ import TransferRequestForm from "@/components/transfer/TransferRequestForm";
 import { DEFAULT_OG_IMAGE } from "@/lib/constants";
 import { FAQJsonLd, HowToJsonLd } from "@/components/seo/JsonLd";
 import { getTransportTranslations } from "@/data/transport-translations";
+import { localizeStaticPage } from "@/lib/static-page-localizer";
+import { normalizeLocale } from "@/i18n/routing";
 
 export const legacyTransferMetadata: Metadata = {
   title: "Mauritius Airport Transfers - Private Drivers & Fixed Prices",
@@ -29,7 +31,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const { transfer } = getTransportTranslations(locale);
+  const activeLocale = normalizeLocale(locale);
+  const { transfer } = getTransportTranslations(activeLocale);
 
   return {
     title: transfer.metaTitle,
@@ -148,12 +151,13 @@ export default async function TransferPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const { transfer } = getTransportTranslations(locale);
+  const activeLocale = normalizeLocale(locale);
+  const { transfer } = getTransportTranslations(activeLocale);
   const transferFaqs = transfer.faqs;
   const indicativeTransferFares = transfer.fares;
   const steps = transfer.steps;
 
-  return (
+  return localizeStaticPage((
     <main id="main-content" className="min-h-screen text-[#384255]">
       <FAQJsonLd items={transferFaqs} />
       <HowToJsonLd
@@ -289,5 +293,5 @@ export default async function TransferPage({
       </section>
       <Footer />
     </main>
-  );
+  ), activeLocale);
 }

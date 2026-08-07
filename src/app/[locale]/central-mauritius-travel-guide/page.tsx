@@ -19,6 +19,8 @@ import {
 } from "lucide-react";
 import { getRegionGuide } from "@/data/quick-guide-translations";
 import CarRentalAdBanner from "@/components/CarRentalAdBanner";
+import { localizeStaticPage } from "@/lib/static-page-localizer";
+import { normalizeLocale } from "@/i18n/routing";
 
 export const revalidate = 3600;
 
@@ -169,7 +171,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = getRegionGuide(locale, "central");
+  const activeLocale = normalizeLocale(locale);
+  const t = getRegionGuide(activeLocale, "central");
   return {
     title: t.metadata.title,
     description: t.metadata.description,
@@ -183,7 +186,8 @@ export default async function CentralMauritiusTravelGuidePage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = getRegionGuide(locale, "central");
+  const activeLocale = normalizeLocale(locale);
+  const t = getRegionGuide(activeLocale, "central");
   const translatedPlaces = centralPlaces.map((place, index) => ({
     ...place,
     ...t.places[index],
@@ -192,7 +196,7 @@ export default async function CentralMauritiusTravelGuidePage({
     ...step,
     ...t.steps[index],
   }));
-  return (
+  return localizeStaticPage((
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
 
@@ -372,8 +376,8 @@ export default async function CentralMauritiusTravelGuidePage({
         </section>
       </article>
         <CarRentalAdBanner />
-      <PopularRoadTrips locale={locale} />
+      <PopularRoadTrips locale={activeLocale} />
       <Footer />
     </main>
-  );
+  ), activeLocale);
 }

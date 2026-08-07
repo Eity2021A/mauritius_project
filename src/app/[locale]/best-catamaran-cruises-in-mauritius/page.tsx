@@ -7,6 +7,7 @@ import { Link } from "@/i18n/navigation";
 import { normalizeLocale } from "@/i18n/routing";
 import PocketAdBanner from "@/components/PocketAdBanner";
 import CarRentalAdBanner from "@/components/CarRentalAdBanner";
+import { localizeStaticPage } from "@/lib/static-page-localizer";
 
 export const revalidate = 3600;
 
@@ -601,7 +602,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  return getCruiseCopy(locale).metadata;
+  const activeLocale = normalizeLocale(locale);
+  return getCruiseCopy(activeLocale).metadata;
 }
 
 export default async function BestCatamaranCruisesInMauritiusPage({
@@ -610,9 +612,10 @@ export default async function BestCatamaranCruisesInMauritiusPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const copy = getCruiseCopy(locale);
+  const activeLocale = normalizeLocale(locale);
+  const copy = getCruiseCopy(activeLocale);
 
-  return (
+  return localizeStaticPage((
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
 
@@ -761,9 +764,9 @@ export default async function BestCatamaranCruisesInMauritiusPage({
         </section>
       </article>
 
-      <PopularRoadTrips locale={locale} />
+      <PopularRoadTrips locale={activeLocale} />
       <PocketAdBanner />
       <Footer />
     </main>
-  );
+  ), activeLocale);
 }

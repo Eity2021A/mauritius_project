@@ -206,6 +206,7 @@ export default async function ConquerLeMornePage({
 }) {
   const { locale } = await params;
   const activeLocale = normalizeLocale(locale);
+  const t = (text: string) => staticPageText(activeLocale, text);
   return localizeStaticPage(
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
@@ -213,11 +214,12 @@ export default async function ConquerLeMornePage({
       <article className="mx-auto w-full max-w-7xl pt-24 pb-10 sm:px-6 lg:pt-28">
         <header className="text-center">
           <h1 className="font-serif text-[clamp(2rem,6vw,3.1rem)] font-bold leading-tight text-[#111d2a]">
-            Conquer Le Morne Brabant
+            {t("Conquer Le Morne Brabant")}
           </h1>
           <p className="mx-auto mt-4 max-w-2xl font-serif text-sm italic leading-7 text-[#687887] sm:text-base">
-            Your visual guide to Mauritius&apos; most iconic summit and the
-            legendary &quot;underwater waterfall&quot; view.
+            {t(
+              'Your visual guide to Mauritius\' most iconic summit and the legendary "underwater waterfall" view.',
+            )}
           </p>
         </header>
 
@@ -483,7 +485,7 @@ export default async function ConquerLeMornePage({
         </section>
       </article>
       <CarRentalAdBannerInfo />
-      <PopularRoadTrips locale={locale} />
+      <PopularRoadTrips locale={activeLocale} />
 
       <Footer />
     </main>,

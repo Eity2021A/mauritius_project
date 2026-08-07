@@ -7,6 +7,8 @@ import Link from "next/link";
 import { getPortLouisGuide } from "@/data/quick-guide-translations";
 import PocketAdBanner from "@/components/PocketAdBanner";
 import CarRentalAdBannerInfo from "@/components/CarRentalAdBannerInfo";
+import { localizeStaticPage } from "@/lib/static-page-localizer";
+import { normalizeLocale } from "@/i18n/routing";
 export const revalidate = 3600;
 
 export const legacyMetadata: Metadata = {
@@ -16,7 +18,7 @@ export const legacyMetadata: Metadata = {
   alternates: { canonical: "/a-day-in-port-louis" },
 };
 
-type Place = { name: string; text: string };
+type Place = { name: string; text: string; href?: string };
 
 const PORT_LOUIS_PLACE_LINKS: Record<string, string> = {
   "Caudan Waterfront": "/best-places-to-visit-in-mauritius/caudan-waterfront",
@@ -73,9 +75,9 @@ function PlaceList({
               className="mr-1.5  w-[6px] h-[6px] rounded-full "
               style={{ backgroundColor: accent.heading }}
             ></div>
-            {PORT_LOUIS_PLACE_LINKS[item.name] ? (
+            {item.href ? (
               <Link
-                href={PORT_LOUIS_PLACE_LINKS[item.name]}
+                href={item.href}
                 className="text-[15px] font-bold text-inherit hover:underline"
               >
                 {item.name}
@@ -97,7 +99,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = getPortLouisGuide(locale);
+  const activeLocale = normalizeLocale(locale);
+  const t = getPortLouisGuide(activeLocale);
   return {
     title: t.metadata.title,
     description: t.metadata.description,
@@ -111,21 +114,32 @@ export default async function ADayInPortLouisPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = getPortLouisGuide(locale);
+  const activeLocale = normalizeLocale(locale);
+  const t = getPortLouisGuide(activeLocale);
+  const englishGuide = getPortLouisGuide("en");
+  const attachPlaceLinks = (items: Place[], sourceItems: Place[]) =>
+    items.map((item, index) => ({
+      ...item,
+      href: PORT_LOUIS_PLACE_LINKS[sourceItems[index]?.name],
+    }));
   const portSections = [
     {
       title: t.waterfrontTitle,
-      items: t.waterfront,
+      items: attachPlaceLinks(t.waterfront, englishGuide.waterfront),
       accentKey: "waterfront" as const,
     },
-    { title: t.marketsTitle, items: t.markets, accentKey: "markets" as const },
+    {
+      title: t.marketsTitle,
+      items: attachPlaceLinks(t.markets, englishGuide.markets),
+      accentKey: "markets" as const,
+    },
     {
       title: t.heritageTitle,
-      items: t.heritage,
+      items: attachPlaceLinks(t.heritage, englishGuide.heritage),
       accentKey: "heritage" as const,
     },
   ];
-  return (
+  return localizeStaticPage((
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
       <article className="max-w-7xl mx-auto pt-30 pb-20 px-4 xl:px-0">
@@ -243,7 +257,7 @@ export default async function ADayInPortLouisPage({
       <article className="max-w-7xl mx-auto pb-10 pt-20 px-4 lg:px-0">
         <h1 className="font-serif text-[clamp(2rem,7vw,2.4rem)] font-bold leading-none tracking-tight text-[#172c40] pb-10">
           {t.secondTitlePrefix}{" "}
-          <em className="font-normal text-[#e75a30]">Port-Louis</em>
+          <em className="font-normal text-[#e75a30]">{t.titleEmphasis}</em>
         </h1>
         <div className="w-full">
           <Image
@@ -257,8 +271,8 @@ export default async function ADayInPortLouisPage({
         </div>
       </article>
 <CarRentalAdBannerInfo />
-      <PopularRoadTrips locale={locale} />
+      <PopularRoadTrips locale={activeLocale} />
       <Footer />
     </main>
-  );
+  ), activeLocale);
 }

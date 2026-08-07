@@ -7,6 +7,7 @@ import { normalizeLocale } from "@/i18n/routing";
 import type { LucideIcon } from "lucide-react";
 import { Building2, Landmark, MapPin, ShoppingBag } from "lucide-react";
 import Image from "next/image";
+import { localizeStaticPage } from "@/lib/static-page-localizer";
 export const revalidate = 3600;
 
 type Locale = "en" | "fr" | "de" | "it" | "es" | "ru";
@@ -423,7 +424,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  return getCopy(locale).metadata;
+  const activeLocale = normalizeLocale(locale);
+  return getCopy(activeLocale).metadata;
 }
 
 export default async function CulturalPlacesOfMauritiusPage({
@@ -432,9 +434,10 @@ export default async function CulturalPlacesOfMauritiusPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const copy = getCopy(locale);
+  const activeLocale = normalizeLocale(locale);
+  const copy = getCopy(activeLocale);
 
-  return (
+  return localizeStaticPage((
     <main id="main-content" className="min-h-screen bg-white text-[#1c2a2e]">
       <Navbar />
 
@@ -536,7 +539,7 @@ export default async function CulturalPlacesOfMauritiusPage({
           </div>
         </div>
       </section>
-      <PopularRoadTrips locale={locale} />
+      <PopularRoadTrips locale={activeLocale} />
       <section
         className="border-b border-gray-100 bg-white py-3 md:py-5 dark:border-neutral-800 dark:bg-neutral-900"
         aria-label="Sponsored highlights"
@@ -565,5 +568,5 @@ export default async function CulturalPlacesOfMauritiusPage({
       </section>
       <Footer />
     </main>
-  );
+  ), activeLocale);
 }
