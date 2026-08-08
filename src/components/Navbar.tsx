@@ -588,7 +588,7 @@ export default function Navbar() {
                                       : child.nameKey,
                                   )
                                 }
-                                className="flex w-full items-center justify-between gap-3 px-8 py-3 text-left text-xs font-bold uppercase tracking-[0.16em] text-orange-500 hover:bg-orange-50 min-h-[48px] transition-colors"
+                                className="flex w-full items-center justify-between gap-3 px-8 py-3 text-left text-sm font-semibold text-orange-500 hover:bg-orange-50 min-h-[48px] transition-colors"
                                 aria-expanded={
                                   expandedMobileGroup === child.nameKey
                                 }

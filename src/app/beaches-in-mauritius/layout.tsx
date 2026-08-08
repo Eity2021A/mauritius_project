@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import { NextIntlClientProvider } from "next-intl";
+import { ItineraryDraftProvider } from "@/lib/itinerary-draft";
 import { DEFAULT_OG_IMAGE } from "@/lib/constants";
+import messages from "../../../messages/en.json";
 
 export const metadata: Metadata = {
   title: "Best Beaches in Mauritius - Complete Guide 2026",
@@ -25,7 +29,11 @@ export const metadata: Metadata = {
 export default function BeachesLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
-  return children;
+  return (
+    <NextIntlClientProvider locale="en" messages={messages}>
+      <ItineraryDraftProvider>{children}</ItineraryDraftProvider>
+    </NextIntlClientProvider>
+  );
 }
