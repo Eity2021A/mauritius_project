@@ -221,7 +221,7 @@ const RESTAURANT_PAGE_COPY: Record<
   }
 > = {
   fr: {
-    kicker: "Saveurs de l'ile",
+    kicker: "Saveurs de l'île",
     titleMain: "Restaurants de plage",
     titleAccent: "au bord de la mer",
     intro:
@@ -242,23 +242,23 @@ const RESTAURANT_PAGE_COPY: Record<
     },
     names: {
       "The Beach House": "La Maison de la Plage",
-      "Les Canisses Resto & Plage": "Les Canisses Resto & Plage",
+      "Les Canisses Resto & Plage": "Restaurant et plage Les Canisses",
       "The Beach Kitchen": "La Cuisine de la Plage",
       "Cafe de La Plage": "Cafe de la Plage",
       "Le Capitaine": "Le Capitaine",
-      "Eden Beach": "Eden Beach",
-      "Bisou Rooftop - LUX*": "Bisou Rooftop - LUX*",
+      "Eden Beach": "Plage Eden",
+      "Bisou Rooftop - LUX*": "Terrasse Bisou - LUX*",
       "Zaka - Super U": "Zaka - Super U",
       "Beach Hut": "Cabane de plage",
       "Le Pescatore": "Le Pescatore",
       "Ava Beach": "Ava Beach",
-      "Mont Choisy Le Beach Club": "Mont Choisy Le Beach Club",
+      "Mont Choisy Le Beach Club": "Club de plage de Mont Choisy",
       "Flowers of Paradise": "Fleurs du Paradis",
-      "The Cloud Rooftop & Lounge": "Le Cloud Rooftop & Lounge",
+      "The Cloud Rooftop & Lounge": "La Terrasse Cloud & Lounge",
       "Jeanno Burger": "Jeanno Burger",
-      Pakbo: "Pakbo",
+      Pakbo: "Table Pakbo",
       "Signature by Big Willy's": "Signature par Big Willy's",
-      "Wapalapam Island Eatery": "Wapalapam Island Eatery",
+      "Wapalapam Island Eatery": "Table insulaire Wapalapam",
       "Chez Tino": "Chez Tino",
       "Chez Rosy": "Chez Rosy",
     },
@@ -266,7 +266,7 @@ const RESTAURANT_PAGE_COPY: Record<
       "Sea views, cocktails & sunset beach bar":
         "Vue mer, cocktails et bar de plage au coucher du soleil",
       "Seafood, French & Mediterranean beachfront":
-        "Fruits de mer, cuisine francaise et mediterraneenne en front de mer",
+        "Fruits de mer, cuisine française et méditerranéenne en front de mer",
       "Seafood, sushi & dim-sum bites; modern":
         "Fruits de mer, sushi et dim sum; ambiance moderne",
       "Seafood & Mauritian; central by the water":
@@ -274,41 +274,41 @@ const RESTAURANT_PAGE_COPY: Record<
       "Fish, lobster & prawns; refined, lagoon views":
         "Poisson, langouste et crevettes; raffine, vue lagon",
       "Mediterranean & seafood; stylish lounge bar":
-        "Mediterraneen et fruits de mer; lounge bar elegant",
+        "Méditerranéen et fruits de mer; lounge bar élégant",
       "Elevated dining; infinity-pool rooftop":
-        "Table chic; rooftop avec piscine infinity",
+        "Table chic; terrasse sur le toit avec piscine à débordement",
       "Tapas, pizza & drinks; lively evenings":
-        "Tapas, pizza et boissons; soirees animees",
+        "Tapas, pizza et boissons; soirées animées",
       "Easy beach food; great for families":
-        "Cuisine de plage simple; parfait pour les familles",
+        "Cuisine de plage simple; parfaite pour les familles",
       "Seafood; elegant, with sea views":
-        "Fruits de mer; elegant, avec vue mer",
+        "Fruits de mer; élégant, avec vue mer",
       "Fresh, casual & tapas; all-day dining":
-        "Frais, decontracte et tapas; service toute la journee",
+        "Frais, décontracté et tapas; service toute la journée",
       "Casual beach-club dining & lagoon views":
-        "Beach club decontracte avec vue lagon",
+        "Table décontractée en club de plage avec vue sur le lagon",
       "Seafood, Mediterranean & French; by the beach":
-        "Fruits de mer, mediterraneen et francais; pres de la plage",
+        "Fruits de mer, méditerranéen et français; près de la plage",
       "Cocktails & tapas; rooftop views":
-        "Cocktails et tapas; vues depuis le rooftop",
+        "Cocktails et tapas; vues depuis la terrasse sur le toit",
       "Burgers & casual beach fare (Flic en Flac)":
-        "Burgers et cuisine de plage decontractee (Flic en Flac)",
+        "Burgers et cuisine de plage décontractée à Flic en Flac",
       "Mauritian, Creole, Indian & seafood (Flic en Flac)":
-        "Mauricien, creole, indien et fruits de mer (Flic en Flac)",
+        "Cuisine mauricienne, créole, indienne et fruits de mer à Flic en Flac",
       "Dinner, cocktails & wine; social (Tamarin)":
-        "Diner, cocktails et vin; ambiance sociale (Tamarin)",
+        "Dîner, cocktails et vin; ambiance conviviale à Tamarin",
       "Mauritian-inspired seafood; fresh & tropical":
-        "Fruits de mer inspires de Maurice; frais et tropical",
+        "Fruits de mer inspirés de Maurice; frais et tropicaux",
       "Local seafood; near Ile aux Cerfs day trips":
-        "Fruits de mer locaux; proche des departs vers l'ile aux Cerfs",
+        "Fruits de mer locaux; proche des départs vers l'île aux Cerfs",
       "Simple, authentic Mauritian seafood":
         "Fruits de mer mauriciens simples et authentiques",
     },
-    goodTitle: "Bon a savoir",
+    goodTitle: "Bon à savoir",
     tips: {
       "Book ahead": {
-        title: "Reserver tot",
-        text: "Reservez les tables au coucher du soleil a Grand Baie et dans les lieux populaires.",
+        title: "Réserver tôt",
+        text: "Réservez les tables au coucher du soleil à Grand Baie et dans les lieux populaires.",
       },
       "Bring cash": {
         title: "Apporter du liquide",
@@ -316,22 +316,22 @@ const RESTAURANT_PAGE_COPY: Record<
       },
       "Go local": {
         title: "Manger local",
-        text: "Poisson, crevettes, langouste, poulpe et calamars sont les favoris de l'ile.",
+        text: "Poisson, crevettes, langouste, poulpe et calamars sont les favoris de l'île.",
       },
     },
     quote:
-      "Ici, un restaurant de plage ne se resume pas a l'assiette : c'est la vue, les gens, la lumiere et l'atmosphere de l'ile.",
+      "Ici, un restaurant de plage ne se résume pas à l'assiette : c'est la vue, les gens, la lumière et l'atmosphère de l'île.",
   },
   de: {
     kicker: "Geschmack der Insel",
     titleMain: "Strandrestaurants",
     titleAccent: "am Meer",
     intro:
-      "21 unabhangige Strandadressen auf der Insel, bei denen Aussicht, Menschen und Licht genauso wichtig sind wie das Essen.",
+      "21 unabhängige Strandadressen auf der Insel, bei denen Aussicht, Menschen und Licht genauso wichtig sind wie das Essen.",
     coasts: {
       North: "Norden",
-      "West & South-West": "Westen und Sudwesten",
-      "East & Wild South": "Osten und wilder Suden",
+      "West & South-West": "Westen und Südwesten",
+      "East & Wild South": "Osten und wilder Süden",
     },
     groupTitles: {
       "Grand Baie": "Grand Baie",
@@ -344,67 +344,67 @@ const RESTAURANT_PAGE_COPY: Record<
     },
     names: {
       "The Beach House": "Das Strandhaus",
-      "Les Canisses Resto & Plage": "Les Canisses Resto & Plage",
-      "The Beach Kitchen": "Die Strandkuche",
-      "Cafe de La Plage": "Cafe de la Plage",
-      "Le Capitaine": "Le Capitaine",
-      "Eden Beach": "Eden Beach",
-      "Bisou Rooftop - LUX*": "Bisou Rooftop - LUX*",
+      "Les Canisses Resto & Plage": "Restaurant und Strand Les Canisses",
+      "The Beach Kitchen": "Die Strandküche",
+      "Cafe de La Plage": "Strandcafé",
+      "Le Capitaine": "Der Kapitän",
+      "Eden Beach": "Eden-Strand",
+      "Bisou Rooftop - LUX*": "Bisou-Dachterrasse - LUX*",
       "Zaka - Super U": "Zaka - Super U",
-      "Beach Hut": "Strandhutte",
+      "Beach Hut": "Strandhütte",
       "Le Pescatore": "Le Pescatore",
       "Ava Beach": "Ava Beach",
-      "Mont Choisy Le Beach Club": "Mont Choisy Le Beach Club",
+      "Mont Choisy Le Beach Club": "Strandclub Mont Choisy",
       "Flowers of Paradise": "Blumen des Paradieses",
-      "The Cloud Rooftop & Lounge": "The Cloud Rooftop & Lounge",
+      "The Cloud Rooftop & Lounge": "Cloud-Dachterrasse & Lounge",
       "Jeanno Burger": "Jeanno Burger",
-      Pakbo: "Pakbo",
+      Pakbo: "Pakbo-Lokal",
       "Signature by Big Willy's": "Signature by Big Willy's",
-      "Wapalapam Island Eatery": "Wapalapam Island Eatery",
-      "Chez Tino": "Chez Tino",
-      "Chez Rosy": "Chez Rosy",
+      "Wapalapam Island Eatery": "Wapalapam-Inselküche",
+      "Chez Tino": "Bei Tino",
+      "Chez Rosy": "Bei Rosy",
     },
     details: {
       "Sea views, cocktails & sunset beach bar":
         "Meerblick, Cocktails und Strandbar zum Sonnenuntergang",
       "Seafood, French & Mediterranean beachfront":
-        "Meeresfruchte, franzosisch und mediterran direkt am Strand",
+        "Meeresfrüchte, französisch und mediterran direkt am Strand",
       "Seafood, sushi & dim-sum bites; modern":
-        "Meeresfruchte, Sushi und Dim Sum; modern",
+        "Meeresfrüchte, Sushi und Dim Sum; modern",
       "Seafood & Mauritian; central by the water":
-        "Meeresfruchte und mauritisch; zentral am Wasser",
+        "Meeresfrüchte und mauritisch; zentral am Wasser",
       "Fish, lobster & prawns; refined, lagoon views":
         "Fisch, Languste und Garnelen; raffiniert, Lagunenblick",
       "Mediterranean & seafood; stylish lounge bar":
-        "Mediterran und Meeresfruchte; stilvolle Loungebar",
+        "Mediterran und Meeresfrüchte; stilvolle Loungebar",
       "Elevated dining; infinity-pool rooftop":
-        "Gehobenes Essen; Rooftop mit Infinity-Pool",
+        "Gehobenes Essen; Dachterrasse mit Infinity-Pool",
       "Tapas, pizza & drinks; lively evenings":
         "Tapas, Pizza und Drinks; lebendige Abende",
       "Easy beach food; great for families":
-        "Einfaches Strandessen; gut fur Familien",
+        "Einfaches Strandessen; gut für Familien",
       "Seafood; elegant, with sea views":
-        "Meeresfruchte; elegant, mit Meerblick",
+        "Meeresfrüchte; elegant, mit Meerblick",
       "Fresh, casual & tapas; all-day dining":
         "Frisch, locker und Tapas; den ganzen Tag",
       "Casual beach-club dining & lagoon views":
-        "Lockerer Beachclub mit Lagunenblick",
+        "Lockeres Strandclub-Restaurant mit Lagunenblick",
       "Seafood, Mediterranean & French; by the beach":
-        "Meeresfruchte, mediterran und franzosisch; am Strand",
+        "Meeresfrüchte, mediterran und französisch; am Strand",
       "Cocktails & tapas; rooftop views":
-        "Cocktails und Tapas; Rooftop-Ausblick",
+        "Cocktails und Tapas; Blick von der Dachterrasse",
       "Burgers & casual beach fare (Flic en Flac)":
-        "Burger und lockere Strandkuche (Flic en Flac)",
+        "Burger und lockere Strandküche in Flic en Flac",
       "Mauritian, Creole, Indian & seafood (Flic en Flac)":
-        "Mauritisch, kreolisch, indisch und Meeresfruchte (Flic en Flac)",
+        "Mauritisch, kreolisch, indisch und Meeresfrüchte in Flic en Flac",
       "Dinner, cocktails & wine; social (Tamarin)":
-        "Dinner, Cocktails und Wein; gesellig (Tamarin)",
+        "Abendessen, Cocktails und Wein; gesellig in Tamarin",
       "Mauritian-inspired seafood; fresh & tropical":
-        "Mauritisch inspirierte Meeresfruchte; frisch und tropisch",
+        "Mauritisch inspirierte Meeresfrüchte; frisch und tropisch",
       "Local seafood; near Ile aux Cerfs day trips":
-        "Lokale Meeresfruchte; nahe Ausflugen zur Ile aux Cerfs",
+        "Lokale Meeresfrüchte; nahe bei Ausflügen zur Île aux Cerfs",
       "Simple, authentic Mauritian seafood":
-        "Einfache, authentische mauritische Meeresfruchte",
+        "Einfache, authentische mauritische Meeresfrüchte",
     },
     goodTitle: "Gut zu wissen",
     tips: {
@@ -422,7 +422,7 @@ const RESTAURANT_PAGE_COPY: Record<
       },
     },
     quote:
-      "Ein Strandrestaurant hier dreht sich nicht nur um Essen: Es sind Aussicht, Menschen, Licht und Inselatmosphare.",
+      "Ein Strandrestaurant hier dreht sich nicht nur ums Essen: Es sind Aussicht, Menschen, Licht und Inselatmosphäre.",
   },
   it: {
     kicker: "Sapori dell'isola",
@@ -446,25 +446,25 @@ const RESTAURANT_PAGE_COPY: Record<
     },
     names: {
       "The Beach House": "La Casa sulla Spiaggia",
-      "Les Canisses Resto & Plage": "Les Canisses Resto & Plage",
+      "Les Canisses Resto & Plage": "Ristorante e spiaggia Les Canisses",
       "The Beach Kitchen": "La Cucina della Spiaggia",
-      "Cafe de La Plage": "Cafe de la Plage",
-      "Le Capitaine": "Le Capitaine",
-      "Eden Beach": "Eden Beach",
-      "Bisou Rooftop - LUX*": "Bisou Rooftop - LUX*",
+      "Cafe de La Plage": "Caffè della Spiaggia",
+      "Le Capitaine": "Il Capitano",
+      "Eden Beach": "Spiaggia Eden",
+      "Bisou Rooftop - LUX*": "Terrazza Bisou - LUX*",
       "Zaka - Super U": "Zaka - Super U",
       "Beach Hut": "Capanna sulla spiaggia",
       "Le Pescatore": "Le Pescatore",
       "Ava Beach": "Ava Beach",
-      "Mont Choisy Le Beach Club": "Mont Choisy Le Beach Club",
+      "Mont Choisy Le Beach Club": "Club sulla spiaggia di Mont Choisy",
       "Flowers of Paradise": "Fiori del Paradiso",
-      "The Cloud Rooftop & Lounge": "The Cloud Rooftop & Lounge",
+      "The Cloud Rooftop & Lounge": "Terrazza Cloud & Lounge",
       "Jeanno Burger": "Jeanno Burger",
-      Pakbo: "Pakbo",
+      Pakbo: "Locale Pakbo",
       "Signature by Big Willy's": "Signature by Big Willy's",
-      "Wapalapam Island Eatery": "Wapalapam Island Eatery",
-      "Chez Tino": "Chez Tino",
-      "Chez Rosy": "Chez Rosy",
+      "Wapalapam Island Eatery": "Cucina isolana Wapalapam",
+      "Chez Tino": "Da Tino",
+      "Chez Rosy": "Da Rosy",
     },
     details: {
       "Sea views, cocktails & sunset beach bar":
@@ -480,7 +480,7 @@ const RESTAURANT_PAGE_COPY: Record<
       "Mediterranean & seafood; stylish lounge bar":
         "Mediterraneo e pesce; lounge bar elegante",
       "Elevated dining; infinity-pool rooftop":
-        "Cucina elegante; rooftop con piscina infinity",
+        "Cucina elegante; terrazza panoramica con piscina a sfioro",
       "Tapas, pizza & drinks; lively evenings":
         "Tapas, pizza e drink; serate vivaci",
       "Easy beach food; great for families":
@@ -489,20 +489,21 @@ const RESTAURANT_PAGE_COPY: Record<
       "Fresh, casual & tapas; all-day dining":
         "Fresco, informale e tapas; aperto tutto il giorno",
       "Casual beach-club dining & lagoon views":
-        "Beach club informale con vista laguna",
+        "Ristorante informale da club sulla spiaggia con vista laguna",
       "Seafood, Mediterranean & French; by the beach":
         "Pesce, mediterraneo e francese; vicino alla spiaggia",
-      "Cocktails & tapas; rooftop views": "Cocktail e tapas; viste dal rooftop",
+      "Cocktails & tapas; rooftop views":
+        "Cocktail e tapas; vista dalla terrazza panoramica",
       "Burgers & casual beach fare (Flic en Flac)":
-        "Burger e cucina da spiaggia informale (Flic en Flac)",
+        "Burger e cucina da spiaggia informale a Flic en Flac",
       "Mauritian, Creole, Indian & seafood (Flic en Flac)":
-        "Mauriziano, creolo, indiano e pesce (Flic en Flac)",
+        "Cucina mauriziana, creola, indiana e pesce a Flic en Flac",
       "Dinner, cocktails & wine; social (Tamarin)":
-        "Cena, cocktail e vino; atmosfera sociale (Tamarin)",
+        "Cena, cocktail e vino; atmosfera conviviale a Tamarin",
       "Mauritian-inspired seafood; fresh & tropical":
         "Pesce ispirato a Mauritius; fresco e tropicale",
       "Local seafood; near Ile aux Cerfs day trips":
-        "Pesce locale; vicino alle gite per Ile aux Cerfs",
+        "Pesce locale; vicino alle partenze per l'Île aux Cerfs",
       "Simple, authentic Mauritian seafood":
         "Pesce mauriziano semplice e autentico",
     },
@@ -510,19 +511,19 @@ const RESTAURANT_PAGE_COPY: Record<
     tips: {
       "Book ahead": {
         title: "Prenota in anticipo",
-        text: "Riserva i tavoli al tramonto a Grand Baie e nei posti piu richiesti.",
+        text: "Riserva i tavoli al tramonto a Grand Baie e nei posti più richiesti.",
       },
       "Bring cash": {
         title: "Porta contanti",
-        text: "I locali piu piccoli potrebbero non accettare carte.",
+        text: "I locali più piccoli potrebbero non accettare carte.",
       },
       "Go local": {
         title: "Mangia locale",
-        text: "Pesce, gamberi, aragosta, polpo e calamari sono preferiti dell'isola.",
+        text: "Pesce, gamberi, aragosta, polpo e calamari sono i preferiti dell'isola.",
       },
     },
     quote:
-      "Un ristorante sulla spiaggia qui non e solo cibo: e vista, persone, luce e atmosfera dell'isola.",
+      "Un ristorante sulla spiaggia qui non è solo cibo: è vista, persone, luce e atmosfera dell'isola.",
   },
   es: {
     kicker: "Sabor de la isla",
@@ -546,41 +547,41 @@ const RESTAURANT_PAGE_COPY: Record<
     },
     names: {
       "The Beach House": "La Casa de la Playa",
-      "Les Canisses Resto & Plage": "Les Canisses Resto & Plage",
+      "Les Canisses Resto & Plage": "Restaurante y playa Les Canisses",
       "The Beach Kitchen": "La Cocina de la Playa",
-      "Cafe de La Plage": "Cafe de la Plage",
-      "Le Capitaine": "Le Capitaine",
-      "Eden Beach": "Eden Beach",
-      "Bisou Rooftop - LUX*": "Bisou Rooftop - LUX*",
+      "Cafe de La Plage": "Café de la Playa",
+      "Le Capitaine": "El Capitán",
+      "Eden Beach": "Playa Eden",
+      "Bisou Rooftop - LUX*": "Terraza Bisou - LUX*",
       "Zaka - Super U": "Zaka - Super U",
-      "Beach Hut": "Cabana de playa",
+      "Beach Hut": "Cabaña de playa",
       "Le Pescatore": "Le Pescatore",
       "Ava Beach": "Ava Beach",
-      "Mont Choisy Le Beach Club": "Mont Choisy Le Beach Club",
-      "Flowers of Paradise": "Flores del Paraiso",
-      "The Cloud Rooftop & Lounge": "The Cloud Rooftop & Lounge",
+      "Mont Choisy Le Beach Club": "Club de playa Mont Choisy",
+      "Flowers of Paradise": "Flores del Paraíso",
+      "The Cloud Rooftop & Lounge": "Terraza Cloud & Lounge",
       "Jeanno Burger": "Jeanno Burger",
-      Pakbo: "Pakbo",
+      Pakbo: "Restaurante Pakbo",
       "Signature by Big Willy's": "Signature by Big Willy's",
-      "Wapalapam Island Eatery": "Wapalapam Island Eatery",
-      "Chez Tino": "Chez Tino",
-      "Chez Rosy": "Chez Rosy",
+      "Wapalapam Island Eatery": "Cocina isleña Wapalapam",
+      "Chez Tino": "Casa Tino",
+      "Chez Rosy": "Casa Rosy",
     },
     details: {
       "Sea views, cocktails & sunset beach bar":
-        "Vistas al mar, cocteles y bar de playa al atardecer",
+        "Vistas al mar, cócteles y bar de playa al atardecer",
       "Seafood, French & Mediterranean beachfront":
-        "Marisco, cocina francesa y mediterranea frente al mar",
+        "Marisco, cocina francesa y mediterránea frente al mar",
       "Seafood, sushi & dim-sum bites; modern":
         "Marisco, sushi y dim sum; moderno",
       "Seafood & Mauritian; central by the water":
-        "Marisco y cocina mauriciana; centrico junto al agua",
+        "Marisco y cocina mauriciana; céntrico junto al agua",
       "Fish, lobster & prawns; refined, lagoon views":
         "Pescado, langosta y gambas; refinado, vistas a la laguna",
       "Mediterranean & seafood; stylish lounge bar":
-        "Mediterraneo y marisco; lounge bar elegante",
+        "Mediterráneo y marisco; bar lounge elegante",
       "Elevated dining; infinity-pool rooftop":
-        "Cena elevada; rooftop con piscina infinity",
+        "Cena elegante; terraza en la azotea con piscina infinita",
       "Tapas, pizza & drinks; lively evenings":
         "Tapas, pizza y bebidas; noches animadas",
       "Easy beach food; great for families":
@@ -588,35 +589,35 @@ const RESTAURANT_PAGE_COPY: Record<
       "Seafood; elegant, with sea views":
         "Marisco; elegante, con vistas al mar",
       "Fresh, casual & tapas; all-day dining":
-        "Fresco, informal y tapas; todo el dia",
+        "Fresco, informal y tapas; todo el día",
       "Casual beach-club dining & lagoon views":
-        "Beach club informal con vistas a la laguna",
+        "Restaurante informal de club de playa con vistas a la laguna",
       "Seafood, Mediterranean & French; by the beach":
-        "Marisco, mediterraneo y frances; junto a la playa",
+        "Marisco, mediterráneo y francés; junto a la playa",
       "Cocktails & tapas; rooftop views":
-        "Cocteles y tapas; vistas desde el rooftop",
+        "Cócteles y tapas; vistas desde la azotea",
       "Burgers & casual beach fare (Flic en Flac)":
-        "Hamburguesas y comida casual de playa (Flic en Flac)",
+        "Hamburguesas y comida informal de playa en Flic en Flac",
       "Mauritian, Creole, Indian & seafood (Flic en Flac)":
-        "Mauriciano, criollo, indio y marisco (Flic en Flac)",
+        "Cocina mauriciana, criolla, india y marisco en Flic en Flac",
       "Dinner, cocktails & wine; social (Tamarin)":
-        "Cena, cocteles y vino; ambiente social (Tamarin)",
+        "Cena, cócteles y vino; ambiente social en Tamarin",
       "Mauritian-inspired seafood; fresh & tropical":
         "Marisco inspirado en Mauricio; fresco y tropical",
       "Local seafood; near Ile aux Cerfs day trips":
-        "Marisco local; cerca de salidas a Ile aux Cerfs",
+        "Marisco local; cerca de salidas hacia Île aux Cerfs",
       "Simple, authentic Mauritian seafood":
-        "Marisco mauriciano simple y autentico",
+        "Marisco mauriciano sencillo y auténtico",
     },
-    goodTitle: "Bueno saber",
+    goodTitle: "Conviene saber",
     tips: {
       "Book ahead": {
-        title: "Reserva con antelacion",
+        title: "Reserva con antelación",
         text: "Reserva mesas al atardecer en Grand Baie y lugares populares.",
       },
       "Bring cash": {
         title: "Lleva efectivo",
-        text: "Los sitios pequenos pueden no aceptar tarjetas.",
+        text: "Los sitios pequeños pueden no aceptar tarjetas.",
       },
       "Go local": {
         title: "Come local",
@@ -624,7 +625,7 @@ const RESTAURANT_PAGE_COPY: Record<
       },
     },
     quote:
-      "Un restaurante de playa aqui no es solo comida: es la vista, la gente, la luz y el ambiente de la isla.",
+      "Un restaurante de playa aquí no es solo comida: es la vista, la gente, la luz y el ambiente de la isla.",
   },
   ru: {
     kicker: "Вкус острова",
@@ -651,7 +652,7 @@ const RESTAURANT_PAGE_COPY: Record<
       "Mediterranean & seafood; stylish lounge bar":
         "Средиземноморская кухня и морепродукты; стильный лаунж",
       "Elevated dining; infinity-pool rooftop":
-        "Ресторан повыше классом; rooftop с infinity-бассейном",
+        "Ресторан повыше классом; терраса на крыше с панорамным бассейном",
       "Tapas, pizza & drinks; lively evenings":
         "Тапас, пицца и напитки; оживленные вечера",
       "Easy beach food; great for families":
@@ -661,20 +662,21 @@ const RESTAURANT_PAGE_COPY: Record<
       "Fresh, casual & tapas; all-day dining":
         "Свежо, неформально и тапас; весь день",
       "Casual beach-club dining & lagoon views":
-        "Неформальный beach club с видом на лагуну",
+        "Неформальный пляжный клуб с видом на лагуну",
       "Seafood, Mediterranean & French; by the beach":
         "Морепродукты, средиземноморская и французская кухня у пляжа",
-      "Cocktails & tapas; rooftop views": "Коктейли и тапас; виды с rooftop",
+      "Cocktails & tapas; rooftop views":
+        "Коктейли и тапас; виды с террасы на крыше",
       "Burgers & casual beach fare (Flic en Flac)":
-        "Бургеры и простая пляжная еда (Flic en Flac)",
+        "Бургеры и простая пляжная еда во Флик-ан-Флаке",
       "Mauritian, Creole, Indian & seafood (Flic en Flac)":
-        "Маврикийская, креольская, индийская кухня и морепродукты (Flic en Flac)",
+        "Маврикийская, креольская, индийская кухня и морепродукты во Флик-ан-Флаке",
       "Dinner, cocktails & wine; social (Tamarin)":
-        "Ужин, коктейли и вино; общительная атмосфера (Tamarin)",
+        "Ужин, коктейли и вино; дружелюбная атмосфера в Тамарине",
       "Mauritian-inspired seafood; fresh & tropical":
         "Морепродукты в маврикийском стиле; свежо и тропично",
       "Local seafood; near Ile aux Cerfs day trips":
-        "Местные морепродукты; рядом с турами на Ile aux Cerfs",
+        "Местные морепродукты; рядом с турами на Иль-о-Серф",
       "Simple, authentic Mauritian seafood":
         "Простые аутентичные маврикийские морепродукты",
     },
@@ -682,7 +684,7 @@ const RESTAURANT_PAGE_COPY: Record<
     tips: {
       "Book ahead": {
         title: "Бронируйте заранее",
-        text: "Бронируйте столы на закат в Grand Baie и популярных местах.",
+        text: "Бронируйте столы на закат в Гран-Бэ и популярных местах.",
       },
       "Bring cash": {
         title: "Возьмите наличные",
@@ -720,25 +722,25 @@ const CLEAN_RU_RESTAURANT_COPY: (typeof RESTAURANT_PAGE_COPY)["fr"] = {
   },
   names: {
     "The Beach House": "Пляжный дом",
-    "Les Canisses Resto & Plage": "Les Canisses Resto & Plage",
+    "Les Canisses Resto & Plage": "Ресторан и пляж Les Canisses",
     "The Beach Kitchen": "Пляжная кухня",
-    "Cafe de La Plage": "Cafe de la Plage",
-    "Le Capitaine": "Le Capitaine",
-    "Eden Beach": "Eden Beach",
-    "Bisou Rooftop - LUX*": "Bisou Rooftop - LUX*",
-    "Zaka - Super U": "Zaka - Super U",
+    "Cafe de La Plage": "Кафе у пляжа",
+    "Le Capitaine": "Капитан",
+    "Eden Beach": "Пляж Eden",
+    "Bisou Rooftop - LUX*": "Терраса Bisou - LUX*",
+    "Zaka - Super U": "Закусочная Zaka - Super U",
     "Beach Hut": "Пляжная хижина",
-    "Le Pescatore": "Le Pescatore",
-    "Ava Beach": "Ava Beach",
-    "Mont Choisy Le Beach Club": "Mont Choisy Le Beach Club",
+    "Le Pescatore": "Рыбак",
+    "Ava Beach": "Пляж Ava",
+    "Mont Choisy Le Beach Club": "Пляжный клуб Мон-Шуази",
     "Flowers of Paradise": "Цветы рая",
-    "The Cloud Rooftop & Lounge": "The Cloud Rooftop & Lounge",
-    "Jeanno Burger": "Jeanno Burger",
-    Pakbo: "Pakbo",
-    "Signature by Big Willy's": "Signature by Big Willy's",
-    "Wapalapam Island Eatery": "Wapalapam Island Eatery",
-    "Chez Tino": "Chez Tino",
-    "Chez Rosy": "Chez Rosy",
+    "The Cloud Rooftop & Lounge": "Терраса Cloud & Lounge",
+    "Jeanno Burger": "Бургеры Jeanno",
+    Pakbo: "Ресторан Pakbo",
+    "Signature by Big Willy's": "Signature от Big Willy's",
+    "Wapalapam Island Eatery": "Островная закусочная Wapalapam",
+    "Chez Tino": "У Тино",
+    "Chez Rosy": "У Рози",
   },
   details: {
     "Sea views, cocktails & sunset beach bar":
@@ -754,7 +756,7 @@ const CLEAN_RU_RESTAURANT_COPY: (typeof RESTAURANT_PAGE_COPY)["fr"] = {
     "Mediterranean & seafood; stylish lounge bar":
       "Средиземноморская кухня и морепродукты; стильный лаунж",
     "Elevated dining; infinity-pool rooftop":
-      "Ресторан повыше классом; rooftop с infinity-бассейном",
+      "Ресторан повыше классом; терраса на крыше с панорамным бассейном",
     "Tapas, pizza & drinks; lively evenings":
       "Тапас, пицца и напитки; оживленные вечера",
     "Easy beach food; great for families":
@@ -764,20 +766,21 @@ const CLEAN_RU_RESTAURANT_COPY: (typeof RESTAURANT_PAGE_COPY)["fr"] = {
     "Fresh, casual & tapas; all-day dining":
       "Свежо, неформально и тапас; весь день",
     "Casual beach-club dining & lagoon views":
-      "Неформальный beach club с видом на лагуну",
+      "Неформальный пляжный клуб с видом на лагуну",
     "Seafood, Mediterranean & French; by the beach":
       "Морепродукты, средиземноморская и французская кухня у пляжа",
-    "Cocktails & tapas; rooftop views": "Коктейли и тапас; виды с rooftop",
+    "Cocktails & tapas; rooftop views":
+      "Коктейли и тапас; виды с террасы на крыше",
     "Burgers & casual beach fare (Flic en Flac)":
-      "Бургеры и простая пляжная еда (Flic en Flac)",
+      "Бургеры и простая пляжная еда во Флик-ан-Флаке",
     "Mauritian, Creole, Indian & seafood (Flic en Flac)":
-      "Маврикийская, креольская, индийская кухня и морепродукты (Flic en Flac)",
+      "Маврикийская, креольская, индийская кухня и морепродукты во Флик-ан-Флаке",
     "Dinner, cocktails & wine; social (Tamarin)":
-      "Ужин, коктейли и вино; общительная атмосфера (Tamarin)",
+      "Ужин, коктейли и вино; дружелюбная атмосфера в Тамарине",
     "Mauritian-inspired seafood; fresh & tropical":
       "Морепродукты в маврикийском стиле; свежо и тропично",
     "Local seafood; near Ile aux Cerfs day trips":
-      "Местные морепродукты; рядом с турами на Ile aux Cerfs",
+      "Местные морепродукты; рядом с турами на Иль-о-Серф",
     "Simple, authentic Mauritian seafood":
       "Простые аутентичные маврикийские морепродукты",
   },
@@ -785,7 +788,7 @@ const CLEAN_RU_RESTAURANT_COPY: (typeof RESTAURANT_PAGE_COPY)["fr"] = {
   tips: {
     "Book ahead": {
       title: "Бронируйте заранее",
-      text: "Бронируйте столы на закат в Grand Baie и популярных местах.",
+      text: "Бронируйте столы на закат в Гран-Бэ и популярных местах.",
     },
     "Bring cash": {
       title: "Возьмите наличные",

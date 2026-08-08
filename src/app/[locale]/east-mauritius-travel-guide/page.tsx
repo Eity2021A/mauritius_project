@@ -338,7 +338,7 @@ export default async function EastMauritiusTravelGuidePage({
                         rel="noopener noreferrer"
                         className="font-bold text-[#1d3144] transition hover:text-[#f16522]"
                       >
-                        {link.label}
+                        {label}
                       </Link>
                     ) : (
                       <strong className="text-[#1d3144]">{label}</strong>
@@ -389,6 +389,7 @@ export default async function EastMauritiusTravelGuidePage({
         <HiddenGems
           featuredSlugs={eastHiddenGemSlugs}
           featuredHrefs={eastHiddenGemHrefs}
+          locale={activeLocale}
         />
       </article>
       <CarRentalAdBanner />

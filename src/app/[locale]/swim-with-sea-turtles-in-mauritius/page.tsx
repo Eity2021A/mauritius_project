@@ -135,11 +135,11 @@ const TURTLE_PAGE_COPY: Record<
   }
 > = {
   fr: {
-    kicker: "Recifs, lagons et vie marine",
+    kicker: "Récifs, lagons et vie marine",
     titleMain: "Nager avec",
     titleAccent: "les tortues marines",
     intro:
-      "Ou partager l'eau avec des tortues vertes et imbriquees sauvages, des lagons faciles depuis la plage aux recifs isoles accessibles en bateau.",
+      "Où partager l'eau avec des tortues vertes et imbriquées sauvages, des lagons faciles depuis la plage aux récifs isolés accessibles en bateau.",
     regions: {
       North: "Nord",
       "West & South-West": "Ouest et sud-ouest",
@@ -149,7 +149,7 @@ const TURTLE_PAGE_COPY: Record<
     goLabel: "Y aller",
     spots: {
       "Ile Plate (Flat Island)": {
-        name: "Tortues de l'Île Plate",
+        name: "Tortues de l'île Plate",
         tag: "Sortie bateau",
         region: "Nord - au large",
         see: "Île isolée, eau claire et récifs sains; les tortues s'approchent souvent.",
@@ -174,54 +174,54 @@ const TURTLE_PAGE_COPY: Record<
         tag: "Parc marin",
         region: "Sud",
         see: "Réserve protégée avec jardins coralliens, très belle clarté et tortues de passage.",
-        go: "Prenez une sortie guidée - crème solaire compatible récifs.",
+        go: "Prenez une sortie guidée - crème solaire respectueuse des récifs.",
       },
       "Ile aux Cerfs": {
-        name: "Récifs de l'Île aux Cerfs",
+        name: "Récifs de l'île aux Cerfs",
         tag: "Journée sur une île",
         region: "Est",
         see: "Lagon clair avec zones récifales proches; tortues parmi les spots de snorkeling.",
         go: "Inclus dans la plupart des sorties catamaran à la journée.",
       },
     },
-    extraTitle: "A voir aussi",
+    extraTitle: "À voir aussi",
     extraSpots: {
       "Belle Mare": {
         name: "Belle Mare",
-        detail: "Recif calme de la cote est",
+        detail: "Récif calme de la côte est",
       },
       "Flic en Flac": {
         name: "Flic en Flac",
-        detail: "Tortues de recif quand la mer est calme",
+        detail: "Tortues de récif quand la mer est calme",
       },
-      "Mont Choisy": { name: "Mont Choisy", detail: "Snorkeling tot le matin" },
+      "Mont Choisy": { name: "Mont Choisy", detail: "Snorkeling tôt le matin" },
     },
     respectTitle: "Nager avec respect",
     respectTips: [
       ["Gardez vos distances", "Ne les touchez et ne les poursuivez jamais."],
-      ["Laissez-les respirer", "Ne bloquez pas leur remontee pour respirer."],
+      ["Laissez-les respirer", "Ne bloquez pas leur remontée pour respirer."],
       [
         "Ne les nourrissez pas",
         "Laissez les tortues se comporter naturellement.",
       ],
       [
-        "Recif-safe seulement",
-        "Utilisez une creme solaire qui epargne le corail.",
+        "Respectueux des récifs seulement",
+        "Utilisez une crème solaire qui épargne le corail.",
       ],
     ],
     finalNote:
-      "Il n'y a jamais de garantie avec les animaux sauvages, et c'est justement ce qui rend une vraie rencontre si speciale.",
+      "Il n'y a jamais de garantie avec les animaux sauvages, et c'est justement ce qui rend une vraie rencontre si spéciale.",
   },
   de: {
     kicker: "Riffe, Lagunen und Meeresleben",
     titleMain: "Schwimmen mit",
-    titleAccent: "Meeresschildkroten",
+    titleAccent: "Meeresschildkröten",
     intro:
-      "Wo man das Wasser mit wilden grunen und Karettschildkroten teilt: von einfachen Strandlagunen bis zu abgelegenen Riffen per Boot.",
+      "Wo man das Wasser mit wilden grünen Meeresschildkröten und Karettschildkröten teilt: von einfachen Strandlagunen bis zu abgelegenen Riffen per Boot.",
     regions: {
       North: "Norden",
-      "West & South-West": "Westen und Sudwesten",
-      "East & South": "Osten und Suden",
+      "West & South-West": "Westen und Südwesten",
+      "East & South": "Osten und Süden",
     },
     seeLabel: "Sehen",
     goLabel: "Hin",
@@ -264,14 +264,14 @@ const TURTLE_PAGE_COPY: Record<
     },
     extraTitle: "Auch einen Blick wert",
     extraSpots: {
-      "Belle Mare": { name: "Belle Mare", detail: "Ruhiges Ostkustenriff" },
+      "Belle Mare": { name: "Belle Mare", detail: "Ruhiges Ostküstenriff" },
       "Flic en Flac": {
         name: "Flic en Flac",
-        detail: "Riffschildkroten bei ruhiger See",
+        detail: "Riffschildkröten bei ruhiger See",
       },
       "Mont Choisy": {
         name: "Mont Choisy",
-        detail: "Schnorcheln am fruhen Morgen",
+        detail: "Schnorcheln am frühen Morgen",
       },
     },
     respectTitle: "Mit Respekt schwimmen",
@@ -285,11 +285,11 @@ const TURTLE_PAGE_COPY: Record<
       "Bei wilden Tieren gibt es keine Garantie - genau das macht eine echte Begegnung so besonders.",
   },
   it: {
-    kicker: "Reef, lagune e vita marina",
+    kicker: "Barriere coralline, lagune e vita marina",
     titleMain: "Nuotare con",
     titleAccent: "le tartarughe marine",
     intro:
-      "Dove condividere l'acqua con tartarughe verdi e embricate selvatiche, dalle lagune facili dalla spiaggia ai reef remoti raggiunti in barca.",
+      "Dove condividere l'acqua con tartarughe verdi e embricate selvatiche, dalle lagune facili dalla spiaggia alle barriere coralline remote raggiunte in barca.",
     regions: {
       North: "Nord",
       "West & South-West": "Ovest e sud-ovest",
@@ -299,38 +299,38 @@ const TURTLE_PAGE_COPY: Record<
     goLabel: "Vai",
     spots: {
       "Ile Plate (Flat Island)": {
-        name: "Tartarughe a Île Plate",
-        tag: "Gita in barca",
-        region: "Nord - al largo",
-        see: "Isola remota, acqua chiara e reef sani; le tartarughe spesso si avvicinano.",
-        go: "Escursione in barca - più tranquilla della costa principale.",
+        name: "Tartarughe all'isola Plate",
+        tag: "Escursione in barca",
+        region: "Nord - al largo della costa",
+        see: "Isola remota, acqua chiara e barriere sane; le tartarughe spesso si avvicinano.",
+        go: "Uscita in barca - più tranquilla rispetto alla costa principale.",
       },
       "Le Morne Brabant": {
-        name: "Laguna di Le Morne",
-        tag: "Snorkeling da riva",
+        name: "Laguna del Morne",
+        tag: "Snorkeling dalla riva",
         region: "Sud-ovest",
-        see: "Laguna bassa e calma con zone di reef; avvistamenti frequenti vicino al corallo.",
-        go: "Nuota dalla riva - vai presto per acqua limpida.",
+        see: "Laguna bassa e calma con zone di barriera corallina; avvistamenti frequenti vicino al corallo.",
+        go: "Nuota dalla riva - vai presto per trovare acqua limpida.",
       },
       "Trou aux Biches": {
-        name: "Reef di Trou aux Biches",
+        name: "Barriera di Trou aux Biches",
         tag: "Laguna facile",
         region: "Nord",
-        see: "Laguna calma e adatta ai principianti con una breve nuotata verso il reef delle tartarughe.",
+        see: "Laguna calma e adatta ai principianti, con una breve nuotata fino alla barriera delle tartarughe.",
         go: "Ingresso diretto dalla spiaggia - meglio al mattino.",
       },
       "Blue Bay Marine Park": {
-        name: "Parco marino Blue Bay",
+        name: "Parco marino di Blue Bay",
         tag: "Parco marino",
         region: "Sud",
-        see: "Riserva protetta con giardini di corallo, grande visibilita e tartarughe di passaggio.",
-        go: "Fai un tour guidato - crema solare reef-safe.",
+        see: "Riserva protetta con giardini di corallo, grande visibilità e tartarughe di passaggio.",
+        go: "Scegli un'escursione guidata - crema solare sicura per la barriera corallina.",
       },
       "Ile aux Cerfs": {
-        name: "Reef dell'Île aux Cerfs",
+        name: "Barriere dell'isola aux Cerfs",
         tag: "Gita sull'isola",
         region: "Est",
-        see: "Laguna chiara con reef vicini; tartarughe tra gli spot di snorkeling.",
+        see: "Laguna limpida con barriere vicine; tartarughe tra i punti per lo snorkeling.",
         go: "Inclusa nella maggior parte delle gite in catamarano.",
       },
     },
@@ -338,15 +338,15 @@ const TURTLE_PAGE_COPY: Record<
     extraSpots: {
       "Belle Mare": {
         name: "Belle Mare",
-        detail: "Reef tranquillo della costa est",
+        detail: "Barriera tranquilla della costa est",
       },
       "Flic en Flac": {
         name: "Flic en Flac",
-        detail: "Tartarughe del reef quando il mare e calmo",
+        detail: "Tartarughe della barriera quando il mare è calmo",
       },
       "Mont Choisy": {
         name: "Mont Choisy",
-        detail: "Snorkeling al mattino presto",
+        detail: "Snorkeling nelle prime ore del mattino",
       },
     },
     respectTitle: "Nuota con rispetto",
@@ -354,17 +354,17 @@ const TURTLE_PAGE_COPY: Record<
       ["Mantieni la distanza", "Non toccarle e non inseguirle mai."],
       ["Lasciale respirare", "Non bloccare la risalita per respirare."],
       ["Non nutrirle", "Lascia che le tartarughe si comportino naturalmente."],
-      ["Solo reef-safe", "Crema solare che rispetta il corallo."],
+      ["Solo prodotti sicuri per i coralli", "Crema solare che rispetta il corallo."],
     ],
     finalNote:
-      "Con gli animali selvatici non ci sono garanzie, ed e proprio questo che rende speciale un vero incontro.",
+      "Con gli animali selvatici non ci sono garanzie, ed è proprio questo che rende speciale un vero incontro.",
   },
   es: {
     kicker: "Arrecifes, lagunas y vida marina",
     titleMain: "Nadar con",
     titleAccent: "tortugas marinas",
     intro:
-      "Donde compartir el agua con tortugas verdes y carey salvajes, desde lagunas faciles junto a la playa hasta arrecifes remotos accesibles en barco.",
+      "Donde compartir el agua con tortugas verdes y carey salvajes, desde lagunas fáciles junto a la playa hasta arrecifes remotos accesibles en barco.",
     regions: {
       North: "Norte",
       "West & South-West": "Oeste y suroeste",
@@ -399,7 +399,7 @@ const TURTLE_PAGE_COPY: Record<
         tag: "Parque marino",
         region: "Sur",
         see: "Reserva protegida con jardines coralinos, gran claridad y tortugas de paso.",
-        go: "Toma un tour guiado - protector solar reef-safe.",
+        go: "Toma un tour guiado - protector solar seguro para arrecifes.",
       },
       "Ile aux Cerfs": {
         name: "Arrecifes de Île aux Cerfs",
@@ -409,7 +409,7 @@ const TURTLE_PAGE_COPY: Record<
         go: "Incluido en la mayoría de excursiones de catamarán.",
       },
     },
-    extraTitle: "Tambien merece una mirada",
+    extraTitle: "También merece una mirada",
     extraSpots: {
       "Belle Mare": {
         name: "Belle Mare",
@@ -417,11 +417,11 @@ const TURTLE_PAGE_COPY: Record<
       },
       "Flic en Flac": {
         name: "Flic en Flac",
-        detail: "Tortugas de arrecife cuando el mar esta calmado",
+        detail: "Tortugas de arrecife cuando el mar está calmado",
       },
       "Mont Choisy": {
         name: "Mont Choisy",
-        detail: "Snorkel temprano por la manana",
+        detail: "Snorkel temprano por la mañana",
       },
     },
     respectTitle: "Nada con respeto",
@@ -429,10 +429,10 @@ const TURTLE_PAGE_COPY: Record<
       ["Mantén la distancia", "Nunca las toques ni persigas."],
       ["Dales aire", "No bloquees su camino para subir a respirar."],
       ["No las alimentes", "Deja que las tortugas se comporten naturalmente."],
-      ["Solo reef-safe", "Protector solar que no dana el coral."],
+      ["Solo seguro para arrecifes", "Protector solar que no daña el coral."],
     ],
     finalNote:
-      "No hay garantias con animales salvajes, y eso es exactamente lo que hace tan especial un encuentro real.",
+      "No hay garantías con animales salvajes, y eso es exactamente lo que hace tan especial un encuentro real.",
   },
   ru: {
     kicker: "Рифы, лагуны и морская жизнь",
@@ -449,7 +449,7 @@ const TURTLE_PAGE_COPY: Record<
     goLabel: "Как ехать",
     spots: {
       "Ile Plate (Flat Island)": {
-        name: "Черепахи у Île Plate",
+        name: "Черепахи у Иль-Плат",
         tag: "Лодочная экскурсия",
         region: "Север - у берега",
         see: "Удаленный остров, чистая вода и здоровые рифы; черепахи часто подплывают близко.",
@@ -463,21 +463,21 @@ const TURTLE_PAGE_COPY: Record<
         go: "Плывите с берега - приезжайте рано для прозрачной воды.",
       },
       "Trou aux Biches": {
-        name: "Черепаший риф Trou aux Biches",
+        name: "Черепаший риф Тру-о-Биш",
         tag: "Легкая лагуна",
         region: "Север",
         see: "Спокойная лагуна для начинающих с коротким заплывом к черепашьему рифу.",
         go: "Прямой вход с пляжа - лучше утром.",
       },
       "Blue Bay Marine Park": {
-        name: "Морской парк Blue Bay",
+        name: "Морской парк Блю-Бэй",
         tag: "Морской парк",
         region: "Юг",
         see: "Охраняемый заповедник: коралловые сады, отличная видимость и проходящие черепахи.",
-        go: "Возьмите тур с гидом - используйте reef-safe крем.",
+        go: "Возьмите тур с гидом - используйте крем, безопасный для рифов.",
       },
       "Ile aux Cerfs": {
-        name: "Рифы Île aux Cerfs",
+        name: "Рифы Иль-о-Серф",
         tag: "День на острове",
         region: "Восток",
         see: "Чистая лагуна с близкими рифами; черепахи встречаются среди мест для сноркелинга.",
@@ -501,7 +501,7 @@ const TURTLE_PAGE_COPY: Record<
       ["Держите дистанцию", "Никогда не трогайте и не преследуйте их."],
       ["Дайте им воздух", "Не перекрывайте путь наверх для дыхания."],
       ["Не кормите", "Позвольте черепахам вести себя естественно."],
-      ["Только reef-safe", "Солнцезащитный крем, который бережет кораллы."],
+      ["Только безопасно для рифов", "Солнцезащитный крем, который бережет кораллы."],
     ],
     finalNote:
       "С дикими животными нет гарантий - именно это делает настоящую встречу такой особенной.",
@@ -662,7 +662,7 @@ export default async function SwimWithSeaTurtlesInMauritiusPage({
         </section>
       </article>
 
-      <PopularRoadTrips locale={locale} />
+      <PopularRoadTrips locale={activeLocale} />
       <PocketAdBanner />
       <Footer />
     </main>,

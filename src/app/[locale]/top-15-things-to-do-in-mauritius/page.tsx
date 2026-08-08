@@ -446,9 +446,213 @@ const TOP_15_TITLE_TRANSLATIONS: Record<SupportedTop15Locale, Record<number, str
   },
 };
 
+const CLEAN_TOP_15_OVERRIDES: Partial<
+  Record<SupportedTop15Locale, Partial<(typeof TOP_15_PAGE_COPY)["fr"]>>
+> = {
+  fr: {
+    heroSubtitle:
+      "Vivez la culture locale, profitez des plages et goûtez à la cuisine mauricienne",
+    intro:
+      "Maurice est un paradis tropical de l'océan Indien, connu pour ses plages, ses lagons clairs et son patrimoine culturel. Des lieux comme Chamarel, les parcs naturels de Casela et l'île aux Cerfs montrent pourquoi l'île convient autant aux journées plage qu'aux aventures et aux sorties en famille. Entre sports nautiques, randonnées, cuisine locale et sites historiques, chaque voyage peut être simple, varié et mémorable.",
+    itemListDescription:
+      "Le guide essentiel des meilleures expériences et activités à Maurice",
+    things: {
+      ...TOP_15_PAGE_COPY.fr.things,
+      1: { description: "Détendez-vous sur les plages de Flic-en-Flac, Grand Baie, Blue Bay ou Belle Mare. Sable clair, lagons calmes, restaurants en bord de mer et sports nautiques faciles en font un premier choix pour découvrir Maurice.", linkText: "Découvrir nos plages" },
+      2: { description: "Explorez les forêts tropicales, cascades, montagnes et points de vue de l'île. Les gorges de Rivière Noire, la Terre des Sept Couleurs et les sentiers des hauts plateaux révèlent une Maurice plus sauvage.", linkText: "Découvrir les meilleurs lieux à visiter à Maurice" },
+      3: { description: "La culture mauricienne mêle influences africaines, indiennes, chinoises, européennes et créoles. Festivals, séga, temples, marchés et cuisine locale donnent une vraie lecture de l'île.", linkText: "Explorer les festivals à Maurice" },
+      4: { description: "Snorkeling, plongée, paddle, kitesurf, catamaran, pêche au gros ou nage dans les lagons: les eaux chaudes de Maurice offrent des activités pour tous les niveaux.", linkText: "Explorer les activités nautiques" },
+      5: { description: "Goûtez au dholl puri, au vindaye, aux currys, aux fruits tropicaux, aux fruits de mer et aux snacks de marché. La cuisine mauricienne est simple, colorée et pleine d'influences.", linkText: "Découvrir la cuisine locale et les marchés" },
+      6: { description: "Grand Baie reste le centre le plus animé pour sortir le soir, avec bars, restaurants, musique et clubs. Pour une soirée plus calme, choisissez un bar de plage au coucher du soleil.", linkText: "Explorer Grand Baie" },
+      7: { description: "Entre le marché central de Port Louis, le front de mer du Caudan, Bagatelle et les petits bazars, vous trouverez épices, textiles, artisanat, souvenirs et marques internationales.", linkText: "Découvrir le shopping à Maurice" },
+      8: { description: "Blue Bay, Trou aux Biches, Flic-en-Flac et plusieurs récifs protégés permettent de voir poissons tropicaux, coraux, tortues et épaves selon les conditions.", linkText: "Explorer les activités de plongée" },
+      9: { description: "Une sortie en catamaran vers l'île aux Cerfs combine lagon turquoise, baignade, snorkeling et déjeuner sur l'eau. C'est l'une des journées bateau les plus populaires de l'est.", linkText: "Découvrir les excursions en bateau" },
+      10: { description: "Le jardin botanique de Pamplemousses abrite nénuphars géants, palmiers rares, allées ombragées et tortues. C'est une halte paisible pour les amoureux de nature.", linkText: "En savoir plus sur Pamplemousses" },
+      11: { description: "Casela propose tyroliennes, quad, safari, rencontres animales et activités familiales dans l'ouest de l'île. C'est une bonne option pour une journée active.", linkText: "Découvrir les parcs d'aventure" },
+      12: { description: "Mahébourg offre un visage plus authentique de Maurice: front de mer, marché, musée naval, histoire de Grand Port et accès facile au lagon de Blue Bay.", linkText: "Explorer Mahébourg et Blue Bay" },
+      13: { description: "Grand Baie mélange plage, restaurants, bateaux, boutiques et vie nocturne. Le village est pratique pour rayonner vers Pereybere, Mont Choisy et les îles du nord.", linkText: "Explorer les plages de Grand Baie" },
+      14: { description: "Port Louis rassemble le marché central, le front de mer du Caudan, des musées, de la cuisine de rue et la vie urbaine. C'est l'endroit idéal pour sentir l'énergie de la capitale.", linkText: "Découvrir Port Louis" },
+      15: { description: "Chamarel concentre cascade, terres colorées, routes de montagne, rhum, cuisine créole et vues spectaculaires. C'est un incontournable du sud-ouest.", linkText: "Explorer Chamarel" },
+    },
+    faqTitle: "FAQ des choses à faire à Maurice",
+    ctaTitle: "Planifiez vos journées d'activités à Maurice",
+    ctaText:
+      "Choisissez votre prochaine étape, entre plage, bateau, points de vue à Chamarel, aventures à Casela et journées faciles en famille.",
+    activityButton: "Voir les activités à Maurice",
+  },
+  de: {
+    heroSubtitle:
+      "Erleben Sie lokale Kultur, besuchen Sie Strände und probieren Sie mauritisches Essen",
+    intro:
+      "Mauritius ist ein tropisches Paradies im Indischen Ozean mit Stränden, klaren Lagunen und reicher Kultur. Chamarel, die Naturparks von Casela und die Île aux Cerfs zeigen, wie gut die Insel für Strandtage, Abenteuer und Familienausflüge funktioniert. Von Wassersport und Wanderungen bis zu lokaler Küche und Geschichte bleibt jede Reise abwechslungsreich.",
+    itemListDescription:
+      "Der wichtigste Guide zu den besten Erlebnissen und Aktivitäten auf Mauritius",
+    things: {
+      ...TOP_15_PAGE_COPY.de.things,
+      1: { description: "Entspannen Sie an Stränden wie Flic-en-Flac, Grand Baie, Blue Bay und Belle Mare. Weicher Sand, ruhige Lagunen, Strandrestaurants und Wassersport machen den Einstieg leicht.", linkText: "Unsere Strände entdecken" },
+      2: { description: "Entdecken Sie Regenwald, Wasserfälle, Berge und Aussichtspunkte. Die Black River Gorges, die Siebenfarbige Erde und Hochlandwege zeigen die wilde Seite von Mauritius.", linkText: "Die besten Sehenswürdigkeiten entdecken" },
+      3: { description: "Mauritius verbindet afrikanische, indische, chinesische, europäische und kreolische Einflüsse. Festivals, Sega, Tempel, Märkte und Essen machen diese Mischung sichtbar.", linkText: "Festivals auf Mauritius entdecken" },
+      4: { description: "Schnorcheln, Tauchen, SUP, Kitesurfen, Katamaran, Hochseefischen oder Lagunenschwimmen: die warmen Gewässer bieten Aktivitäten für jedes Niveau.", linkText: "Wasseraktivitäten entdecken" },
+      5: { description: "Probieren Sie Dholl Puri, Vindaye, Currys, tropische Früchte, Meeresfrüchte und Markt-Snacks. Die mauritische Küche ist bunt, einfach und voller Einflüsse.", linkText: "Lokale Küche und Märkte entdecken" },
+      6: { description: "Grand Baie ist der wichtigste Ort für Abende mit Bars, Restaurants, Musik und Clubs. Ruhiger wird es in Strandbars bei Sonnenuntergang.", linkText: "Grand Baie erkunden" },
+      7: { description: "Der Central Market, die Caudan Waterfront, Bagatelle und kleinere Basare bieten Gewürze, Textilien, Handwerk, Souvenirs und internationale Marken.", linkText: "Shopping auf Mauritius entdecken" },
+      8: { description: "Blue Bay, Trou aux Biches, Flic-en-Flac und geschützte Riffe eignen sich für bunte Fische, Korallen, Schildkröten und je nach Bedingungen auch Wracks.", linkText: "Tauchaktivitäten entdecken" },
+      9: { description: "Ein Katamaran zur Île aux Cerfs kombiniert türkisfarbene Lagune, Baden, Schnorcheln und Mittagessen auf dem Wasser. Eine der beliebtesten Bootstouren im Osten.", linkText: "Bootstouren entdecken" },
+      10: { description: "Der Botanische Garten von Pamplemousses bietet riesige Seerosen, seltene Palmen, schattige Alleen und Schildkröten. Ein ruhiger Stopp für Naturfreunde.", linkText: "Mehr über Pamplemousses erfahren" },
+      11: { description: "Casela bietet Zipline, Quad, Safari, Tierbegegnungen und Familienaktivitäten im Westen der Insel. Ideal für einen aktiven Tag.", linkText: "Abenteuerparks entdecken" },
+      12: { description: "Mahébourg zeigt ein authentischeres Mauritius mit Uferpromenade, Markt, Marinemuseum, Grand-Port-Geschichte und schnellem Zugang zur Blue-Bay-Lagune.", linkText: "Mahébourg und Blue Bay erkunden" },
+      13: { description: "Grand Baie verbindet Strand, Restaurants, Boote, Shops und Nachtleben. Der Ort ist praktisch für Pereybere, Mont Choisy und die nördlichen Inseln.", linkText: "Strände von Grand Baie erkunden" },
+      14: { description: "Port Louis vereint den Central Market, die Caudan Waterfront, Museen, Streetfood und Stadtleben. Hier spürt man die Energie der Hauptstadt.", linkText: "Port Louis entdecken" },
+      15: { description: "Chamarel kombiniert Wasserfall, Farbige Erde, Bergstraßen, Rum, kreolische Küche und spektakuläre Ausblicke. Ein Muss im Südwesten.", linkText: "Chamarel erkunden" },
+    },
+    faqTitle: "FAQ zu Aktivitäten auf Mauritius",
+    ctaTitle: "Planen Sie Ihre Aktivitätentage auf Mauritius",
+    ctaText:
+      "Wählen Sie den nächsten Inselstopp: Strandzeit, Bootstouren, Chamarel-Aussichten, Casela-Abenteuer oder einfache Familientage.",
+    beachButton: "Mauritius-Strände erkunden",
+    activityButton: "Aktivitäten auf Mauritius ansehen",
+  },
+  it: {
+    intro:
+      "Mauritius è un paradiso tropicale nell'Oceano Indiano, famoso per spiagge, lagune limpide e cultura ricca. Chamarel, i parchi naturali di Casela e l'Île aux Cerfs mostrano perché l'isola funziona per mare, avventura e giornate in famiglia. Tra sport acquatici, trekking, cucina locale e siti storici, ogni viaggio resta vario e memorabile.",
+    itemListDescription:
+      "La guida essenziale alle migliori esperienze e attività di Mauritius",
+    things: {
+      ...TOP_15_PAGE_COPY.it.things,
+      2: { description: "Esplora foreste tropicali, cascate, montagne e punti panoramici. Le Black River Gorges, le Terre dei sette colori e gli altopiani rivelano la Mauritius più selvaggia.", linkText: "Scopri i migliori luoghi da visitare" },
+      4: { description: "Snorkeling, immersioni, paddle, kitesurf, catamarano, pesca d'altura o nuoto in laguna: le acque calde offrono attività per ogni livello.", linkText: "Esplora le attività acquatiche" },
+      6: { description: "Grand Baie è il centro principale per la sera, con bar, ristoranti, musica e club. Per qualcosa di più tranquillo scegli un bar sulla spiaggia al tramonto.", linkText: "Esplora Grand Baie" },
+      7: { description: "Il Central Market, il Caudan Waterfront, Bagatelle e piccoli bazar offrono spezie, tessuti, artigianato, souvenir e marchi internazionali.", linkText: "Scopri lo shopping a Mauritius" },
+      8: { description: "Blue Bay, Trou aux Biches, Flic-en-Flac e vari reef protetti permettono di vedere pesci tropicali, coralli, tartarughe e relitti secondo le condizioni.", linkText: "Esplora le immersioni" },
+      9: { description: "Un catamarano verso l'Île aux Cerfs combina laguna turchese, bagno, snorkeling e pranzo sull'acqua. Una delle gite in barca più amate della costa est.", linkText: "Scopri le gite in barca" },
+      12: { description: "Mahébourg mostra una Mauritius autentica: lungomare, mercato, museo navale, storia di Grand Port e accesso facile alla laguna di Blue Bay.", linkText: "Esplora Mahébourg e Blue Bay" },
+      13: { description: "Grand Baie unisce spiaggia, ristoranti, barche, negozi e vita notturna. È una base comoda per Pereybere, Mont Choisy e le isole del nord.", linkText: "Esplora le spiagge di Grand Baie" },
+      14: { description: "Port Louis riunisce il Central Market, il Caudan Waterfront, musei, cibo di strada e vita urbana. Qui senti l'energia della capitale.", linkText: "Scopri Port Louis" },
+      15: { description: "Chamarel concentra cascata, Terre colorate, strade di montagna, rum, cucina creola e panorami spettacolari. Una tappa essenziale del sud-ovest.", linkText: "Esplora Chamarel" },
+    },
+    ctaTitle: "Pianifica le tue giornate di attività a Mauritius",
+    activityButton: "Vedi le attività a Mauritius",
+  },
+  es: {
+    intro:
+      "Mauricio es un paraíso tropical del océano Índico, famoso por sus playas, lagunas claras y cultura rica. Chamarel, los parques naturales de Casela e Île aux Cerfs muestran por qué la isla funciona para playa, aventura y planes familiares. Entre deportes acuáticos, senderismo, comida local e historia, cada viaje puede ser variado y memorable.",
+    itemListDescription:
+      "La guía esencial de las mejores experiencias y actividades en Mauricio",
+    things: {
+      ...TOP_15_PAGE_COPY.es.things,
+      1: { description: "Relájate en playas como Flic-en-Flac, Grand Baie, Blue Bay o Belle Mare. Arena clara, lagunas tranquilas, restaurantes frente al mar y deportes acuáticos hacen fácil empezar.", linkText: "Descubrir nuestras playas" },
+      2: { description: "Explora bosques tropicales, cascadas, montañas y miradores. Las Black River Gorges, las Siete Tierras de Colores y las rutas de interior muestran el lado salvaje.", linkText: "Descubrir los mejores lugares que visitar" },
+      4: { description: "Snorkel, buceo, paddle, kitesurf, catamarán, pesca deportiva o baños en laguna: las aguas cálidas ofrecen actividades para todos.", linkText: "Explorar actividades acuáticas" },
+      6: { description: "Grand Baie es el principal centro nocturno, con bares, restaurantes, música y clubs. Para algo más tranquilo, elige un bar de playa al atardecer.", linkText: "Explorar Grand Baie" },
+      7: { description: "El Central Market, el Caudan Waterfront, Bagatelle y pequeños bazares ofrecen especias, textiles, artesanía, recuerdos y marcas internacionales.", linkText: "Descubrir compras en Mauricio" },
+      8: { description: "Blue Bay, Trou aux Biches, Flic-en-Flac y varios arrecifes protegidos permiten ver peces tropicales, corales, tortugas y pecios según las condiciones.", linkText: "Explorar actividades de buceo" },
+      9: { description: "Un catamarán a Île aux Cerfs combina laguna turquesa, baño, snorkel y comida sobre el agua. Es una de las excursiones más populares del este.", linkText: "Descubrir excursiones en barco" },
+      12: { description: "Mahébourg muestra un Mauricio más auténtico: paseo marítimo, mercado, museo naval, historia de Grand Port y acceso fácil a la laguna de Blue Bay.", linkText: "Explorar Mahébourg y Blue Bay" },
+      13: { description: "Grand Baie combina playa, restaurantes, barcos, tiendas y vida nocturna. Es una base práctica para Pereybere, Mont Choisy y las islas del norte.", linkText: "Explorar las playas de Grand Baie" },
+      14: { description: "Port Louis reúne el Central Market, el Caudan Waterfront, museos, comida callejera y vida urbana. Es el lugar para sentir la energía de la capital.", linkText: "Descubrir Port Louis" },
+      15: { description: "Chamarel concentra cascada, Tierras de Colores, carreteras de montaña, ron, cocina criolla y vistas espectaculares. Imprescindible en el suroeste.", linkText: "Explorar Chamarel" },
+    },
+    ctaText:
+      "Elige tu siguiente parada: playa, barco, miradores de Chamarel, aventuras en Casela o días fáciles en familia.",
+  },
+  ru: {
+    heroSubtitle:
+      "Познакомьтесь с местной культурой, пляжами и кухней Маврикия",
+    intro:
+      "Маврикий - тропический остров в Индийском океане с пляжами, прозрачными лагунами и богатой культурой. Шамарель, природные парки Касела и Иль-о-Серф показывают, почему здесь легко сочетать пляж, приключения и семейные поездки. Водные развлечения, тропы, местная еда и история делают маршрут насыщенным.",
+    itemListDescription:
+      "Главный гид по лучшим впечатлениям и занятиям на Маврикии",
+    things: {
+      1: { description: "Отдохните на пляжах Флик-ан-Флак, Гран-Бэ, Блю-Бэй или Бель-Мар. Светлый песок, спокойные лагуны, рестораны у воды и водные активности подходят для первого знакомства.", linkText: "Посмотреть наши пляжи" },
+      2: { description: "Исследуйте тропические леса, водопады, горы и смотровые площадки. Ущелья Блэк-Ривер, Семицветная земля и дороги плато открывают более дикий Маврикий.", linkText: "Лучшие места для посещения" },
+      3: { description: "Культура Маврикия соединяет африканские, индийские, китайские, европейские и креольские влияния. Фестивали, сега, храмы, рынки и кухня показывают это лучше всего.", linkText: "Фестивали на Маврикии" },
+      4: { description: "Сноркелинг, дайвинг, SUP, кайтсерфинг, катамаран, рыбалка или купание в лагуне: теплые воды дают варианты для любого уровня.", linkText: "Водные активности" },
+      5: { description: "Попробуйте dholl puri, vindaye, карри, тропические фрукты, морепродукты и рыночные закуски. Кухня Маврикия яркая, простая и многокультурная.", linkText: "Местная еда и рынки" },
+      6: { description: "Гран-Бэ - главный центр вечерней жизни с барами, ресторанами, музыкой и клубами. Для спокойного вечера выбирайте пляжный бар на закате.", linkText: "Исследовать Гран-Бэ" },
+      7: { description: "Центральный рынок Порт-Луи, набережная Каудан, Bagatelle и небольшие базары предлагают специи, текстиль, ремесла, сувениры и международные бренды.", linkText: "Шопинг на Маврикии" },
+      8: { description: "Блю-Бэй, Тру-о-Биш, Флик-ан-Флак и защищенные рифы подходят для тропических рыб, кораллов, черепах и иногда затонувших объектов.", linkText: "Дайвинг и снорклинг" },
+      9: { description: "Катамаран к Иль-о-Серф сочетает бирюзовую лагуну, плавание, снорклинг и обед на воде. Это одна из самых популярных прогулок восточного побережья.", linkText: "Лодочные экскурсии" },
+      10: { description: "Ботанический сад Памплемус известен гигантскими кувшинками, редкими пальмами, тенистыми аллеями и черепахами. Спокойная остановка для любителей природы.", linkText: "Подробнее о Памплемусе" },
+      11: { description: "Касела предлагает зиплайн, квадроциклы, сафари, встречи с животными и семейные развлечения на западе острова. Хорошо для активного дня.", linkText: "Парки приключений" },
+      12: { description: "Маэбур показывает более настоящий Маврикий: набережная, рынок, морской музей, история Гран-Пора и быстрый доступ к лагуне Блю-Бэй.", linkText: "Маэбур и Блю-Бэй" },
+      13: { description: "Гран-Бэ сочетает пляж, рестораны, лодки, магазины и ночную жизнь. Удобная база для Перейбера, Мон-Шуази и северных островов.", linkText: "Пляжи Гран-Бэ" },
+      14: { description: "Порт-Луи объединяет Центральный рынок, набережную Каудан, музеи, уличную еду и городскую жизнь. Здесь чувствуется энергия столицы.", linkText: "Открыть Порт-Луи" },
+      15: { description: "Шамарель - это водопад, Цветные земли, горные дороги, ром, креольская кухня и сильные виды. Обязательная точка юго-запада.", linkText: "Исследовать Шамарель" },
+    },
+    faqTitle: "FAQ: чем заняться на Маврикии",
+    faqs: [
+      { question: "Что лучше сделать в первую поездку на Маврикий?", answer: "Начните со спокойного пляжа, маршрута по северу или югу, Шамареля и ущелий Блэк-Ривер, рынка Порт-Луи, катамарана и остановки с местной едой." },
+      { question: "Сколько дней нужно на главные места?", answer: "Семи дней хватит для пляжей, нескольких активностей и одной-двух поездок. Десять-четырнадцать дней дадут больше времени для троп, островов, рынков и спокойных дней у моря." },
+      { question: "Нужно ли бронировать активности заранее?", answer: "В высокий сезон заранее бронируйте лодки, дельфинов, походы с гидом и частные трансферы. Оставляйте гибкие дни для погоды." },
+    ],
+    ctaTitle: "Спланируйте активные дни на Маврикии",
+    ctaText:
+      "Выберите следующую остановку: пляж, лодка, виды Шамареля, приключения в Каселе или легкие семейные дни.",
+    beachButton: "Пляжи Маврикия",
+    activityButton: "Активности на Маврикии",
+  },
+};
+
+const CLEAN_TOP_15_TITLE_OVERRIDES: Partial<
+  Record<SupportedTop15Locale, Record<number, string>>
+> = {
+  fr: {
+    ...TOP_15_TITLE_TRANSLATIONS.fr,
+    1: "Se détendre à la plage",
+    2: "Explorer la beauté naturelle",
+    3: "Découvrir la culture",
+    4: "Activités nautiques",
+    6: "Vie nocturne à Grand Baie",
+    7: "Shopping à Port Louis et Bagatelle",
+    8: "Faire du snorkeling ou de la plongée",
+    9: "Sortie en catamaran à l'île aux Cerfs",
+    12: "Visiter le village de Mahébourg",
+  },
+  de: {
+    ...TOP_15_TITLE_TRANSLATIONS.de,
+    4: "Wasseraktivitäten",
+    10: "Botanischen Garten Pamplemousses besuchen",
+    11: "Casela-Park besuchen",
+    12: "Mahébourg besuchen",
+    13: "Grand Baie besuchen",
+  },
+  it: {
+    ...TOP_15_TITLE_TRANSLATIONS.it,
+    4: "Attività acquatiche",
+    9: "Catamarano all'Île aux Cerfs",
+    12: "Visitare il villaggio di Mahébourg",
+  },
+  es: {
+    ...TOP_15_TITLE_TRANSLATIONS.es,
+    4: "Actividades acuáticas",
+    9: "Catamarán a Île aux Cerfs",
+    10: "Visitar el jardín de Pamplemousses",
+    12: "Visitar el pueblo de Mahébourg",
+  },
+  ru: {
+    1: "Отдохнуть на пляже",
+    2: "Исследовать природу",
+    3: "Познакомиться с культурой",
+    4: "Водные активности",
+    5: "Местная еда",
+    6: "Ночная жизнь в Гран-Бэ",
+    7: "Шопинг в Порт-Луи и Bagatelle",
+    8: "Сноркелинг или дайвинг",
+    9: "Катамаран к Иль-о-Серф",
+    10: "Посетить сад Памплемус",
+    11: "Посетить парк Касела",
+    12: "Посетить деревню Маэбур",
+    13: "Посетить деревню Гран-Бэ",
+    14: "Посетить Порт-Луи",
+    15: "Исследовать Шамарель",
+  },
+};
+
 function getTop15Copy(locale: string) {
   const activeLocale = normalizeLocale(locale);
-  return TOP_15_PAGE_COPY[activeLocale as SupportedTop15Locale];
+  const copy = TOP_15_PAGE_COPY[activeLocale as SupportedTop15Locale];
+  const override = CLEAN_TOP_15_OVERRIDES[activeLocale as SupportedTop15Locale];
+  return copy && override ? { ...copy, ...override } : (override ?? copy);
 }
 
 export default async function Top15ThingsPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -456,12 +660,14 @@ export default async function Top15ThingsPage({ params }: { params: Promise<{ lo
   const activeLocale = normalizeLocale(locale);
   const pageCopy = getTop15Copy(activeLocale);
   const translate = (text: string) => staticPageText(activeLocale, text);
-  const titleTranslations = TOP_15_TITLE_TRANSLATIONS[activeLocale as SupportedTop15Locale];
+  const titleTranslations =
+    CLEAN_TOP_15_TITLE_OVERRIDES[activeLocale as SupportedTop15Locale] ??
+    TOP_15_TITLE_TRANSLATIONS[activeLocale as SupportedTop15Locale];
   const things = TOP_15_THINGS.map((item) => ({
     ...item,
     title: titleTranslations?.[item.number] ?? translate(item.title),
-    description: pageCopy?.things[item.number]?.description ?? item.description,
-    linkText: pageCopy?.things[item.number]?.linkText ?? translate(item.linkText),
+    description: pageCopy?.things?.[item.number]?.description ?? item.description,
+    linkText: pageCopy?.things?.[item.number]?.linkText ?? translate(item.linkText),
   }));
   const faqs = pageCopy?.faqs ?? TOP_15_FAQS.map((item) => ({
     question: translate(item.question),

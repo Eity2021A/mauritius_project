@@ -439,7 +439,7 @@ export default async function WestMauritiusTravelGuidePage({
                         rel="noopener noreferrer"
                         className="font-bold text-[#1d3144] transition hover:text-[#f16522]"
                       >
-                        {link.label}
+                        {label}
                       </Link>
                     ) : (
                       <strong className="text-[#1d3144]">{label}</strong>
@@ -489,6 +489,7 @@ export default async function WestMauritiusTravelGuidePage({
         <HiddenGems
           featuredSlugs={westHiddenGemSlugs}
           featuredHrefs={westHiddenGemHrefs}
+          locale={activeLocale}
         />
       </article>
       <CarRentalAdBanner />

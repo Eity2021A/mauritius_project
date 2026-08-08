@@ -328,9 +328,49 @@ function pickValueForLocale(values: string[], locale: string): string {
   return scored.sort((a, b) => a.englishScore - b.englishScore || a.index - b.index)[0]?.value ?? uniqueValues[0]
 }
 
+function hasSelectedLocaleText(values: string[], locale: string): boolean {
+  if (locale === "en") return false
+  return values.some((value) => scoreTextForLocale(value, locale) > 0)
+}
+
+function isSelectedLocaleText(value: string, locale: string): boolean {
+  if (locale === "en") return true
+  return scoreTextForLocale(value, locale) > 0
+}
+
+function normalizeContentLocale(value: string | null | undefined): string {
+  const normalized = normalizeKey(value)
+  const localeMap: Record<string, string> = {
+    gb: "en",
+    english: "en",
+    en: "en",
+    "en-us": "en",
+    "en-gb": "en",
+    french: "fr",
+    francais: "fr",
+    fr: "fr",
+    german: "de",
+    deutsch: "de",
+    de: "de",
+    italian: "it",
+    italiano: "it",
+    it: "it",
+    spanish: "es",
+    espanol: "es",
+    es: "es",
+    russian: "ru",
+    russkiy: "ru",
+    ru: "ru",
+  }
+
+  return localeMap[normalized] ?? normalized.slice(0, 2)
+}
+
 function sortedTextsForLocale(arr: { text: string; sort_order: number; locale?: string | null }[], locale = "en"): string[] {
-  const localeRows = arr.filter((item) => item.locale === locale)
+  const activeLocale = normalizeContentLocale(locale)
+  const localeRows = arr.filter((item) => normalizeContentLocale(item.locale) === activeLocale)
   if (localeRows.length) return sortedTexts(localeRows)
+  const hasLocaleContent = hasSelectedLocaleText(arr.map((item) => item.text), activeLocale)
 
   const grouped = new Map<number, string[]>()
 
@@ -342,7 +382,8 @@ function sortedTextsForLocale(arr: { text: string; sort_order: number; locale?: 
 
   return [...grouped.entries()]
     .sort((a, b) => a[0] - b[0])
-    .map(([, texts]) => pickValueForLocale(texts, locale))
+    .map(([, texts]) => pickValueForLocale(texts, activeLocale))
+    .filter((text) => !hasLocaleContent || isSelectedLocaleText(text, activeLocale))
     .filter((text): text is string => Boolean(text))
 }
 
@@ -351,8 +392,10 @@ function sortedLabels(arr: { label: string; sort_order: number }[]): string[] {
 }
 
 function sortedLabelsForLocale(arr: { label: string; sort_order: number; locale?: string | null }[], locale = "en"): string[] {
-  const localeRows = arr.filter((item) => item.locale === locale)
+  const activeLocale = normalizeContentLocale(locale)
+  const localeRows = arr.filter((item) => normalizeContentLocale(item.locale) === activeLocale)
   if (localeRows.length) return sortedLabels(localeRows)
+  const hasLocaleContent = hasSelectedLocaleText(arr.map((item) => item.label), activeLocale)
 
   const grouped = new Map<number, string[]>()
 
@@ -364,7 +407,8 @@ function sortedLabelsForLocale(arr: { label: string; sort_order: number; locale?
 
   return [...grouped.entries()]
     .sort((a, b) => a[0] - b[0])
-    .map(([, labels]) => pickValueForLocale(labels, locale))
+    .map(([, labels]) => pickValueForLocale(labels, activeLocale))
+    .filter((label) => !hasLocaleContent || isSelectedLocaleText(label, activeLocale))
     .filter((label): label is string => Boolean(label))
 }
 
@@ -836,8 +880,8 @@ function mapToVerandaHotel(d: DbItemPayload, fallback?: VerandaHotel, locale = "
 
   return {
     slug: fallback?.slug ?? d.slug,
-    name: fallback?.name ?? name ?? d.slug,
-    shortName: fallback?.shortName ?? name ?? d.slug,
+    name: name ?? fallback?.name ?? d.slug,
+    shortName: name ?? fallback?.shortName ?? d.slug,
     location: nonEmptyString(d.address_text) ?? fallback?.location ?? "",
     region: region ?? "various",
     rating: fallback?.rating ?? "",

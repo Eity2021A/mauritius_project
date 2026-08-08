@@ -185,7 +185,7 @@ export default async function VerandaHotelPage({
   }
 
   const relatedHotels = await getRelatedVerandaHotelsFromDb(slug, 3, activeLocale);
-  const hotelCategories = [hotel.region, hotel.style, ...hotel.tags].map(t);
+  const hotelCategories = [hotel.region, hotel.style, ...hotel.tags];
 
   return localizeStaticPage((
     <main id="main-content" className="min-h-screen bg-white">
@@ -227,7 +227,7 @@ export default async function VerandaHotelPage({
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3">
               {hotel.name}
             </h1>
-            <CategoryBadges categories={hotelCategories} />
+            <CategoryBadges categories={hotelCategories} locale={activeLocale} />
           </div>
         </div>
       </section>

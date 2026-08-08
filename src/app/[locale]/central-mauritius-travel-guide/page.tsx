@@ -307,6 +307,7 @@ export default async function CentralMauritiusTravelGuidePage({
         <HiddenGems
           featuredSlugs={centralHiddenGemSlugs}
           featuredHrefs={centralHiddenGemHrefs}
+          locale={activeLocale}
         />
         <section className="mt-4 grid gap-4 rounded-md bg-[#f5f2ef] px-5 py-5 md:grid-cols-2 md:px-7">
           <div className="md:border-r md:border-[#ded6cf] md:pr-7">
@@ -330,7 +331,7 @@ export default async function CentralMauritiusTravelGuidePage({
                         rel="noopener noreferrer"
                         className="font-bold text-[#1d3144] transition hover:text-[#f16522]"
                       >
-                        {link.label}
+                        {label}
                       </Link>
                     ) : (
                       <strong className="text-[#1d3144]">{label}</strong>

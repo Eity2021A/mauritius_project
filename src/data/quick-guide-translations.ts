@@ -390,22 +390,22 @@ translatedRegionOverrides.ru = {
 const northGuideLocaleRefinements: Record<Exclude<GuideLocale, "en">, Partial<RegionGuide>> = {
   fr: {
     driveTimes: [["Aéroport", "Grand Baie", "1 h-1 h 30"], ["Port Louis", "Grand Baie", "30-45 min"], ["Pamplemousses", "Grand Baie", "20-30 min"], ["Belle Mare", "Grand Baie", "1 h-1 h 30"]],
-    places: [{ name: "Grand Baie", text: "Centre animé pour restaurants, shopping, vie nocturne et bateaux." }, { name: "Trou aux Biches", text: "Lagon calme et familial, sable doux et couchers de soleil." }, { name: "Mont Choisy", text: "Une des plus longues plages du nord, parfaite pour marcher." }, { name: "Pereybère", text: "Petite plage claire, idéale pour nager." }, { name: "Cap Malheureux", text: "Église rouge iconique au bord du lagon nord." }, { name: "Jardin de Pamplemousses", text: "Nénuphars géants et allées de palmiers." }, { name: "L'Aventure du Sucre", text: "Musée du sucre dans une ancienne usine, dégustations incluses." }, { name: "Îles du Nord", text: "Catamaran vers Gabriel, Flat Island et Coin de Mire." }],
+    places: [{ name: "Grand Baie", text: "Centre animé pour restaurants, shopping, vie nocturne et bateaux." }, { name: "Trou aux Biches", text: "Lagon calme et familial, sable doux et couchers de soleil." }, { name: "Mont Choisy", text: "Une des plus longues plages du nord, parfaite pour marcher." }, { name: "Pereybère", text: "Petite plage claire, idéale pour nager." }, { name: "Cap Malheureux", text: "Église rouge iconique au bord du lagon nord." }, { name: "Jardin de Pamplemousses", text: "Nénuphars géants et allées de palmiers." }, { name: "Musée du sucre", text: "Musée dans une ancienne usine, dégustations incluses." }, { name: "Îles du Nord", text: "Catamaran vers Gabriel, l'île Plate et Coin de Mire." }],
     steps: [{ number: "1", title: "Pamplemousses", text: "jardin puis musée du sucre" }, { number: "2", title: "Déjeuner", text: "à Grand Baie animée" }, { number: "3", title: "Plages", text: "et église de Cap Malheureux" }, { number: "4", title: "Dîner et verres", text: "sur le front de mer de Grand Baie" }],
   },
   de: {
     driveTimes: [["Flughafen", "Grand Baie", "1-1,5 Std."], ["Port Louis", "Grand Baie", "30-45 Min."], ["Pamplemousses", "Grand Baie", "20-30 Min."], ["Belle Mare", "Grand Baie", "1-1,5 Std."]],
-    places: [{ name: "Grand Baie", text: "Lebendiges Zentrum für Essen, Shopping, Nachtleben und Bootstouren." }, { name: "Trou aux Biches", text: "Ruhige familienfreundliche Lagune mit weichem Sand und Sonnenuntergang." }, { name: "Mont Choisy", text: "Einer der längsten Nordstrände, ideal für Spaziergänge." }, { name: "Pereybere", text: "Kompakter Strand mit klarem Wasser, perfekt zum Schwimmen." }, { name: "Cap Malheureux", text: "Ikonische Kirche mit rotem Dach am nördlichen Lagunenrand." }, { name: "Pamplemousses-Garten", text: "Riesige Seerosen und Palmenalleen in einem friedlichen Garten." }, { name: "L'Aventure du Sucre", text: "Zuckermuseum in einer alten Fabrik, Verkostungen inklusive." }, { name: "Nordinseln", text: "Katamaran nach Gabriel, Flat Island und Coin de Mire." }],
+    places: [{ name: "Grand Baie", text: "Lebendiges Zentrum für Essen, Shopping, Nachtleben und Bootstouren." }, { name: "Trou aux Biches", text: "Ruhige familienfreundliche Lagune mit weichem Sand und Sonnenuntergang." }, { name: "Mont Choisy", text: "Einer der längsten Nordstrände, ideal für Spaziergänge." }, { name: "Pereybere", text: "Kompakter Strand mit klarem Wasser, perfekt zum Schwimmen." }, { name: "Cap Malheureux", text: "Ikonische Kirche mit rotem Dach am nördlichen Lagunenrand." }, { name: "Pamplemousses-Garten", text: "Riesige Seerosen und Palmenalleen in einem friedlichen Garten." }, { name: "Zuckermuseum", text: "Museum in einer alten Fabrik, Verkostungen inklusive." }, { name: "Nordinseln", text: "Katamaran nach Gabriel, Flat Island und Coin de Mire." }],
     steps: [{ number: "1", title: "Pamplemousses", text: "Garten, dann Zuckermuseum" }, { number: "2", title: "Mittagessen", text: "im lebendigen Grand Baie" }, { number: "3", title: "Strände", text: "und Kirche von Cap Malheureux" }, { number: "4", title: "Abendessen und Drinks", text: "an der Waterfront von Grand Baie" }],
   },
   it: {
     driveTimes: [["Aeroporto", "Grand Baie", "1-1,5 h"], ["Port Louis", "Grand Baie", "30-45 min"], ["Pamplemousses", "Grand Baie", "20-30 min"], ["Belle Mare", "Grand Baie", "1-1,5 h"]],
-    places: [{ name: "Grand Baie", text: "Centro vivace per cibo, shopping, vita notturna e barche." }, { name: "Trou aux Biches", text: "Laguna calma per famiglie, sabbia morbida e tramonti." }, { name: "Mont Choisy", text: "Una delle spiagge più lunghe del nord, perfetta per camminare." }, { name: "Pereybere", text: "Spiaggia compatta con acqua limpida, ideale per nuotare." }, { name: "Cap Malheureux", text: "Chiesa dal tetto rosso accanto alla laguna del nord." }, { name: "Giardino di Pamplemousses", text: "Ninfee giganti e viali di palme in un giardino tranquillo." }, { name: "L'Aventure du Sucre", text: "Museo dello zucchero in una vecchia fabbrica, degustazioni incluse." }, { name: "Isole del Nord", text: "Catamarano verso Gabriel, Flat Island e Coin de Mire." }],
+    places: [{ name: "Grand Baie", text: "Centro vivace per cibo, shopping, vita notturna e barche." }, { name: "Trou aux Biches", text: "Laguna calma per famiglie, sabbia morbida e tramonti." }, { name: "Mont Choisy", text: "Una delle spiagge più lunghe del nord, perfetta per camminare." }, { name: "Pereybere", text: "Spiaggia compatta con acqua limpida, ideale per nuotare." }, { name: "Cap Malheureux", text: "Chiesa dal tetto rosso accanto alla laguna del nord." }, { name: "Giardino di Pamplemousses", text: "Ninfee giganti e viali di palme in un giardino tranquillo." }, { name: "Museo dello zucchero", text: "Museo in una vecchia fabbrica, degustazioni incluse." }, { name: "Isole del Nord", text: "Catamarano verso Gabriel, Flat Island e Coin de Mire." }],
     steps: [{ number: "1", title: "Pamplemousses", text: "giardino e museo dello zucchero" }, { number: "2", title: "Pranzo", text: "nella vivace Grand Baie" }, { number: "3", title: "Spiagge", text: "e chiesa di Cap Malheureux" }, { number: "4", title: "Cena e drink", text: "sul waterfront di Grand Baie" }],
   },
   es: {
     driveTimes: [["Aeropuerto", "Grand Baie", "1-1,5 h"], ["Port Louis", "Grand Baie", "30-45 min"], ["Pamplemousses", "Grand Baie", "20-30 min"], ["Belle Mare", "Grand Baie", "1-1,5 h"]],
-    places: [{ name: "Grand Baie", text: "Centro animado de comida, compras, vida nocturna y barcos." }, { name: "Trou aux Biches", text: "Laguna tranquila para familias, arena suave y atardeceres." }, { name: "Mont Choisy", text: "Una de las playas más largas del norte, ideal para pasear." }, { name: "Pereybere", text: "Playa pequeña de agua clara, ideal para nadar." }, { name: "Cap Malheureux", text: "Iglesia roja icónica junto a la laguna norte." }, { name: "Jardín de Pamplemousses", text: "Nenúfares gigantes y avenidas de palmeras." }, { name: "L'Aventure du Sucre", text: "Museo del azúcar en una antigua fábrica, con degustaciones." }, { name: "Islas del Norte", text: "Catamarán a Gabriel, Flat Island y Coin de Mire." }],
+    places: [{ name: "Grand Baie", text: "Centro animado de comida, compras, vida nocturna y barcos." }, { name: "Trou aux Biches", text: "Laguna tranquila para familias, arena suave y atardeceres." }, { name: "Mont Choisy", text: "Una de las playas más largas del norte, ideal para pasear." }, { name: "Pereybere", text: "Playa pequeña de agua clara, ideal para nadar." }, { name: "Cap Malheureux", text: "Iglesia roja icónica junto a la laguna norte." }, { name: "Jardín de Pamplemousses", text: "Nenúfares gigantes y avenidas de palmeras." }, { name: "Museo del azúcar", text: "Museo en una antigua fábrica, con degustaciones." }, { name: "Islas del Norte", text: "Catamarán a Gabriel, Flat Island y Coin de Mire." }],
     steps: [{ number: "1", title: "Pamplemousses", text: "jardín y museo del azúcar" }, { number: "2", title: "Almuerzo", text: "en la animada Grand Baie" }, { number: "3", title: "Playas", text: "e iglesia de Cap Malheureux" }, { number: "4", title: "Cena y copas", text: "en el waterfront de Grand Baie" }],
   },
   ru: {
@@ -414,18 +414,192 @@ const northGuideLocaleRefinements: Record<Exclude<GuideLocale, "en">, Partial<Re
     driveTimes: [["Аэропорт", "Гранд-Бэ", "1-1,5 ч"], ["Порт-Луи", "Гранд-Бэ", "30-45 мин"], ["Памплемус", "Гранд-Бэ", "20-30 мин"], ["Бель-Мар", "Гранд-Бэ", "1-1,5 ч"]],
     goodToKnow: "Гранд-Бэ особенно оживлен вечером; днем лучше купаться в Перейбере, Мон-Шуази или Тру-о-Биш. Для церкви Кап-Малёрё и храма Триоле выбирайте скромную одежду.",
     gettingAround: [["Аренда авто", "максимальная свобода"], ["Трансфер", "полный маршрут по северу"], ["Такси", "удобно вокруг Гранд-Бэ"], ["Лодочные операторы", "круизы к северным островам"]],
-    places: [{ name: "Гранд-Бэ", text: "Живой центр еды, шопинга, ночной жизни и лодок." }, { name: "Тру-о-Биш", text: "Спокойная семейная лагуна, мягкий песок и закаты." }, { name: "Мон-Шуази", text: "Один из самых длинных северных пляжей, хорош для прогулок." }, { name: "Перейбер", text: "Небольшой пляж с прозрачной водой, отлично для купания." }, { name: "Кап-Малёрё", text: "Знаменитая церковь с красной крышей у северной лагуны." }, { name: "Сад Памплемус", text: "Гигантские кувшинки и пальмовые аллеи." }, { name: "L'Aventure du Sucre", text: "Музей сахара в старой фабрике, с дегустациями." }, { name: "Северные острова", text: "Катамаран к Gabriel, Flat Island и Coin de Mire." }],
+    places: [{ name: "Гранд-Бэ", text: "Живой центр еды, шопинга, ночной жизни и лодок." }, { name: "Тру-о-Биш", text: "Спокойная семейная лагуна, мягкий песок и закаты." }, { name: "Мон-Шуази", text: "Один из самых длинных северных пляжей, хорош для прогулок." }, { name: "Перейбер", text: "Небольшой пляж с прозрачной водой, отлично для купания." }, { name: "Кап-Малёрё", text: "Знаменитая церковь с красной крышей у северной лагуны." }, { name: "Сад Памплемус", text: "Гигантские кувшинки и пальмовые аллеи." }, { name: "Музей сахара", text: "Музей в старой фабрике, с дегустациями." }, { name: "Северные острова", text: "Катамаран к островам Габриэль, Флэт-Айленд и Куэн-де-Мир." }],
     steps: [{ number: "1", title: "Памплемус", text: "сад и музей сахара" }, { number: "2", title: "Обед", text: "в оживленном Гранд-Бэ" }, { number: "3", title: "Пляжи", text: "и церковь Кап-Малёрё" }, { number: "4", title: "Ужин и напитки", text: "на набережной Гранд-Бэ" }],
   },
 };
 
+const southGuideLocaleRefinements: Record<Exclude<GuideLocale, "en">, Partial<RegionGuide>> = {
+  fr: {
+    driveTimes: [["Aéroport", "Souillac", "35-50 min"], ["Blue Bay", "Souillac", "45-60 min"], ["Port Louis", "Grand Bassin", "1 h-1 h 30"], ["Le Morne", "Bel Ombre", "25-40 min"]],
+    gettingAround: [["Voiture de location", "routes de montagne sinueuses"], ["Transfert", "journée complète et dégustations"], ["Opérateurs bateau", "culture et côte"], ["Taxi", "depuis les hôtels; accordez le prix"]],
+    places: [{ name: "Gris Gris et La Roche", text: "Falaises sauvages, roches noires et surf puissant - vue seulement." }, { name: "Rochester Falls", text: "Cascade sur colonnes de basalte dans un bassin." }, { name: "Grand Bassin", text: "Lac sacré, temples et statues géantes." }, { name: "Thé de Bois Chéri", text: "Domaine de thé avec dégustations et vues." }, { name: "Parc La Vanille", text: "Tortues géantes, crocodiles et sentiers ombragés." }, { name: "Saint Aubin et route du rhum", text: "Rhum, vanille et patrimoine sucrier." }, { name: "Bel Ombre", text: "Côte luxe calme, resorts, bien-être et golf." }, { name: "Souillac et Maconde", text: "Village d'entrée et belvédères côtiers sauvages." }],
+    steps: [{ number: "1", title: "Grand Bassin", text: "le lac sacré" }, { number: "2", title: "Bois Chéri", text: "dégustation de thé" }, { number: "3", title: "La Vanille", text: "faune et Rochester Falls" }, { number: "4", title: "Gris Gris", text: "falaises à l'heure dorée" }],
+  },
+  de: {
+    driveTimes: [["Flughafen", "Souillac", "35-50 Min."], ["Blue Bay", "Souillac", "45-60 Min."], ["Port Louis", "Grand Bassin", "1-1,5 Std."], ["Le Morne", "Bel Ombre", "25-40 Min."]],
+    gettingAround: [["Mietwagen", "kurvige Hochlandstraßen"], ["Transfer", "Tagestouren und Verkostungen"], ["Bootsanbieter", "Kultur und Küste kombiniert"], ["Taxi", "vom Hotel; Preis vorher klären"]],
+    places: [{ name: "Gris Gris und La Roche", text: "Wilde Klippen, schwarze Felsen und starke Brandung - nur Aussicht." }, { name: "Rochester Falls", text: "Wasser fällt über blockige Basaltklippen in ein Becken." }, { name: "Grand Bassin", text: "Heiliger Kratersee mit Tempeln und riesigen Statuen." }, { name: "Bois-Chéri-Tee", text: "Teeplantage im Hochland mit Verkostung und Aussicht." }, { name: "La Vanille Nature Park", text: "Riesenschildkröten, Krokodile und schattige Wege." }, { name: "Saint Aubin und Rumroute", text: "Rum, Vanille und Zuckererbe." }, { name: "Bel Ombre", text: "Ruhige Luxusküste mit Resorts, Wellness und Golf." }, { name: "Souillac und Maconde", text: "Tor zur wilden Küste und zu Aussichtspunkten." }],
+    steps: [{ number: "1", title: "Grand Bassin", text: "heiliger Kratersee" }, { number: "2", title: "Bois Chéri", text: "Tee-Verkostung im Hochland" }, { number: "3", title: "La Vanille", text: "Tierwelt und Rochester Falls" }, { number: "4", title: "Gris Gris", text: "Klippen zur goldenen Stunde" }],
+  },
+  it: {
+    driveTimes: [["Aeroporto", "Souillac", "35-50 min"], ["Blue Bay", "Souillac", "45-60 min"], ["Port Louis", "Grand Bassin", "1-1,5 h"], ["Le Morne", "Bel Ombre", "25-40 min"]],
+    gettingAround: [["Auto a noleggio", "strade tortuose degli altopiani"], ["Transfer", "tour e degustazioni di un giorno"], ["Operatori barca", "cultura e costa"], ["Taxi", "dagli hotel, concorda il prezzo"]],
+    places: [{ name: "Gris Gris e La Roche", text: "Scogliere selvagge, rocce nere e onde potenti: solo vista." }, { name: "Rochester Falls", text: "Acqua su colonne di basalto verso una piscina naturale." }, { name: "Grand Bassin", text: "Lago sacro con templi e statue giganti." }, { name: "Tè Bois Chéri", text: "Tenuta del tè con degustazioni e panorami." }, { name: "Parco La Vanille", text: "Tartarughe giganti, coccodrilli e sentieri ombrosi." }, { name: "Saint Aubin e rotta del rum", text: "Rum, vaniglia e patrimonio dello zucchero." }, { name: "Bel Ombre", text: "Costa tranquilla di lusso con resort, wellness e golf." }, { name: "Souillac e Maconde", text: "Villaggio e punti panoramici sulla costa selvaggia." }],
+    steps: [{ number: "1", title: "Grand Bassin", text: "il lago sacro" }, { number: "2", title: "Bois Chéri", text: "degustazione di tè" }, { number: "3", title: "La Vanille", text: "fauna e Rochester Falls" }, { number: "4", title: "Gris Gris", text: "scogliere all'ora dorata" }],
+  },
+  es: {
+    driveTimes: [["Aeropuerto", "Souillac", "35-50 min"], ["Blue Bay", "Souillac", "45-60 min"], ["Port Louis", "Grand Bassin", "1-1,5 h"], ["Le Morne", "Bel Ombre", "25-40 min"]],
+    gettingAround: [["Coche de alquiler", "carreteras de montaña"], ["Traslado", "día completo y degustaciones"], ["Operadores de barco", "cultura y costa"], ["Taxi", "desde hoteles; acuerda precio"]],
+    places: [{ name: "Gris Gris y La Roche", text: "Acantilados salvajes, rocas negras y oleaje potente: solo mirador." }, { name: "Rochester Falls", text: "Agua sobre columnas de basalto hasta una poza." }, { name: "Grand Bassin", text: "Lago sagrado con templos y estatuas gigantes." }, { name: "Té Bois Chéri", text: "Finca de té con degustaciones y vistas." }, { name: "Parque La Vanille", text: "Tortugas gigantes, cocodrilos y senderos sombreados." }, { name: "Saint Aubin y ruta del ron", text: "Ron, vainilla y patrimonio azucarero." }, { name: "Bel Ombre", text: "Costa tranquila de lujo con resorts, bienestar y golf." }, { name: "Souillac y Maconde", text: "Pueblo de entrada y miradores de costa salvaje." }],
+    steps: [{ number: "1", title: "Grand Bassin", text: "el lago sagrado" }, { number: "2", title: "Bois Chéri", text: "degustación de té" }, { number: "3", title: "La Vanille", text: "fauna y Rochester Falls" }, { number: "4", title: "Gris Gris", text: "acantilados al atardecer" }],
+  },
+  ru: {
+    metadata: { title: "Путеводитель по югу Маврикия", description: "Юг Маврикия: Гри-Гри, водопады, Гран-Бассен и дикое побережье." },
+    intro: "Дикое сердце острова: суровые утесы, мощный прибой, водопады, священное озеро и чайные плантации высокогорья.",
+    mapCaption: "Южный регион кратко",
+    driveTimes: [["Аэропорт", "Суйяк", "35-50 мин"], ["Блю-Бэй", "Суйяк", "45-60 мин"], ["Порт-Луи", "Гран-Бассен", "1-1,5 ч"], ["Ле-Морн", "Бель-Омбр", "25-40 мин"]],
+    goodToKnow: "Дикий юг чаще для видов, а не для купания: в Гри-Гри никогда не заходите в воду. В высокогорье прохладно и влажно; для Гран-Бассена выбирайте скромную одежду.",
+    gettingAround: [["Аренда авто", "горные дороги"], ["Трансфер", "полный день и дегустации"], ["Лодочные операторы", "культура и побережье"], ["Такси", "от отелей; цена заранее"]],
+    bestFor: "Природы, фотографий и культуры: утесы, водопады, священное озеро, чай и ром.",
+    places: [{ name: "Гри-Гри и Ла-Рош", text: "Дикие утесы, черные скалы и сильный прибой: только вид." }, { name: "Водопад Рочестер", text: "Вода падает по базальтовым колоннам в природный бассейн." }, { name: "Гран-Бассен", text: "Священное озеро с храмами и гигантскими статуями." }, { name: "Чайная фабрика Буа-Шери", text: "Чайная плантация с дегустациями и видами." }, { name: "Парк Ла-Ваниль", text: "Гигантские черепахи, крокодилы и тенистые тропы." }, { name: "Сен-Обен и ромовый маршрут", text: "Ром, ваниль и наследие сахара." }, { name: "Бель-Омбр", text: "Спокойное люксовое побережье с курортами, wellness и гольфом." }, { name: "Суйяк и Маконд", text: "Деревня и смотровые точки дикого побережья." }],
+    steps: [{ number: "1", title: "Гран-Бассен", text: "священное озеро" }, { number: "2", title: "Буа-Шери", text: "дегустация чая" }, { number: "3", title: "Ла-Ваниль", text: "животные и водопад Рочестер" }, { number: "4", title: "Гри-Гри", text: "утесы в золотой час" }],
+  },
+};
+
+const eastGuideLocaleRefinements: Record<Exclude<GuideLocale, "en">, Partial<RegionGuide>> = {
+  fr: {
+    driveTimes: [["Aéroport", "Belle Mare", "1 h-1 h 30"], ["Aéroport", "Trou d'Eau Douce", "1 h 30"], ["Grand Baie", "Belle Mare", "1 h-1 h 30"], ["Port Louis", "Belle Mare", "1 h-1 h 30"]],
+    gettingAround: [["Voiture de location", "plages et marchés"], ["Transfert", "toute la côte"], ["Opérateurs bateau", "croisières vers les îles"], ["Taxi", "resorts et golf"]],
+    places: [{ name: "Belle Mare", text: "10 km de sable blanc et resorts de plage luxueux." }, { name: "Île aux Cerfs", text: "Île turquoise avec sports nautiques et golf, accessible en bateau." }, { name: "Trou d'Eau Douce", text: "Village animé et départ des croisières vers les îles." }, { name: "Cascade GRSE", text: "Croisière dans les mangroves jusqu'à une cascade côtière." }, { name: "Palmar", text: "Plages boutique calmes." }, { name: "Poste Lafayette", text: "Côte sauvage et ventée de lave noire et de lagon." }, { name: "Parc national de Bras d'Eau", text: "Sentiers forestiers et oiseaux à l'écart du sable." }, { name: "Marché de Centre de Flacq", text: "Grand marché local authentique de la région." }],
+    steps: [{ number: "1", title: "Marche au lever du soleil", text: "sur la plage de Belle Mare" }, { number: "2", title: "Croisière", text: "depuis Trou d'Eau Douce" }, { number: "3", title: "Île aux Cerfs", text: "et cascade GRSE" }, { number: "4", title: "Dîner au coucher du soleil", text: "retour au resort" }],
+  },
+  de: {
+    driveTimes: [["Flughafen", "Belle Mare", "1-1,5 Std."], ["Flughafen", "Trou d'Eau Douce", "1,5 Std."], ["Grand Baie", "Belle Mare", "1-1,5 Std."], ["Port Louis", "Belle Mare", "1-1,5 Std."]],
+    gettingAround: [["Mietwagen", "Strände und Märkte"], ["Transfer", "entlang der ganzen Küste"], ["Bootsanbieter", "Inselkreuzfahrten"], ["Taxi", "Resorts und Golf"]],
+    places: [{ name: "Belle Mare", text: "10 km weißer Sand und luxuriöse Strandresorts." }, { name: "Île aux Cerfs", text: "Türkisfarbene Insel mit Wassersport und Golf, per Boot." }, { name: "Trou d'Eau Douce", text: "Lebendiges Dorf und Startpunkt für Inselkreuzfahrten." }, { name: "GRSE-Wasserfall", text: "Fahrt durch Mangroven zu einem Küstenwasserfall." }, { name: "Palmar", text: "Ruhige Boutique-Strände." }, { name: "Poste Lafayette", text: "Wilde windige Küste aus schwarzer Lava und Lagune." }, { name: "Nationalpark Bras d'Eau", text: "Waldwege und Vögel abseits des Sands." }, { name: "Markt von Centre de Flacq", text: "Großer authentischer Markt der Region." }],
+    steps: [{ number: "1", title: "Sonnenaufgangsspaziergang", text: "am Strand von Belle Mare" }, { number: "2", title: "Bootsfahrt", text: "ab Trou d'Eau Douce" }, { number: "3", title: "Île aux Cerfs", text: "und GRSE-Wasserfall" }, { number: "4", title: "Abendessen bei Sonnenuntergang", text: "zurück im Resort" }],
+  },
+  it: {
+    driveTimes: [["Aeroporto", "Belle Mare", "1-1,5 h"], ["Aeroporto", "Trou d'Eau Douce", "1,5 h"], ["Grand Baie", "Belle Mare", "1-1,5 h"], ["Port Louis", "Belle Mare", "1-1,5 h"]],
+    gettingAround: [["Auto a noleggio", "spiagge e mercati"], ["Transfer", "tutta la costa"], ["Operatori barca", "crociere alle isole"], ["Taxi", "resort e golf"]],
+    places: [{ name: "Belle Mare", text: "10 km di sabbia bianca e resort di lusso." }, { name: "Île aux Cerfs", text: "Isola turchese con sport acquatici e golf, in barca." }, { name: "Trou d'Eau Douce", text: "Villaggio vivace e partenza per le crociere alle isole." }, { name: "Cascata GRSE", text: "Crociera tra mangrovie fino a una cascata costiera." }, { name: "Palmar", text: "Spiagge boutique tranquille." }, { name: "Poste Lafayette", text: "Costa selvaggia e ventosa di lava nera e laguna." }, { name: "Parco nazionale Bras d'Eau", text: "Sentieri forestali e uccelli lontano dalla sabbia." }, { name: "Mercato di Centre de Flacq", text: "Grande mercato locale autentico della regione." }],
+    steps: [{ number: "1", title: "Passeggiata all'alba", text: "sulla spiaggia di Belle Mare" }, { number: "2", title: "Crociera", text: "da Trou d'Eau Douce" }, { number: "3", title: "Île aux Cerfs", text: "e cascata GRSE" }, { number: "4", title: "Cena al tramonto", text: "ritorno al resort" }],
+  },
+  es: {
+    driveTimes: [["Aeropuerto", "Belle Mare", "1-1,5 h"], ["Aeropuerto", "Trou d'Eau Douce", "1,5 h"], ["Grand Baie", "Belle Mare", "1-1,5 h"], ["Port Louis", "Belle Mare", "1-1,5 h"]],
+    gettingAround: [["Coche de alquiler", "playas y mercados"], ["Traslado", "toda la costa"], ["Operadores de barco", "cruceros a islas"], ["Taxi", "resorts y golf"]],
+    places: [{ name: "Belle Mare", text: "10 km de arena blanca y resorts de playa de lujo." }, { name: "Île aux Cerfs", text: "Isla turquesa con deportes acuáticos y golf, por barco." }, { name: "Trou d'Eau Douce", text: "Pueblo animado y salida de cruceros a islas." }, { name: "Cascada GRSE", text: "Crucero por manglares hasta una cascada costera." }, { name: "Palmar", text: "Playas boutique tranquilas." }, { name: "Poste Lafayette", text: "Costa salvaje y ventosa de lava negra y laguna." }, { name: "Parque nacional Bras d'Eau", text: "Senderos forestales y aves lejos de la arena." }, { name: "Mercado de Centre de Flacq", text: "Gran mercado local auténtico de la región." }],
+    steps: [{ number: "1", title: "Paseo al amanecer", text: "en la playa de Belle Mare" }, { number: "2", title: "Crucero", text: "desde Trou d'Eau Douce" }, { number: "3", title: "Île aux Cerfs", text: "y cascada GRSE" }, { number: "4", title: "Cena al atardecer", text: "de vuelta al resort" }],
+  },
+  ru: {
+    metadata: { title: "Путеводитель по востоку Маврикия", description: "Восток Маврикия: Бель-Мар, Иль-о-Серф, лагуны и курорты." },
+    intro: "Спокойная сторона острова: длинные белые пляжи, бирюзовые лагуны, островные круизы и курорты на рассвете.",
+    mapCaption: "Восточный регион кратко",
+    driveTimes: [["Аэропорт", "Бель-Мар", "1-1,5 ч"], ["Аэропорт", "Тру-д'О-Дус", "1,5 ч"], ["Гранд-Бэ", "Бель-Мар", "1-1,5 ч"], ["Порт-Луи", "Бель-Мар", "1-1,5 ч"]],
+    goodToKnow: "На востоке дуют пассаты. Перед купанием проверяйте море, особенно у Пост-Лафайет.",
+    gettingAround: [["Аренда авто", "пляжи и рынки"], ["Трансфер", "все побережье"], ["Лодочные операторы", "островные круизы"], ["Такси", "курорты и гольф"]],
+    bestFor: "Пар, молодоженов, семей и luxury-путешественников: спокойные курорты, гольф, рассветы и катамараны.",
+    places: [{ name: "Бель-Мар", text: "10 км белого песка и роскошных пляжных курортов." }, { name: "Иль-о-Серф", text: "Бирюзовый остров с водными развлечениями и гольфом, на лодке." }, { name: "Тру-д'О-Дус", text: "Живая деревня и старт островных круизов." }, { name: "Водопад GRSE", text: "Круиз через мангры к прибрежному водопаду." }, { name: "Пальмар", text: "Тихие бутик-пляжи." }, { name: "Пост-Лафайет", text: "Дикое ветреное побережье из черной лавы и лагуны." }, { name: "Национальный парк Бра-д'О", text: "Лесные тропы и птицы вдали от пляжа." }, { name: "Рынок Centre de Flacq", text: "Крупный аутентичный местный рынок." }],
+    steps: [{ number: "1", title: "Рассветная прогулка", text: "по пляжу Бель-Мар" }, { number: "2", title: "Круиз", text: "из Тру-д'О-Дус" }, { number: "3", title: "Иль-о-Серф", text: "и водопад GRSE" }, { number: "4", title: "Ужин на закате", text: "на курорте" }],
+  },
+};
+
+const westGuideLocaleRefinements: Record<Exclude<GuideLocale, "en">, Partial<RegionGuide>> = {
+  fr: {
+    driveTimes: [["Aéroport", "Flic en Flac", "1 h-1 h 30"], ["Port-Louis", "Flic en Flac", "25-50 min"], ["Flic en Flac", "Tamarin", "20-30 min"], ["Flic en Flac", "Chamarel", "45-60 min"]],
+    gettingAround: [["Voiture de location", "plages, Chamarel et gorges"], ["Transfert", "boucle ouest à la journée"], ["Taxi", "petits trajets côtiers"], ["Opérateurs bateau", "Bénitiers et dauphins"]],
+    places: [{ name: "Flic en Flac", text: "Base principale de l'ouest : longue plage, lagon calme et couchers de soleil." }, { name: "Baie de Tamarin", text: "Plage de surf détendue et point de départ des sorties dauphins." }, { name: "Rivière Noire", text: "Base océan pour dauphins, baleines et croisières." }, { name: "Le Morne", text: "Montagne UNESCO, lagon et plage pour kitesurf et randonnée." }, { name: "La Preneuse", text: "Plage locale calme avec la tour Martello." }, { name: "Chamarel", text: "Cascade, Terre des Sept Couleurs et rhum dans les hauteurs." }, { name: "Gorges de Rivière Noire", text: "Forêt native, oiseaux et points de vue pour randonneurs." }, { name: "Îlot Bénitiers et Crystal Rock", text: "Catamaran vers un îlot de sable et Crystal Rock turquoise." }],
+    steps: [{ number: "1", title: "Flic en Flac", text: "plage du matin et baignade dans le lagon" }, { number: "2", title: "Côte de Tamarin", text: "déjeuner, surf et sorties dauphins" }, { number: "3", title: "Chamarel", text: "cascade et rhum, ou Le Morne" }, { number: "4", title: "Coucher de soleil et dîner", text: "sur la côte dorée" }],
+  },
+  de: {
+    driveTimes: [["Flughafen", "Flic en Flac", "1-1,5 Std."], ["Port Louis", "Flic en Flac", "25-50 Min."], ["Flic en Flac", "Tamarin", "20-30 Min."], ["Flic en Flac", "Chamarel", "45-60 Min."]],
+    gettingAround: [["Mietwagen", "Strände, Chamarel und Schluchten"], ["Transfer", "Westschleife als Tagestour"], ["Taxi", "kurze Küstenfahrten"], ["Bootsanbieter", "Bénitiers und Delfine"]],
+    places: [{ name: "Flic en Flac", text: "Hauptbasis im Westen: langer Strand, ruhige Lagune und Sonnenuntergänge." }, { name: "Bucht von Tamarin", text: "Entspannter Surfstrand und Startpunkt für Delfintouren." }, { name: "Rivière Noire", text: "Meereshub für Delfine, Wale und Kreuzfahrten." }, { name: "Le Morne", text: "UNESCO-Berg, Lagune und Strand für Kitesurfen und Wandern." }, { name: "La Preneuse", text: "Ruhiger lokaler Strand mit historischem Martello-Turm." }, { name: "Chamarel", text: "Wasserfall, Siebenfarbige Erde und Rum in den Hügeln." }, { name: "Gorges de Rivière Noire", text: "Einheimischer Wald, Vögel und Aussichtspunkte für Wanderer." }, { name: "Îlot Bénitiers und Crystal Rock", text: "Katamaran zu einer Sandinsel und zum türkisfarbenen Crystal Rock." }],
+    steps: [{ number: "1", title: "Flic en Flac", text: "Morgenstrand und Schwimmen in der Lagune" }, { number: "2", title: "Küste von Tamarin", text: "Mittagessen, Surf und Delfintouren" }, { number: "3", title: "Chamarel", text: "Wasserfall und Rum, oder Le Morne" }, { number: "4", title: "Sonnenuntergang und Abendessen", text: "an der goldenen Küste" }],
+  },
+  it: {
+    driveTimes: [["Aeroporto", "Flic en Flac", "1-1,5 h"], ["Port Louis", "Flic en Flac", "25-50 min"], ["Flic en Flac", "Tamarin", "20-30 min"], ["Flic en Flac", "Chamarel", "45-60 min"]],
+    gettingAround: [["Auto a noleggio", "spiagge, Chamarel e gole"], ["Transfer", "anello ovest in giornata"], ["Taxi", "brevi tragitti costieri"], ["Operatori barca", "Bénitiers e delfini"]],
+    places: [{ name: "Flic en Flac", text: "Base principale dell'ovest: lunga spiaggia, laguna calma e tramonti." }, { name: "Baia di Tamarin", text: "Spiaggia surf rilassata e punto di partenza per i delfini." }, { name: "Rivière Noire", text: "Base oceanica per delfini, balene e crociere." }, { name: "Le Morne", text: "Montagna UNESCO, laguna e spiaggia per kitesurf e trekking." }, { name: "La Preneuse", text: "Spiaggia locale tranquilla con la storica torre Martello." }, { name: "Chamarel", text: "Cascata, Terra dei Sette Colori e rum sulle colline." }, { name: "Gole di Rivière Noire", text: "Foresta nativa, uccelli e punti panoramici per escursionisti." }, { name: "Îlot Bénitiers e Crystal Rock", text: "Catamarano verso un isolotto sabbioso e Crystal Rock turchese." }],
+    steps: [{ number: "1", title: "Flic en Flac", text: "spiaggia del mattino e bagno in laguna" }, { number: "2", title: "Costa di Tamarin", text: "pranzo, surf e tour dei delfini" }, { number: "3", title: "Chamarel", text: "cascata e rum, oppure Le Morne" }, { number: "4", title: "Tramonto e cena", text: "sulla costa dorata" }],
+  },
+  es: {
+    driveTimes: [["Aeropuerto", "Flic en Flac", "1-1,5 h"], ["Port Louis", "Flic en Flac", "25-50 min"], ["Flic en Flac", "Tamarin", "20-30 min"], ["Flic en Flac", "Chamarel", "45-60 min"]],
+    gettingAround: [["Coche de alquiler", "playas, Chamarel y gargantas"], ["Traslado", "circuito oeste de día completo"], ["Taxi", "trayectos cortos por la costa"], ["Operadores de barco", "Bénitiers y delfines"]],
+    places: [{ name: "Flic en Flac", text: "Base principal del oeste: playa larga, laguna tranquila y atardeceres." }, { name: "Bahía de Tamarin", text: "Playa de surf relajada y salida para excursiones con delfines." }, { name: "Rivière Noire", text: "Base oceánica para delfines, ballenas y cruceros." }, { name: "Le Morne", text: "Montaña UNESCO, laguna y playa para kitesurf y senderismo." }, { name: "La Preneuse", text: "Playa local tranquila con la histórica torre Martello." }, { name: "Chamarel", text: "Cascada, Tierra de Siete Colores y ron en las colinas." }, { name: "Gargantas de Rivière Noire", text: "Bosque nativo, aves y miradores para senderistas." }, { name: "Îlot Bénitiers y Crystal Rock", text: "Catamarán hacia un islote de arena y Crystal Rock turquesa." }],
+    steps: [{ number: "1", title: "Flic en Flac", text: "playa por la mañana y baño en la laguna" }, { number: "2", title: "Costa de Tamarin", text: "almuerzo, surf y delfines" }, { number: "3", title: "Chamarel", text: "cascada y ron, o Le Morne" }, { number: "4", title: "Atardecer y cena", text: "en la costa dorada" }],
+  },
+  ru: {
+    metadata: { title: "Путеводитель по западу Маврикия", description: "Запад Маврикия: Флик-ан-Флак, Тамарин, Ле-Морн, Шамарель, горы, океанские туры и закаты." },
+    intro: "Побережье золотого часа: яркие закаты, спокойные вечерние лагуны, горы за пляжем и природа в глубине острова.",
+    mapAlt: "Карта западного Маврикия",
+    mapCaption: "Западный регион кратко",
+    driveTimes: [["Аэропорт", "Флик-ан-Флак", "1-1,5 ч"], ["Порт-Луи", "Флик-ан-Флак", "25-50 мин"], ["Флик-ан-Флак", "Тамарин", "20-30 мин"], ["Флик-ан-Флак", "Шамарель", "45-60 мин"]],
+    goodToKnow: "Морские туры лучше бронировать утром, пока вода спокойнее. В Тамарине бывают сильные течения: проверяйте условия перед купанием.",
+    gettingAround: [["Аренда авто", "пляжи, Шамарель и ущелья"], ["Трансфер", "западный маршрут на день"], ["Такси", "короткие поездки по побережью"], ["Лодочные операторы", "Бенитье и дельфины"]],
+    bestFor: "Семей, пар и искателей приключений: пляжи, закаты, океанские туры и природа.",
+    places: [{ name: "Флик-ан-Флак", text: "Главная база запада: длинный пляж, спокойная лагуна и закаты." }, { name: "Бухта Тамарин", text: "Расслабленный серф-пляж и старт туров к дельфинам." }, { name: "Ривьер-Нуар", text: "Океанская база для дельфинов, китов и круизов." }, { name: "Ле-Морн", text: "Гора ЮНЕСКО, лагуна и пляж для кайтсерфинга и походов." }, { name: "Ла-Пренёз", text: "Тихий местный пляж с исторической башней Мартелло." }, { name: "Шамарель", text: "Водопад, Семицветная земля и ром на холмах." }, { name: "Ущелья Ривьер-Нуар", text: "Родной лес, птицы и смотровые площадки для пеших маршрутов." }, { name: "Ило-Бенитье и Crystal Rock", text: "Катамаран к песчаному островку и бирюзовой скале Crystal Rock." }],
+    steps: [{ number: "1", title: "Флик-ан-Флак", text: "утренний пляж и купание в лагуне" }, { number: "2", title: "Побережье Тамарин", text: "обед, серфинг и дельфины" }, { number: "3", title: "Шамарель", text: "водопад и ром, или Ле-Морн" }, { number: "4", title: "Закат и ужин", text: "на золотом побережье" }],
+  },
+};
+
+const centralGuideLocaleRefinements: Record<Exclude<GuideLocale, "en">, Partial<RegionGuide>> = {
+  fr: {
+    driveTimes: [["Aéroport", "Curepipe", "40-55 min"], ["Port-Louis", "Moka", "20-30 min"], ["Port-Louis", "Curepipe", "35-50 min"], ["Grand Baie", "Quatre Bornes", "1 h-1 h 30"]],
+    gettingAround: [["Voiture de location", "sites dispersés"], ["Transfert", "culture et thé"], ["Taxi", "liaison nord-sud"], ["Opérateurs bateau", "liaisons entre villes"]],
+    places: [{ name: "Trou aux Cerfs", text: "Cratère volcanique dormant avec lac et vues dégagées." }, { name: "Le Pouce et Pieter Both", text: "Sommets classiques pour la randonnée." }, { name: "Cascades de Tamarin / 7 Cascades", text: "Les plus hautes cascades de l'île, randonnée et canyoning." }, { name: "Maison Eureka", text: "Maison créole de 1836 aux 109 portes." }, { name: "Curepipe", text: "Ville fraîche des hauts plateaux avec jardin botanique." }, { name: "Quatre Bornes", text: "Ville des fleurs et marché textile animé." }, { name: "Floréal", text: "Cachemire, textiles fins et maquettes de bateaux." }, { name: "Domaine des Aubineaux", text: "Maison coloniale sur la Route du Thé." }],
+    steps: [{ number: "1", title: "Trou aux Cerfs", text: "promenade autour du cratère" }, { number: "2", title: "Maison Eureka", text: "maison et jardins de Moka" }, { number: "3", title: "Quatre Bornes", text: "marché textile" }, { number: "4", title: "Curepipe", text: "jardin botanique et ville" }],
+  },
+  de: {
+    driveTimes: [["Flughafen", "Curepipe", "40-55 Min."], ["Port Louis", "Moka", "20-30 Min."], ["Port Louis", "Curepipe", "35-50 Min."], ["Grand Baie", "Quatre Bornes", "1-1,5 Std."]],
+    gettingAround: [["Mietwagen", "verstreute Ziele"], ["Transfer", "Kultur und Tee"], ["Taxi", "Nord-Süd-Verbindung"], ["Bootsanbieter", "Verbindungen zwischen Orten"]],
+    places: [{ name: "Trou aux Cerfs", text: "Ruhender Vulkankrater mit See und weitem Blick." }, { name: "Le Pouce und Pieter Both", text: "Klassische Gipfel für Wanderungen." }, { name: "Tamarind Falls / 7 Cascades", text: "Die höchsten Wasserfälle der Insel, Wandern und Canyoning." }, { name: "Eureka House", text: "Kreolisches Herrenhaus von 1836 mit 109 Türen." }, { name: "Curepipe", text: "Kühle Hochlandstadt mit Botanischem Garten." }, { name: "Quatre Bornes", text: "Blumenstadt mit lebendigem Textilmarkt." }, { name: "Floréal", text: "Kaschmir, feine Textilien und Modellschiffe." }, { name: "Domaine des Aubineaux", text: "Kolonialhaus an der Teeroute." }],
+    steps: [{ number: "1", title: "Trou aux Cerfs", text: "Spaziergang um den Krater" }, { number: "2", title: "Eureka House", text: "Haus und Gärten von Moka" }, { number: "3", title: "Quatre Bornes", text: "Textilmarkt" }, { number: "4", title: "Curepipe", text: "Botanischer Garten und Stadt" }],
+  },
+  it: {
+    driveTimes: [["Aeroporto", "Curepipe", "40-55 min"], ["Port Louis", "Moka", "20-30 min"], ["Port Louis", "Curepipe", "35-50 min"], ["Grand Baie", "Quatre Bornes", "1-1,5 h"]],
+    gettingAround: [["Auto a noleggio", "luoghi sparsi"], ["Transfer", "cultura e tè"], ["Taxi", "collegamento nord-sud"], ["Operatori barca", "tra le città"]],
+    places: [{ name: "Trou aux Cerfs", text: "Cratere vulcanico dormiente con lago e ampie viste." }, { name: "Le Pouce e Pieter Both", text: "Cime classiche per escursioni." }, { name: "Cascate di Tamarin / 7 Cascades", text: "Le cascate più alte dell'isola, trekking e canyoning." }, { name: "Eureka House", text: "Dimora creola del 1836 con 109 porte." }, { name: "Curepipe", text: "Fresca città degli altopiani con giardino botanico." }, { name: "Quatre Bornes", text: "Città dei fiori e vivace mercato tessile." }, { name: "Floréal", text: "Cashmere, tessuti fini e modellini di navi." }, { name: "Domaine des Aubineaux", text: "Casa coloniale sulla Route du Thé." }],
+    steps: [{ number: "1", title: "Trou aux Cerfs", text: "passeggiata intorno al cratere" }, { number: "2", title: "Eureka House", text: "casa e giardini di Moka" }, { number: "3", title: "Quatre Bornes", text: "mercato tessile" }, { number: "4", title: "Curepipe", text: "giardino botanico e città" }],
+  },
+  es: {
+    driveTimes: [["Aeropuerto", "Curepipe", "40-55 min"], ["Port Louis", "Moka", "20-30 min"], ["Port Louis", "Curepipe", "35-50 min"], ["Grand Baie", "Quatre Bornes", "1-1,5 h"]],
+    gettingAround: [["Coche de alquiler", "lugares dispersos"], ["Traslado", "cultura y té"], ["Taxi", "conexión norte-sur"], ["Operadores de barco", "entre ciudades"]],
+    places: [{ name: "Trou aux Cerfs", text: "Cráter volcánico dormido con lago y vistas amplias." }, { name: "Le Pouce y Pieter Both", text: "Cumbres clásicas para senderismo." }, { name: "Cascadas de Tamarin / 7 Cascades", text: "Las cascadas más altas de la isla, senderismo y barranquismo." }, { name: "Eureka House", text: "Mansión criolla de 1836 con 109 puertas." }, { name: "Curepipe", text: "Ciudad fresca de las tierras altas con jardín botánico." }, { name: "Quatre Bornes", text: "Ciudad de flores y mercado textil animado." }, { name: "Floréal", text: "Cachemir, textiles finos y maquetas de barcos." }, { name: "Domaine des Aubineaux", text: "Casa colonial en la Ruta del Té." }],
+    steps: [{ number: "1", title: "Trou aux Cerfs", text: "paseo alrededor del cráter" }, { number: "2", title: "Eureka House", text: "casa y jardines de Moka" }, { number: "3", title: "Quatre Bornes", text: "mercado textil" }, { number: "4", title: "Curepipe", text: "jardín botánico y ciudad" }],
+  },
+  ru: {
+    metadata: { title: "Путеводитель по центру Маврикия", description: "Центр Маврикия: Тру-о-Серф, Ле-Пус, водопады Тамаринд, Юрика, Кюрпип и рынки высокогорья." },
+    intro: "Прохладное зеленое сердце острова: вулканические кратеры, горные вершины, колониальные дома, чайные маршруты и рынки высокогорья.",
+    mapAlt: "Карта центрального Маврикия",
+    mapCaption: "Центральный регион кратко",
+    driveTimes: [["Аэропорт", "Кюрпип", "40-55 мин"], ["Порт-Луи", "Мока", "20-30 мин"], ["Порт-Луи", "Кюрпип", "35-50 мин"], ["Гранд-Бэ", "Катр-Борн", "1-1,5 ч"]],
+    goodToKnow: "Высокогорье самое дождливое: берите легкую кофту даже летом. Многие места находятся в помещениях, поэтому центр хорош для влажной погоды.",
+    gettingAround: [["Аренда авто", "разбросанные места"], ["Трансфер", "культура и чай"], ["Такси", "связь север-юг"], ["Лодочные операторы", "между городами"]],
+    bestFor: "Культуры, походов и дождливых дней: дома, кратеры, тропы и рынки.",
+    places: [{ name: "Тру-о-Серф", text: "Спящий вулканический кратер с озером и широкими видами." }, { name: "Ле-Пус и Питер-Бот", text: "Классические вершины для пеших маршрутов." }, { name: "Водопады Тамаринд / 7 Cascades", text: "Самые высокие водопады острова, походы и каньонинг." }, { name: "Дом Юрика", text: "Креольский особняк 1836 года со 109 дверями." }, { name: "Кюрпип", text: "Прохладный город высокогорья с ботаническим садом." }, { name: "Катр-Борн", text: "Город цветов и оживленный текстильный рынок." }, { name: "Флореаль", text: "Кашемир, тонкий текстиль и модели кораблей." }, { name: "Домен-де-Обино", text: "Колониальный дом на чайном маршруте." }],
+    steps: [{ number: "1", title: "Тру-о-Серф", text: "прогулка вокруг кратера" }, { number: "2", title: "Дом Юрика", text: "дом и сады Мока" }, { number: "3", title: "Катр-Борн", text: "текстильный рынок" }, { number: "4", title: "Кюрпип", text: "ботанический сад и город" }],
+  },
+};
+
 regionGuideTranslations.fr.north = { ...regionGuideTranslations.fr.north, ...northGuideLocaleRefinements.fr };
+regionGuideTranslations.fr.south = { ...regionGuideTranslations.fr.south, ...southGuideLocaleRefinements.fr };
+regionGuideTranslations.fr.east = { ...regionGuideTranslations.fr.east, ...eastGuideLocaleRefinements.fr };
+regionGuideTranslations.fr.west = { ...regionGuideTranslations.fr.west, ...westGuideLocaleRefinements.fr };
+regionGuideTranslations.fr.central = { ...regionGuideTranslations.fr.central, ...centralGuideLocaleRefinements.fr };
 for (const locale of ["de", "it", "es", "ru"] as const) {
   translatedRegionOverrides[locale] = {
     ...translatedRegionOverrides[locale],
     north: {
       ...translatedRegionOverrides[locale]?.north,
       ...northGuideLocaleRefinements[locale],
+    },
+    south: {
+      ...translatedRegionOverrides[locale]?.south,
+      ...southGuideLocaleRefinements[locale],
+    },
+    east: {
+      ...translatedRegionOverrides[locale]?.east,
+      ...eastGuideLocaleRefinements[locale],
+    },
+    west: {
+      ...translatedRegionOverrides[locale]?.west,
+      ...westGuideLocaleRefinements[locale],
+    },
+    central: {
+      ...translatedRegionOverrides[locale]?.central,
+      ...centralGuideLocaleRefinements[locale],
     },
   };
 }

@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 import path from "path";
 import bundleAnalyzer from "@next/bundle-analyzer";
 import createNextIntlPlugin from "next-intl/plugin";
+import { legacyRedirects } from "./src/data/legacy-redirects";
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 const withBundleAnalyzer = bundleAnalyzer({ enabled: process.env.ANALYZE === "true" });
@@ -60,6 +61,8 @@ const nextConfig: NextConfig = {
   
   async redirects() {
     return [
+      ...legacyRedirects,
+
       // ========================================
       // OLD PLACES PAGES -> NEW PLACES PAGE
       // ========================================

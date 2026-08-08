@@ -236,6 +236,24 @@ export default async function SouthMauritiusTravelGuidePage({
             <div className="mt-4 space-y-4">
               {translatedPlaces.map((place) => {
                 const PlaceIcon = place.icon;
+                const linkedNameParts = place.nameLinks
+                  ? place.name
+                      .split(/\s+(?:&|et|und|e|y|и)\s+/)
+                      .map((part) => part.trim())
+                      .filter(Boolean)
+                  : [];
+                const linkedNameSeparator =
+                  activeLocale === "fr"
+                    ? " et "
+                    : activeLocale === "de"
+                      ? " und "
+                      : activeLocale === "it"
+                        ? " e "
+                        : activeLocale === "es"
+                          ? " y "
+                          : activeLocale === "ru"
+                            ? " и "
+                            : " & ";
 
                 return (
                   <div key={place.name} className="flex gap-4 mb-8">
@@ -251,14 +269,14 @@ export default async function SouthMauritiusTravelGuidePage({
                           <>
                             {place.nameLinks.map((link, index) => (
                               <span key={link.label}>
-                                {index > 0 ? " & " : ""}
+                                {index > 0 ? linkedNameSeparator : ""}
                                 <Link
                                   href={link.href}
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   className="transition hover:text-[#f16522]"
                                 >
-                                  {link.label}
+                                  {linkedNameParts[index] ?? link.label}
                                 </Link>
                               </span>
                             ))}
@@ -351,7 +369,7 @@ export default async function SouthMauritiusTravelGuidePage({
                         rel="noopener noreferrer"
                         className="font-bold text-[#1d3144] transition hover:text-[#f16522]"
                       >
-                        {link.label}
+                        {label}
                       </Link>
                     ) : (
                       <strong className="text-[#1d3144]">{label}</strong>
@@ -399,7 +417,7 @@ export default async function SouthMauritiusTravelGuidePage({
             })}
           </div>
         </section>
-        <HiddenGems featuredSlugs={southHiddenGemSlugs} />
+        <HiddenGems featuredSlugs={southHiddenGemSlugs} locale={activeLocale} />
       </article>
       <CarRentalAdBanner />
       <PopularRoadTrips locale={activeLocale} />

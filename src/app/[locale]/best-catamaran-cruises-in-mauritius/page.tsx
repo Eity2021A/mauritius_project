@@ -147,7 +147,7 @@ const CRUISE_COPY: Record<string, CruisePageCopy> = {
     titleMain: "Les meilleures croisières en catamaran",
     titleAccent: "à Maurice",
     intro:
-      "Lagons turquoise, arrêts sur les îles et BBQ à bord : les plus belles journées sur l'eau, classées par côte.",
+      "Lagons turquoise, arrêts sur les îles et barbecue à bord : les plus belles journées sur l'eau, classées par côte.",
     legend: ["Nord", "Est", "Ouest", "Sud"],
     groups: [
       {
@@ -155,11 +155,11 @@ const CRUISE_COPY: Record<string, CruisePageCopy> = {
         note: "îles spectaculaires et Grand Baie",
         color: "#2389c9",
         cruises: [
-          ["Îles du Nord", "trio Coin de Mire, Flat et Gabriel"],
-          ["Bain Boeuf", "croisière partagée de luxe vers les îles"],
+          ["Îles du Nord", "trio Coin de Mire, île Plate et Gabriel"],
+          ["Bain Boeuf", "croisière partagée haut de gamme vers les îles"],
           [
             "Îlot Bernache",
-            "navigation tranquille dans les mangroves - Grand Gaube",
+            "navigation paisible dans les mangroves au départ de Grand Gaube",
           ],
         ],
       },
@@ -187,10 +187,10 @@ const CRUISE_COPY: Record<string, CruisePageCopy> = {
       },
       {
         coast: "Côte sud",
-        note: "bleus intenses en power cat",
+        note: "bleus intenses en catamaran rapide",
         color: "#d89b24",
         cruises: [
-          ["Lagon du sud-est", "power cat depuis Pointe d'Esny"],
+          ["Lagon du sud-est", "catamaran rapide depuis Pointe d'Esny"],
           ["Baie Bleue", "excellent arrêt snorkeling"],
         ],
       },
@@ -204,11 +204,11 @@ const CRUISE_COPY: Record<string, CruisePageCopy> = {
     cards: [
       {
         title: "À bord",
-        text: "Snorkeling, arrêts sur les îles, déjeuner BBQ et boissons.",
+        text: "Snorkeling, arrêts sur les îles, déjeuner barbecue et boissons.",
       },
       {
         title: "Choisir votre formule",
-        text: "Partagé pour le prix · privé pour l'espace · coucher de soleil pour l'effet wow.",
+        text: "Partagé pour le prix · privé pour l'espace · coucher de soleil pour l'émotion.",
       },
       {
         title: "Meilleure lumière",
@@ -243,7 +243,7 @@ const CRUISE_COPY: Record<string, CruisePageCopy> = {
     titleMain: "Die besten Katamaranfahrten",
     titleAccent: "auf Mauritius",
     intro:
-      "Türkisfarbene Lagunen, Inselstopps und BBQ an Deck: die schönsten Tage auf dem Wasser, nach Küsten geordnet.",
+      "Türkisfarbene Lagunen, Inselstopps und Grillen an Deck: die schönsten Tage auf dem Wasser, nach Küsten geordnet.",
     legend: ["Norden", "Osten", "Westen", "Süden"],
     groups: [
       {
@@ -251,9 +251,9 @@ const CRUISE_COPY: Record<string, CruisePageCopy> = {
         note: "dramatische Inseln und Grand Baie",
         color: "#2389c9",
         cruises: [
-          ["Nördliche Inseln", "Coin de Mire, Flat Island und Gabriel im Trio"],
-          ["Bain Boeuf", "luxuriöse geteilte Inselkreuzfahrt"],
-          ["Îlot Bernache", "ruhige Mangrovenfahrt - Grand Gaube"],
+          ["Nordinseln", "Coin de Mire, Île Plate und Gabriel als Inseltrio"],
+          ["Bain Boeuf", "hochwertige Gruppenkreuzfahrt zu den Inseln"],
+          ["Îlot Bernache", "ruhige Mangrovenfahrt ab Grand Gaube"],
         ],
       },
       {
@@ -277,10 +277,10 @@ const CRUISE_COPY: Record<string, CruisePageCopy> = {
       },
       {
         coast: "Südküste",
-        note: "Power-Cat-Blau",
+        note: "intensives Blau auf dem Schnellkatamaran",
         color: "#d89b24",
         cruises: [
-          ["Südost-Lagune", "Power Cat ab Pointe d'Esny"],
+          ["Südost-Lagune", "Schnellkatamaran ab Pointe d'Esny"],
           ["Blaue Bucht", "Top-Stopp zum Schnorcheln"],
         ],
       },
@@ -293,11 +293,11 @@ const CRUISE_COPY: Record<string, CruisePageCopy> = {
     cards: [
       {
         title: "An Bord",
-        text: "Schnorcheln, Inselstopps, BBQ-Mittagessen und Getränke.",
+        text: "Schnorcheln, Inselstopps, Grillmittagessen und Getränke.",
       },
       {
         title: "Tourtyp wählen",
-        text: "Geteilt für den Preis · privat für Platz · Sonnenuntergang für Wow.",
+        text: "Gruppe für den Preis · privat für mehr Platz · Sonnenuntergang für besondere Stimmung.",
       },
       {
         title: "Bestes Licht",
@@ -326,7 +326,7 @@ const CRUISE_COPY: Record<string, CruisePageCopy> = {
     titleMain: "Le migliori crociere in catamarano",
     titleAccent: "a Mauritius",
     intro:
-      "Lagune turchesi, soste sulle isole e BBQ a bordo: le giornate più belle sull'acqua, raggruppate per costa.",
+      "Lagune turchesi, soste sulle isole e barbecue a bordo: le giornate più belle sull'acqua, raggruppate per costa.",
     legend: ["Nord", "Est", "Ovest", "Sud"],
     groups: [
       {
@@ -334,9 +334,9 @@ const CRUISE_COPY: Record<string, CruisePageCopy> = {
         note: "isole scenografiche e Grand Baie",
         color: "#2389c9",
         cruises: [
-          ["Isole del Nord", "trio Coin de Mire, Flat e Gabriel"],
-          ["Bain Boeuf", "crociera condivisa di lusso verso le isole"],
-          ["Îlot Bernache", "vela tranquilla tra mangrovie - Grand Gaube"],
+          ["Isole del Nord", "trio Coin de Mire, Isola Plate e Gabriel"],
+          ["Bain Boeuf", "crociera condivisa premium verso le isole"],
+          ["Îlot Bernache", "navigazione tranquilla tra le mangrovie da Grand Gaube"],
         ],
       },
       {
@@ -360,10 +360,10 @@ const CRUISE_COPY: Record<string, CruisePageCopy> = {
       },
       {
         coast: "Costa sud",
-        note: "blu intensi in power cat",
+        note: "blu intensi in catamarano veloce",
         color: "#d89b24",
         cruises: [
-          ["Laguna sud-est", "power cat da Pointe d'Esny"],
+          ["Laguna sud-est", "catamarano veloce da Pointe d'Esny"],
           ["Baia Blu", "ottima sosta per snorkeling"],
         ],
       },
@@ -377,7 +377,7 @@ const CRUISE_COPY: Record<string, CruisePageCopy> = {
     cards: [
       {
         title: "A bordo",
-        text: "Snorkeling, soste sulle isole, pranzo BBQ e bevande.",
+        text: "Snorkeling, soste sulle isole, pranzo barbecue e bevande.",
       },
       {
         title: "Scegli il tipo",
@@ -419,7 +419,7 @@ const CRUISE_COPY: Record<string, CruisePageCopy> = {
     titleMain: "Los mejores cruceros en catamarán",
     titleAccent: "en Mauricio",
     intro:
-      "Lagunas turquesas, paradas en islas y BBQ a bordo: los mejores días en el agua, agrupados por costa.",
+      "Lagunas turquesas, paradas en islas y barbacoa a bordo: los mejores días en el agua, agrupados por costa.",
     legend: ["Norte", "Este", "Oeste", "Sur"],
     groups: [
       {
@@ -427,11 +427,11 @@ const CRUISE_COPY: Record<string, CruisePageCopy> = {
         note: "islas dramáticas y Grand Baie",
         color: "#2389c9",
         cruises: [
-          ["Islas del Norte", "trío Coin de Mire, Flat y Gabriel"],
-          ["Bain Boeuf", "crucero compartido de lujo por islas"],
+          ["Islas del Norte", "trío Coin de Mire, Isla Plate y Gabriel"],
+          ["Bain Boeuf", "crucero compartido premium hacia las islas"],
           [
             "Îlot Bernache",
-            "navegación tranquila entre manglares - Grand Gaube",
+            "navegación tranquila entre manglares desde Grand Gaube",
           ],
         ],
       },
@@ -456,10 +456,10 @@ const CRUISE_COPY: Record<string, CruisePageCopy> = {
       },
       {
         coast: "Costa sur",
-        note: "azules intensos en power cat",
+        note: "azules intensos en catamarán rápido",
         color: "#d89b24",
         cruises: [
-          ["Laguna sudeste", "power cat desde Pointe d'Esny"],
+          ["Laguna sudeste", "catamarán rápido desde Pointe d'Esny"],
           ["Bahía Azul", "gran parada de snorkel"],
         ],
       },
@@ -473,11 +473,11 @@ const CRUISE_COPY: Record<string, CruisePageCopy> = {
     cards: [
       {
         title: "A bordo",
-        text: "Snorkel, paradas en islas, almuerzo BBQ y bebidas.",
+        text: "Snorkel, paradas en islas, almuerzo a la parrilla y bebidas.",
       },
       {
         title: "Elige tu tipo",
-        text: "Compartido por precio · privado por espacio · atardecer para impactar.",
+        text: "Compartido por precio · privado por espacio · atardecer para una experiencia especial.",
       },
       {
         title: "Mejor luz",
@@ -502,24 +502,24 @@ const CRUISE_COPY: Record<string, CruisePageCopy> = {
     metadata: {
       title: "Лучшие круизы на катамаране на Маврикии",
       description:
-        "Лучшие круизы на катамаране на Маврикии: дневное плавание, снорклинг и закатные маршруты к Ile aux Cerfs, Ile aux Benitiers и северным островам.",
+        "Лучшие круизы на катамаране на Маврикии: дневное плавание, снорклинг и закатные маршруты к Иль-о-Серф, Ило-Бенитье и северным островам.",
       alternates: { canonical: "/best-catamaran-cruises-in-mauritius" },
     },
     kicker: "Парус · Снорклинг · Острова",
     titleMain: "Лучшие круизы на катамаране",
     titleAccent: "на Маврикии",
     intro:
-      "Бирюзовые лагуны, остановки на островах и BBQ на палубе: лучшие водные дни острова, сгруппированные по побережьям.",
+      "Бирюзовые лагуны, остановки на островах и барбекю на палубе: лучшие водные маршруты острова, сгруппированные по побережьям.",
     legend: ["Север", "Восток", "Запад", "Юг"],
     groups: [
       {
         coast: "Северное побережье",
-        note: "выразительные острова и Grand Baie",
+        note: "выразительные острова и Гранд-Бэ",
         color: "#2389c9",
         cruises: [
-          ["Северные острова", "трио Coin de Mire, Flat и Gabriel"],
-          ["Bain Boeuf", "роскошный общий островной круиз"],
-          ["Îlot Bernache", "спокойное плавание среди мангров - Grand Gaube"],
+          ["Северные острова", "три острова: Куэн-де-Мир, Иль-Плат и Габриэль"],
+          ["Бен-Бёф", "премиальный групповой круиз к северным островам"],
+          ["Ило-Бернаш", "спокойное плавание среди мангров от Гран-Гоб"],
         ],
       },
       {
@@ -527,42 +527,42 @@ const CRUISE_COPY: Record<string, CruisePageCopy> = {
         note: "классический день в лагуне",
         color: "#2f8e48",
         cruises: [
-          ["Île aux Cerfs", "классический круиз по бирюзовой лагуне"],
+          ["Иль-о-Серф", "классический круиз по бирюзовой лагуне"],
           ["Водопад GRSE", "остановка на лодке у водопада"],
           [
-            "Trou d'Eau Douce",
+            "Тру-д'О-Дус",
             "главная точка отправления восточного побережья",
           ],
         ],
       },
       {
         coast: "Западное побережье",
-        note: "дельфины и закаты Le Morne",
+        note: "дельфины и закаты у Ле-Морна",
         color: "#f16522",
         cruises: [
-          ["Îlot Bénitiers", "виды на Le Morne и кристальная лагуна"],
-          ["Блэк-Ривер", "плавание с дельфинами и закатные маршруты"],
+          ["Ило-Бенитье", "виды на Ле-Морн и кристальная лагуна"],
+          ["Ривьер-Нуар", "плавание с дельфинами и закатные маршруты"],
         ],
       },
       {
         coast: "Южное побережье",
-        note: "яркая синева power cat",
+        note: "яркая синева на скоростном катамаране",
         color: "#d89b24",
         cruises: [
-          ["Юго-восточная лагуна", "power cat из Pointe d'Esny"],
+          ["Юго-восточная лагуна", "скоростной катамаран из Пуэнт-д'Эсни"],
           ["Блю-Бей", "отличная остановка для снорклинга"],
         ],
       },
     ],
     sharedTitle: "Общий или частный?",
     sharedText:
-      "Общие круизы (7-35 гостей) общительные и выгодные; частные чартеры дают семьям и парам больше пространства. Закатный или ужин-круиз лучше всего подходит для особого случая.",
+      "Групповые круизы (7-35 гостей) общительные и выгодные; частные чартеры дают семьям и парам больше пространства. Закатный круиз или круиз с ужином лучше всего подходит для особого случая.",
     mapAlt: "Карта Маврикия с лучшими побережьями для круизов на катамаране",
     mapCaption: "Где выйти в море: четыре побережья",
     cards: [
       {
         title: "Что на борту",
-        text: "Снорклинг, остановки на островах, BBQ-обед и напитки.",
+        text: "Снорклинг, остановки на островах, обед-барбекю и напитки.",
       },
       {
         title: "Выберите формат",
@@ -570,7 +570,7 @@ const CRUISE_COPY: Record<string, CruisePageCopy> = {
       },
       {
         title: "Лучший свет",
-        text: "Утром спокойнее всего; запад лучше для закатов.",
+        text: "Утром море спокойнее всего; запад лучше для закатов.",
       },
     ],
     goodTitle: "Полезно знать",
@@ -578,7 +578,7 @@ const CRUISE_COPY: Record<string, CruisePageCopy> = {
       ["Бронируйте заранее", "В высокий сезон катамараны быстро заполняются."],
       [
         "Соберите вещи грамотно",
-        "Солнцезащитный крем, полотенце, шляпа и сухой мешок.",
+        "Солнцезащитный крем, полотенце, шляпа и гермомешок.",
       ],
       [
         "Плывите рядом",
@@ -586,7 +586,7 @@ const CRUISE_COPY: Record<string, CruisePageCopy> = {
       ],
       [
         "Спокойное утро",
-        "Самая чистая вода и самая ровная мореходность до полудня.",
+        "Самая чистая вода и самое спокойное море обычно до полудня.",
       ],
     ],
   },
